@@ -9,7 +9,7 @@ const dreams = [];
 const dreamsForm = document.forms[0];
 const dreamInput = dreamsForm.elements["dream"];
 const dreamsList = document.getElementById("dreams");
-const clearButton = document.querySelector('#clear-dreams');
+const clearButton = document.querySelector("#clear-dreams");
 
 // request the dreams from our app's sqlite database
 fetch("/getDreams", {})
@@ -52,7 +52,7 @@ dreamsForm.onsubmit = event => {
   dreamInput.focus();
 };
 
-clearButton.addEventListener('click', event => {
+clearButton.addEventListener("click", event => {
   fetch("/clearDreams", {})
     .then(res => res.json())
     .then(response => {
@@ -61,24 +61,19 @@ clearButton.addEventListener('click', event => {
   dreamsList.innerHTML = "";
 });
 
-
 //日付
 //今日の日付データを変数に格納
 //変数は"today"とする
-const today　=　new Date();
+const today = new Date();
 const year = today.getFullYear();
-const month = today.getMonth()+1;
+const month = today.getMonth();
 const week = today.getDay();
 const day = today.getDate();
 const hour = today.getHours();
 const minute = today.getMinutes();
 //年・月・日・曜日を取得
-const week_ja= new Array("日","月","火","水","木","金","土");
+const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
 //年・月・日・曜日を書き出す
-document.getElementById("todayDate").textContent = year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日";
-//時・分・秒を取得
-
-// let second = today.getSeconds();
-document.getElementById("todayTime").textContent = hour+"時"+minute+"分";
-
-
+document.getElementById("todayDate").textContent =
+  year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
+document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
