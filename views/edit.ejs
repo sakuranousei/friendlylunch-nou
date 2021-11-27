@@ -42,18 +42,18 @@
     <div class="container pt-5">
       <table class="table table-bordered">
         <tbody id="nameFormArea">
-        <tr>
-          <th class="bg-light">名前</th>
-        </tr>
-        <tr>
-          <td><input class="form-control" type="text" name="name"></td>
-        </tr>
-        <tr>
-          <td><input class="form-control" type="text" name="name"></td>
-        </tr>
+          <tr>
+            <th class="bg-light">名前</th>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" name="name"></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" name="name"></td>
+          </tr>
         </tbody>
       </table>
-      <input id="nameRowAdd" type="submit" value="追加" class="btn btn-primary" onclick="nameRowAdd()">
+      <input id="nameRowAdd" onclick="nameRowAdd()" type="submit" value="追加" class="btn btn-primary">
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
     
@@ -61,23 +61,25 @@
     
     <div class="container">
       <table class="table table-bordered">
-        <tr>
-          <th class="bg-light">店名</th>
-          <th class="bg-light">メニュー</th>
-          <th class="bg-light">税込価格</th>
-        </tr>
-        <tr>
-          <td><input class="form-control" type="text" name="store-name"></td>
-          <td><input class="form-control" type="text" name="menu"></td>
-          <td><input class="form-control" type="text" name="price"></td>
-        </tr>
-        <tr>
-          <td><input class="form-control" type="text" name="store-name"></td>
-          <td><input class="form-control" type="text" name="menu"></td>
-          <td><input class="form-control" type="text" name="price"></td>
-        </tr>
+        <tbody id="menuFormArea">
+          <tr>
+            <th class="bg-light">店名</th>
+            <th class="bg-light">メニュー</th>
+            <th class="bg-light">税込価格</th>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" name="store-name"></td>
+            <td><input class="form-control" type="text" name="menu"></td>
+            <td><input class="form-control" type="text" name="price"></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" name="store-name"></td>
+            <td><input class="form-control" type="text" name="menu"></td>
+            <td><input class="form-control" type="text" name="price"></td>
+          </tr>
+        </tbody>
       </table>
-      <input id="menuRowAdd" type="submit" value="追加" class="btn btn-primary">
+      <input id="menuRowAdd" onclick="menuRowAdd()" type="submit" value="追加" class="btn btn-primary">
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
       
@@ -97,23 +99,6 @@
         Copyright ©Sakura-Orders
       </div>
     </footer>
-    
-    <script>  
-    //フォーム追加
-    function nameRowAdd() {
-      const tr = document.createElement("tr");
-      const td = document.createElement("td");
-      const input = document.createElement("input");
-      input.className = "form-control";
-      input.type = "text";
-      input.name = "name";
-      const parent = document.getElementById("nameFormArea");
-      parent.appendChild(tr);
-      tr.append(td);
-      td.append(input);
-    };
-    
-    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

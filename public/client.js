@@ -79,3 +79,28 @@ document.getElementById("todayDate").textContent =
   year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
+
+//フォーム追加
+function nameRowAdd() {
+  const tr = document.createElement("tr");
+  const td = document.createElement("td");
+  const input = document.createElement("input");
+  input.className = "form-control";
+  input.type = "text";
+  input.name = "name";
+  const parent = document.getElementById("nameFormArea");
+  parent.appendChild(tr);
+  tr.append(td);
+  td.append(input);
+};
+
+function menuRowAdd() {
+  
+}
+
+
+          <tr>
+            <td><input class="form-control" type="text" name="store-name"></td>
+            <td><input class="form-control" type="text" name="menu"></td>
+            <td><input class="form-control" type="text" name="price"></td>
+          </tr>
