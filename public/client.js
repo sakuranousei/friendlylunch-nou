@@ -11,6 +11,9 @@ const dreamInput = dreamsForm.elements["dream"];
 const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
+//★name
+const namesList = document.getElementById("namesList");
+
 // request the dreams from our app's sqlite database
 fetch("/getDreams", {})
   .then(res => res.json())
@@ -40,8 +43,8 @@ const appendNewDream = dream => {
 // ★a helper function that creates a list item for a given name
 const appendNewName = name => {
   const newListItem = document.createElement("li");
-  newListItem.innerText = dream;
-  dreamsList.appendChild(newListItem);
+  newListItem.innerText = name;
+  namesList.appendChild(newListItem);
 };
 
 // listen for the form to be submitted and add a new dream when it is
