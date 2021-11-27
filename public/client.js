@@ -3,6 +3,17 @@
 
 console.log("hello world :o");
 
+//フォーム追加
+const nameRowAdd = document.getElementById('nameRowAdd');
+nameRowAdd.addEventListener('click', () => {
+  console.log("aaaa");
+	// document.getElementById('addedNameForm').insertAdjacentHTML('beforeend',
+	// '<tr>' +
+	// '<td><input class="form-control" type="text" name="name"></td>' +
+	// '</tr>'                                                                                                               
+	// );
+});
+
 const dreams = [];
 
 // define variables that reference elements on our page
@@ -78,12 +89,3 @@ document.getElementById("todayDate").textContent =
   year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
-//フォーム追加
-const nameRowAdd = document.getElementById('nameRowAdd');
-nameRowAdd.addEventListener('click', () => {
-	document.getElementById('addedNameForm').insertAdjacentHTML('beforeend',
-  '<tr>' +
-    '<td><input class="form-control" type="text" name="name"></td>' +
-  '</tr>'                                                                                                               
-	);
-});
