@@ -50,6 +50,11 @@ app.get("/", (request, response) => {
   response.sendFile(`${__dirname}/views/index.html`);
 });
 
+app.get("/edit"), (request, response) => {
+  response.send("edit");
+  // response.render(`${__dirname}/views/edit.ejs`);
+}
+
 // endpoint to get all the dreams in the database
 app.get("/getDreams", (request, response) => {
   db.all("SELECT * from Dreams", (err, rows) => {
