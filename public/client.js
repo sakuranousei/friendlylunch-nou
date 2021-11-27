@@ -20,8 +20,25 @@ fetch("/getDreams", {})
     });
   });
 
+// ★request the Names from our app's sqlite database
+fetch("/getNames", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      appendNewName(row.name);
+    });
+  });
+
+
 // a helper function that creates a list item for a given dream
 const appendNewDream = dream => {
+  const newListItem = document.createElement("li");
+  newListItem.innerText = dream;
+  dreamsList.appendChild(newListItem);
+};
+
+// ★a helper function that creates a list item for a given name
+const appendNewName = name => {
   const newListItem = document.createElement("li");
   newListItem.innerText = dream;
   dreamsList.appendChild(newListItem);

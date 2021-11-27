@@ -49,25 +49,25 @@ db.serialize(() => {
   }
 });
 
-// Namesデータベースの作成
+// ★Namesデータベースの作成
 db.serialize(() => {
   if (!exists) {
     db.run(
-      "CREATE TABLE reams (id INTEGER PRIMARY KEY AUTOINCREMENT, dream TEXT)"
+      "CREATE TABLE Names (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
     );
-    console.log("New table Dreams created!");
+    console.log("New table Names created!");
 
     // insert default dreams
     db.serialize(() => {
       db.run(
-        'INSERT INTO Dreams (dream) VALUES ("Find and count some sheep"), ("Climb a really tall mountain"), ("Wash the dishes")'
+        'INSERT INTO Names (name) VALUES ("名前１"), ("名前２"), ("名前３")'
       );
     });
   } else {
-    console.log('Database "Dreams" ready to go!');
-    db.each("SELECT * from Dreams", (err, row) => {
+    console.log('Database "Names" ready to go!');
+    db.each("SELECT * from Names", (err, row) => {
       if (row) {
-        console.log(`record: ${row.dream}`);
+        console.log(`record: ${row.name}`);
       }
     });
   }
@@ -83,6 +83,14 @@ app.get("/", (request, response) => {
 // endpoint to get all the dreams in the database
 app.get("/getDreams", (request, response) => {
   db.all("SELECT * from Dreams", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
+// ★endpoint to get all the Names in the database
+app.get("/getNames", (request, response) => {
+  db.all("SELECT * from Names", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
