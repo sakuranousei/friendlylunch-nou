@@ -106,7 +106,9 @@
       input.type = "text";
       input.name = "name";
       const parent = document.getElementById("nameFormArea");
-      parent.appenChild(tr, td, input);
+      parent.appenChild(tr);
+      tr.append(td);
+      td.append(input);
     };
     
     </script>
