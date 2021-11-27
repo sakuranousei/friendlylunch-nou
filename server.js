@@ -88,7 +88,7 @@ app.get("/getDreams", (request, response) => {
 });
 
 
-// ★endpoint to get all the Names in the database
+// ★③endpoint to get all the Names in the database
 app.get("/getNames", (request, response) => {
   db.all("SELECT * from Names", (err, rows) => {
     response.send(JSON.stringify(rows));

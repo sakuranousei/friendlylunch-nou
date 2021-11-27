@@ -12,7 +12,8 @@ const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
 //★name
-const namesList = document.getElementById("namesList");
+const names = [];
+const namesList = document.getElementById("names");
 
 // request the dreams from our app's sqlite database
 fetch("/getDreams", {})
@@ -23,7 +24,7 @@ fetch("/getDreams", {})
     });
   });
 
-// ★request the Names from our app's sqlite database
+// ★②request the Names from our app's sqlite database
 fetch("/getNames", {})
   .then(res => res.json())
   .then(response => {
@@ -40,7 +41,7 @@ const appendNewDream = dream => {
   dreamsList.appendChild(newListItem);
 };
 
-// ★a helper function that creates a list item for a given name
+// ★③ a helper function that creates a list item for a given name
 const appendNewName = name => {
   const newListItem = document.createElement("li");
   newListItem.innerText = name;
