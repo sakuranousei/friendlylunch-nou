@@ -40,7 +40,8 @@
     
     <!--データ入力・編集 -->
     <div class="container pt-5">
-      <table id="nameFormArea" class="table table-bordered">
+      <table class="table table-bordered">
+        <tbody id="nameFormArea">
         <tr>
           <th class="bg-light">名前</th>
         </tr>
@@ -50,8 +51,9 @@
         <tr>
           <td><input class="form-control" type="text" name="name"></td>
         </tr>
+        </tbody>
       </table>
-      <input id="nameRowAdd" onclick="nameRowAdd()" type="submit" value="追加" class="btn btn-primary">
+      <input id="nameRowAdd" type="submit" value="追加" class="btn btn-primary" onclick="nameRowAdd()">
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
     
@@ -102,11 +104,11 @@
       const tr = document.createElement("tr");
       const td = document.createElement("td");
       const input = document.createElement("input");
-      input.class = "form-control";
+      input.className = "form-control";
       input.type = "text";
       input.name = "name";
       const parent = document.getElementById("nameFormArea");
-      parent.appenChild(tr);
+      parent.appendChild(tr);
       tr.append(td);
       td.append(input);
     };
