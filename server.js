@@ -15,6 +15,10 @@ app.use(bodyParser.json());
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
+//テンプレートエンジン
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 // init sqlite db
 const dbFile = "./.data/sqlite.db";
 const exists = fs.existsSync(dbFile);
@@ -47,7 +51,7 @@ db.serialize(() => {
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.sendFile(`${__dirname}/views/index.html`);
+  response.render(`${__dirname}/views/index.ejs`);
 });
 
 // endpoint to get all the dreams in the database
@@ -55,6 +59,11 @@ app.get("/getDreams", (request, response) => {
   db.all("SELECT * from Dreams", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
+});
+
+app.get("/edit", (request, response) => {
+  // response.send("edit");
+  response.render(`${__dirname}/views/edit.ejs`);
 });
 
 // endpoint to add a dream to the database
@@ -104,10 +113,7 @@ const cleanseString = function(string) {
   return string.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 };
 
-app.get("/edit", (request, response) => {
-  // response.send("edit");
-  response.render(`${__dirname}/views/edit.ejs`);
-});
+
 
 
 // listen for requests :)
