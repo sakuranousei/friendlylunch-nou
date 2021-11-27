@@ -77,3 +77,13 @@ const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
 document.getElementById("todayDate").textContent =
   year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
+
+//フォーム追加
+const nameRowAdd = document.getElementById('nameRowAdd');
+nameRowAdd.addEventListener('click', () => {
+	document.getElementById('addedNameForm').insertAdjacentHTML('beforeend',
+  '<tr>' +
+    '<td><input class="form-control" type="text" name="name"></td>' +
+  '</tr>'                                                                                                               
+	);
+});
