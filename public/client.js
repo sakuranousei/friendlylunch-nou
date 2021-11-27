@@ -120,3 +120,8 @@ function menuRowAdd() {
   tr.append(td_3);
   td_3.append(input_3);
 }
+
+//データ追加
+function nameDataAdd() {
+  
+}
