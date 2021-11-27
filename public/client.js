@@ -3,17 +3,6 @@
 
 console.log("hello world :o");
 
-//フォーム追加
-const nameRowAdd = document.getElementById('nameRowAdd');
-nameRowAdd.addEventListener('click', () => {
-  console.log("aaaa");
-	// document.getElementById('addedNameForm').insertAdjacentHTML('beforeend',
-	// '<tr>' +
-	// '<td><input class="form-control" type="text" name="name"></td>' +
-	// '</tr>'                                                                                                               
-	// );
-});
-
 const dreams = [];
 
 // define variables that reference elements on our page
@@ -71,6 +60,7 @@ clearButton.addEventListener("click", event => {
     });
   dreamsList.innerHTML = "";
 });
+
 
 //日付
 //今日の日付データを変数に格納

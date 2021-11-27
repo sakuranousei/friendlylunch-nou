@@ -50,7 +50,7 @@
         <tr>
           <td><input class="form-control" type="text" name="name"></td>
         </tr>
-        <div class="orderChange" id="addedNameForm"></div>
+        <span class="orderChange" id="addedNameForm"></span>
       </table>
       <input id="nameRowAdd" type="submit" value="追加" class="btn btn-primary">
       <input type="submit" value="送信" class="btn btn-primary">
@@ -80,10 +80,6 @@
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
       
-      
-
-    
-    
     
     <div class="container">
       <a href="/">
@@ -100,6 +96,19 @@
         Copyright ©Sakura-Orders
       </div>
     </footer>
+    
+    <script>  
+    //フォーム追加
+    const nameRowAdd = document.getElementById('nameRowAdd');
+    nameRowAdd.addEventListener('click', () => {
+      console.log("aaaa");
+      document.getElementById('addedNameForm').insertAdjacentHTML('afterend',
+      '<tr>' +
+      '<td><input class="form-control" type="text" name="name"></td>' +
+      '</tr>'                                                                                                               
+      );
+    });
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
