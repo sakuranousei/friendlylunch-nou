@@ -65,22 +65,23 @@ clearButton.addEventListener('click', event => {
 //日付
 //今日の日付データを変数に格納
 //変数は"today"とする
-var today=new Date(); 
+const today=new Date(); 
 //年・月・日・曜日を取得
-var year = today.getFullYear();
-var month = today.getMonth()+1;
-var week = today.getDay();
-var day = today.getDate();
-var week_ja= new Array("日","月","火","水","木","金","土");
+const year = today.getFullYear();
+const month = today.getMonth()+1;
+const week = today.getDay();
+const day = today.getDate();
+const week_ja= new Array("日","月","火","水","木","金","土");
 //年・月・日・曜日を書き出す
-document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+document.getElementById("todayDate").textContent=year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+// document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
 
 //時刻データを取得して変数に格納する
 //変数は"time"とする
-var time= new Date();
+const time= new Date();
 //時・分・秒を取得
-var hour = time.getHours();
-var minute = time.getMinutes();
-var second = time.getSeconds();
+const hour = time.getHours();
+const minute = time.getMinutes();
+const second = time.getSeconds();
 document.write(hour+"時",+minute+"分"+second+"秒");
 
