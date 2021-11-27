@@ -106,7 +106,7 @@ const cleanseString = function(string) {
 
 app.get("/edit", (request, response) => {
   // response.send("edit");
-  response.render(`${__dirname}/views/edit.html`);
+  response.render(`${__dirname}/views/edit.ejs`);
 });
 
 
