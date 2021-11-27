@@ -39,8 +39,8 @@
     </header>
     
     <!--データ入力・編集 -->
-    <div id="nameFormArea" class="container pt-5">
-      <table class="table table-bordered">
+    <div class="container pt-5">
+      <table id="nameFormArea" class="table table-bordered">
         <tr>
           <th class="bg-light">名前</th>
         </tr>
@@ -51,7 +51,7 @@
           <td><input class="form-control" type="text" name="name"></td>
         </tr>
       </table>
-      <input id="nameRowAdd" type="submit" value="追加" class="btn btn-primary">
+      <input id="nameRowAdd" onclick="nameRowAdd()" type="submit" value="追加" class="btn btn-primary">
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
     
@@ -75,7 +75,7 @@
           <td><input class="form-control" type="text" name="price"></td>
         </tr>
       </table>
-      <input id="menuRowAdd" type="submit" value="追加" class="btn btn-primary" o>
+      <input id="menuRowAdd" type="submit" value="追加" class="btn btn-primary">
       <input type="submit" value="送信" class="btn btn-primary">
     </div>
       
@@ -98,15 +98,17 @@
     
     <script>  
     //フォーム追加
-    const nameRowAdd = document.getElementById('nameRowAdd');
-    nameRowAdd.addEventListener('click', () => {
-      console.log("aaaa");
-      document.getElementById('addedNameForm').insertAdjacentHTML('afterend',
-      '<tr>' +
-      '<td><input class="form-control" type="text" name="name"></td>' +
-      '</tr>'                                                                                                               
-      );
-    });
+    function nameRowAdd() {
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      const input = document.createElement("input");
+      input.class = "form-control";
+      input.type = "text";
+      input.name = "name";
+      const parent = document.getElementById("nameFormArea");
+      parent.appenChild(tr, td, input);
+    };
+    
     </script>
 
     <script
