@@ -123,5 +123,8 @@ function menuRowAdd() {
 
 //データ追加
 function nameDataAdd() {
-  
+  const name = document.getElementsByName("name");
+  for (let i = 0; i < name.length; i++) {
+    console.log(name[i].value);
+  }
 }
