@@ -134,7 +134,9 @@ function userRowAdd() {
 // Usersの入力・編集
 function userAddEdit() {
   const users = document.getElementsByName("users")
-  console.log(users);
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i].value);
+  }
 }
 
 
