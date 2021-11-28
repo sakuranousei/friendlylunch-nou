@@ -160,10 +160,11 @@ app.post("/users/addEdit", (request, response) => {
     console.log(user);
     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
       if (error) {
-        console.log("error");
+        return console.log(error.message);
+        // return response.redirect('/');
       } else {
-        console.log("add or edit success");
-        res.render(`${__dirname}/views/edit.ejs`)
+        return console.log("add or edit success");
+        // return response.redirect('/');
       }
     })
   })
