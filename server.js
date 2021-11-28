@@ -142,9 +142,16 @@ app.post("/addDream", (request, response) => {
 //★Usersテーブルに追加
 app.post("/addUsers", (request, response) => {
   console.log(`add to Users ${request.body}`);
-  const add = request.body;
-  db.run("INSERT into Users(user) VALUES(add)");
-  console.log(`SELECT * from Users`);
+  if (!process.env.DISALLOW_WRITE) {
+  const cleansedUsers = cleanseString(request.body.user);
+  db.run(`INSERT INTO Users (user) VALUES (?)`, cleansedUsers, error => {
+    if (error) {
+      response.send({ message: "error!" });
+    } else {
+      response.send({ message: "success" });
+    }
+  });
+  }
 });
 
 

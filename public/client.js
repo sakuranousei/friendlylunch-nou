@@ -165,8 +165,7 @@ function userDataAdd() {
     const user = users[i].value;
     fetch("/addUsers", {
       method: "POST",
-      body: user,
-    })
+      body: user, })
     
   }
   
