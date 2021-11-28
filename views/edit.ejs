@@ -45,12 +45,12 @@
           <tr>
             <th class="bg-light">ユーザー名</th>
           </tr>
-          <tr>
+      <!--<tr>
             <td><input class="form-control" type="text" name="users"></td>
           </tr>
           <tr>
             <td><input class="form-control" type="text" name="users"></td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
       <input id="nameRowAdd" onclick="userRowAdd()" type="submit" value="行追加" class="btn btn-primary">
@@ -100,7 +100,7 @@
       </div>
     </footer>
 
-    <script defer 
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
@@ -108,15 +108,13 @@
     
     <script>
       // ★editでのUsersの反映
-      window.addEventListener("DOMContentLoaded", () => {
-        fetch("/edit/getUsers", {})
+      fetch("/edit/getUsers", {})
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
             getUsers(row.user);
           });
         });
-      });
 
       function getUsers(user) {
         console.log(user);

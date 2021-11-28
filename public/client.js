@@ -59,37 +59,6 @@ const appendNewUserRadio = user => {
   div.append(label);
 }
 
-// window.addEventListener('DOMContentLoaded', () => {
-// const getUsers = user => {
-//   console.log(user);
-//   const parent = document.getElementById("nameFormArea");
-//   const tr = document.createElement("tr");
-//   const td = document.createElement("td");
-//   const input = document.createElement("input");
-//     input.className = "form-control";
-//     input.type = "text";
-//     input.name = "users";
-//     input.value = user;
-//   parent.appendChild(tr);
-//   tr.append(td);
-//   td.append(input);
-// }
-// });
-
-
-// function userRowAdd() {
-//   const tr = document.createElement("tr");
-//   const td = document.createElement("td");
-//   const input = document.createElement("input");
-//     input.className = "form-control";
-//     input.type = "text";
-//     input.name = "users";
-//   const parent = document.getElementById("nameFormArea");
-//   parent.appendChild(tr);
-//   tr.append(td);
-//   td.append(input);
-// };
-
 
 // listen for the form to be submitted and add a new dream when it is
 dreamsForm.onsubmit = event => {
@@ -187,7 +156,7 @@ function menuRowAdd() {
 
 //データ追加
 function userDataAdd() {
-  const name = document.getElementsByName("name");
+  const name = document.getElementsByName("users");
   for (let i = 0; i < name.length; i++) {
     console.log(name[i].value);
   }
