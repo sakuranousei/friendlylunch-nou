@@ -155,24 +155,25 @@ app.get("/edit", (request, response) => {
 // });
 
 app.post("/users/addEdit", (request, response) => {
-  console.log(request.body.users);
+  // console.log(request.body.users);
   request.body.users.forEach(name => {
     console.log(name);
-    db.run`INSERT INTO Users (user) VALUES (${name})`;
-  })
+  //   db.run`INSERT INTO Users (user) VALUES (${name})`;
+  // })
   
   //   if (!process.env.DISALLOW_WRITE) {
-  //   request.body.users.forEach(name => {
-  //     db.run('INSERT INTO Users (user) VALUES (name)', error => {
+  //     const names = request.body.users;
+  //     names.forEach(name => {
+  //     db.run(`INSERT INTO Users (user) VALUES (?)`, name, error => {
   //     if (error) {
   //       response.send({ message: "error!" });
   //     } else {
   //       response.send({ message: "success" });
   //     }
   //   });
-  //   })
-  // }
-})
+    })
+  }
+// })
 
 
 // endpoint to clear dreams from the database
