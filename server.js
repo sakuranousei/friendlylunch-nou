@@ -49,7 +49,7 @@ db.serialize(() => {
   }
 });
 
-// ★①Namesデータベースの作成
+// ★①Usersデータベースの作成
 db.serialize(() => {
   if (!exists) {
     db.run(
