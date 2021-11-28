@@ -30,6 +30,7 @@ fetch("/getUsers", {})
   .then(response => {
     response.forEach(row => {
       appendNewUser(row.user);
+      appendNewUserRadio(row.user);
     });
   });
 
@@ -48,14 +49,19 @@ const appendNewUser = user => {
   usersList.appendChild(newUser);
 };
 
-const appendNewUser2 = user => {
+const appendNewUserRadio = user => {
   const parent = document.getElementById("usersArea");
+  const div = document.createElement("div");
+    div.className = "form-check";
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "radio";
   const label = document.createElement("label");
     label.className = "form-check-label";
-  parent.appendChild(input);
+    label.value = `${user}`;
+  parent.appendChild(div);
+  div.append(input);
+  div.append(label);
 }
 
       // <div class="form-check">
