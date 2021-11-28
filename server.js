@@ -109,6 +109,14 @@ app.get("/getUsers", (request, response) => {
   });
 });
 
+//★editでのUsersの反映
+app.get("/edit/getUsers", (request, response) => {
+  db.all("SELECT * from Users", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
 app.get("/edit", (request, response) => {
   // response.send("edit");
   response.render(`${__dirname}/views/edit.ejs`);

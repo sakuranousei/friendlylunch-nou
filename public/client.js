@@ -33,6 +33,15 @@ fetch("/getUsers", {})
     });
   });
 
+// ★editでのUsersの反映
+fetch("/edit/getUsers", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      userRowAdd(row.user);
+    });
+  });
+
 
 // a helper function that creates a list item for a given dream
 const appendNewDream = dream => {
@@ -114,13 +123,14 @@ document.getElementById("todayTime").textContent = hour + "時" + minute + "分"
 
 
 //フォーム追加
-function userRowAdd() {
+function userRowAdd(user) {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
   const input = document.createElement("input");
     input.className = "form-control";
     input.type = "text";
     input.name = "users";
+    input.value = user;
   const parent = document.getElementById("nameFormArea");
   parent.appendChild(tr);
   tr.append(td);
