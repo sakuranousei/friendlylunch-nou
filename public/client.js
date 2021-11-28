@@ -27,7 +27,7 @@ console.log("hello world :o");
 //     });
 //   });
 
-// ★③request the Users from our app's sqlite database
+// ★③ index request the Users from our app's sqlite database
 fetch("/getUsers", {})
   .then(res => res.json())
   .then(response => {
@@ -117,56 +117,18 @@ document.getElementById("todayDate").textContent =
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
 
-//index 行追加
-function userRowAdd() {
-  const tr = document.createElement("tr");
-  const td = document.createElement("td");
-  const input = document.createElement("input");
-    input.className = "form-control";
-    input.type = "text";
-    input.name = "users";
-  const parent = document.getElementById("nameFormArea");
-  parent.appendChild(tr);
-  tr.append(td);
-  td.append(input);
-};
-
-// Usersの入力・編集
-function userAddEdit() {
-  const users = document.getElementsByName("users")
-  for (let i = 0; i < users.length; i++) {
-    console.log(users[i].value);
-  }
-  document.getElementById("insertUsers").setAttribute("value",users);
-}
 
 
-function menuRowAdd() {
-  const parent = document.getElementById("menuFormArea");
-  const tr = document.createElement("tr");
-  const td_1 = document.createElement("td");
-  const input_1 = document.createElement("input");
-    input_1.className = "form-control";
-    input_1.type = "text";
-    input_1.name = "store-names";
-  const td_2 = document.createElement("td");
-  const input_2 = document.createElement("input");
-    input_2.className = "form-control";
-    input_2.type = "text";
-    input_2.name = "menus";
-  const td_3 = document.createElement("td");
-  const input_3 = document.createElement("input");
-    input_3.className = "form-control";
-    input_3.type = "text";
-    input_3.name = "prices";
-  parent.appendChild(tr);
-  tr.append(td_1);
-  td_1.append(input_1);
-  tr.append(td_2);
-  td_2.append(input_2);
-  tr.append(td_3);
-  td_3.append(input_3);
-}
+// edit Usersの入力・編集
+// function userAddEdit() {
+//   const users = document.getElementsByName("users")
+//   for (let i = 0; i < users.length; i++) {
+//     console.log(users[i].value);
+//   }
+//   document.getElementById("insertUsers").setAttribute("value",users);
+// }
+
+
 
 
   

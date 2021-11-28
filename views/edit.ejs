@@ -24,7 +24,7 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
     <!-- import the webpage's client-side javascript file -->
-    <script defer src="/client.js"></script>
+    <!--<script defer src="/client.js"></script> -->
   </head>
   
   <body>
@@ -49,12 +49,8 @@
             </tr>
           </tbody>
         </table>
-        <form action="/users/addEdit" method="post">
           <input onclick="userRowAdd()" value="行追加" class="btn btn-primary">
-          <input type="hidden" value="11111" id="insertUsers">
-<!--           <input id="nameDataAdd" onclick="userAddEdit()" type="submit" value="送信" class="btn btn-primary"> -->
           <input id="nameDataAdd" type="submit" value="送信" class="btn btn-primary">
-<!--         </form> -->
       </form>   
     </div>
 
@@ -134,6 +130,48 @@
         parent.appendChild(tr);
         tr.append(td);
         td.append(input);
+      }
+      
+      //edit ユーザー行追加
+      function userRowAdd() {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        const input = document.createElement("input");
+          input.className = "form-control";
+          input.type = "text";
+          input.name = "users";
+        const parent = document.getElementById("nameFormArea");
+        parent.appendChild(tr);
+        tr.append(td);
+        td.append(input);
+      };
+      
+      //edit メニュー行追加
+      function menuRowAdd() {
+        const parent = document.getElementById("menuFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+        const input_1 = document.createElement("input");
+          input_1.className = "form-control";
+          input_1.type = "text";
+          input_1.name = "store-names";
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control";
+          input_2.type = "text";
+          input_2.name = "menus";
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "text";
+          input_3.name = "prices";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
       }
       
 

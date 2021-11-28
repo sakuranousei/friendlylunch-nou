@@ -156,7 +156,9 @@ app.post("/addUsers", (request, response) => {
 
 app.post("/users/addEdit", (request, response) => {
   console.log(request.body.users);
-  console.log("!!!!!");
+  request.body.users.forEach(user => {
+    console.log
+  })
 })
 
 
