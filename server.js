@@ -170,12 +170,12 @@ app.post("/users/addEdit", (request, response) => {
   }　else {
     addEditUsers.forEach(user => {
     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
+    } {}
       if (error) {
         response.send({ message: "error!" });
         // return console.log(error.message);
         // return response.redirect('/');
       } else {
-        return console.log("add or edit success");
         response.send("登録できました。ページを戻ってください。");
         // return response.redirect('/');
         // return response.render(`${__dirname}/views/index.ejs`);
