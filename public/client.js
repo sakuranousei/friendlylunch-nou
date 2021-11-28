@@ -159,10 +159,28 @@ function menuRowAdd() {
 
 //データ追加
 function userDataAdd() {
-  const name = document.getElementsByName("users");
-  for (let i = 0; i < name.length; i++) {
-    console.log(name[i].value);
+  const users = document.getElementsByName("users");
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i].value);
+    const user = users[i].value;
+    fetch("/addUsers", {
+      method: "POST",
+      body: user,
+    })
+    
   }
+  
+//   fetch("/addUsers", {
+//   method: "POST",
+//   body: name[i].value,
+//   body: JSON.stringify(data),
+//   headers: { "Content-Type": "application/json" }
+// })
+//   .then(res => res.json())
+//   .then(response => {
+//     console.log(JSON.stringify(response));
+//   });
+  
 }
 
 

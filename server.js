@@ -139,6 +139,12 @@ app.post("/addDream", (request, response) => {
   }
 });
 
+//★Usersテーブルに追加
+app.post("/addUsers", (request, response) => {
+  
+});
+
+
 // endpoint to clear dreams from the database
 app.get("/clearDreams", (request, response) => {
   // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
