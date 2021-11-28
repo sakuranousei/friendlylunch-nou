@@ -141,7 +141,10 @@ app.post("/addDream", (request, response) => {
 
 //★Usersテーブルに追加
 app.post("/addUsers", (request, response) => {
-  
+  console.log(`add to Users ${request.body}`);
+  const add = request.body;
+  db.run("INSERT into Users(user) VALUES(add)");
+  console.log(`SELECT * from Users`);
 });
 
 
