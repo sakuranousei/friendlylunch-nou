@@ -11,9 +11,9 @@ const dreamInput = dreamsForm.elements["dream"];
 const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
-//★name
-const names = [];
-const namesList = document.getElementById("names");
+//★② users
+const users = [];
+const usersList = document.getElementById("users");
 
 // request the dreams from our app's sqlite database
 fetch("/getDreams", {})
@@ -24,12 +24,12 @@ fetch("/getDreams", {})
     });
   });
 
-// ★②request the Names from our app's sqlite database
-fetch("/getNames", {})
+// ★③request the Users from our app's sqlite database
+fetch("/getUsers", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendNewName(row.name);
+      appendNewUser(row.user);
     });
   });
 
@@ -42,10 +42,10 @@ const appendNewDream = dream => {
 };
 
 // ★③ a helper function that creates a list item for a given name
-const appendNewName = name => {
-  const newListItem = document.createElement("li");
-  newListItem.innerText = name;
-  namesList.appendChild(newListItem);
+const appendNewUser = user => {
+  const newUser = document.createElement("li");
+  newUser.innerText = user;
+  usersList.appendChild(newUser);
 };
 
 // listen for the form to be submitted and add a new dream when it is

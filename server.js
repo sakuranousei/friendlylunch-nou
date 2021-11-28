@@ -36,20 +36,17 @@ db.serialize(() => {
       "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
     );
     console.log("New table Users created!");  
-
     // insert default table
     db.serialize(() => {
       db.run(
         'INSERT INTO Dreams (dream) VALUES ("Find and count some sheep"), ("Climb a really tall mountain"), ("Wash the dishes")'
       );
     });
-    
     db.serialize(() => {
       db.run(
         'INSERT INTO Users (user) VALUES ("ユーザー１"), ("ユーザー２"), ("ユーザー３")'
       );
     });
-    
   } else {
     console.log('Database "Dreams" ready to go!');
     console.log('Database "Users" ready to go!');
