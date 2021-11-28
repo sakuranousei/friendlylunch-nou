@@ -155,15 +155,33 @@ app.get("/edit", (request, response) => {
 // });
 
 app.post("/users/addEdit", (request, response) => {
+  if(request.body.users.length = 0) {
+    response.send("１つ以上入力してください。");
+  } else if (request.body.users.length = 0) {
+    db.run(`INSERT INTO Users (user) VALUES (?)`, request.body.users, error => {
+      if (error) {
+        response.send({ message: "error!" });
+        // return console.log(error.message);
+        // return response.redirect('/');
+      } else {
+        return console.log("add or edit success");
+        response.send({ message: "success" });
+        // return response.redirect('/');
+        // return response.render(`${__dirname}/views/index.ejs`);
+      }
+    })
+  }
   // console.log(request.body.users.length);
   request.body.users.forEach(user => {
     console.log(user);
     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
       if (error) {
-        return console.log(error.message);
+        response.send({ message: "error!" });
+        // return console.log(error.message);
         // return response.redirect('/');
       } else {
         return console.log("add or edit success");
+        response.send({ message: "success" });
         // return response.redirect('/');
         // return response.render(`${__dirname}/views/index.ejs`);
       }
@@ -180,4 +198,3 @@ var listener = app.listen(process.env.PORT, () => {
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
 
-db.close();
