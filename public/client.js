@@ -137,7 +137,7 @@ function userAddEdit() {
   for (let i = 0; i < users.length; i++) {
     console.log(users[i].value);
   }
-  document.getElementById("insertUsers").setAttribute("value", JSON.stringify)
+  document.getElementById("insertUsers").setAttribute(users);
 }
 
 
