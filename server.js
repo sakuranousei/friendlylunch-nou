@@ -156,23 +156,24 @@ app.get("/edit", (request, response) => {
 
 app.post("/users/addEdit", (request, response) => {
   // console.log(request.body.users);
-  request.body.users.forEach(name => {
-    console.log(name);
+  const users = request.body.users;
+  users.forEach(user => {
+    console.log(user);
   //   db.run`INSERT INTO Users (user) VALUES (${name})`;
-  // })
+  })
   
-  //   if (!process.env.DISALLOW_WRITE) {
-  //     const names = request.body.users;
-  //     names.forEach(name => {
-  //     db.run(`INSERT INTO Users (user) VALUES (?)`, name, error => {
-  //     if (error) {
-  //       response.send({ message: "error!" });
-  //     } else {
-  //       response.send({ message: "success" });
-  //     }
-  //   });
-    })
-  }
+//     if (!process.env.DISALLOW_WRITE) {
+//       const names = request.body.users;
+//       names.forEach(name => {
+//       db.run(`INSERT INTO Users (user) VALUES (?)`, name, error => {
+//       if (error) {
+//         response.send({ message: "error!" });
+//       } else {
+//         response.send({ message: "success" });
+//       }
+//     });
+//     })
+  // }
 // })
 
 
