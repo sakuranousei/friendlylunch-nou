@@ -48,6 +48,12 @@ const appendNewUser = user => {
   usersList.appendChild(newUser);
 };
 
+const appendNewUser2 = user => {
+  const parent = document.getElementById("usersArea");
+  const input = document.createElement("input");
+    input.className
+}
+
       // <div class="form-check">
       //   <input
       //     class="form-check-input"
@@ -59,6 +65,33 @@ const appendNewUser = user => {
       //     name1
       //   </label>
       // </div>
+
+// function menuRowAdd() {
+//   const parent = document.getElementById("menuFormArea");
+//   const tr = document.createElement("tr");
+//   const td_1 = document.createElement("td");
+//   const input_1 = document.createElement("input");
+//     input_1.className = "form-control";
+//     input_1.type = "text";
+//     input_1.name = "store-name";
+//   const td_2 = document.createElement("td");
+//   const input_2 = document.createElement("input");
+//     input_2.className = "form-control";
+//     input_2.type = "text";
+//     input_2.name = "menu";
+//   const td_3 = document.createElement("td");
+//   const input_3 = document.createElement("input");
+//     input_3.className = "form-control";
+//     input_3.type = "text";
+//     input_3.name = "price";
+//   parent.appendChild(tr);
+//   tr.append(td_1);
+//   td_1.append(input_1);
+//   tr.append(td_2);
+//   td_2.append(input_2);
+//   tr.append(td_3);
+//   td_3.append(input_3);
+// }
 
 
 
