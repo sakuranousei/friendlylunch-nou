@@ -12,7 +12,7 @@ const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
 //★② users
-// const users = [];
+const users = [];
 const usersList = document.getElementById("users");
 
 // request the dreams from our app's sqlite database
