@@ -33,15 +33,6 @@ fetch("/getUsers", {})
     });
   });
 
-// ★editでのUsersの反映
-fetch("/edit/getUsers", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      getUsers(row.user);
-    });
-  });
-
 
 // a helper function that creates a list item for a given dream
 const appendNewDream = dream => {
@@ -202,19 +193,5 @@ function userDataAdd() {
   }
 }
 
-function getUsers(user) {
-  console.log(user);
-  const parent = document.getElementById("nameFormArea");
-  const tr = document.createElement("tr");
-  const td = document.createElement("td");
-  const input = document.createElement("input");
-    input.className = "form-control";
-    input.type = "text";
-    input.name = "users";
-    input.value = user;
-  parent.appendChild(tr);
-  tr.append(td);
-  td.append(input);
-}
 
-document.addEventListener("D")
+
