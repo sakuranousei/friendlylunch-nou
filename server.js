@@ -163,62 +163,15 @@ app.post("/users/addEdit", (request, response) => {
         return console.log(error.message);
         // return response.redirect('/');
       } else {
-        return console.log("add or edit success");
+        // return console.log("add or edit success");
         // return response.redirect('/');
+        return response.render(`${__dirname}/views/index.ejs`);
       }
     })
   })
-  // const names = request.body.users;
-  // names.forEach(user => {
-    // console.log(user);
-  //   db.run`INSERT INTO Users (user) VALUES (${name})`;
-  // })
 });
   
-//     if (!process.env.DISALLOW_WRITE) {
-//       const names = request.body.users;
-//       names.forEach(name => {
-//       db.run(`INSERT INTO Users (user) VALUES (?)`, name, error => {
-//       if (error) {
-//         response.send({ message: "error!" });
-//       } else {
-//         response.send({ message: "success" });
-//       }
-//     });
-//     })
-  // }
-// })
 
-
-// endpoint to clear dreams from the database
-// app.get("/clearDreams", (request, response) => {
-  // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
-//   if (!process.env.DISALLOW_WRITE) {
-//     db.each(
-//       "SELECT * from Dreams",
-//       (err, row) => {
-//         console.log("row", row);
-//         db.run(`DELETE FROM Dreams WHERE ID=?`, row.id, error => {
-//           if (row) {
-//             console.log(`deleted row ${row.id}`);
-//           }
-//         });
-//       },
-//       err => {
-//         if (err) {
-//           response.send({ message: "error!" });
-//         } else {
-//           response.send({ message: "success" });
-//         }
-//       }
-//     );
-//   }
-// });
-
-// helper function that prevents html/css/script malice
-// const cleanseString = function(string) {
-//   return string.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-// };
 
 
 
