@@ -163,9 +163,9 @@ app.post("/users/addEdit", (request, response) => {
         return console.log(error.message);
         // return response.redirect('/');
       } else {
-        // return console.log("add or edit success");
+        return console.log("add or edit success");
         // return response.redirect('/');
-        return response.render(`${__dirname}/views/index.ejs`);
+        // return response.render(`${__dirname}/views/index.ejs`);
       }
     })
   })
@@ -175,8 +175,9 @@ app.post("/users/addEdit", (request, response) => {
 
 
 
-
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
+
+db.close();
