@@ -156,14 +156,14 @@ app.get("/edit", (request, response) => {
 
 app.post("/users/addEdit", (request, response) => {
   const addEditUsers = request.body.users;
-  if(addEditUsers.length === 0) {
-    response.send("１つ以上入力してください。");
+  if(addEditUsers == null) {
+    response.send("１つ以上入力してください。ページを戻ってやり直してください。");
   } else if (addEditUsers.length = 1) {
     db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
       if (error) {
         response.send({ message: "error!" });
       } else {
-        response.send("登録できました。戻ってください。");
+        response.send("登録できました。ページを戻ってやり直してください。");
       }
     })
   }　else {
@@ -175,7 +175,7 @@ app.post("/users/addEdit", (request, response) => {
         // return response.redirect('/');
       } else {
         return console.log("add or edit success");
-        response.send("登録できました。戻ってください。");
+        response.send("登録できました。ページを戻ってください。");
         // return response.redirect('/');
         // return response.render(`${__dirname}/views/index.ejs`);
       }
