@@ -168,21 +168,25 @@ app.post("/users/addEdit", (request, response) => {
       }
     })
   }　else {
-    addEditUsers.forEach(user => {
-    db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-    } {}
-      if (error) {
-        response.send({ message: "error!" });
-        // return console.log(error.message);
-        // return response.redirect('/');
-      } else {
-        response.send("登録できました。ページを戻ってください。");
-        // return response.redirect('/');
-        // return response.render(`${__dirname}/views/index.ejs`);
-      }
+    addEditUser.forEach(user => {
+      db.run()
     })
-  }) 
   }
+  //  {
+  //   addEditUsers.forEach(user => {
+  //   db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
+  //     if (error) {
+  //       response.send({ message: "error!" });
+  //       // return console.log(error.message);
+  //       // return response.redirect('/');
+  //     } else {
+  //       response.send("登録できました。ページを戻ってください。");
+  //       // return response.redirect('/');
+  //       // return response.render(`${__dirname}/views/index.ejs`);
+  //     }
+  //   })
+  // }) 
+  // }
 });
   
 
