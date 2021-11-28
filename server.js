@@ -140,25 +140,41 @@ app.post("/addDream", (request, response) => {
 });
 
 //★Usersテーブルに追加
-app.post("/addUsers", (request, response) => {
-  console.log(`add to Users ${request.body}`);
-  if (!process.env.DISALLOW_WRITE) {
-  const cleansedUsers = cleanseString(request.body.user);
-  db.run(`INSERT INTO Users (user) VALUES (?)`, cleansedUsers, error => {
-    if (error) {
-      response.send({ message: "error!" });
-    } else {
-      response.send({ message: "success" });
-    }
-  });
-  }
-});
+// app.post("/addUsers", (request, response) => {
+//   console.log(`add to Users ${request.body}`);
+//   if (!process.env.DISALLOW_WRITE) {
+//   const cleansedUsers = cleanseString(request.body.user);
+//   db.run(`INSERT INTO Users (user) VALUES (?)`, cleansedUsers, error => {
+//     if (error) {
+//       response.send({ message: "error!" });
+//     } else {
+//       response.send({ message: "success" });
+//     }
+//   });
+//   }
+// });
 
 app.post("/users/addEdit", (request, response) => {
   console.log(request.body.users);
-  request.body.users.forEach(user => {
-    console.log
-  })
+  // request.body.users.forEach(name => {
+  //   console.log(name);
+  //   db.run("INSERT INTO Users (user) VALUES (name)");
+  // })
+  
+    if (!process.env.DISALLOW_WRITE) {
+    request.body.users.forEach(name => {
+      db.run(`INSERT INTO Users (user) VALUES (name)`, error => {
+      if (error) {
+        response.send({ message: "error!" });
+      } else {
+        response.send({ message: "success" });
+      }
+    });
+      
+    })
+  
+  }
+
 })
 
 
