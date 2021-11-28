@@ -156,9 +156,10 @@ app.get("/edit", (request, response) => {
 
 app.post("/users/addEdit", (request, response) => {
   const addEditUsers = request.body.users;
-  if(addEditUsers == null) {
+  console.log(addEditUsers);
+  if(addEditUsers == null || addEditUsers=='') {
     response.send("１つ以上入力してください。ページを戻ってやり直してください。");
-  } else if (addEditUsers.length = 1) {
+  } else if (addEditUsers.length = 1 || addEditUsers[0]=='') {
     db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
       if (error) {
         response.send({ message: "error!" });
