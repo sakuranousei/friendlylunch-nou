@@ -159,34 +159,30 @@ app.post("/users/addEdit", (request, response) => {
   console.log(addEditUsers);
   if(addEditUsers == null || addEditUsers=='') {
     response.send("１つ以上入力してください。ページを戻ってやり直してください。");
-  } else if (addEditUsers.length = 1 || addEditUsers[0]=='') {
+  } else if (addEditUsers.length == 1) {
     db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
       if (error) {
         response.send({ message: "error!" });
       } else {
-        response.send("登録できました。ページを戻ってやり直してください。");
+        response.send("登録できました。ページを戻ってください。");
       }
     })
-  }　else {
-    addEditUser.forEach(user => {
-      db.run()
+  }　else 
+   {
+    addEditUsers.forEach(user => {
+    db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
+      if (error) {
+        response.send({ message: "error!" });
+        // return console.log(error.message);
+        // return response.redirect('/');
+      } else {
+        response.send("登録できました。ページを戻ってください。");
+        // return response.redirect('/');
+        // return response.render(`${__dirname}/views/index.ejs`);
+      }
     })
+  }) 
   }
-  //  {
-  //   addEditUsers.forEach(user => {
-  //   db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-  //     if (error) {
-  //       response.send({ message: "error!" });
-  //       // return console.log(error.message);
-  //       // return response.redirect('/');
-  //     } else {
-  //       response.send("登録できました。ページを戻ってください。");
-  //       // return response.redirect('/');
-  //       // return response.render(`${__dirname}/views/index.ejs`);
-  //     }
-  //   })
-  // }) 
-  // }
 });
   
 
