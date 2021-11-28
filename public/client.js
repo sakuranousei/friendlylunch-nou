@@ -202,7 +202,7 @@ function userDataAdd() {
   }
 }
 
-const getUsers = user => {
+function getUsers(user) {
   console.log(user);
   const parent = document.getElementById("nameFormArea");
   const tr = document.createElement("tr");
@@ -216,3 +216,5 @@ const getUsers = user => {
   tr.append(td);
   td.append(input);
 }
+
+document.addEventListener("D")
