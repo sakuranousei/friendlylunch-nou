@@ -12,7 +12,7 @@ const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
 //★② users
-const users = [];
+// const users = [];
 const usersList = document.getElementById("users");
 
 // request the dreams from our app's sqlite database
@@ -29,7 +29,6 @@ fetch("/getUsers", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendNewUser(row.user);
       appendNewUserRadio(row.user);
     });
   });
@@ -42,13 +41,8 @@ const appendNewDream = dream => {
   dreamsList.appendChild(newListItem);
 };
 
-// ★④ a helper function that creates a list item for a given name
-const appendNewUser = user => {
-  const newUser = document.createElement("li");
-  newUser.innerText = user;
-  usersList.appendChild(newUser);
-};
 
+// ★④ userラジオボタンの関数 a helper function that creates a list item for a given user
 const appendNewUserRadio = user => {
   console.log(user);
   const parent = document.getElementById("usersArea");
@@ -64,46 +58,6 @@ const appendNewUserRadio = user => {
   div.append(input);
   div.append(label);
 }
-
-      // <div class="form-check">
-      //   <input
-      //     class="form-check-input"
-      //     type="radio"
-      //     name="flexRadioDefault"
-      //     id="flexRadioDefault1"
-      //   />
-      //   <label class="form-check-label" for="flexRadioDefault1">
-      //     name1
-      //   </label>
-      // </div>
-
-// function menuRowAdd() {
-//   const parent = document.getElementById("menuFormArea");
-//   const tr = document.createElement("tr");
-//   const td_1 = document.createElement("td");
-//   const input_1 = document.createElement("input");
-//     input_1.className = "form-control";
-//     input_1.type = "text";
-//     input_1.name = "store-name";
-//   const td_2 = document.createElement("td");
-//   const input_2 = document.createElement("input");
-//     input_2.className = "form-control";
-//     input_2.type = "text";
-//     input_2.name = "menu";
-//   const td_3 = document.createElement("td");
-//   const input_3 = document.createElement("input");
-//     input_3.className = "form-control";
-//     input_3.type = "text";
-//     input_3.name = "price";
-//   parent.appendChild(tr);
-//   tr.append(td_1);
-//   td_1.append(input_1);
-//   tr.append(td_2);
-//   td_2.append(input_2);
-//   tr.append(td_3);
-//   td_3.append(input_3);
-// }
-
 
 
 // listen for the form to be submitted and add a new dream when it is
@@ -164,9 +118,9 @@ function userRowAdd() {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
   const input = document.createElement("input");
-  input.className = "form-control";
-  input.type = "text";
-  input.name = "name";
+    input.className = "form-control";
+    input.type = "text";
+    input.name = "users";
   const parent = document.getElementById("nameFormArea");
   parent.appendChild(tr);
   tr.append(td);
@@ -180,17 +134,17 @@ function menuRowAdd() {
   const input_1 = document.createElement("input");
     input_1.className = "form-control";
     input_1.type = "text";
-    input_1.name = "store-name";
+    input_1.name = "store-names";
   const td_2 = document.createElement("td");
   const input_2 = document.createElement("input");
     input_2.className = "form-control";
     input_2.type = "text";
-    input_2.name = "menu";
+    input_2.name = "menus";
   const td_3 = document.createElement("td");
   const input_3 = document.createElement("input");
     input_3.className = "form-control";
     input_3.type = "text";
-    input_3.name = "price";
+    input_3.name = "prices";
   parent.appendChild(tr);
   tr.append(td_1);
   td_1.append(input_1);
