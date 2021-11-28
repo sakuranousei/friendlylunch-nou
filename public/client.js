@@ -8,8 +8,9 @@ const dreams = [];
 // define variables that reference elements on our page
 const dreamsForm = document.forms[0];
 console.log(dreamsForm);
-console.log(docume);
+console.log(document.forms);
 const dreamInput = dreamsForm.elements["dream"];
+console.log(dreamInput);
 const dreamsList = document.getElementById("dreams");
 const clearButton = document.querySelector("#clear-dreams");
 
