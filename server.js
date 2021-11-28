@@ -154,36 +154,36 @@ app.get("/edit", (request, response) => {
 //   }
 // });
 
-app.post("/users/addEdit", (request, response) => {
-  const addEditUsers = request.body.users;
-  console.log(addEditUsers);
-  if(addEditUsers == null || addEditUsers=='') {
-    response.send("１つ以上入力してください。ページを戻ってやり直してください。");
-  } else if (addEditUsers.length == 1) {
-    db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
-      if (error) {
-        response.send({ message: "error!" });
-      } else {
-        response.send("登録できました。ページを戻ってください。");
-      }
-    })
-  }　else 
-   {
-    addEditUsers.forEach(user => {
-    db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-      if (error) {
-        response.send({ message: "error!" });
-        // return console.log(error.message);
-        // return response.redirect('/');
-      } else {
-        response.send("登録できました。ページを戻ってください。");
-        // return response.redirect('/');
-        // return response.render(`${__dirname}/views/index.ejs`);
-      }
-    })
-  }) 
-  }
-});
+// app.post("/users/addEdit", (request, response) => {
+//   const addEditUsers = request.body.users;
+//   console.log(addEditUsers);
+//   if(addEditUsers == null || addEditUsers=='') {
+//     response.send("１つ以上入力してください。ページを戻ってやり直してください。");
+//   } else if (addEditUsers.length == 1) {
+//     db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
+//       if (error) {
+//         response.send({ message: "error!" });
+//       } else {
+//         response.send("登録できました。ページを戻ってください。");
+//       }
+//     })
+//   }　else 
+//    {
+//     addEditUsers.forEach(user => {
+//     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
+//       if (error) {
+//         response.send({ message: "error!" });
+//         // return console.log(error.message);
+//         // return response.redirect('/');
+//       } else {
+//         response.send("登録できました。ページを戻ってください。");
+//         // return response.redirect('/');
+//         // return response.render(`${__dirname}/views/index.ejs`);
+//       }
+//     })
+//   }) 
+//   }
+// });
   
 app.post("/users/addEdit", (request, response) => {
   const addEditUsers = request.body.users;
