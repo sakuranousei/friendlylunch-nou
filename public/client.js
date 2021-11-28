@@ -54,6 +54,7 @@ const appendNewUserRadio = user => {
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "radio";
+    input.name = "flexRadioDefault"
   const label = document.createElement("label");
     label.className = "form-check-label";
     label.innerText = user;
