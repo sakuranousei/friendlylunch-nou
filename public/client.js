@@ -117,7 +117,7 @@ document.getElementById("todayDate").textContent =
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
 
-//フォーム追加
+//行追加
 function userRowAdd() {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
@@ -130,6 +130,13 @@ function userRowAdd() {
   tr.append(td);
   td.append(input);
 };
+
+// Usersの入力・編集
+function userAddEdit() {
+  const users = document.getElementsByName("users")
+  console.log(users);
+}
+
 
 function menuRowAdd() {
   const parent = document.getElementById("menuFormArea");
@@ -171,7 +178,7 @@ function menuRowAdd() {
 //     console.log(JSON.stringify(response));
 //   });
   
-}
+
 
 
 
