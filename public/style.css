@@ -16,3 +16,7 @@ margin: 20px 0;
 padding-right: 15px;
 padding-left: 15px;
 }
+
+#todayDate,#todayTime{
+  text-align:center;
+}
