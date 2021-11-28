@@ -68,6 +68,7 @@ const appendNewUserRadio = user => {
   div.append(label);
 }
 
+window.addEventListener('DOMContentLoaded', () => {
 const getUsers = user => {
   console.log(user);
   const parent = document.getElementById("nameFormArea");
@@ -82,6 +83,22 @@ const getUsers = user => {
   tr.append(td);
   td.append(input);
 }
+});
+
+// const getUsers = user => {
+//   console.log(user);
+//   const parent = document.getElementById("nameFormArea");
+//   const tr = document.createElement("tr");
+//   const td = document.createElement("td");
+//   const input = document.createElement("input");
+//     input.className = "form-control";
+//     input.type = "text";
+//     input.name = "users";
+//     input.value = user;
+//   parent.appendChild(tr);
+//   tr.append(td);
+//   td.append(input);
+// }
 // function userRowAdd() {
 //   const tr = document.createElement("tr");
 //   const td = document.createElement("td");
