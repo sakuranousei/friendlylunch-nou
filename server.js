@@ -95,11 +95,11 @@ app.get("/", (request, response) => {
 });
 
 // endpoint to get all the dreams in the database
-app.get("/getDreams", (request, response) => {
-  db.all("SELECT * from Dreams", (err, rows) => {
-    response.send(JSON.stringify(rows));
-  });
-});
+// app.get("/getDreams", (request, response) => {
+//   db.all("SELECT * from Dreams", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
 
 
 // ★⑤endpoint to get all the Names in the database
@@ -123,21 +123,21 @@ app.get("/edit", (request, response) => {
 });
 
 // endpoint to add a dream to the database
-app.post("/addDream", (request, response) => {
-  console.log(`add to dreams ${request.body}`);
+// app.post("/addDream", (request, response) => {
+//   console.log(`add to dreams ${request.body}`);
 
-  // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
-  if (!process.env.DISALLOW_WRITE) {
-    const cleansedDream = cleanseString(request.body.dream);
-    db.run(`INSERT INTO Dreams (dream) VALUES (?)`, cleansedDream, error => {
-      if (error) {
-        response.send({ message: "error!" });
-      } else {
-        response.send({ message: "success" });
-      }
-    });
-  }
-});
+//   // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
+//   if (!process.env.DISALLOW_WRITE) {
+//     const cleansedDream = cleanseString(request.body.dream);
+//     db.run(`INSERT INTO Dreams (dream) VALUES (?)`, cleansedDream, error => {
+//       if (error) {
+//         response.send({ message: "error!" });
+//       } else {
+//         response.send({ message: "success" });
+//       }
+//     });
+//   }
+// });
 
 //★Usersテーブルに追加
 // app.post("/addUsers", (request, response) => {
@@ -163,18 +163,15 @@ app.post("/users/addEdit", (request, response) => {
   
     if (!process.env.DISALLOW_WRITE) {
     request.body.users.forEach(name => {
-      db.run(`INSERT INTO Users (user) VALUES (name)`, error => {
+      db.run('INSERT INTO Users (user) VALUES (name)', error => {
       if (error) {
         response.send({ message: "error!" });
       } else {
         response.send({ message: "success" });
       }
     });
-      
     })
-  
   }
-
 })
 
 
@@ -204,9 +201,9 @@ app.get("/clearDreams", (request, response) => {
 });
 
 // helper function that prevents html/css/script malice
-const cleanseString = function(string) {
-  return string.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-};
+// const cleanseString = function(string) {
+//   return string.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+// };
 
 
 
