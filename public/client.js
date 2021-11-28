@@ -38,7 +38,7 @@ fetch("/edit/getUsers", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      userRowAdd(row.user);
+      getUsers(row.user);
     });
   });
 
@@ -67,6 +67,33 @@ const appendNewUserRadio = user => {
   div.append(input);
   div.append(label);
 }
+
+const getUsers = user => {
+  console.log(user);
+  const parent = document.getElementById("nameFormArea");
+  const tr = document.createElement("tr");
+  const td = document.createElement("td");
+  const input = document.createElement("input");
+    input.className = "form-control";
+    input.type = "text";
+    input.name = "users";
+    input.value = user;
+  parent.appendChild(tr);
+  tr.append(td);
+  td.append(input);
+}
+// function userRowAdd() {
+//   const tr = document.createElement("tr");
+//   const td = document.createElement("td");
+//   const input = document.createElement("input");
+//     input.className = "form-control";
+//     input.type = "text";
+//     input.name = "users";
+//   const parent = document.getElementById("nameFormArea");
+//   parent.appendChild(tr);
+//   tr.append(td);
+//   td.append(input);
+// };
 
 
 // listen for the form to be submitted and add a new dream when it is
@@ -123,14 +150,13 @@ document.getElementById("todayTime").textContent = hour + "時" + minute + "分"
 
 
 //フォーム追加
-function userRowAdd(user) {
+function userRowAdd() {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
   const input = document.createElement("input");
     input.className = "form-control";
     input.type = "text";
     input.name = "users";
-    input.value = user;
   const parent = document.getElementById("nameFormArea");
   parent.appendChild(tr);
   tr.append(td);
