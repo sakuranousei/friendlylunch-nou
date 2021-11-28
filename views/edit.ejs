@@ -39,50 +39,50 @@
     </header>
     
     <!--データ入力・編集 -->
-    user
-    <div class="container pt-5">
-      <table class="table table-bordered">
-        <tbody id="nameFormArea">
-          <tr>
-            <th class="bg-light">ユーザー名</th>
-          </tr>
-      <!--<tr>
-            <td><input class="form-control" type="text" name="users"></td>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" name="users"></td>
-          </tr> -->
-        </tbody>
-      </table>
-      <input id="nameRowAdd" onclick="userRowAdd()" type="submit" value="行追加" class="btn btn-primary">
-      <input id="nameDataAdd" onclick="userDataAdd()" type="submit" value="送信" class="btn btn-primary">
+　　　　　　　　<!--Usersへの入力・編集 -->
+    <div class="container pt-3">
+      <form　action="" method="post">
+        <table class="table table-bordered">
+          <tbody id="nameFormArea">
+            <tr>
+              <th class="bg-light">ユーザー名</th>
+            </tr>
+          </tbody>
+        </table>
+        <input id="nameRowAdd" onclick="userRowAdd()" type="submit" value="行追加" class="btn btn-primary">
+        <input id="nameDataAdd" onclick="userDataAdd()" type="submit" value="送信" class="btn btn-primary">
+      </form>   
     </div>
+
     
     
-    
+    <!--Menusへの入力/編集 -->
     <div class="container">
-      <table class="table table-bordered">
-        <tbody id="menuFormArea">
-          <tr>
-            <th class="bg-light">店名</th>
-            <th class="bg-light">メニュー</th>
-            <th class="bg-light">税込価格</th>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" name="store-names"></td>
-            <td><input class="form-control" type="text" name="menus"></td>
-            <td><input class="form-control" type="text" name="price"></td>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" name="store-names"></td>
-            <td><input class="form-control" type="text" name="menus"></td>
-            <td><input class="form-control" type="text" name="prices"></td>
-          </tr>
-        </tbody>
-      </table>
-      <input id="menuRowAdd" onclick="menuRowAdd()" type="submit" value="行追加" class="btn btn-primary">
-      <input type="submit" value="送信" class="btn btn-primary">
+      <form action="" method="post">
+        <table class="table table-bordered">
+          <tbody id="menuFormArea">
+            <tr>
+              <th class="bg-light">店名</th>
+              <th class="bg-light">メニュー</th>
+              <th class="bg-light">税込価格</th>
+            </tr>
+            <tr>
+              <td><input class="form-control" type="text" name="store-names"></td>
+              <td><input class="form-control" type="text" name="menus"></td>
+              <td><input class="form-control" type="text" name="price"></td>
+            </tr>
+            <tr>
+              <td><input class="form-control" type="text" name="store-names"></td>
+              <td><input class="form-control" type="text" name="menus"></td>
+              <td><input class="form-control" type="text" name="prices"></td>
+            </tr>
+          </tbody>
+        </table>
+        <input id="menuRowAdd" onclick="menuRowAdd()" type="submit" value="行追加" class="btn btn-primary">
+        <input type="submit" value="送信" class="btn btn-primary">
+      </form>
     </div>
+
       
     
     <div class="container">
