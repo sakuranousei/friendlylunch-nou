@@ -52,8 +52,10 @@ const appendNewUser2 = user => {
   const parent = document.getElementById("usersArea");
   const input = document.createElement("input");
     input.className = "form-check-input";
-    input.type = "radio"
-    input.name = "flexRadioDefault"
+    input.type = "radio";
+  const label = document.createElement("label");
+    label.className = "form-check-label";
+  parent.appendChild(input);
 }
 
       // <div class="form-check">
