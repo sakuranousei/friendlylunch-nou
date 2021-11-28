@@ -158,17 +158,7 @@ function menuRowAdd() {
   td_3.append(input_3);
 }
 
-//データ追加
-function userDataAdd() {
-  const users = document.getElementsByName("users");
-  for (let i = 0; i < users.length; i++) {
-    console.log(users[i].value);
-    const user = users[i].value;
-    fetch("/addUsers", {
-      method: "POST",
-      body: user, })
-    
-  }
+
   
 //   fetch("/addUsers", {
 //   method: "POST",
