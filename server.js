@@ -155,17 +155,18 @@ app.get("/edit", (request, response) => {
 // });
 
 app.post("/users/addEdit", (request, response) => {
-  console.log(request.body.users.length);
-  // request.body.users.forEach(user => {
-  //   console.log(user);
-  //   db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-  //     if (error) {
-  //       response.send({ message: "error!" });
-  //     } else {
-  //       response.send({ message: "success" });
-  //     }
-  //   })
-  // })
+  // console.log(request.body.users.length);
+  request.body.users.forEach(user => {
+    console.log(user);
+    db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
+      if (error) {
+        console.log("error");
+      } else {
+        console.log("add or edit success");
+        res.render(`${__dirname}/views/edit.ejs`)
+      }
+    })
+  })
   // const names = request.body.users;
   // names.forEach(user => {
     // console.log(user);
