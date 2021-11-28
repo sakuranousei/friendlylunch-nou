@@ -3,29 +3,29 @@
 
 console.log("hello world :o");
 
-const dreams = [];
+// const dreams = [];
 
 // define variables that reference elements on our page
-const dreamsForm = document.forms[0];
-console.log(dreamsForm);
-console.log(document.forms);
-const dreamInput = dreamsForm.elements["dream"];
-console.log(dreamInput);
-const dreamsList = document.getElementById("dreams");
-const clearButton = document.querySelector("#clear-dreams");
+// const dreamsForm = document.forms[0];
+// console.log(dreamsForm);
+// console.log(document.forms);
+// const dreamInput = dreamsForm.elements["dream"];
+// console.log(dreamInput);
+// const dreamsList = document.getElementById("dreams");
+// const clearButton = document.querySelector("#clear-dreams");
 
 //★② users
-const users = [];
-const usersList = document.getElementById("users");
+// const users = [];
+// const usersList = document.getElementById("users");
 
 // request the dreams from our app's sqlite database
-fetch("/getDreams", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendNewDream(row.dream);
-    });
-  });
+// fetch("/getDreams", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       appendNewDream(row.dream);
+//     });
+//   });
 
 // ★③request the Users from our app's sqlite database
 fetch("/getUsers", {})
@@ -38,14 +38,14 @@ fetch("/getUsers", {})
 
 
 // a helper function that creates a list item for a given dream
-const appendNewDream = dream => {
-  const newListItem = document.createElement("li");
-  newListItem.innerText = dream;
-  dreamsList.appendChild(newListItem);
-};
+// const appendNewDream = dream => {
+//   const newListItem = document.createElement("li");
+//   newListItem.innerText = dream;
+//   dreamsList.appendChild(newListItem);
+// };
 
 
-// ★④ userラジオボタンの関数 a helper function that creates a list item for a given user
+// ★④ index userラジオボタンの関数 a helper function that creates a list item for a given user
 const appendNewUserRadio = user => {
   console.log(user);
   const parent = document.getElementById("usersArea");
@@ -65,41 +65,41 @@ const appendNewUserRadio = user => {
 
 
 // listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = event => {
-  // stop our form submission from refreshing the page
-  event.preventDefault();
+// dreamsForm.onsubmit = event => {
+//   // stop our form submission from refreshing the page
+//   event.preventDefault();
 
-  const data = { dream: dreamInput.value };
+//   const data = { dream: dreamInput.value };
 
-  fetch("/addDream", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
-  })
-    .then(res => res.json())
-    .then(response => {
-      console.log(JSON.stringify(response));
-    });
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
+//   fetch("/addDream", {
+//     method: "POST",
+//     body: JSON.stringify(data),
+//     headers: { "Content-Type": "application/json" }
+//   })
+//     .then(res => res.json())
+//     .then(response => {
+//       console.log(JSON.stringify(response));
+//     });
+//   // get dream value and add it to the list
+//   dreams.push(dreamInput.value);
+//   appendNewDream(dreamInput.value);
 
-  // reset form
-  dreamInput.value = "";
-  dreamInput.focus();
-};
+//   // reset form
+//   dreamInput.value = "";
+//   dreamInput.focus();
+// };
 
-clearButton.addEventListener("click", event => {
-  fetch("/clearDreams", {})
-    .then(res => res.json())
-    .then(response => {
-      console.log("cleared dreams");
-    });
-  dreamsList.innerHTML = "";
-});
+// clearButton.addEventListener("click", event => {
+//   fetch("/clearDreams", {})
+//     .then(res => res.json())
+//     .then(response => {
+//       console.log("cleared dreams");
+//     });
+//   dreamsList.innerHTML = "";
+// });
 
 
-//日付
+//index 日付
 //今日の日付データを変数に格納
 //変数は"today"とする
 const today = new Date();
@@ -117,7 +117,7 @@ document.getElementById("todayDate").textContent =
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
 
-//行追加
+//index 行追加
 function userRowAdd() {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
