@@ -49,8 +49,12 @@
             </tr>
           </tbody>
         </table>
-        <input onclick="userRowAdd()" value="行追加" class="btn btn-primary">
-        <input id="nameDataAdd" onclick="userAddEdit()" type="submit" value="送信" class="btn btn-primary">
+        <form action="/users/addEdit" method="post">
+          <input onclick="userRowAdd()" value="行追加" class="btn btn-primary">
+          <input type="hedden" id="insertUsers">
+          <input id="nameDataAdd" onclick="userAddEdit()" type="submit" value="送信" class="btn btn-primary">
+        </form>
+        
       </form>   
     </div>
 
