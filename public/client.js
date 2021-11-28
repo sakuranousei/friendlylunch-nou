@@ -50,6 +50,7 @@ const appendNewUser = user => {
 };
 
 const appendNewUserRadio = user => {
+  console.log(user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
     div.className = "form-check";
@@ -58,7 +59,7 @@ const appendNewUserRadio = user => {
     input.type = "radio";
   const label = document.createElement("label");
     label.className = "form-check-label";
-    label.value = `${user}`;
+    label.innerText = user;
   parent.appendChild(div);
   div.append(input);
   div.append(label);
