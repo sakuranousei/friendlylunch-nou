@@ -53,9 +53,9 @@ db.serialize(() => {
 db.serialize(() => {
   if (!exists) {
     db.run(
-      "CREATE TABLE Names (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
+      "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
     );
-    console.log("New table Names created!");
+    console.log("New table Users created!");
 
     // insert default dreams
     db.serialize(() => {
