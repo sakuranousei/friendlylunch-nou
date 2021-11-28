@@ -156,49 +156,49 @@ app.get("/edit", (request, response) => {
 
 app.post("/users/addEdit", (request, response) => {
   console.log(request.body.users);
-  // request.body.users.forEach(name => {
-  //   console.log(name);
-  //   db.run("INSERT INTO Users (user) VALUES (name)");
-  // })
+  request.body.users.forEach(name => {
+    console.log(name);
+    db.run('INSERT INTO Users (user) VALUES (`${name}`)');
+  })
   
-    if (!process.env.DISALLOW_WRITE) {
-    request.body.users.forEach(name => {
-      db.run('INSERT INTO Users (user) VALUES (name)', error => {
-      if (error) {
-        response.send({ message: "error!" });
-      } else {
-        response.send({ message: "success" });
-      }
-    });
-    })
-  }
+  //   if (!process.env.DISALLOW_WRITE) {
+  //   request.body.users.forEach(name => {
+  //     db.run('INSERT INTO Users (user) VALUES (name)', error => {
+  //     if (error) {
+  //       response.send({ message: "error!" });
+  //     } else {
+  //       response.send({ message: "success" });
+  //     }
+  //   });
+  //   })
+  // }
 })
 
 
 // endpoint to clear dreams from the database
-app.get("/clearDreams", (request, response) => {
+// app.get("/clearDreams", (request, response) => {
   // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
-  if (!process.env.DISALLOW_WRITE) {
-    db.each(
-      "SELECT * from Dreams",
-      (err, row) => {
-        console.log("row", row);
-        db.run(`DELETE FROM Dreams WHERE ID=?`, row.id, error => {
-          if (row) {
-            console.log(`deleted row ${row.id}`);
-          }
-        });
-      },
-      err => {
-        if (err) {
-          response.send({ message: "error!" });
-        } else {
-          response.send({ message: "success" });
-        }
-      }
-    );
-  }
-});
+//   if (!process.env.DISALLOW_WRITE) {
+//     db.each(
+//       "SELECT * from Dreams",
+//       (err, row) => {
+//         console.log("row", row);
+//         db.run(`DELETE FROM Dreams WHERE ID=?`, row.id, error => {
+//           if (row) {
+//             console.log(`deleted row ${row.id}`);
+//           }
+//         });
+//       },
+//       err => {
+//         if (err) {
+//           response.send({ message: "error!" });
+//         } else {
+//           response.send({ message: "success" });
+//         }
+//       }
+//     );
+//   }
+// });
 
 // helper function that prevents html/css/script malice
 // const cleanseString = function(string) {
