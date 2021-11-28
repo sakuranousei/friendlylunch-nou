@@ -102,9 +102,9 @@ app.get("/getDreams", (request, response) => {
 });
 
 
-// ★③endpoint to get all the Names in the database
-app.get("/getNames", (request, response) => {
-  db.all("SELECT * from Names", (err, rows) => {
+// ★⑤endpoint to get all the Names in the database
+app.get("/getUsers", (request, response) => {
+  db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });

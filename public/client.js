@@ -41,12 +41,26 @@ const appendNewDream = dream => {
   dreamsList.appendChild(newListItem);
 };
 
-// ★③ a helper function that creates a list item for a given name
+// ★④ a helper function that creates a list item for a given name
 const appendNewUser = user => {
   const newUser = document.createElement("li");
   newUser.innerText = user;
   usersList.appendChild(newUser);
 };
+
+      // <div class="form-check">
+      //   <input
+      //     class="form-check-input"
+      //     type="radio"
+      //     name="flexRadioDefault"
+      //     id="flexRadioDefault1"
+      //   />
+      //   <label class="form-check-label" for="flexRadioDefault1">
+      //     name1
+      //   </label>
+      // </div>
+
+
 
 // listen for the form to be submitted and add a new dream when it is
 dreamsForm.onsubmit = event => {
@@ -102,7 +116,7 @@ document.getElementById("todayTime").textContent = hour + "時" + minute + "分"
 
 
 //フォーム追加
-function nameRowAdd() {
+function userRowAdd() {
   const tr = document.createElement("tr");
   const td = document.createElement("td");
   const input = document.createElement("input");
@@ -143,7 +157,7 @@ function menuRowAdd() {
 }
 
 //データ追加
-function nameDataAdd() {
+function userDataAdd() {
   const name = document.getElementsByName("name");
   for (let i = 0; i < name.length; i++) {
     console.log(name[i].value);
