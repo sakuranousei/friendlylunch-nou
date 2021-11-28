@@ -41,7 +41,7 @@
     <!--データ入力・編集 -->
 　　　　　　　　<!--Usersへの入力・編集 -->
     <div class="container pt-3">
-      <form action="" method="post">
+      <form action="/users/addEdit" method="post">
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
@@ -50,7 +50,8 @@
           </tbody>
         </table>
         <input onclick="userRowAdd()" value="行追加" class="btn btn-primary">
-        <input id="nameDataAdd" onclick="userDataAdd()" type="submit" value="送信" class="btn btn-primary">
+        <!--<input id="nameDataAdd" onclick="userDataAdd()" type="submit" value="送信" class="btn btn-primary"> -->
+        <input id="nameDataAdd" type="submit" value="送信" class="btn btn-primary">
       </form>   
     </div>
 

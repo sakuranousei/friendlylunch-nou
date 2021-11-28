@@ -154,6 +154,10 @@ app.post("/addUsers", (request, response) => {
   }
 });
 
+app.post("/users/addEdit", (request, response) => {
+  console.log(request.body);
+})
+
 
 // endpoint to clear dreams from the database
 app.get("/clearDreams", (request, response) => {
