@@ -155,25 +155,19 @@ app.get("/edit", (request, response) => {
 // });
 
 app.post("/users/addEdit", (request, response) => {
-  if(request.body.users.length = 0) {
+  const addEditUsers = request.body.users;
+  if(addEditUsers.length === 0) {
     response.send("１つ以上入力してください。");
-  } else if (request.body.users.length = 0) {
-    db.run(`INSERT INTO Users (user) VALUES (?)`, request.body.users, error => {
+  } else if (addEditUsers.length = 1) {
+    db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
       if (error) {
         response.send({ message: "error!" });
-        // return console.log(error.message);
-        // return response.redirect('/');
       } else {
-        return console.log("add or edit success");
-        response.send({ message: "success" });
-        // return response.redirect('/');
-        // return response.render(`${__dirname}/views/index.ejs`);
+        response.send("登録できました。戻ってください。");
       }
     })
-  }
-  // console.log(request.body.users.length);
-  request.body.users.forEach(user => {
-    console.log(user);
+  }　else {
+    addEditUsers.forEach(user => {
     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
       if (error) {
         response.send({ message: "error!" });
@@ -181,12 +175,13 @@ app.post("/users/addEdit", (request, response) => {
         // return response.redirect('/');
       } else {
         return console.log("add or edit success");
-        response.send({ message: "success" });
+        response.send("登録できました。戻ってください。");
         // return response.redirect('/');
         // return response.render(`${__dirname}/views/index.ejs`);
       }
     })
-  })
+  }) 
+  }
 });
   
 
