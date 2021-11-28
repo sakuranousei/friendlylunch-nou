@@ -158,7 +158,7 @@ app.post("/users/addEdit", (request, response) => {
   console.log(request.body.users);
   request.body.users.forEach(name => {
     console.log(name);
-    db.run('INSERT INTO Users (user) VALUES (`${name}`)');
+    db.run`INSERT INTO Users (user) VALUES (${name})`;
   })
   
   //   if (!process.env.DISALLOW_WRITE) {
