@@ -194,8 +194,8 @@ app.post("/users/addEdit", (request, response) => {
         // return console.log(error.message);
         // return response.redirect('/');
       } else {
-        response.send("登録できました。ページを戻ってください。");
-        // return response.redirect('/');
+        // response.send("登録できました。ページを戻ってください。");
+        return response.redirect('/');
         // return response.render(`${__dirname}/views/index.ejs`);
       }
     })
