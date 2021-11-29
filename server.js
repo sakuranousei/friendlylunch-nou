@@ -140,14 +140,13 @@ app.get("/edit", (request, response) => {
 //   }) 
 //   });
 
-app.post("/users/addEdit", (request, response) => {
-  const addEditUsers = request.body.users;
+app.post("/users/addEdit", (req, res) => {
+  const addEditUsers = req.body.users;
     addEditUsers.forEach(user => {
       const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
       stmt.run(user);
       stmt.finalize();
-      response.render(`${__dirname}/views/edit.ejs`);
-      // response.end();
+      res.render(`${__dirname}/views/index.ejs`);
   }) 
 });
 
