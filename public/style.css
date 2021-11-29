@@ -20,3 +20,10 @@ padding-left: 15px;
 #todayDate,#todayTime{
   text-align:center;
 }
+
+body {
+  	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
