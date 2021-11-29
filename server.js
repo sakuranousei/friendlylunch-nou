@@ -123,22 +123,6 @@ app.get("/edit", (request, response) => {
 });
 
   
-// app.post("/users/addEdit", (request, response) => {
-//   const addEditUsers = request.body.users;
-//     addEditUsers.forEach(user => {
-//     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-//       if (error) {
-//         response.send({ message: "error!" });
-//         // return console.log(error.message);
-//         // return response.redirect('/');
-//       } else {
-//         // response.send("登録できました。ページを戻ってください。");
-//         return response.redirect('/');
-//         // return response.render(`${__dirname}/views/index.ejs`);
-//       }
-//     })
-//   }) 
-//   });
 
 app.post("/users/addEdit", (req, res) => {
   const addEditUsers = req.body.users;
