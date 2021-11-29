@@ -122,53 +122,9 @@ app.get("/edit", (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });
 
-// endpoint to add a dream to the database
-// app.post("/addDream", (request, response) => {
-//   console.log(`add to dreams ${request.body}`);
-
-//   // DISALLOW_WRITE is an ENV variable that gets reset for new projects so you can write to the database
-//   if (!process.env.DISALLOW_WRITE) {
-//     const cleansedDream = cleanseString(request.body.dream);
-//     db.run(`INSERT INTO Dreams (dream) VALUES (?)`, cleansedDream, error => {
-//       if (error) {
-//         response.send({ message: "error!" });
-//       } else {
-//         response.send({ message: "success" });
-//       }
-//     });
-//   }
-// });
-
-//★Usersテーブルに追加
-// app.post("/addUsers", (request, response) => {
-//   console.log(`add to Users ${request.body}`);
-//   if (!process.env.DISALLOW_WRITE) {
-//   const cleansedUsers = cleanseString(request.body.user);
-//   db.run(`INSERT INTO Users (user) VALUES (?)`, cleansedUsers, error => {
-//     if (error) {
-//       response.send({ message: "error!" });
-//     } else {
-//       response.send({ message: "success" });
-//     }
-//   });
-//   }
-// });
-
+  
 // app.post("/users/addEdit", (request, response) => {
 //   const addEditUsers = request.body.users;
-//   console.log(addEditUsers);
-//   if(addEditUsers == null || addEditUsers=='') {
-//     response.send("１つ以上入力してください。ページを戻ってやり直してください。");
-//   } else if (addEditUsers.length == 1) {
-//     db.run(`INSERT INTO Users (user) VALUES (?)`, addEditUsers, error => {
-//       if (error) {
-//         response.send({ message: "error!" });
-//       } else {
-//         response.send("登録できました。ページを戻ってください。");
-//       }
-//     })
-//   }　else 
-//    {
 //     addEditUsers.forEach(user => {
 //     db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
 //       if (error) {
@@ -176,32 +132,24 @@ app.get("/edit", (request, response) => {
 //         // return console.log(error.message);
 //         // return response.redirect('/');
 //       } else {
-//         response.send("登録できました。ページを戻ってください。");
-//         // return response.redirect('/');
+//         // response.send("登録できました。ページを戻ってください。");
+//         return response.redirect('/');
 //         // return response.render(`${__dirname}/views/index.ejs`);
 //       }
 //     })
 //   }) 
-//   }
-// });
-  
+//   });
+
 app.post("/users/addEdit", (request, response) => {
   const addEditUsers = request.body.users;
     addEditUsers.forEach(user => {
-    db.run(`INSERT INTO Users (user) VALUES (?)`, user, error => {
-      if (error) {
-        response.send({ message: "error!" });
-        // return console.log(error.message);
-        // return response.redirect('/');
-      } else {
-        // response.send("登録できました。ページを戻ってください。");
-        return response.redirect('/');
-        // return response.render(`${__dirname}/views/index.ejs`);
-      }
-    })
+      const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
+      stmt.run(user);
+      stmt.finalize();
+      response.render(`${__dirname}/views/edit.ejs`);
+      // response.end();
   }) 
-  })
-
+});
 
 
 
