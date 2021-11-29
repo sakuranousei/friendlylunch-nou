@@ -50,7 +50,7 @@ const appendNewUserRadio = user => {
   console.log(user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
-    div.className = "form-check my-4";
+    div.className = "form-check mb-4";
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "radio";
