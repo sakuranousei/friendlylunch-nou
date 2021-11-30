@@ -142,22 +142,25 @@
         td_2.append(input_2);
       }
       
-      //edit ユーザー行追加
-      function userRowAdd() {
+      // idの最大値の取得
+      function maxId() {
         const id = document.getElementsByName("id");
-        const idArr = [];
+        let idAry = [];
         for (let i = 0; i < id.length; i++) {
-          idArr.push
-        }
-        const lastId = parseInt(id[id.length-1].value);
-        console.log(lastId);
-        
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return Math.max.apply(null, idAry);
+      };
+      
+      //edit ユーザー行追加
+      function userRowAdd() {      
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
-          input_1.placeholder = lastId + 1;
+          input_1.placeholder = maxId() ;
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "id";  
