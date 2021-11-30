@@ -124,23 +124,24 @@ app.get("/edit", (request, response) => {
 
   
 // Usersテーブルへの「単純」なデータ追加 Create
-app.post("/users/addEdit", (req, res) => {
-  const addEditUsers = req.body.users;
-    addEditUsers.forEach(user => {
-      const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
-      stmt.run(user);
-      stmt.finalize();
-      res.render(`${__dirname}/views/index.ejs`);
-  }) 
-});
+// app.post("/users/addEdit", (req, res) => {
+//   const addEditUsers = req.body.users;
+//     addEditUsers.forEach(user => {
+//       const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
+//       stmt.run(user);
+//       stmt.finalize();
+//       res.render(`${__dirname}/views/index.ejs`);
+//   }) 
+// });
 
 // Usersテーブルの更新 Update
 app.post("/users/addEdit", (req, res) => {
-  if (req.body.id == ) {
+  db.all("SELECT * from Users", (err, rows) => {
+    console.log(JSON.stringify(rows));
     
-  }
-  
+  });
 });
+  
 
 
 
