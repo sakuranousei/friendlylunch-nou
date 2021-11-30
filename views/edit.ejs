@@ -113,11 +113,11 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-            getUsers(row.user);
+             getUsers(row.id, row.user);
           });
         });
 
-      function getUsers(user) {
+      function getUsers(id, user) {
         console.log(user);
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
