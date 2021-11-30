@@ -32,7 +32,7 @@ fetch("/getUsers", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendNewUserRadio(row.user);
+      appendNewUserRadio(row.iｄ, row.user);
     });
   });
 
@@ -46,7 +46,8 @@ fetch("/getUsers", {})
 
 
 // ★④ index userラジオボタンの関数 a helper function that creates a list item for a given user
-const appendNewUserRadio = user => {
+const appendNewUserRadio = (id, user) => {
+  console.log(id);
   console.log(user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
