@@ -144,12 +144,14 @@
       
       //edit ユーザー行追加
       function userRowAdd() {
+        const id = document.getElementsByName("id").value;
+        
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
-          // input_1.placeholder = "－";
+          input_1.placeholder = id + 1;
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "id";  
