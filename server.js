@@ -6,17 +6,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+
 //テンプレートエンジン
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-// init sqlite db
+
+//init sqlite db
 const dbFile = "./.data/sqlite.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database(dbFile);
 
-// ① if ./.data/sqlite.db does not exist, create it, otherwise print records to console
+
+//if ./.data/sqlite.db does not exist, create it, otherwise print records to console
 db.serialize(() => {
   if (!exists) {
     db.run(
@@ -55,20 +58,21 @@ db.serialize(() => {
 });
 
 
-// http://expressjs.com/en/starter/basic-routing.html
+//http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
 
 
-// ★⑤endpoint to get all the Names in the database
+//endpoint to get all the Names in the database
 app.get("/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
-//★editでのUsersの反映
+
+//editでのUsersの反映
 app.get("/edit/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
@@ -92,6 +96,7 @@ app.get("/edit", (request, response) => {
 //       res.render(`${__dirname}/views/index.ejs`);
 //   }) 
 // });
+
 
 // Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
