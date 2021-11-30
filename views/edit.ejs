@@ -69,12 +69,12 @@
             <tr class="">
               <td><input class="form-control" type="text" name="store-names"></td>
               <td><input class="form-control" type="text" name="menus"></td>
-              <td><input class="form-control" type="text" name="price"></td>
+              <td><input class="form-control" type="number" name="price"></td>
             </tr>
             <tr class="">
               <td><input class="form-control" type="text" name="store-names"></td>
               <td><input class="form-control" type="text" name="menus"></td>
-              <td><input class="form-control" type="text" name="prices"></td>
+              <td><input class="form-control" type="number" name="prices"></td>
             </tr>
           </tbody>
         </table>
@@ -192,7 +192,7 @@
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
           input_3.className = "form-control";
-          input_3.type = "text";
+          input_3.type = "number";
           input_3.name = "prices";
         parent.appendChild(tr);
         tr.append(td_1);
