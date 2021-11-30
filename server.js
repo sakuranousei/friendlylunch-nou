@@ -144,7 +144,7 @@ app.post("/users/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  return res.render(`${__dirname}/views/index.ejs`);
+  return res.render(`${__dirname}/views/edit.ejs`);
  //  for (let i=0; i < getId.length; i++){
  //     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i], (err,rows) => {
  //     if(err){

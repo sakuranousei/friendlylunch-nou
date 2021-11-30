@@ -142,17 +142,6 @@
         td_2.append(input_2);
       }
       
-      // idの最大値の取得
-      function maxId() {
-        const id = document.getElementsByName("id");
-        let idAry = [];
-        for (let i = 0; i < id.length; i++) {
-          idAry.push(id[i].value);
-        };
-        console.log(idAry);
-        return Math.max.apply(null, idAry);
-      };
-      
       //edit ユーザー行追加
       function userRowAdd() {      
         const parent = document.getElementById("nameFormArea");
@@ -160,10 +149,10 @@
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
-          input_1.placeholder = maxId() ;
           input_1.className = "form-control text-center";
           input_1.type = "";
-          input_1.name = "id";  
+          input_1.name = "id";
+          input_1.value = maxId();
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
@@ -174,6 +163,17 @@
         td_1.append(input_1);
         tr.append(td_2);
         td_2.append(input_2);
+      };
+      
+      // idの最大値の取得
+      function maxId() {
+        const id = document.getElementsByName("id");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
       };
       
       
