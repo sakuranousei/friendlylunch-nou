@@ -45,7 +45,8 @@
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
-              <th class="bg-light">ユーザー名</th>
+              <th class="bg-light col-2">id</th>
+              <th class="bg-light col-10">ユーザー名</th>
             </tr>
           </tbody>
         </table>
@@ -124,22 +125,26 @@
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.className = "form-control";
-          input_1.type = "text";
-          input_1.name = "users";
-          input_1.value = user;
+          input_1.type = "";
+          input_1.name = "id";
+          input_1.value = id;
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control";
+          input_2.type = "text";
+          input_2.name = "users";
+          input_2.value = user;
         parent.appendChild(tr);
-        tr.append(td);
-        td.append(input);
+        tr.append(td_1);
+        td_1.append(input_1)
+        tr.append(td_2);
+        td_2.append(input_2);
       }
       
       //edit ユーザー行追加
       function userRowAdd() {
         const tr = document.createElement("tr");
         const td = document.createElement("td");
-        // const input_1 = document.createElement("input");
-        //   input_1.className = "form-control";
-        //   input_1.type = "";
-        //   input_1.name = "id";
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
@@ -147,7 +152,6 @@
         const parent = document.getElementById("nameFormArea");
         parent.appendChild(tr);
         tr.append(td);
-        // td.append(input_1);
         td.append(input_2);
       };
       
