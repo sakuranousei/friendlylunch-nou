@@ -103,7 +103,7 @@ app.get("/", (request, response) => {
 
 
 // ★⑤endpoint to get all the Names in the database
-app.get("/getUsers", (request, response) => {
+app.get("/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });

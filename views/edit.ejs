@@ -45,8 +45,8 @@
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
-              <th class="bg-light col-2">ID</th>
-              <th class="bg-light col-10">ユーザー名</th>
+              <th class="bg-light col-3 text-center">ID</th>
+              <th class="bg-light col-9 text-center">ユーザー名</th>
             </tr>
           </tbody>
         </table>
@@ -63,9 +63,9 @@
         <table class="table table-bordered">
           <tbody id="menuFormArea">
             <tr>
-              <th class="bg-light col-4">店名</th>
-              <th class="bg-light col-5">メニュー</th>
-              <th class="bg-light col-3">税込価格</th>
+              <th class="bg-light col-4 text-center">店名</th>
+              <th class="bg-light col-5 text-center">メニュー</th>
+              <th class="bg-light col-3 text-center">税込価格</th>
             </tr>
             <tr class="">
               <td><input class="form-control" type="text" name="store-names"></td>
@@ -125,7 +125,7 @@
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
-          input_1.className = "form-control";
+          input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "id";
           input_1.value = id;
@@ -144,16 +144,25 @@
       
       //edit ユーザー行追加
       function userRowAdd() {
+        const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
-        const td = document.createElement("td");
+        const td_1 = document.createElement("td");
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.placeholder = "----";
+          input_1.className = "form-control text-center";
+          input_1.type = "";
+          input_1.name = "id";  
+        const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "users";
-        const parent = document.getElementById("nameFormArea");
+          input_2.name = "users";        
         parent.appendChild(tr);
-        tr.append(td);
-        td.append(input_2);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
       };
       
       
