@@ -126,7 +126,7 @@
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
           input_1.className = "form-control text-center";
-          input_1.type = "";
+          input_1.type = "number";
           input_1.name = "id";
           input_1.value = id;
         const td_2 = document.createElement("td");
@@ -145,14 +145,15 @@
       //edit ユーザー行追加
       function userRowAdd() {
         const id = document.getElementsByName("id");
-        console.log(id);
+        const lastId = parseInt(id[id.length-1].value);
+        console.log(lastId);
         
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
-          input_1.placeholder = id + 1;
+          input_1.placeholder = lastId + 1;
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "id";  
