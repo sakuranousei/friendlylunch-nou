@@ -1,18 +1,9 @@
-// server.js
-// where your node app starts
-
-// init project
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const fs = require("fs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// we've started you off with Express,
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
 //テンプレートエンジン
@@ -63,43 +54,11 @@ db.serialize(() => {
   }
 });
 
-// ★①Usersデータベースの作成
-// db.serialize(() => {
-//   if (!exists) {
-//     db.run(
-//       "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
-//     );
-//     console.log("New table Users created!");
-
-//     // insert default dreams
-//     db.serialize(() => {
-//       db.run(
-//         'INSERT INTO Names (name) VALUES ("名前１"), ("名前２"), ("名前３")'
-//       );
-//     });
-//   } else {
-//     console.log('Database "Names" ready to go!');
-//     db.each("SELECT * from Names", (err, row) => {
-//       if (row) {
-//         console.log(`record: ${row.name}`);
-//       }
-//     });
-//   }
-// });
-
-
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
-
-// endpoint to get all the dreams in the database
-// app.get("/getDreams", (request, response) => {
-//   db.all("SELECT * from Dreams", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
 
 
 // ★⑤endpoint to get all the Names in the database
@@ -134,29 +93,19 @@ app.get("/edit", (request, response) => {
 //   }) 
 // });
 
-// Usersテーブルの更新 Update
+// Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
   const getId = req.body.id;
   const getUser = req.body.user;
   for(let i = 0; i < getUser.length; i++) {
-    console.log(getId[i], getUser[i]);
+    // console.log(getId[i], getUser[i]);
     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i]);
     stmt.run();
     stmt.finalize();
   }
   return res.render(`${__dirname}/views/edit.ejs`);
- //  for (let i=0; i < getId.length; i++){
- //     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i], (err,rows) => {
- //     if(err){
- //        throw err;
- //     }
- //      stmt.run();
- //      console.log('Insert Success');
- // })}
 });
   
-
-
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {

@@ -1,7 +1,7 @@
 // client-side js
 // run by the browser each time your view template referencing it is loaded
 
-console.log("hello world :o");
+console.log("hello world");
 
 // const dreams = [];
 
@@ -47,7 +47,7 @@ fetch("/getUsersData", {})
 
 // ★④ index userラジオボタンの関数 a helper function that creates a list item for a given user
 const appendNewUserRadio = (id, user) => {
-  console.log(id, user);
+  // console.log(id, user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
     div.className = "form-check mb-4";
