@@ -144,7 +144,8 @@
       
       //edit ユーザー行追加
       function userRowAdd() {
-        const id = document.getElementsByName("id").value;
+        const id = document.getElementsByName("id");
+        console.log(id);
         
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
