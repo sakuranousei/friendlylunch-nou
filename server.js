@@ -138,6 +138,7 @@ app.get("/edit", (request, response) => {
 app.post("/users/addEdit", (req, res) => {
   db.all("SELECT * from Users", (err, rows) => {
     console.log(JSON.stringify(rows));
+    if(row.id == )
     
   });
 });
