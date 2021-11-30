@@ -138,20 +138,20 @@ app.get("/edit", (request, response) => {
 app.post("/users/addEdit", (req, res) => {
   const getId = req.body.id;
   const getUser = req.body.user;
-  // for(let i = 0; i < getUser.length; i++) {
-  //   db.run(`INSERT OR REPLACE INTO Users (id, user) VALUES ($id, $user)`, getId[i], getUser[i]);
-  //   res.render(`${__dirname}/views/index.ejs`);
-  // }
+  for(let i = 0; i < getUser.length; i++) {
+    console.log(getId[i], getUser[i]);
+    // db.run(`INSERT OR REPLACE INTO Users (id, user) VALUES ($id, $user)`, getId[i], getUser[i]);
+    // res.render(`${__dirname}/views/index.ejs`);
+  }
   
-  for (let i=0; i < getId.length; i++){
-     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i], (err,rows) => {
-     if(err){
-        throw err;
-     }
-      stmt.run();
-      console.log('Insert Success');
- })
-}
+ //  for (let i=0; i < getId.length; i++){
+ //     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i], (err,rows) => {
+ //     if(err){
+ //        throw err;
+ //     }
+ //      stmt.run();
+ //      console.log('Insert Success');
+ // })}
 });
   
 
