@@ -136,26 +136,12 @@ app.get("/edit", (request, response) => {
 
 // Usersテーブルの更新 Update
 app.post("/users/addEdit", (req, res) => {
-  const id = req.body.id;
-  const users = req.body.users;
-  const body = req.body;
-  // const obj = JSON.parse(body);
-  
-  console.log(body);
-  // console.log(obj);
-//   body.id.forEach(id => {
-//     console.log(id);
-//     const stmt = db.prepare("UPDATE Users SET users = ? WHERE id = id");
-    
-//   });
-  // body.forEach(id => {
-  //   console.log(id);
-  // })
-  // db.all("SELECT * from Users", (err, rows) => {
-  //   console.log(JSON.stringify(rows));
-  //   if(row.id == )
-    
-  // });
+  const accepted_id = req.body.id;
+  const accepted_users = req.body.users;
+  console.log(accepted_id);
+  console.log(accepted_users);
+  const stmt = db.prepare("UPDATE Users SET users = ? WHERE id = ?"");
+
 });
   
 
