@@ -110,7 +110,7 @@ app.get("/getUsers", (request, response) => {
 });
 
 //★editでのUsersの反映
-app.get("/edit/getUsers", (request, response) => {
+app.get("/edit/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });

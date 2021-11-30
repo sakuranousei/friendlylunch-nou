@@ -45,7 +45,7 @@
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
-              <th class="bg-light col-2">id</th>
+              <th class="bg-light col-2">ID</th>
               <th class="bg-light col-10">ユーザー名</th>
             </tr>
           </tbody>
@@ -110,20 +110,21 @@
     
     <script>
       // ★editでのUsersの反映
-      fetch("/edit/getUsers", {})
+      fetch("/edit/getUsersData", {})
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getUsers(row.id, row.user);
+             getUsersData(row.id, row.user);
           });
         });
 
-      function getUsers(id, user) {
+      function getUsersData(id, user) {
         console.log(id, user);
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
+          input_1.readOnly = true;
           input_1.className = "form-control";
           input_1.type = "";
           input_1.name = "id";

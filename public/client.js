@@ -28,7 +28,7 @@ console.log("hello world :o");
 //   });
 
 // ★③ index request the Users from our app's sqlite database
-fetch("/getUsers", {})
+fetch("/getUsersData", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
