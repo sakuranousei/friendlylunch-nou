@@ -138,8 +138,8 @@ app.get("/edit", (request, response) => {
 app.post("/users/addEdit", (req, res) => {
   const getId = req.body.id;
   const getUser = req.body.user;
-  for(let i = 0; i < getId.length; i++) {
-    db.run("INSERT OR REPLACE INTO Users (id, user) VALUES (getId[i], getUser[i])");
+  for(let i = 0; i < getUser.length; i++) {
+    db.run(`INSERT OR REPLACE INTO Users (id, user) VALUES ($id, $user)`, getId[i], getUser[i]);
     res.render(`${__dirname}/views/index.ejs`);
   }
 });
