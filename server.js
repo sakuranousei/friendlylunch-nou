@@ -126,12 +126,13 @@ app.get("/edit", (request, response) => {
 
 app.post("/users/addEdit", (req, res) => {
   const addEditUsers = req.body.users;
-    addEditUsers.forEach(user => {
-      const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
-      stmt.run(user);
-      stmt.finalize();
-      res.render(`${__dirname}/views/index.ejs`);
-  }) 
+  console.log(req.body);
+    // addEditUsers.forEach(user => {
+    //   const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
+    //   stmt.run(user);
+    //   stmt.finalize();
+    //   res.render(`${__dirname}/views/index.ejs`);
+  // }) 
 });
 
 
