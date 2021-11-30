@@ -139,13 +139,15 @@ app.post("/users/addEdit", (req, res) => {
   const id = req.body.id;
   const users = req.body.users;
   const body = req.body;
+  // const obj = JSON.parse(body);
   
-  console.log(body.id);
-  body.id.forEach(id => {
-    console.log(id);
-    const stmt = db.prepare("UPDATE Users SET users = ? WHERE id = id");
+  console.log(body);
+  // console.log(obj);
+//   body.id.forEach(id => {
+//     console.log(id);
+//     const stmt = db.prepare("UPDATE Users SET users = ? WHERE id = id");
     
-  });
+//   });
   // body.forEach(id => {
   //   console.log(id);
   // })
