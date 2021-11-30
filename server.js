@@ -136,18 +136,14 @@ app.get("/edit", (request, response) => {
 
 // Usersテーブルの更新 Update
 app.post("/users/addEdit", (req, res) => {
-  const id = req.body.id;
-  const users = req.body.users;
-  for(let i = 0; i < id.length; i++) {
-    const stmt = db.prepare("insert or replace into Users (id, name) values (id[i], users[i])");
-    stmt.run();
+  const getId = req.body.id;
+  const getUsers = req.body.user;
+  for(let i = 0; i < getId.length; i++) {
+    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, users) VALUES (?, ?)");
+    stmt.run(getId[i], getUsers[i]);
     stmt.finalize();
     res.render(`${__dirname}/views/index.ejs`);
   }
-  
-  // const obj = []
-  // const stmt = db.prepare("UPDATE Users SET users = ? WHERE id = ?", [req.body.users, req.body.id]);
-
 });
   
 
