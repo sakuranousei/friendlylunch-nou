@@ -30,7 +30,7 @@
   <body>
     <header>
       <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="container-fluid d-flex align-items-center justify-content-center py-2">
           <a class="navbar-brand text-muted" href="/">Sakura-Orders</a>
           <a class="m-2 text-muted" href="/">ホーム</a>
           <a class="m-2 text-muted" href="/edit">編集</a>
@@ -65,7 +65,8 @@
             <tr>
               <th class="bg-light col-4 text-center">店名</th>
               <th class="bg-light col-5 text-center">メニュー</th>
-              <th class="bg-light col-3 text-center">税込価格</th>
+              <th class="bg-light col-2 text-center">込価格</th>
+              <th class="bg-light col-1 text-center">削除</th>
             </tr>
 <!--             <tr class="">
               <td><input class="form-control" type="text" name="store-names"></td>
@@ -139,7 +140,7 @@
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
-          input_3.value =　"削除";
+          input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1)
@@ -171,7 +172,7 @@
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
-          input_3.value =　"削除";
+          input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
@@ -212,6 +213,12 @@
           input_3.className = "form-control";
           input_3.type = "number";
           input_3.name = "prices";
+        const td_4 = document.createElement("td");
+        const input_4 = document.createElement("input");
+          input_4.className = "form-control btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = "button";
+          input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
@@ -219,6 +226,8 @@
         td_2.append(input_2);
         tr.append(td_3);
         td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
       }
       
     </script>

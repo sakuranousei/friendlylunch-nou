@@ -20,3 +20,7 @@ padding-left: 15px;
 #todayDate,#todayTime{
   text-align:center;
 }
+
+input {
+ white-space: normal;
+}

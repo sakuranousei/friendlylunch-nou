@@ -33,7 +33,7 @@ const appendNewUserRadio = (id, user) => {
 //日付
 const today = new Date();
 const year = today.getFullYear();
-const month = today.getMonth();
+const month = today.getMonth()　+ 1;
 const week = today.getDay();
 const day = today.getDate();
 const hour = today.getHours();
