@@ -41,7 +41,7 @@
     <!--データ入力・編集 -->
 　　　　　　　　<!--Usersの入力・編集 -->
     <div class="container pt-3">
-      <form action="/users/addEdit" method="post">
+      <form action="/users/addEdit" method="post" name = "UsersForm">
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
@@ -140,6 +140,7 @@
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
+          input_3.onclick = "deleteUser()";
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -172,6 +173,7 @@
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
+          input_3.onclick = "deleteUser()";
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -192,6 +194,14 @@
         console.log(idAry);
         return parseInt(Math.max.apply(null, idAry) + 1);
       };
+      
+      
+      // ★デリートチェックされたidの取得
+      function deleteUser() {
+        const arr = [];
+        const id = document.UsersForm.id;
+        console.log(id);
+      }
       
       
       //edit メニュー行追加
