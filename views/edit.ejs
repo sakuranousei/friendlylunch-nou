@@ -46,7 +46,9 @@
           <tbody id="nameFormArea">
             <tr>
               <th class="bg-light col-3 text-center">ID</th>
-              <th class="bg-light col-9 text-center">ユーザー名</th>
+              <th class="bg-light col-8 text-center">ユーザー名</th>
+              <th class="bg-light col-1 text-center"><button type="button" class="btn btn-outline-info">Info</button></th>
+              
             </tr>
           </tbody>
         </table>
@@ -133,13 +135,20 @@
           input_2.type = "text";
           input_2.name = "user";
           input_2.value = user;
+        const button = document.createElement("button");
+          button.type = "button";
+          button.className = "btn btn-outline-info";
+          button.innerText = "削除"；
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1)
         tr.append(td_2);
         td_2.append(input_2);
+        tr.append(button);
         // tr.innertext("削除")；
       }
+      
+      <button type="button" class="btn btn-outline-info">Info</button>
       
       //edit ユーザー行追加
       function userRowAdd() {      
