@@ -140,7 +140,7 @@
         const input_3 = document.createElement("input");
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "button";
+          input_3.name = "deleteUserBtn";
           input_3.onclick = "deleteUser()";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -174,7 +174,7 @@
         const input_3 = document.createElement("input");
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "button";
+          input_3.name = "deleteUserBtn";
           input_3.onclick = "deleteUser()";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -201,8 +201,8 @@
       // ★デリートチェックされたidの取得
       function deleteUser() {
         const arr = [];
-        const id = document.userTd_1.id;
-        console.log(id);
+        const deleteUserBtn = document.getElementsByName("deleteUserBtn");
+        console.log(deleteUserBtn);
       };
       
       
@@ -229,7 +229,7 @@
         const input_4 = document.createElement("input");
           input_4.className = "form-control btn-outline-secondary";
           input_4.type = "button";
-          input_4.name = "button";
+          input_4.name = "deleteMenuBtn";
           input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
