@@ -240,7 +240,9 @@
       function deleteUser() {
         const arr = [];
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
-        console.log(deleteUserBtn);
+        deleteUserBtn.addEventLIstener("click", () => {
+          console.log(deleteUserBtn);                                       
+        });
       };
       
       
