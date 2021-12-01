@@ -22,5 +22,6 @@ padding-left: 15px;
 }
 
 input {
- white-space: normal;
+  width: 100px;
+  white-space: normal;
 }
