@@ -46,8 +46,8 @@
           <tbody id="nameFormArea">
             <tr>
               <th class="bg-light col-3 text-center">ID</th>
-              <th class="bg-light col-7 text-center">ユーザー名</th>
-              <th class="bg-light col-2 text-center"></th>
+              <th class="bg-light col-8 text-center">ユーザー名</th>
+              <th class="bg-light col-1 text-center"></th>
             </tr>
           </tbody>
         </table>
@@ -135,22 +135,20 @@
           input_2.name = "user";
           input_2.value = user;
         const td_3 = document.createElement("td");
-        const span = document.createElement("button");
-          button.type = "button";
-          button.className = "btn btn-outline-info";
-          button.innertext = "削除";
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control btn-clipboard";
+          input_3.type = "button";
+          input_3.name = "button";
+          input_3.value =　"削除";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1)
         tr.append(td_2);
         td_2.append(input_2);
         tr.append(td_3);
-        td_3.append(button);
+        td_3.append(input_3);
       }
       
-      // <button type="button" class="btn btn-outline-info">Info</button>
-      // <th class="bg-light col-1 text-center"><button type="button" class="btn btn-outline-info">Info</button></th>
-      // <span class="badge bg-primary">Primary</span>
       
       //edit ユーザー行追加
       function userRowAdd() {      
@@ -167,12 +165,20 @@
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "user";        
+          input_2.name = "user";
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "button";
+          input_3.name = "button";
+          input_3.value =　"削除";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
         td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
       };
       
       // idの最大値の取得
