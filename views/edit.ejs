@@ -47,7 +47,7 @@
             <tr>
               <th class="bg-light col-3 text-center">ID</th>
               <th class="bg-light col-8 text-center">ユーザー名</th>
-              <th class="bg-light col-1 text-center"></th>
+              <th class="bg-light col-1 text-center">削除</th>
             </tr>
           </tbody>
         </table>
@@ -67,7 +67,7 @@
               <th class="bg-light col-5 text-center">メニュー</th>
               <th class="bg-light col-3 text-center">税込価格</th>
             </tr>
-            <tr class="">
+<!--             <tr class="">
               <td><input class="form-control" type="text" name="store-names"></td>
               <td><input class="form-control" type="text" name="menus"></td>
               <td><input class="form-control" type="number" name="price"></td>
@@ -76,7 +76,7 @@
               <td><input class="form-control" type="text" name="store-names"></td>
               <td><input class="form-control" type="text" name="menus"></td>
               <td><input class="form-control" type="number" name="prices"></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
         <input onclick="menuRowAdd()" value="行追加" class="btn btn-primary">
@@ -136,7 +136,7 @@
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.className = "form-control btn-clipboard";
+          input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
           input_3.value =　"削除";
@@ -168,7 +168,7 @@
           input_2.name = "user";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.className = "form-control";
+          input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "button";
           input_3.value =　"削除";
