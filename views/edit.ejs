@@ -123,6 +123,7 @@
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
+          td_1.name = "userTd_1";
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
           input_1.className = "form-control text-center";
@@ -157,6 +158,7 @@
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
+          td_1.name = "userTd_1";
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
           input_1.className = "form-control text-center";
@@ -199,9 +201,9 @@
       // ★デリートチェックされたidの取得
       function deleteUser() {
         const arr = [];
-        const id = document.UsersForm.id;
+        const id = document.userTd_1.id;
         console.log(id);
-      }
+      };
       
       
       //edit メニュー行追加
