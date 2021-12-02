@@ -85,18 +85,6 @@ app.get("/edit", (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });
 
-  
-// Usersテーブルへの「単純」なデータ追加 Create
-// app.post("/users/addEdit", (req, res) => {
-//   const addEditUsers = req.body.users;
-//     addEditUsers.forEach(user => {
-//       const stmt = db.prepare("INSERT INTO Users (user) VALUES (?)");
-//       stmt.run(user);
-//       stmt.finalize();
-//       res.render(`${__dirname}/views/index.ejs`);
-//   }) 
-// });
-
 
 // Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
@@ -115,8 +103,8 @@ app.post("/users/addEdit", (req, res) => {
 app.get("/users/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
-  const stmt = db.prepare("DLETE FROM Users WHERE id = :deleteId");
-  stmt.run();
+  const stmt = db.prepare("DELETE FROM Users WHERE id = (?)");
+  stmt.run(deleteId);
   stmt.finalize();
   return res.render(`${__dirname}/views/edit.ejs`);
 });
