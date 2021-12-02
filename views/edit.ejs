@@ -145,7 +145,8 @@
       
       
       //edit ユーザー行追加
-      function userRowAdd() {      
+      function userRowAdd() {
+        const maxId = maxId();
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -155,7 +156,7 @@
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "userId";
-          input_1.value = maxId();
+          input_1.value = maxId;
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
