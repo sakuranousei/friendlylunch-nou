@@ -127,14 +127,9 @@
           input_2.name = "userName";
           input_2.value = user;
         const td_3 = document.createElement("td");
-        // const button_3 = document.createElement("button");
-        //   button_3.type = "button";
-        //   button_3.className = "btn btn-secondary";
-        //   button_3.value = "×";
         const input_3 = document.createElement("input");
-          // input_3.onclick = deleteUser();
-          input_3.className = "btn btn-outline-secondary";
-          input_3.type = "submit";
+          input_3.className = "form-control btn btn-outline-secondary";
+          input_3.type = "button";
           input_3.name = "deleteUserBtn";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -146,12 +141,6 @@
         td_3.append(input_3);
       };
       
-      // <button type="button" class="btn btn-secondary">Secondary</button>
-      
-      // <span class="badge badge-secondary">New</span>
-      
-      // <input id="usersDataAddEdit" type="submit" value="更新" class="btn btn-primary">
-      // <input onclick="menuRowAdd()" value="行追加" class="btn btn-primary">
       
       
       //edit ユーザー行追加
@@ -173,9 +162,8 @@
           input_2.name = "userName";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          // input_3.onclick = deleteUser();
-          input_3.className = "btn btn-outline-secondary";
-          input_3.type = "submit";
+          input_3.className = "form-control btn btn-outline-secondary";
+          input_3.type = "button";
           input_3.name = "deleteUserBtn";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -200,13 +188,11 @@
       };
       
       
-      // ★デリートチェックされたidの取得
-      
-//         const userId = document.getElementsByName("userId");
-//         const deleteUserBtn = document.getElementsByName("deleteUserBtn"); 
-//         deleteUserBtn[0].addEventListener('click', () => {
-//            console.log(userId[0], deleteUserBtn[0]);   
-//       });
+      // ★デリートチェックされたidの取得     
+        document.getElementsByName("deleteUserBtn").addEventListener('click', () => {
+          const userId = document.getElementsByName("userId");
+          console.log(userId[0], deleteUserBtn[0]);   
+      });
       
       
       
