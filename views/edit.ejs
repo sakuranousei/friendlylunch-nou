@@ -194,12 +194,10 @@
       // ★デリートにチェックされたidの取得
       function deleteUser() {
         const activeDeleteUserBtn = document.activeElement;
-        const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "")
-        
+        const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "");
         console.log(activeDeleteUserBtn.name);
         console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
-        // console.log(rep);
-  
+        window.location.href = `/users/delete/${deleteId}`;
       };
 
       
