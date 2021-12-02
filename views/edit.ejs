@@ -194,10 +194,11 @@
       function deleteUser() {
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
         const userId = document.getElementsByName("userId");
-        const active = document.getElementsByTagName("button:active");
-        const activeBtn = document.getElementsByClassName(":active");
+        const active = document.activeElement;
+        // const active = document.getElementsByTagName("button:active");
+        // const activeBtn = document.getElementsByClassName(":active");
       
-        console.log(activeBtn);
+        console.log(active);
         // for (let i = 0; i < deleteUserBtn.length; i++) {
           // if (deleteUserBtn[i]:active) {
             // console.log(i);
