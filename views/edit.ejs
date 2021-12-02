@@ -128,10 +128,10 @@
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = deleteUser;
+          input_3.onclick = deleteUser;　//プロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "deleteUserBtn";
+          input_3.name = `deleteUserBtn_${id}`;
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -166,7 +166,7 @@
           input_3.onclick = deleteUser; //プロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "deleteUserBtn";
+          input_3.name = `deleteUserBtn_${id}`;
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -195,17 +195,10 @@
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
         const userId = document.getElementsByName("userId");
         const active = document.activeElement;
-        // const active = document.getElementsByTagName("button:active");
-        // const activeBtn = document.getElementsByClassName(":active");
+
       
         console.log(active);
-        // for (let i = 0; i < deleteUserBtn.length; i++) {
-          // if (deleteUserBtn[i]:active) {
-            // console.log(i);
-            // console.log(activeBtn）;
-          // }
-          // console.log(deleteUserBtn[i].checked);
-        // }
+  
       };
 
       
