@@ -195,7 +195,10 @@
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
         const userId = document.getElementsByName("userId");
         for (let i = 0; i < deleteUserBtn.length; i++) {
-          console.log(deleteUserBtn[i].checked);
+          if (deleteUserBtn[i].checked) {
+            console.log(i);
+          }
+          // console.log(deleteUserBtn[i].checked);
         }
       };
 
