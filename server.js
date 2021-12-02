@@ -100,8 +100,10 @@ app.get("/edit", (request, response) => {
 
 // Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
-  const getId = req.body.id;
-  const getUser = req.body.user;
+  const getId = req.body.userId;
+  const getUser = req.body.userName;
+  const getDel = req.body.deleteUserBtn;
+  console.log(getDel[4]);
   for(let i = 0; i < getUser.length; i++) {
     // console.log(getId[i], getUser[i]);
     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i]);
