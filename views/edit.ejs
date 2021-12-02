@@ -191,10 +191,15 @@
       
       
       // ★デリートチェックされたidの取得
+      function deleteUser() {
+        const deleteUserBtn
+        
+      };
       const deleteUserBtn = document.getElementsByName("deleteUserBtn");
-      deleteUserBtn.addEventListener("click", () => {
-        console.log("deleteUserBtn");
-      });
+      for (let i =0; i < deleteUserBtn.length; i++) {
+       deleteUserBtn[i].addEventListener("click", () => {
+         console.log(i);
+       });
       
       
       
