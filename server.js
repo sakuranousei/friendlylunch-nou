@@ -110,6 +110,16 @@ app.post("/users/addEdit", (req, res) => {
   }
   return res.render(`${__dirname}/views/edit.ejs`);
 });
+
+
+app.get("/users/delete/:deleteId", (req, res) => {
+  console.log(req.params.deleteId);
+  const deleteId = req.params.deleteID;
+  const stmt = db.prepare("DLETE FROM Users WHERE id = ?"), req.params.deleteId;
+  stmt.run();
+  stmt.finalize();
+  return res.render(`${__dirname}/views/edit.ejs`);
+});
   
 
 // listen for requests :)
