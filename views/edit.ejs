@@ -51,7 +51,7 @@
             </tr>
           </tbody>
         </table>
-          <input onclick="userRowAdd(), deleteUser()" value="行追加" class="btn btn-primary">
+          <input onclick="userRowAdd()" value="行追加" class="btn btn-primary">
           <input id="usersDataAddEdit" type="submit" value="更新" class="btn btn-primary">
       </form>   
     </div>
@@ -68,16 +68,6 @@
               <th class="bg-light col-2 text-center">価格</th>
               <th class="bg-light col-1 text-center">×</th>
             </tr>
-<!--             <tr class="">
-              <td><input class="form-control" type="text" name="store-names"></td>
-              <td><input class="form-control" type="text" name="menus"></td>
-              <td><input class="form-control" type="number" name="price"></td>
-            </tr>
-            <tr class="">
-              <td><input class="form-control" type="text" name="store-names"></td>
-              <td><input class="form-control" type="text" name="menus"></td>
-              <td><input class="form-control" type="number" name="prices"></td>
-            </tr> -->
           </tbody>
         </table>
         <input onclick="menuRowAdd()" value="行追加" class="btn btn-primary">
@@ -138,9 +128,9 @@
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = deleteUser();
-          input_3.className = "form-control btn-outline-secondary";
-          input_3.type = "button";
+          // input_3.onclick = deleteUser();
+          input_3.className = "btn-outline-secondary";
+          // input_3.type = "submit";
           input_3.name = "deleteUserBtn";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -150,7 +140,10 @@
         td_2.append(input_2);
         tr.append(td_3);
         td_3.append(input_3);
-      }
+      };
+      
+      // <input id="usersDataAddEdit" type="submit" value="更新" class="btn btn-primary">
+      // <input onclick="menuRowAdd()" value="行追加" class="btn btn-primary">
       
       
       //edit ユーザー行追加
@@ -172,9 +165,9 @@
           input_2.name = "userName";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = deleteUser();
-          input_3.className = "form-control btn-outline-secondary";
-          input_3.type = "button";
+          // input_3.onclick = deleteUser();
+          input_3.className = "btn-outline-secondary";
+          // input_3.type = "submit";
           input_3.name = "deleteUserBtn";
           input_3.value =　"×";
         parent.appendChild(tr);
@@ -202,8 +195,9 @@
       // ★デリートチェックされたidの取得
       function deleteUser() {
         const userId = document.getElementsByName("userId");
-        const deleteUserBtn = document.getElementsByName("deleteUserBtn");     
-          console.log(userId[0], deleteUserBtn.name);                                              
+        const deleteUserBtn = document.getElementsByName("deleteUserBtn"); 
+        deleteU
+          console.log(userId[0], deleteUserBtn[0]);                                              
       };
       
       
