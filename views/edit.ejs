@@ -99,7 +99,7 @@
     ></script>
     
     <script>
-      // ★editでのUsersの反映
+      // ★editでのUsersの呼び出し
       fetch("/edit/getUsersData", {})
         .then(res => res.json())
         .then(response => {
@@ -108,6 +108,7 @@
           });
         });
 
+      // ★editでのUsersの反映
       function getUsersData(id, user) {
         // console.log(id, user);
         const parent = document.getElementById("nameFormArea");
@@ -131,7 +132,7 @@
           input_3.onclick = deleteUser;　//プロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "deleteUserBtn";
+          input_3.name = `deleteUserBtn_${id}`;
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -146,7 +147,6 @@
       
       //edit ユーザー行追加
       function userRowAdd() {
-        const maxId = maxId();
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -156,7 +156,7 @@
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "userId";
-          input_1.value = maxId;
+          input_1.value = maxId();
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
@@ -167,7 +167,7 @@
           input_3.onclick = deleteUser; //プロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
-          input_3.name = "deleteUserBtn";
+          input_3.name = `deleteUserBtn_${input_1.value}`;
           input_3.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -191,15 +191,11 @@
       };
       
       
-      // ★デリートチェックされたidの取得
+      // ★デリートにチェックされたidの取得
       function deleteUser() {
-        const deleteUserBtn = document.getElementsByName("deleteUserBtn");
-        const userId = document.getElementsByName("userId");
-        const active = document.activeElement;
-        if(active) 
-
-      
-        console.log(active);
+        const activeDeleteUserBtn = document.activeElement;    
+        console.log(activeDeleteUserBtn);
+        console.log(sourceStr.activeDeleteUserBtn(/u/g, ""));
   
       };
 
