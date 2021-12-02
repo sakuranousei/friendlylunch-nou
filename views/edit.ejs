@@ -128,17 +128,17 @@
           input_1.readOnly = true;
           input_1.className = "form-control text-center";
           input_1.type = "number";
-          input_1.name = "id";
+          input_1.name = "userId";
           input_1.value = id;
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "user";
+          input_2.name = "userName";
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = "deleteUser()";
+          // input_3.onclick = "deleteUser()";
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "deleteUserBtn";
@@ -163,16 +163,16 @@
           input_1.readOnly = true;
           input_1.className = "form-control text-center";
           input_1.type = "";
-          input_1.name = "id";
+          input_1.name = "userId";
           input_1.value = maxId();
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "user";
+          input_2.name = "userName";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = "deleteUser()";
+          // input_3.onclick = "deleteUser()";
           input_3.className = "form-control btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "deleteUserBtn";
@@ -186,6 +186,7 @@
         td_3.append(input_3);
       };
       
+      
       // idの最大値の取得
       function maxId() {
         const id = document.getElementsByName("id");
@@ -195,6 +196,16 @@
         };
         console.log(idAry);
         return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+      // ★デリートチェックされたidの取得
+      function deleteUser() {
+        const userId = document.getElementsByName("userId");
+        const deleteUserBtn = document.getElementsByName("deleteUserBtn");     
+        deleteUserBtn.addEventLIstener("click", () => {
+          console.log(userId, deleteUserBtn);                                       
+        });
       };
       
       
@@ -234,16 +245,6 @@
         tr.append(td_4);
         td_4.append(input_4);
       }
-      
-      
-      // ★デリートチェックされたidの取得
-      function deleteUser() {
-        const arr = [];
-        const deleteUserBtn = document.getElementsByName("deleteUserBtn");
-        deleteUserBtn.addEventLIstener("click", () => {
-          console.log(deleteUserBtn);                                       
-        });
-      };
       
       
     </script>
