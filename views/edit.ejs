@@ -194,13 +194,14 @@
       function deleteUser() {
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
         const userId = document.getElementsByName("userId");
-        for (let i = 0; i < deleteUserBtn.length; i++) {
+        const active = document.getElementsByTagName("button:active");
+        // for (let i = 0; i < deleteUserBtn.length; i++) {
           // if (deleteUserBtn[i]:active) {
-            console.log(i);
-            console
+            // console.log(i);
+            console.log(active);
           // }
           // console.log(deleteUserBtn[i].checked);
-        }
+        // }
       };
 
       
