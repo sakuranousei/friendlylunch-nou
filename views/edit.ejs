@@ -193,8 +193,9 @@
       // ★デリートチェックされたidの取得
       function deleteUser() {
         const deleteUserBtn = document.getElementsByName("deleteUserBtn");
+        const userId = document.getElementsByName("userId");
         for (let i = 0; i < deleteUserBtn.length; i++) {
-          console.log(deleteUserBtn[i]);
+          console.log(deleteUserBtn[i].checked);
         }
       };
 
