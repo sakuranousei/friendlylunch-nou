@@ -128,6 +128,7 @@
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
+          // input_3.onclick = `${deleteUser()}`;
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "deleteUserBtn";
@@ -162,6 +163,7 @@
           input_2.name = "userName";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
+          // input_3.onclick = `${deleteUser()}`;
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
           input_3.name = "deleteUserBtn";
@@ -188,10 +190,10 @@
       };
       
       
-      // ★デリートチェックされたidの取得     
-        document.getElementsByName("deleteUserBtn").addEventListener('click', () => {
-          const userId = document.getElementsByName("userId");
-          console.log(userId[0], deleteUserBtn[0]);   
+      // ★デリートチェックされたidの取得
+      const deleteUserBtn = document.getElementsByName("deleteUserBtn");
+      deleteUserBtn.addEventListener("click", () => {
+        console.log("deleteUserBtn");
       });
       
       
