@@ -29,6 +29,10 @@ db.serialize(() => {
     db.run(
       "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
     );
+    console.log("New table Users created!"); 
+    db.run(
+      "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
+    );
     console.log("New table Users created!");  
     // insert default table
     db.serialize(() => {
