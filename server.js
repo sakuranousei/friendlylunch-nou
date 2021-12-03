@@ -78,27 +78,40 @@ app.get("/", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
 
+app.get("/edit", (request, response) => {
+  response.render(`${__dirname}/views/edit.ejs`);
+});
 
-//endpoint to get all the Names in the database
+// フロントエンドへサーバーサイドからUserデータを送付
 app.get("/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
-
-//editでのUsersの反映
-app.get("/edit/getUsersData", (request, response) => {
-  db.all("SELECT * from Users", (err, rows) => {
+// フロントエンドへサーバーサイドからMenusデータを送付
+app.get("/getMenusData", (request, response) => {
+  db.all("SELECT * from Menus", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 
-app.get("/edit", (request, response) => {
-  // response.send("edit");
-  response.render(`${__dirname}/views/edit.ejs`);
-});
+
+//editでのUsersの反映
+// app.get("/edit/getUsersData", (request, response) => {
+//   db.all("SELECT * from Users", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
+
+//editでのUsersの反映
+// app.get("/edit/getMenusData", (request, response) => {
+//   db.all("SELECT * from Users", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
+
 
 
 // Usersテーブルの追加・更新 Upsert処理

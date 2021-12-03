@@ -96,8 +96,17 @@
     ></script>
     
     <script>
-      // ★editでのUsersの呼び出し
-      fetch("/edit/getUsersData", {})
+      //このページでUsersデータを呼び出し
+      fetch("/getUsersData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getUsersData(row.id, row.user);
+          });
+        });
+      
+       //このページでUsersデータを呼び出し
+      fetch("/getUserData", {})
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
