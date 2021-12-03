@@ -66,7 +66,7 @@ db.serialize(() => {
     });
     db.each("SELECT * from Menus", (err, row) => {
       if (row) {
-        console.log(`record: ${row.store, row.menu, row.price}`);
+        console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
       }
     });
   }
@@ -82,14 +82,14 @@ app.get("/edit", (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });
 
-// フロントエンドへサーバーサイドからUserデータを送付
+//フロントエンドへサーバーサイドからUserデータを送付
 app.get("/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
-// フロントエンドへサーバーサイドからMenusデータを送付
+//フロントエンドへサーバーサイドからMenusデータを送付
 app.get("/getMenusData", (request, response) => {
   db.all("SELECT * from Menus", (err, rows) => {
     response.send(JSON.stringify(rows));

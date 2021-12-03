@@ -106,15 +106,15 @@
         });
       
        //このページでUsersデータを呼び出し
-      fetch("/getUserData", {})
+      fetch("/getMenusData", {})
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getUsersData(row.id, row.user);
+             getMenusData(row.id, row.store, row.menu, row.price);
           });
         });
 
-      // ★editでのUsersの反映
+      //editでのUsersの反映
       function getUsersData(id, user) {
         // console.log(id, user);
         const parent = document.getElementById("nameFormArea");
@@ -135,7 +135,7 @@
           input_2.value = user;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = deleteUser;　//プロパティとして追加する場合は（）は不要
+          input_3.onclick = deleteUser;　//関数をプロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
           input_3.name = `deleteUserBtn_${id}`;
@@ -148,6 +148,9 @@
         tr.append(td_3);
         td_3.append(input_3);
       };
+      
+      
+      
       
       
       //edit ユーザー行追加
@@ -169,7 +172,7 @@
           input_2.name = "userName";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
-          input_3.onclick = deleteUser; //プロパティとして追加する場合は（）は不要
+          input_3.onclick = deleteUser; //関数をプロパティとして追加する場合は（）は不要
           input_3.className = "form-control btn btn-outline-secondary";
           input_3.type = "button";
           input_3.name = `deleteUserBtn_${input_1.value}`;
@@ -242,7 +245,7 @@
         td_3.append(input_3);
         tr.append(td_4);
         td_4.append(input_4);
-      }
+      }；
       
       
     </script>
