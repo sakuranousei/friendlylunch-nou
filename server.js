@@ -66,7 +66,7 @@ db.serialize(() => {
     });
     db.each("SELECT * from Menus", (err, row) => {
       if (row) {
-        console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
+        console.log(`record: ${row.store, row.menu, row.price}`);
       }
     });
   }
