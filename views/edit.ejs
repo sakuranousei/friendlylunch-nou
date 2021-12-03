@@ -114,7 +114,7 @@
           });
         });
 
-      //editでのUsersの反映
+      //editページでUsersの反映
       function getUsersData(id, user) {
         // console.log(id, user);
         const parent = document.getElementById("nameFormArea");
@@ -149,6 +149,50 @@
         td_3.append(input_3);
       };
       
+      
+      //★editでMenusの反映      
+      function getMenusData(id, store, menu, price) {
+        const parent = document.getElementById("menuFormArea");
+        const tr = document.createElement("tr");
+        const td_0 = document.createElement("td");
+          td_0.name = "menuTd_0"
+        const input_0 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.type = "hidden";
+          input_1.name = "menuId";
+          input_1.value = id;
+        const input_1 = document.createElement("input");
+          input_1.className = "form-control text-center";
+          input_1.type = "text";
+          input.name = 
+          input_1.name = "store-names";
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control";
+          input_2.type = "text";
+          input_2.name = "menus";
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "number";
+          input_3.name = "prices";
+        const td_4 = document.createElement("td");
+        const input_4 = document.createElement("input");
+          input_4.className = "form-control btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = "deleteMenuBtn";
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+      }；
       
       
       
