@@ -31,9 +31,9 @@ db.serialize(() => {
     );
     console.log("New table Users created!"); 
     db.run(
-      "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
+      "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, menu TEXT, price INTEGER)"
     );
-    console.log("New table Users created!");  
+    console.log("New table Menus created!");  
     // insert default table
     db.serialize(() => {
       db.run(
@@ -45,9 +45,15 @@ db.serialize(() => {
         'INSERT INTO Users (user) VALUES ("ユーザー１"), ("ユーザー２"), ("ユーザー３")'
       );
     });
+    db.serialize(() => {
+      db.run(
+        'INSERT INTO Menus (store, menu, price) VALUES ("さくら弁当", "普通", "500"), ("さくら弁当", "おかずのみ", "280")'
+      );
+    });
   } else {
     console.log('Database "Dreams" ready to go!');
     console.log('Database "Users" ready to go!');
+    console.log('Database "Menus" ready to go!');
     db.each("SELECT * from Dreams", (err, row) => {
       if (row) {
         console.log(`record: ${row.dream}`);
@@ -56,6 +62,11 @@ db.serialize(() => {
     db.each("SELECT * from Users", (err, row) => {
       if (row) {
         console.log(`record: ${row.user}`);
+      }
+    });
+    db.each("SELECT * from Menus", (err, row) => {
+      if (row) {
+        console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
       }
     });
   }
