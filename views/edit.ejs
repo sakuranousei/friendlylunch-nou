@@ -45,7 +45,7 @@
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
-              <th class="bg-light col-3 text-center">ID</th>
+              <th hidden class="bg-light col-3 text-center">ID</th>
               <th class="bg-light col-8 text-center">ユーザー名</th>
               <th class="bg-light col-1 text-center">×</th>
             </tr>
@@ -62,6 +62,7 @@
         <table class="table table-bordered">
           <tbody id="menuFormArea">
             <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
               <th class="bg-light col-4 text-center">店名</th>
               <th class="bg-light col-5 text-center">メニュー</th>
               <th class="bg-light col-2 text-center">価格</th>
@@ -120,6 +121,7 @@
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
+          td_1.hidden = true;
           td_1.name = "userTd_1";
         const input_1 = document.createElement("input");
           input_1.readOnly = true;
@@ -155,6 +157,7 @@
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
         const td_0 = document.createElement("td");
+          td_0.hidden = true;
           td_0.name = "menuTd_0"
         const input_0 = document.createElement("input");
           input_0.readOnly = true;
