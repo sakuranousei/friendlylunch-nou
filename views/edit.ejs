@@ -151,7 +151,7 @@
       };
       
       
-      //★editでMenusの反映      
+      //editでMenusの反映      
       function getMenusData(id, store, menu, price) {
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
@@ -204,7 +204,7 @@
       
       
       
-      //edit ユーザー行追加
+      //edit Users行追加
       function userRowAdd() {
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
@@ -215,7 +215,7 @@
           input_1.className = "form-control text-center";
           input_1.type = "";
           input_1.name = "userId";
-          input_1.value = maxId();
+          input_1.value = maxUserId();
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
@@ -238,34 +238,18 @@
       };
       
       
-      // idの最大値の取得
-      function maxId() {
-        const id = document.getElementsByName("userId");
-        const idAry = [];
-        for (let i = 0; i < id.length; i++) {
-          idAry.push(id[i].value);
-        };
-        console.log(idAry);
-        return parseInt(Math.max.apply(null, idAry) + 1);
-      };
-      
-      
-      //デリートにチェックされたidの取得
-      function deleteUser() {
-        const activeDeleteUserBtn = document.activeElement;
-        const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "");
-        console.log(activeDeleteUserBtn.name);
-        console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
-        window.location.href = `/users/delete/${deleteId}`;
-      };
-
-      
-      
-      
-      //edit メニュー行追加
+      //edit Menus行追加
       function menuRowAdd() {
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
+        const td_0 = document.createElement("td");
+          td_0.hidden = true;
+          td_0.name = "menuTd_0"
+        const input_0 = document.createElement("input");
+          input_0.readOnly = true;
+          input_0.className = "form-control text-center";
+          input_0.name = "menuId";
+          input_0.value = maxMenuId;
         const td_1 = document.createElement("td");
         const input_1 = document.createElement("input");
           input_1.className = "form-control";
@@ -298,6 +282,45 @@
         td_4.append(input_4);
       };
       
+      
+      
+      //edit Users idの最大値の取得
+      function maxUserId() {
+        const id = document.getElementsByName("userId");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+      //edit Menus idの最大値の取得
+      function maxMenuId() {
+        const id = document.getElementsByName("menuId");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+      //edit Users デリートにチェックされたidの取得
+      function deleteUser() {
+        const activeDeleteUserBtn = document.activeElement;
+        const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "");
+        console.log(activeDeleteUserBtn.name);
+        console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
+        window.location.href = `/users/delete/${deleteId}`;
+      };
+
+      
+      
+      
+
       
     </script>
     
