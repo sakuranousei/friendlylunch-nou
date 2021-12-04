@@ -62,9 +62,9 @@
         <table class="table table-bordered">
           <tbody id="menuFormArea">
             <tr>
-              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col-1 text-center">ID</th>
               <th class="bg-light col-4 text-center">店名</th>
-              <th class="bg-light col-5 text-center">メニュー</th>
+              <th class="bg-light col-4 text-center">メニュー</th>
               <th class="bg-light col-2 text-center">価格</th>
               <th class="bg-light col-1 text-center">×</th>
             </tr>
@@ -157,12 +157,11 @@
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
         const td_0 = document.createElement("td");
-          td_0.hidden = true;
+          // td_0.hidden = true;
           td_0.name = "menuTd_0"
         const input_0 = document.createElement("input");
           input_0.readOnly = true;
           input_0.className = "form-control text-center";
-          input_0.type = "hidden";
           input_0.name = "menuId";
           input_0.value = id;
         const td_1 = document.createElement("td");
@@ -193,6 +192,8 @@
         parent.appendChild(tr);
         // tr.append(td_0);
         // td_1.append(input_0);
+        tr.appdend(td_0);
+        td_0.append(input_0);
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
