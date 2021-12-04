@@ -183,7 +183,7 @@
           input_3.value = price;
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
-          // input_4.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
+          input_4.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
           input_4.className = "form-control btn-outline-secondary";
           input_4.type = "button";
           input_4.name = `deleteMenuBtn_${id}`;
@@ -267,11 +267,14 @@
           input_3.name = "prices";
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
+          input_4.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
           input_4.className = "form-control btn-outline-secondary";
           input_4.type = "button";
-          input_4.name = "deleteMenuBtn";
+          input_4.name = `deleteMenuBtn_${input_0.value}`;
           input_4.value =　"×";
         parent.appendChild(tr);
+        tr.append(td_0);
+        td_0.append(input_0);
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
@@ -281,6 +284,7 @@
         tr.append(td_4);
         td_4.append(input_4);
       };
+      
       
       
       
@@ -316,10 +320,15 @@
         console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
         window.location.href = `/users/delete/${deleteId}`;
       };
-
       
-      
-      
+      //edit Menus デリートにチェックされたidの取得
+      function deleteMenu() {
+        const activeDeleteMenuBtn = document.activeElement;
+        const deleteId = activeDeleteMenuBtn.name.replace("deleteUserBtn_", "");
+        console.log(activeDeleteMenuBtn.name);
+        console.log(activeDeleteMenuBtn.name.replace("deleteUserBtn_", ""));
+        window.location.href = `/users/delete/${deleteId}`;
+      };
 
       
     </script>
