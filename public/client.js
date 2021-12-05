@@ -43,11 +43,22 @@ const appendNewUserRadio = (id, user) => {
 //indexページ Menusデータ反映 アコーディオン
 const appendNewMenusAccordion = (id, store, menu, price) => {
   const parent = document.getElementById("menusArea");
-  const div = document.createElement("div");
-    div.className = "accordion-item";
+  const div_1 = document.createElement("div");
+    div_1.className = "accordion-item";
   const h2 = document.createElement("h2");
     h2.className = "accordion-header";
     h2.id = `heading_${id}`;
+  const button = document.createElement("button");
+    button.className = "accordion-button collapsed";
+    button.type = "button";
+    button.data-bs-toggle = "collapse";
+    button.data-bs-target = "#collapseOne";
+    button.aria-expanded = "false";
+    button.aria-controls = "collapseOne";
+    button.value = "store"
+  const div_2 = document.createElement("div");
+    div_2.id = 
+  
   
 };
 
