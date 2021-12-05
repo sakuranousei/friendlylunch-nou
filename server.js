@@ -147,6 +147,12 @@ app.get("/menus/delete/:deleteId", (req, res) => {
   stmt.finalize();
   return res.render(`${__dirname}/views/edit.ejs`);
 });
+
+
+app.post("/orders/update", (req, res) => {
+  console.log(req.body.checked);
+  return res.render(`${__dirname}/views/index.ejs`);
+});
   
 
 // listen for requests :)

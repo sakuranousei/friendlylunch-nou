@@ -122,3 +122,5 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     }          
   };
     
+
+const orderArea = document.getElementBy
