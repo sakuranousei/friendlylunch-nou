@@ -136,6 +136,12 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
 };
 
 
+const appendNewMenuAccordionBody = (id, store, menu, price) => {
+  const screenMenuId = document.getElementsByClassName("accordion-button");
+  if (id = screenMenuId.innnerText)
+};
+
+
 
 
 
