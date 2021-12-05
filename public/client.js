@@ -11,7 +11,7 @@ fetch("/getUsersData", {})
   });
 
 
-//index userラジオボタンの関数 a helper function that creates a list item for a given user
+//index Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
 const appendNewUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");

@@ -286,8 +286,6 @@
       };
       
       
-      
-      
       //edit Users idの最大値の取得
       function maxUserId() {
         const id = document.getElementsByName("userId");
@@ -324,12 +322,11 @@
       //edit Menus デリートにチェックされたidの取得
       function deleteMenu() {
         const activeDeleteMenuBtn = document.activeElement;
-        const deleteId = activeDeleteMenuBtn.name.replace("deleteUserBtn_", "");
+        const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
         console.log(activeDeleteMenuBtn.name);
-        console.log(activeDeleteMenuBtn.name.replace("deleteUserBtn_", ""));
-        window.location.href = `/users/delete/${deleteId}`;
+        console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
+        window.location.href = `/menus/delete/${deleteId}`;
       };
-
       
     </script>
     
