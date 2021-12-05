@@ -123,21 +123,24 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
     label_2.for = "flexCheckChecked";
     label_2.innerText = price;
   
-  if (store !== button.innneText) {
-      parent.appendChild(div_1);
-      div_1.append(h2);
-        h2.append(button);
-      div_1.append(div_2);
-        div_2.append(div_3);
+  console.log(store);
+  console.log(button.innerText);
+  
+  if (store === button.innnerText) {
           div_3.append(div_4);
             div_4.append(input);
             div_4.append(label_1);
             div_4.append(label_2);
-      } if (store ) {
-          div_3.append(div_4);
-            div_4.append(input);
-            div_4.append(label_1);
-            div_4.append(label_2);
+      } if (store !== button.innnerText) {
+        parent.appendChild(div_1);
+          div_1.append(h2);
+            h2.append(button);
+          div_1.append(div_2);
+            div_2.append(div_3);
+              div_3.append(div_4);
+                div_4.append(input);
+                div_4.append(label_1);
+                div_4.append(label_2);
       };
 };
 
