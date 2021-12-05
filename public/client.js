@@ -95,15 +95,15 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
   const button = document.createElement("button");
     button.className = "accordion-button collapsed";
     button.type = "button";
-    button.dataset.bs.toggle = "collapse";
-    button.dataset.bs.target = `#collapse_${id}`;
-    button.aria.expanded = "false";
-    button.controls = `collapse_${id}`;
-    button.aria.innerText = store;
+    button.getAttribute("data-bs-toggle = collapse");
+    button.getAttribute("data-bs-target = `#collapse_${id}`");
+    button.getAttribute("aria-expanded = false");
+    button.getAttribute("aria-controls = `collapse_${id}`");
+    button.innerText = store;
   const div_2 = document.createElement("div");
     div_2.id = `collapse_${id}`;
     div_2.className = "accordion-collapse collapse";
-    div_2.labelledby = `heading_${id}`;
+    div_2.getAttribute("aria-labelledby = `heading_${id}`");
   const body = appendNewMenuAccordionBody(id, store, menu, price);
   parent.appendChild(div_1);
   div_1.append(h2);
@@ -134,8 +134,7 @@ const appendNewMenuAccordionBody = (id, store, menu, price) => {
       div_3.append(div_4);
         div_4.append(input);
         div_4.append(label_1);
-        div_4.append(label_2);
-  
+        div_4.append(label_2); 
 };
 
 
