@@ -199,11 +199,12 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   console.log(store);
   console.log(button_store.innerText);
   
-    const renderedStore = document.getElementsByClassName(`${store}`); 
-    console.log(renderedStore);
-    console.log(renderedStore.length);
-    
-    
+  const renderedStore = document.getElementsByClassName(`${store}`); 
+  console.log(renderedStore);
+  console.log(renderedStore[0]);
+  console.log(renderedStore.length);
+              
+  if (renderedStore.length == 0) {
     parent_menuArea.appendChild(div1_accordionItem);
     div1_accordionItem.append(h2_accordionHeader);
       h2_accordionHeader.append(button_store);
@@ -212,13 +213,32 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
           div3_accordionBody.append(div4_formCheck);
           div4_formCheck.append(input);
           div4_formCheck.append(label_menu);
-          div4_formCheck.append(label_price);    
+          div4_formCheck.append(label_price);
+  } else {
+    renderedStore[0].append(div3_accordionBody);
+          div3_accordionBody.append(div4_formCheck);
+          div4_formCheck.append(input);
+          div4_formCheck.append(label_menu);
+          div4_formCheck.append(label_price);
+  }
+              
+  
+    
+    
+    // parent_menuArea.appendChild(div1_accordionItem);
+    // div1_accordionItem.append(h2_accordionHeader);
+    //   h2_accordionHeader.append(button_store);
+    // div1_accordionItem.append(div2_accordionCollapse);
+    //   div2_accordionCollapse.append(div3_accordionBody);
+    //       div3_accordionBody.append(div4_formCheck);
+    //       div4_formCheck.append(input);
+    //       div4_formCheck.append(label_menu);
+    //       div4_formCheck.append(label_price);    
          // renderedStore.append(div3_accordionBody);
          //  div3_accordionBody.append(div4_formCheck);
          //  div4_formCheck.append(input);
          //  div4_formCheck.append(label_menu);
          //  div4_formCheck.append(label_price);
-  
 
   }
     
