@@ -41,7 +41,7 @@
     <!--データ入力・編集 -->
 　　　　　　　　<!--Usersの入力・編集 -->
     <div class="container pt-3">
-      <form action="/users/addEdit" method="post" name = "UsersForm">
+      <form action="/users/addEdit" method="post" name="UsersForm">
         <table class="table table-bordered">
           <tbody id="nameFormArea">
             <tr>
@@ -58,7 +58,7 @@
 
     <!--Menusへの入力/編集 -->
     <div class="container">
-      <form action="" method="post">
+      <form action="/menus/addEdit" method="post" name="MenusForm">
         <table class="table table-bordered">
           <tbody id="menuFormArea">
             <tr>
@@ -71,7 +71,7 @@
           </tbody>
         </table>
         <input onclick="menuRowAdd()" value="行追加" class="btn btn-primary">
-        <input type="submit" value="更新" class="btn btn-primary">
+        <input id="menusDataAddEdit"　type="submit" value="更新" class="btn btn-primary">
       </form>
     </div>
 

@@ -116,6 +116,20 @@ app.get("/getMenusData", (request, response) => {
 
 //Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
+  const getUserId = req.body.userId;
+  const getUserName = req.body.userName;
+  for(let i = 0; i < getUserName.length; i++) {
+    // console.log(getId[i], getUser[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getUserId[i], getUserName[i]);
+    stmt.run();
+    stmt.finalize();
+  }
+  return res.render(`${__dirname}/views/edit.ejs`);
+});
+
+
+//Menusテーブルの追加・更新 Upsert処理
+app.post("/menus/addEdit", (req, res) => {
   const getId = req.body.userId;
   const getUser = req.body.userName;
   for(let i = 0; i < getUser.length; i++) {
