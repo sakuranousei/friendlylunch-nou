@@ -40,7 +40,68 @@ const appendNewUserRadio = (id, user) => {
 }
 
 
-//indexページ　Menusデータ反映 セレクトボタン
+//indexページ Menusデータ反映 アコーディオン
+const appendNewMenusAccordion = (id, store, menu, price) => {
+  const parent = document.getElementById("menusArea");
+  const div = document.createElement("div");
+    div.className = "accordion-item";
+  const h2 = document.createElement("h2");
+    h2.className = "accordion-header";
+    h2.id = `heading_${id}`;
+  
+};
+
+
+      // <div class="accordion-item">
+      //   <h2 class="accordion-header" id="headingOne">
+      //     <button
+      //       class="accordion-button collapsed"
+      //       type="button"
+      //       data-bs-toggle="collapse"
+      //       data-bs-target="#collapseOne"
+      //       aria-expanded="false"
+      //       aria-controls="collapseOne"
+      //     >
+      //       さくら弁当
+      //     </button>
+      //   </h2>
+      //   <div
+      //     id="collapseOne"
+      //     class="accordion-collapse collapse"
+      //     aria-labelledby="headingOne"
+      //   >
+      //     <div class="accordion-body">
+      //       <div class="form-check">
+      //         <input
+      //           class="form-check-input"
+      //           type="checkbox"
+      //           value=""
+      //           id="flexCheckDefault"
+      //         />
+      //         <label class="form-check-label" for="flexCheckDefault">
+      //           普通
+      //         </label>
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           500
+      //         </label>
+      //       </div>
+      //       <div class="form-check">
+      //         <input
+      //           class="form-check-input"
+      //           type="checkbox"
+      //           value=""
+      //           id="flexCheckChecked"
+      //         />
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           おかずのみ
+      //         </label>
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           280
+      //         </label>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
 
 
 
