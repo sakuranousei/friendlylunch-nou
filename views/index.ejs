@@ -48,34 +48,36 @@
       <div id="todayTime" class="text-muted"></div>
     </div>
       
-
-    <!--ユーザー選択-->
-    <div id="usersArea" class="container pt-4">
-      <strong>ユーザ名</strong>
-    </div>
-    
-
-    <!--メニュー選択アコーディオン -->
-    <div class="accordion container pt-5" id="menusArea">
-      <strong>お店＆メニュー</strong>
-    </div>  
     
     
-    <!--お釣り入力フォーム-->
-    <div id="change" class="container pt-5">
-      <strong>お釣りがある場合</strong>
-      <div class="input-group mb-3">
-        <div class="input-group-text">
-          <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
-        </div>
-        <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="例：100（数字のみ、テキスト不可）">
+    <!--注文フォーム-->
+    <form action="/orders/update" method="post">
+      <!--ユーザー選択-->
+      <div id="usersArea" class="container pt-4">
+        <strong>ユーザ名</strong>
       </div>
-    </div>
-    
 
-    <!--データ編集画面へ遷移 -->
-    <form action="" method="post" class="container pt-5 pb-5">
-      <button class="btn btn-dark">注文確定or更新</button>
+      <!--メニュー選択アコーディオン -->
+      <div class="accordion container pt-5" id="menusArea">
+        <strong>お店＆メニュー</strong>
+      </div>  
+
+      <!--お釣り入力フォーム-->
+      <div id="change" class="container pt-5">
+        <strong>お釣りがある場合</strong>
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="例：100（数字のみ、テキスト不可）">
+        </div>
+      </div>
+
+      <!--注文確定・更新-->
+      <div class="container pt-5 pb-5">
+        <input id="ordersDataAdd" type="submit" class="btn btn-dark w-auto" value="注文確定or更新">
+      </div>
+            
     </form>
       
     <br>
