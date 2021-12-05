@@ -58,7 +58,7 @@ const appendUserRadio = (id, user) => {
 }
 
 
-// 試し　　indexページ Menusデータ反映 アコーディオン　ヘッダー
+// indexページ Menusデータ反映 アコーディオン　ヘッダー
 const appendMenuAccordionHeader = (id, store, menu, price) => {
   const parent_menuArea = document.getElementById("menusArea");
   const div1_accordionItem = document.createElement("div");
