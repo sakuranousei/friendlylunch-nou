@@ -95,11 +95,11 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
   const button = document.createElement("button");
     button.className = "accordion-button collapsed";
     button.type = "button";
-    button.toggle = "collapse";
-    button.target = `#collapse_${id}`;
-    button.expanded = "false";
+    button.dataset.bs.toggle = "collapse";
+    button.dataset.bs.target = `#collapse_${id}`;
+    button.aria.expanded = "false";
     button.controls = `collapse_${id}`;
-    button.innerText = store;
+    button.aria.innerText = store;
   const div_2 = document.createElement("div");
     div_2.id = `collapse_${id}`;
     div_2.className = "accordion-collapse collapse";
