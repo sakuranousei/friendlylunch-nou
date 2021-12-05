@@ -106,7 +106,7 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
     div_2.setAttribute("aria-labelledby", `heading_${id}`);
   // const body = appendNewMenuAccordionBody(id, store, menu, price);
   const div_3 = document.createElement("div");
-    div_3.className = "accordion-body";
+    div_3.className = `accordion-body ${store}`;
   const div_4 = document.createElement("div");
     div_4.className = "form-check";
   const input = document.createElement("input");
@@ -137,8 +137,26 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
 
 
 const appendNewMenuAccordionBody = (id, store, menu, price) => {
-  const screenMenuId = document.getElementsByClassName("accordion-button");
-  if (id = screenMenuId.innnerText)
+  const storeName = document.getElementsByClassName("accordion-button");
+  const div_4 = document.createElement("div");
+    div_4.className = "form-check";
+  const input = document.createElement("input");
+    input.className = "form-check-input";
+    input.type = "checkbox";
+    input.value = "";
+    input.id = "flexCheckDefault";
+  const label_1 = document.createElement("label");
+    label_1.className = "form-check-label";
+    label_1.for = "flexCheckDefault";
+    label_1.innerText = menu;
+  const label_2 = document.createElement("label");
+    label_2.className = "form-check-label px-3";
+    label_2.for = "flexCheckChecked";
+    label_2.innerText = price;
+  if (store = storeName.innnerText) {
+    const setpoint = 
+    
+  }
 };
 
 
