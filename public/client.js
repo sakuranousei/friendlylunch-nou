@@ -46,8 +46,7 @@ fetch("/getMenusData", {})
     });
     response.forEach(row => {
       appendMenuAccordionBody(row.id, row.store, row.menu, row.price);
-    });
-  
+    }); 
   });
 
 // fetch("/getMenusData", {})
@@ -162,11 +161,11 @@ const appendUserRadio = (id, user) => {
 // 試し　　indexページ Menusデータ反映 アコーディオン　ヘッダー
 const appendMenuAccordionHeader = (id, store, menu, price) => {
   const parent = document.getElementById("menusArea");
-  const div_1 = document.createElement("div");
-    div_1.className = "accordion-item";
-  const h2 = document.createElement("h2");
-    h2.className = "accordion-header";
-    h2.id = `heading_${id}`;
+  const div_accordionItem = document.createElement("div");
+    div_accordionItem.className = "accordion-item";
+  const h2_accordionHeader = document.createElement("h2");
+    h2_accordionHeader.className = "accordion-header";
+    h2_accordionHeader.id = `heading_${id}`;
   const button = document.createElement("button");
     button.className = "accordion-button collapsed";
     button.type = "button";
@@ -175,14 +174,14 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     button.setAttribute("aria-expanded", "false");
     button.setAttribute("aria-controls", `collapse_${id}`);
     button.innerText = store;
-  const div_2 = document.createElement("div");
-    div_2.id = `collapse_${id}`;
-    div_2.className = "accordion-collapse collapse";
-    div_2.setAttribute("aria-labelledby", `heading_${id}`);
+  const div_accordionCollapse = document.createElement("div");
+    div_accordionCollapse.id = `collapse_${id}`;
+    div_accordionCollapse.className = "accordion-collapse collapse";
+    div_accordionCollapse.setAttribute("aria-labelledby", `heading_${id}`);
   // const body = appendNewMenuAccordionBody(id, store, menu, price);
-  const div_3 = document.createElement("div");
-    div_3.className = `accordion-body ${store}`;
-  const div_4 = document.createElement("div");
+  const div_accordionBody = document.createElement("div");
+    div_accordionBody.className = `accordion-body ${store}`;
+  const div_formCheck = document.createElement("div");
     div_4.className = "form-check";
   const input = document.createElement("input");
     input.className = "form-check-input";
@@ -201,11 +200,15 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   console.log(store);
   console.log(button.innerText);
   
-  parent.appendChild(div_1);
-    div_1.append(h2);
-      h2.append(button);
-    div_1.append(div_2);
-      div_2.append(div_3);
+  parent.appendChild(div_accordionItem);
+    div_accordionItem.append(h2_accordionHeader);
+      h2_accordionHeader.append(button);
+    div_accordionItem.append(div_accordionCollapse);
+      div_accordionCollapse.append(div_accordionBody);
+          div_accordionBody.append(div_4);
+          div_4.append(input);
+          div_4.append(label_1);
+          div_4.append(label_2);
 };
 
 //　試し　　indexページ Menusデータ反映 アコーディオン　ボディ
