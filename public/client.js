@@ -198,18 +198,11 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   
   console.log(store);
   console.log(button_store.innerText);
-  const renderedStore = document.getElementsClassName(`${store}`) 
+  const renderedStore = document.getElementsClassName(store); 
   console.log(renderedStore);
   
-  if (store == renderedStore) {
-    renderedStore.append(div3_accordionBody);
-          div3_accordionBody.append(div4_formCheck);
-          div4_formCheck.append(input);
-          div4_formCheck.append(label_menu);
-          div4_formCheck.append(label_price);
-    
-  } else  {
-    parent_menuArea.appendChild(div1_accordionItem);
+  if (store.length == 1) {
+        parent_menuArea.appendChild(div1_accordionItem);
     div1_accordionItem.append(h2_accordionHeader);
       h2_accordionHeader.append(button_store);
     div1_accordionItem.append(div2_accordionCollapse);
@@ -217,10 +210,18 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
           div3_accordionBody.append(div4_formCheck);
           div4_formCheck.append(input);
           div4_formCheck.append(label_menu);
+          div4_formCheck.append(label_price);    
+  } else  {
+         renderedStore.append(div3_accordionBody);
+          div3_accordionBody.append(div4_formCheck);
+          div4_formCheck.append(input);
+          div4_formCheck.append(label_menu);
           div4_formCheck.append(label_price);
+  
+
   }
     
-  
+
   
 };
 
