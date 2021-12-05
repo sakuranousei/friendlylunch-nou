@@ -11,6 +11,7 @@ fetch("/getUsersData", {})
     });
   });
 
+
 //indexページ Menusデータを呼び出し
 fetch("/getMenusData", {})
   .then(res => res.json())
@@ -80,58 +81,62 @@ const appendNewMenusAccordion = (id, store, menu, price) => {
   
   parent.appenChild(div_1);
   div_1.append(h2);
-  div_1.append(div_2)
-  div_2
-  
+    h2.append(button);
+  div_1.append(div_2);
+    div_2.append(div_3);
+      div_3.append(div_4);
+        div_4.append(input);
+        div_4.append(label_1);
+        div_4.append(label_2);
 };
 
 
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="false"
-            aria-controls="collapseOne"
-          >
-            さくら弁当
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
-          <div class="accordion-body">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                普通
-              </label>
-              <label class="form-check-label" for="flexCheckChecked">
-                500
-              </label>
-            </div>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-              />
-              <label class="form-check-label" for="flexCheckChecked">
-                おかずのみ
-              </label>
-              <label class="form-check-label" for="flexCheckChecked">
-                280
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      // <div class="accordion-item">
+      //   <h2 class="accordion-header" id="headingOne">
+      //     <button
+      //       class="accordion-button collapsed"
+      //       type="button"
+      //       data-bs-toggle="collapse"
+      //       data-bs-target="#collapseOne"
+      //       aria-expanded="false"
+      //       aria-controls="collapseOne"
+      //     >
+      //       さくら弁当
+      //     </button>
+      //   </h2>
+      //   <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+      //     <div class="accordion-body">
+      //       <div class="form-check">
+      //         <input
+      //           class="form-check-input"
+      //           type="checkbox"
+      //           value=""
+      //           id="flexCheckDefault"
+      //         />
+      //         <label class="form-check-label" for="flexCheckDefault">
+      //           普通
+      //         </label>
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           500
+      //         </label>
+      //       </div>
+      //       <div class="form-check">
+      //         <input
+      //           class="form-check-input"
+      //           type="checkbox"
+      //           value=""
+      //           id="flexCheckChecked"
+      //         />
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           おかずのみ
+      //         </label>
+      //         <label class="form-check-label" for="flexCheckChecked">
+      //           280
+      //         </label>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
 
 
 
