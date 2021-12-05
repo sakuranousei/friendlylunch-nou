@@ -136,7 +136,7 @@ app.post("/menus/addEdit", (req, res) => {
   const getMenuPrice = req.body.menuPrice;
   for(let i = 0; i < getMenuId.length; i++) {
     console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Menus (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
     stmt.run();
     stmt.finalize();
   }
