@@ -55,7 +55,7 @@ const appendNewMenusAccordion = (id, store, menu, price) => {
     button.data-bs-target = `#collapse_${id}`;
     button.aria-expanded = "false";
     button.aria-controls = `collapse_${id}`;
-    button.value = store;
+    button.innerText = store;
   const div_2 = document.createElement("div");
     div_2.id = `collapse_${id}`;
     div_2.className = "accordion-collapse collapse";
@@ -69,42 +69,45 @@ const appendNewMenusAccordion = (id, store, menu, price) => {
     input.type = "checkbox";
     input.value = "";
     input.id = "flexCheckDefault";
-  const label = document.createElement("label");
-    label.className = "form-check-label";
-    label.for = "flexCheckDefault";
-    label.innertext = ""
+  const label_1 = document.createElement("label");
+    label_1.className = "form-check-label";
+    label_1.for = "flexCheckDefault";
+    label_1.innerText = menu;
+  const label_2 = document.createElement("label");
+    label_2.className = "form-check-label";
+    label_2.for = "flexCheckChecked";
+    label_2.innerText = price;
   
-  
+  parent.appenChild(div_1);
+  div_1.append(h2);
+  div_1.append(div_2)
+  div_2
   
 };
 
 
-      // <div class="accordion-item">
-      //   <h2 class="accordion-header" id="headingOne">
-      //     <button
-      //       class="accordion-button collapsed"
-      //       type="button"
-      //       data-bs-toggle="collapse"
-      //       data-bs-target="#collapseOne"
-      //       aria-expanded="false"
-      //       aria-controls="collapseOne"
-      //     >
-      //       さくら弁当
-      //     </button>
-      //   </h2>
-      //   <div
-      //     id="collapseOne"
-      //     class="accordion-collapse collapse"
-      //     aria-labelledby="headingOne"
-      //   >
-      //     <div class="accordion-body">
-      //       <div class="form-check">
-              // <input
-              //   class="form-check-input"
-              //   type="checkbox"
-              //   value=""
-              //   id="flexCheckDefault"
-              // />
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="false"
+            aria-controls="collapseOne"
+          >
+            さくら弁当
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
               <label class="form-check-label" for="flexCheckDefault">
                 普通
               </label>
