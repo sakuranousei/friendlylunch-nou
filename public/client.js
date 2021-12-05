@@ -123,7 +123,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
     
 
-function orderAreaUpdate () {
-  const orderArea = document.getElementById("orderArea");
-  console.log(orderArea.checked);
-}
+// function orderAreaUpdate () {
+//   const orderArea = document.getElementById("orderArea");
+//   console.log(orderArea.checked);
+// }
