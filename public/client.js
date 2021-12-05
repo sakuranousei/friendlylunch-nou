@@ -104,15 +104,7 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
     div_2.id = `collapse_${id}`;
     div_2.className = "accordion-collapse collapse";
     div_2.setAttribute("aria-labelledby", `heading_${id}`);
-  const body = appendNewMenuAccordionBody(id, store, menu, price);
-  parent.appendChild(div_1);
-  div_1.append(h2);
-    h2.append(button);
-  div_1.append(div_2);
-    div_2.append(body);
-};
-
-const appendNewMenuAccordionBody = (id, store, menu, price) => {
+  // const body = appendNewMenuAccordionBody(id, store, menu, price);
   const div_3 = document.createElement("div");
     div_3.className = "accordion-body";
   const div_4 = document.createElement("div");
@@ -127,67 +119,27 @@ const appendNewMenuAccordionBody = (id, store, menu, price) => {
     label_1.for = "flexCheckDefault";
     label_1.innerText = menu;
   const label_2 = document.createElement("label");
-    label_2.className = "form-check-label";
+    label_2.className = "form-check-label px-3";
     label_2.for = "flexCheckChecked";
     label_2.innerText = price;
   
+  parent.appendChild(div_1);
+  div_1.append(h2);
+    h2.append(button);
+  div_1.append(div_2);
+    div_2.append(div_3);
       div_3.append(div_4);
         div_4.append(input);
         div_4.append(label_1);
-        div_4.append(label_2); 
+        div_4.append(label_2);
+  
 };
 
 
 
 
-//indexページ Menusデータ反映 アコーディオン
-// const appendNewMenuAccordion = (id, store, menu, price) => {
-//   const parent = document.getElementById("menusArea");
-//   const div_1 = document.createElement("div");
-//     div_1.className = "accordion-item";
-//   const h2 = document.createElement("h2");
-//     h2.className = "accordion-header";
-//     h2.id = `heading_${id}`;
-//   const button = document.createElement("button");
-//     button.className = "accordion-button collapsed";
-//     button.type = "button";
-//     button.data-bs-toggle = "collapse";
-//     button.data-bs-target = `#collapse_${id}`;
-//     button.aria-expanded = "false";
-//     button.aria-controls = `collapse_${id}`;
-//     button.innerText = store;
-//   const div_2 = document.createElement("div");
-//     div_2.id = `collapse_${id}`;
-//     div_2.className = "accordion-collapse collapse";
-//     div_2.aria-labelledby = `heading_${id}`;
-//   const div_3 = document.createElement("div");
-//     div_3.className = "accordion-body";
-//   const div_4 = document.createElement("div");
-//     div_4.className = "form-check";
-//   const input = document.createElement("input");
-//     input.className = "form-check-input";
-//     input.type = "checkbox";
-//     input.value = "";
-//     input.id = "flexCheckDefault";
-//   const label_1 = document.createElement("label");
-//     label_1.className = "form-check-label";
-//     label_1.for = "flexCheckDefault";
-//     label_1.innerText = menu;
-//   const label_2 = document.createElement("label");
-//     label_2.className = "form-check-label";
-//     label_2.for = "flexCheckChecked";
-//     label_2.innerText = price;
-  
-//   parent.appenChild(div_1);
-//   div_1.append(h2);
-//     h2.append(button);
-//   div_1.append(div_2);
-//     div_2.append(div_3);
-//       div_3.append(div_4);
-//         div_4.append(input);
-//         div_4.append(label_1);
-//         div_4.append(label_2);
-// };
+
+
 
 
 
