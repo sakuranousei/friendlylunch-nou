@@ -160,55 +160,59 @@ const appendUserRadio = (id, user) => {
 
 // 試し　　indexページ Menusデータ反映 アコーディオン　ヘッダー
 const appendMenuAccordionHeader = (id, store, menu, price) => {
-  const parent = document.getElementById("menusArea");
-  const div_accordionItem = document.createElement("div");
-    div_accordionItem.className = "accordion-item";
+  const parent_menuArea = document.getElementById("menusArea");
+  const div1_accordionItem = document.createElement("div");
+    div1_accordionItem.className = "accordion-item";
   const h2_accordionHeader = document.createElement("h2");
     h2_accordionHeader.className = "accordion-header";
     h2_accordionHeader.id = `heading_${id}`;
-  const button = document.createElement("button");
-    button.className = "accordion-button collapsed";
-    button.type = "button";
-    button.setAttribute("data-bs-toggle", "collapse");
-    button.setAttribute("data-bs-target", `#collapse_${id}`);
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-controls", `collapse_${id}`);
-    button.innerText = store;
-  const div_accordionCollapse = document.createElement("div");
-    div_accordionCollapse.id = `collapse_${id}`;
-    div_accordionCollapse.className = "accordion-collapse collapse";
-    div_accordionCollapse.setAttribute("aria-labelledby", `heading_${id}`);
-  // const body = appendNewMenuAccordionBody(id, store, menu, price);
-  const div_accordionBody = document.createElement("div");
-    div_accordionBody.className = `accordion-body ${store}`;
-  const div_formCheck = document.createElement("div");
-    div_4.className = "form-check";
+  const button_store = document.createElement("button");
+    button_store.className = "accordion-button collapsed";
+    button_store.type = "button";
+    button_store.setAttribute("data-bs-toggle", "collapse");
+    button_store.setAttribute("data-bs-target", `#collapse_${id}`);
+    button_store.setAttribute("aria-expanded", "false");
+    button_store.setAttribute("aria-controls", `collapse_${id}`);
+    button_store.innerText = store;
+  const div2_accordionCollapse = document.createElement("div");
+    div2_accordionCollapse.id = `collapse_${id}`;
+    div2_accordionCollapse.className = "accordion-collapse collapse";
+    div2_accordionCollapse.setAttribute("aria-labelledby", `heading_${id}`);
+  const div3_accordionBody = document.createElement("div");
+    div3_accordionBody.className = `accordion-body ${store}`;
+  const div4_formCheck = document.createElement("div");
+    div4_formCheck.className = "form-check";
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "checkbox";
     input.value = "";
     input.id = "flexCheckDefault";
-  const label_1 = document.createElement("label");
-    label_1.className = "form-check-label";
-    label_1.for = "flexCheckDefault";
-    label_1.innerText = menu;
-  const label_2 = document.createElement("label");
-    label_2.className = "form-check-label px-3";
-    label_2.for = "flexCheckChecked";
-    label_2.innerText = price;
+  const label_menu = document.createElement("label");
+    label_menu.className = "form-check-label";
+    label_menu.for = "flexCheckDefault";
+    label_menu.innerText = menu;
+  const label_price = document.createElement("label");
+    label_price.className = "form-check-label px-3";
+    label_price.for = "flexCheckChecked";
+    label_price.innerText = price;
   
   console.log(store);
-  console.log(button.innerText);
+  console.log(button_store.innerText);
   
-  parent.appendChild(div_accordionItem);
-    div_accordionItem.append(h2_accordionHeader);
-      h2_accordionHeader.append(button);
-    div_accordionItem.append(div_accordionCollapse);
-      div_accordionCollapse.append(div_accordionBody);
-          div_accordionBody.append(div_4);
-          div_4.append(input);
-          div_4.append(label_1);
-          div_4.append(label_2);
+  if (store == button_store.innerText) {
+    
+  } if (store ==)
+    
+  
+  parent_menuArea.appendChild(div1_accordionItem);
+    div1_accordionItem.append(h2_accordionHeader);
+      h2_accordionHeader.append(button_store);
+    div1_accordionItem.append(div2_accordionCollapse);
+      div2_accordionCollapse.append(div3_accordionBody);
+          div3_accordionBody.append(div4_formCheck);
+          div4_formCheck.append(input);
+          div4_formCheck.append(label_menu);
+          div4_formCheck.append(label_price);
 };
 
 //　試し　　indexページ Menusデータ反映 アコーディオン　ボディ
