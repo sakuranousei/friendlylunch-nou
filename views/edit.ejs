@@ -155,42 +155,40 @@
       function getMenusData(id, store, menu, price) {
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
-        const td_0 = document.createElement("td");
-          td_0.hidden = true;
-          td_0.name = "menuTd_0"
-        const input_0 = document.createElement("input");
-          input_0.readOnly = true;
-          input_0.className = "form-control text-center";
-          input_0.name = "menuId";
-          input_0.value = id;
         const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.name = "menuTd_1"
         const input_1 = document.createElement("input");
-          input_1.className = "form-control";
-          input_1.type = "text";
-          input_1.name = "store-names";
-          input_1.value = store;
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.name = "menuId";
+          input_1.value = id;
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "menus";
-          input_2.value = menu;
+          input_2.name = "store-names";
+          input_2.value = store;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
           input_3.className = "form-control";
-          input_3.type = "number";
-          input_3.name = "prices";
-          input_3.value = price;
+          input_3.type = "text";
+          input_3.name = "menus";
+          input_3.value = menu;
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
-          input_4.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
-          input_4.className = "form-control btn-outline-secondary";
-          input_4.type = "button";
-          input_4.name = `deleteMenuBtn_${id}`;
-          input_4.value =　"×";
+          input_4.className = "form-control";
+          input_4.type = "number";
+          input_4.name = "prices";
+          input_4.value = price;
+        const td_5 = document.createElement("td");
+        const input_5 = document.createElement("input");
+          input_5.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
+          input_5.className = "form-control btn-outline-secondary";
+          input_5.type = "button";
+          input_5.name = `deleteMenuBtn_${id}`;
+          input_5.value =　"×";
         parent.appendChild(tr);
-        tr.append(td_0);
-        td_0.append(input_0);
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
@@ -199,6 +197,8 @@
         td_3.append(input_3);
         tr.append(td_4);
         td_4.append(input_4);
+        tr.append(td_5);
+        td_5.append(input_5);
       };
       
       
@@ -242,39 +242,37 @@
       function menuRowAdd() {
         const parent = document.getElementById("menuFormArea");
         const tr = document.createElement("tr");
-        const td_0 = document.createElement("td");
-          td_0.hidden = true;
-          td_0.name = "menuTd_0"
-        const input_0 = document.createElement("input");
-          input_0.readOnly = true;
-          input_0.className = "form-control text-center";
-          input_0.name = "menuId";
-          input_0.value = maxMenuId;
         const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.name = "menuTd_1"
         const input_1 = document.createElement("input");
-          input_1.className = "form-control";
-          input_1.type = "text";
-          input_1.name = "store-names";
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.name = "menuId";
+          input_1.value = maxMenuId;
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
           input_2.className = "form-control";
           input_2.type = "text";
-          input_2.name = "menus";
+          input_2.name = "store-names";
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
           input_3.className = "form-control";
-          input_3.type = "number";
-          input_3.name = "prices";
+          input_3.type = "text";
+          input_3.name = "menus";
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
-          input_4.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
-          input_4.className = "form-control btn-outline-secondary";
-          input_4.type = "button";
-          input_4.name = `deleteMenuBtn_${input_0.value}`;
-          input_4.value =　"×";
+          input_4.className = "form-control";
+          input_4.type = "number";
+          input_4.name = "prices";
+        const td_5 = document.createElement("td");
+        const input_5 = document.createElement("input");
+          input_5.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
+          input_5.className = "form-control btn-outline-secondary";
+          input_5.type = "button";
+          input_5.name = `deleteMenuBtn_${input_1.value}`;
+          input_5.value =　"×";
         parent.appendChild(tr);
-        tr.append(td_0);
-        td_0.append(input_0);
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
@@ -283,6 +281,8 @@
         td_3.append(input_3);
         tr.append(td_4);
         td_4.append(input_4);
+        tr.append(td_5);
+        td_5.append(input_5);
       };
       
       

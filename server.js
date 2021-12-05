@@ -114,7 +114,7 @@ app.get("/getMenusData", (request, response) => {
 
 
 
-// Usersテーブルの追加・更新 Upsert処理
+//Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
   const getId = req.body.userId;
   const getUser = req.body.userName;
@@ -128,6 +128,7 @@ app.post("/users/addEdit", (req, res) => {
 });
 
 
+//Usersテーブルの削除
 app.get("/users/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
