@@ -123,41 +123,48 @@ const appendNewMenuAccordionHeader = (id, store, menu, price) => {
     label_2.for = "flexCheckChecked";
     label_2.innerText = price;
   
-  parent.appendChild(div_1);
-  div_1.append(h2);
-    h2.append(button);
-  div_1.append(div_2);
-    div_2.append(div_3);
-      div_3.append(div_4);
-        div_4.append(input);
-        div_4.append(label_1);
-        div_4.append(label_2);
-  
+  if (store !== button.innneText) {
+      parent.appendChild(div_1);
+      div_1.append(h2);
+        h2.append(button);
+      div_1.append(div_2);
+        div_2.append(div_3);
+          div_3.append(div_4);
+            div_4.append(input);
+            div_4.append(label_1);
+            div_4.append(label_2);
+      } if (store ) {
+          div_3.append(div_4);
+            div_4.append(input);
+            div_4.append(label_1);
+            div_4.append(label_2);
+      };
 };
 
 
-const appendNewMenuAccordionBody = (id, store, menu, price) => {
-  const storeName = document.getElementsByClassName("accordion-button");
-  const div_4 = document.createElement("div");
-    div_4.className = "form-check";
-  const input = document.createElement("input");
-    input.className = "form-check-input";
-    input.type = "checkbox";
-    input.value = "";
-    input.id = "flexCheckDefault";
-  const label_1 = document.createElement("label");
-    label_1.className = "form-check-label";
-    label_1.for = "flexCheckDefault";
-    label_1.innerText = menu;
-  const label_2 = document.createElement("label");
-    label_2.className = "form-check-label px-3";
-    label_2.for = "flexCheckChecked";
-    label_2.innerText = price;
-  if (store = storeName.innnerText) {
-    const setpoint = 
+// ★アコーディオンボディ
+// const appendNewMenuAccordionBody = (id, store, menu, price) => {
+//   const storeName = document.getElementsByClassName("accordion-button");
+//   const div_4 = document.createElement("div");
+//     div_4.className = "form-check";
+//   const input = document.createElement("input");
+//     input.className = "form-check-input";
+//     input.type = "checkbox";
+//     input.value = "";
+//     input.id = "flexCheckDefault";
+//   const label_1 = document.createElement("label");
+//     label_1.className = "form-check-label";
+//     label_1.for = "flexCheckDefault";
+//     label_1.innerText = menu;
+//   const label_2 = document.createElement("label");
+//     label_2.className = "form-check-label px-3";
+//     label_2.for = "flexCheckChecked";
+//     label_2.innerText = price;
+//   if (store = storeName.innnerText) {
+//     const setpoint = 
     
-  }
-};
+//   }
+// };
 
 
 
