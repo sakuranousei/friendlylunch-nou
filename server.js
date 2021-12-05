@@ -130,18 +130,17 @@ app.post("/users/addEdit", (req, res) => {
 
 //Menusテーブルの追加・更新 Upsert処理
 app.post("/menus/addEdit", (req, res) => {
-  console.log('test');
-  // const getMenuId = req.body.menuId;
-  // const getMenuStore = req.body.menuStore;
-  // const getMenuName = req.body.menuName;
-  // const getMenuPrice = req.body.menuPrice;
-  // for(let i = 0; i < getMenuId.length; i++) {
-  //   console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
-    // const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getId[i], getUser[i]);
-    // stmt.run();
-    // stmt.finalize();
-  // }
-  // return res.render(`${__dirname}/views/edit.ejs`);
+  const getMenuId = req.body.menuId;
+  const getMenuStore = req.body.menuStore;
+  const getMenuName = req.body.menuName;
+  const getMenuPrice = req.body.menuPrice;
+  for(let i = 0; i < getMenuId.length; i++) {
+    console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+    stmt.run();
+    stmt.finalize();
+  }
+  return res.render(`${__dirname}/views/edit.ejs`);
 });
 
 
