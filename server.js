@@ -97,23 +97,6 @@ app.get("/getMenusData", (request, response) => {
 });
 
 
-
-//editでのUsersの反映
-// app.get("/edit/getUsersData", (request, response) => {
-//   db.all("SELECT * from Users", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
-
-//editでのUsersの反映
-// app.get("/edit/getMenusData", (request, response) => {
-//   db.all("SELECT * from Users", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
-
-
-
 //Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
   const getUserId = req.body.userId;

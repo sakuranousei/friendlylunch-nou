@@ -2,6 +2,7 @@ console.log("hello world");
 
 
 // index request the Users from our app's sqlite database
+//indexページでUsersデータを呼び出し
 fetch("/getUsersData", {})
   .then(res => res.json())
   .then(response => {
@@ -10,8 +11,17 @@ fetch("/getUsersData", {})
     });
   });
 
+//indexページ Menusデータを呼び出し
+fetch("/getMenusData", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+       appendNewMenusAccordion(row.id, row.store, row.menu, row.price);
+    });
+  });
 
-//index Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
+
+//indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
 const appendNewUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
@@ -28,6 +38,10 @@ const appendNewUserRadio = (id, user) => {
   div.append(input);
   div.append(label);
 }
+
+
+//indexページ　Menusデータ反映 セレクトボタン
+
 
 
 //日付
