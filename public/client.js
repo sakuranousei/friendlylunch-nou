@@ -52,12 +52,28 @@ const appendNewMenusAccordion = (id, store, menu, price) => {
     button.className = "accordion-button collapsed";
     button.type = "button";
     button.data-bs-toggle = "collapse";
-    button.data-bs-target = "#collapseOne";
+    button.data-bs-target = `#collapse_${id}`;
     button.aria-expanded = "false";
-    button.aria-controls = "collapseOne";
-    button.value = "store"
+    button.aria-controls = `collapse_${id}`;
+    button.value = store;
   const div_2 = document.createElement("div");
-    div_2.id = 
+    div_2.id = `collapse_${id}`;
+    div_2.className = "accordion-collapse collapse";
+    div_2.aria-labelledby = `heading_${id}`;
+  const div_3 = document.createElement("div");
+    div_3.className = "accordion-body";
+  const div_4 = document.createElement("div");
+    div_4.className = "form-check";
+  const input = document.createElement("input");
+    input.className = "form-check-input";
+    input.type = "checkbox";
+    input.value = "";
+    input.id = "flexCheckDefault";
+  const label = document.createElement("label");
+    label.className = "form-check-label";
+    label.for = "flexCheckDefault";
+    label.innertext = ""
+  
   
   
 };
@@ -83,36 +99,36 @@ const appendNewMenusAccordion = (id, store, menu, price) => {
       //   >
       //     <div class="accordion-body">
       //       <div class="form-check">
-      //         <input
-      //           class="form-check-input"
-      //           type="checkbox"
-      //           value=""
-      //           id="flexCheckDefault"
-      //         />
-      //         <label class="form-check-label" for="flexCheckDefault">
-      //           普通
-      //         </label>
-      //         <label class="form-check-label" for="flexCheckChecked">
-      //           500
-      //         </label>
-      //       </div>
-      //       <div class="form-check">
-      //         <input
-      //           class="form-check-input"
-      //           type="checkbox"
-      //           value=""
-      //           id="flexCheckChecked"
-      //         />
-      //         <label class="form-check-label" for="flexCheckChecked">
-      //           おかずのみ
-      //         </label>
-      //         <label class="form-check-label" for="flexCheckChecked">
-      //           280
-      //         </label>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
+              // <input
+              //   class="form-check-input"
+              //   type="checkbox"
+              //   value=""
+              //   id="flexCheckDefault"
+              // />
+              <label class="form-check-label" for="flexCheckDefault">
+                普通
+              </label>
+              <label class="form-check-label" for="flexCheckChecked">
+                500
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                おかずのみ
+              </label>
+              <label class="form-check-label" for="flexCheckChecked">
+                280
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 
