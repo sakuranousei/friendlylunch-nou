@@ -201,6 +201,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   
     const renderedStore = document.getElementsByClassName(`${store}`); 
     console.log(renderedStore);
+    console.log(renderedStore.length);
     
     
     parent_menuArea.appendChild(div1_accordionItem);
