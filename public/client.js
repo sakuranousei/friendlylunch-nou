@@ -68,35 +68,20 @@ const appendNewMenuRadio = (id, store, menu, price) => {
   div.append(label_price);
 }
 
-//indexページ Menusデータ反映 アコーディオン
+//★indexページ Menusデータ反映 アコーディオン
 const appendNewMenuAccordion = (id, store, menu, price) => {
   document.getElementById('addedForms2').insertAdjacentHTML('beforeend',
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="false"
-            aria-controls="collapseOne"
-          >
+      '<div class="accordion-item">' +
+        '<h2 class="accordion-header"' + 
+             id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
             さくら弁当
           </button>
         </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingOne"
-        >
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
           <div class="accordion-body">
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
               <label class="form-check-label" for="flexCheckDefault">
                 普通
               </label>
