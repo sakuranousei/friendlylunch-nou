@@ -86,8 +86,8 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "checkbox";
-    input.value = menu,price;
-    input.name = "selectMenu"
+    input.value = store + "," + menu + "," + price;
+    input.name = "selectStoreMenuPrice"
     input.id = "flexCheckDefault";
   const label_menu = document.createElement("label");
     label_menu.className = "form-check-label";
@@ -118,12 +118,6 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-// const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
-// ordersUpdateBtn.addEventListener("click", () => {
-//   const form = document.forms.orderArea;
-//   console.log(form.selectUserName.value);
-// });
-
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
@@ -132,9 +126,9 @@ ordersUpdateBtn.addEventListener("click", () => {
         console.log(checked_data.value);
       }
     };
-  const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
-    if(0 < input_selectUserName.length) {
-      for (const checked_data of input_selectUserName) {
+  const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
+    if(0 < input_selectStoreMenuPrice.length) {
+      for (const checked_data of input_selectStoreMenuPrice) {
         console.log(checked_data.value);
       }
     };
