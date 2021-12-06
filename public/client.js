@@ -176,10 +176,11 @@ ordersUpdateBtn.addEventListener("click", () => {
       console.log(checked_selectStoreMenuPrice);
       console.log(data_selectStoreMenuPrice);
       console.log(Array.from(checked_selectStoreMenuPrice));
+      console.log()
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
           for (let data_selectUserName of checked_selectUserName) {
-          ordersAddArray.push(data_selectUserName.value);
+          ordersAddArray.push(data_selectUserName[0].value);
           }
           ordersAddArray.push(ary[i]);
           for (let data_selectChangeValue of selectChangeValue) {
