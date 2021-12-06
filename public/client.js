@@ -132,6 +132,12 @@ ordersUpdateBtn.addEventListener("click", () => {
         console.log(checked_data.value);
       }
     };
+  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
+  if(0 < input_selectChangeValue.length) {
+    for (const checked_data of input_selectChangeValue) {
+      console.log(checked_data.value);
+    }
+  };
 });
 
 
