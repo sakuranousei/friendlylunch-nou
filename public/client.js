@@ -150,6 +150,13 @@ ordersUpdateBtn.addEventListener("click", () => {
   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
+  if (0 == input_selectUserName.length) {
+    document.getElementById("errormessage").textContent = "ユーザー名を選択してください。";
+    
+  }
+  
+  
+  
     if(0 < input_selectUserName.length) {
       for (const data_selectUserName of input_selectUserName) {
         ordersAddArray.push(data_selectUserName.value);
