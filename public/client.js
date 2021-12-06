@@ -176,6 +176,7 @@ ordersUpdateBtn.addEventListener("click", () => {
     
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { //2
       
+      
       ordersAddArray.push(checked_selectUserName[0].value);
       
       for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
