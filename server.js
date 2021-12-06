@@ -23,10 +23,6 @@ const db = new sqlite3.Database(dbFile);
 db.serialize(() => {
   if (!exists) {
     db.run(
-      "CREATE TABLE Dreams (id INTEGER PRIMARY KEY AUTOINCREMENT, dream TEXT)"
-    );
-    console.log("New table Dreams created!"); 
-    db.run(
       "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
     );
     console.log("New table Users created!"); 
@@ -35,11 +31,6 @@ db.serialize(() => {
     );
     console.log("New table Menus created!");  
     // insert default table
-    db.serialize(() => {
-      db.run(
-        'INSERT INTO Dreams (dream) VALUES ("Find and count some sheep"), ("Climb a really tall mountain"), ("Wash the dishes")'
-      );
-    });
     db.serialize(() => {
       db.run(
         'INSERT INTO Users (user) VALUES ("ユーザー１"), ("ユーザー２"), ("ユーザー３")'
@@ -51,14 +42,8 @@ db.serialize(() => {
       );
     });
   } else {
-    console.log('Database "Dreams" ready to go!');
     console.log('Database "Users" ready to go!');
     console.log('Database "Menus" ready to go!');
-    db.each("SELECT * from Dreams", (err, row) => {
-      if (row) {
-        console.log(`record: ${row.dream}`);
-      }
-    });
     db.each("SELECT * from Users", (err, row) => {
       if (row) {
         console.log(`record: ${row.user}`);

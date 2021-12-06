@@ -118,22 +118,46 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
+// const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
+// ordersUpdateBtn.addEventListener("click", () => {
+//   const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+//     if(0 < input_selectUserName.length) {
+//       for (const checked_data of input_selectUserName) {
+//         console.log(checked_data.value);
+//       }
+//     };
+//   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
+//     if(0 < input_selectStoreMenuPrice.length) {
+//       for (const checked_data of input_selectStoreMenuPrice) {
+//         console.log(checked_data.value);
+//       }
+//     };
+//   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
+//   if(0 < input_selectChangeValue.length) {
+//     for (const checked_data of input_selectChangeValue) {
+//       console.log(checked_data.value);
+//     }
+//   };
+// });
+
+
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
+
+
 ordersUpdateBtn.addEventListener("click", () => {
   const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+  const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
+  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
+  const ordersAddArray = [];
     if(0 < input_selectUserName.length) {
       for (const checked_data of input_selectUserName) {
         console.log(checked_data.value);
       }
-    };
-  const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
-    if(0 < input_selectStoreMenuPrice.length) {
+    } else if(0 < input_selectStoreMenuPrice.length) {
       for (const checked_data of input_selectStoreMenuPrice) {
         console.log(checked_data.value);
       }
-    };
-  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
-  if(0 < input_selectChangeValue.length) {
+    } else if(0 < input_selectChangeValue.length) {
     for (const checked_data of input_selectChangeValue) {
       console.log(checked_data.value);
     }
