@@ -175,13 +175,14 @@ ordersUpdateBtn.addEventListener("click", () => {
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       console.log(checked_selectStoreMenuPrice);
       console.log(data_selectStoreMenuPrice);
+      console.log(Array.from(checked_selectStoreMenuPrice));
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
-          for (const data_selectUserName of checked_selectUserName) {
+          for (let data_selectUserName of checked_selectUserName) {
           ordersAddArray.push(data_selectUserName.value);
           }
           ordersAddArray.push(ary[i]);
-          for (const data_selectChangeValue of selectChangeValue) {
+          for (let data_selectChangeValue of selectChangeValue) {
           ordersAddArray.push(data_selectChangeValue.value);
         }
       }
