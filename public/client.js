@@ -124,5 +124,22 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 //   console.log(form.selectUserName.value);
 // });
 
-const input_sele
+const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
+ordersUpdateBtn.addEventListener("click", () => {
+  const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+    if(0 < input_selectUserName.length) {
+      for (const checked_data of input_selectUserName) {
+        console.log(checked_data.value);
+      }
+    };
+  const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+    if(0 < input_selectUserName.length) {
+      for (const checked_data of input_selectUserName) {
+        console.log(checked_data.value);
+      }
+    };
+});
+
+
+
 
