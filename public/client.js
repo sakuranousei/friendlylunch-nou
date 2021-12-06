@@ -173,17 +173,20 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+      console.log(checked_selectStoreMenuPrice);
+      console.log(data_selectStoreMenuPrice);
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
-        ordersAddArray.push(ary[i]);
           for (const data_selectUserName of checked_selectUserName) {
           ordersAddArray.push(data_selectUserName.value);
-    }
+          }
+          ordersAddArray.push(ary[i]);
+          for (const data_selectChangeValue of selectChangeValue) {
+          ordersAddArray.push(data_selectChangeValue.value);
+        }
       }
     }
-    for (const data_selectChangeValue of selectChangeValue) {
-      ordersAddArray.push(data_selectChangeValue.value);
-    }
+    
   };
   
 
@@ -192,26 +195,26 @@ ordersUpdateBtn.addEventListener("click", () => {
   
   
   
-  if(0 < checked_selectUserName.length) {
-    for (const data_selectUserName of checked_selectUserName) {
-      ordersAddArray.push(data_selectUserName.value);
-    }
-  }; 
+//   if(0 < checked_selectUserName.length) {
+//     for (const data_selectUserName of checked_selectUserName) {
+//       ordersAddArray.push(data_selectUserName.value);
+//     }
+//   }; 
   
-  if(0 < checked_selectStoreMenuPrice.length) {
-    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-      const ary = data_selectStoreMenuPrice.value.split(',');
-      for (let i = 0; i < ary.length; i++) {
-        ordersAddArray.push(ary[i]);
-      }
-    }
-  }; 
+//   if(0 < checked_selectStoreMenuPrice.length) {
+//     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+//       const ary = data_selectStoreMenuPrice.value.split(',');
+//       for (let i = 0; i < ary.length; i++) {
+//         ordersAddArray.push(ary[i]);
+//       }
+//     }
+//   }; 
   
-  if(0 < selectChangeValue.length) {
-    for (const data_selectChangeValue of selectChangeValue) {
-      ordersAddArray.push(data_selectChangeValue.value);
-    }
-  };
+//   if(0 < selectChangeValue.length) {
+//     for (const data_selectChangeValue of selectChangeValue) {
+//       ordersAddArray.push(data_selectChangeValue.value);
+//     }
+//   };
   console.log(ordersAddArray);
 });
 
