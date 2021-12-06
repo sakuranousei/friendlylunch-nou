@@ -145,18 +145,18 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 //ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
-  const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
-  const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
-  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
+  const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+  const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
+  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]:checked");
   const ordersAddArray = [];
   
-  if (input_selectUserName.length == 0 || input_selectStoreMenuPrice.length == 0) {
+  if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名・お店・メニューを選択してください。";
   };
 
-  if(input_selectStoreMenuPrice.length == 1 && input_selectUserName.length == 1) {
+  if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
         ordersAddArray.push(ary[i]);
@@ -169,13 +169,13 @@ ordersUpdateBtn.addEventListener("click", () => {
   
   
   
-  if(0 < input_selectUserName.length) {
-    for (const data_selectUserName of input_selectUserName) {
+  if(0 < checked_selectUserName.length) {
+    for (const data_selectUserName of checked_selectUserName) {
       ordersAddArray.push(data_selectUserName.value);
     }
   }; 
-  if(0 < input_selectStoreMenuPrice.length) {
-    for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+  if(0 < checked_selectStoreMenuPrice.length) {
+    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
         ordersAddArray.push(ary[i]);
