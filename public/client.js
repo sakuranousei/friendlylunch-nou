@@ -172,18 +172,19 @@ ordersUpdateBtn.addEventListener("click", () => {
 
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
+    console.log(checked_selectStoreMenuPrice.length); //2
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { 
       ordersAddArray.push(checked_selectUserName[0].value);
       for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
-        for (let i = 0; i < ary.length; i++) {
-          ordersAddArray.push(ary[i]);
+        console.log(ary.length); //3
+        console.log(ary); //(3) ['さくら弁当', '普通', '450'] (3) ['さくら弁当', 'おかずのみ', '350']
+        for (let f = 0; f < ary.length; f++) {
+          ordersAddArray.push(ary[f]);
         }
       }
-      ordersAddArray.push(selectChangeValue[0].value);
-        
+      ordersAddArray.push(selectChangeValue[0].value); 
       }
-    
   };
   
 
