@@ -49,6 +49,7 @@ const appendUserRadio = (id, user) => {
     input.className = "form-check-input";
     input.type = "radio";
     input.name = "selectUserName"
+    input.value = user;
   const label = document.createElement("label");
     label.className = "form-check-label";
     label.innerText = user;
@@ -125,16 +126,11 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     
 
 function ordersUpdate () {
-  
-  // const orderArea = document.getElementById("orderArea");
-  // const radioNodeList = orderArea.selectUser;
-  // console.log(radioNodeList.checked);
+  console.log(document.forms);
   const selectUserName = document.getElementsByName("selectUserName");
-  console.log(selectUserName);
-  // if (selectUserName.checked) {
-  //   console.log(selectUserName.innerText);
-  // } else {
-  //   console.log("no check");
-  // }
-
-}
+  for (let i = 0; i < selectUserName.length; i++) {
+    if (selectUserName.checked) {
+      console.log(selectUserName.value);
+    }
+  }
+};
