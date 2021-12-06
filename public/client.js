@@ -157,9 +157,10 @@ ordersUpdateBtn.addEventListener("click", () => {
     }; 
     if(0 < input_selectStoreMenuPrice.length) {
       for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
-        const ary = data_selectStoreMenuPrice.value.split
-        const str = ary.join(',');
-        ordersAddArray.push(str);
+        const ary = data_selectStoreMenuPrice.value.split(',');
+        for (let i = 0; i < ary.length; i++) {
+          ordersAddArray.push(ary[i]);
+        }
       }
     }; 
     if(0 < input_selectChangeValue.length) {
