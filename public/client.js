@@ -142,9 +142,8 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 // });
 
 
+//ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
-
-
 ordersUpdateBtn.addEventListener("click", () => {
   const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
@@ -153,15 +152,17 @@ ordersUpdateBtn.addEventListener("click", () => {
   if (input_selectUserName.length == 0 || input_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名・お店・メニューを選択してください。";
   };
+
   
-  if(1 == input_selectStoreMenuPrice.length) 
+  if(input_selectStoreMenuPrice.length == 1 && input_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
-      const ary = data_selectStoreMenuPrice.value.split(',');
-      for (let i = 0; i < ary.length; i++) {
-        ordersAddArray.push(ary[i]);
-      }
+    // for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+    //   const ary = data_selectStoreMenuPrice.value.split(',');
+    //   for (let i = 0; i < ary.length; i++) {
+    //     ordersAddArray.push(ary[i]);
+    //   }
     }
+
 
   
   
