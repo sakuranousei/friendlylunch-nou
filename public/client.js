@@ -150,18 +150,21 @@ ordersUpdateBtn.addEventListener("click", () => {
   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
     if(0 < input_selectUserName.length) {
-      for (const checked_data of input_selectUserName) {
-        console.log(checked_data.value);
+      for (const data_selectUserName of input_selectUserName) {
+        ordersAddArray.push(data_selectUserName.value);
       }
-    } else if(0 < input_selectStoreMenuPrice.length) {
-      for (const checked_data of input_selectStoreMenuPrice) {
-        console.log(checked_data.value);
+    }; 
+    if(0 < input_selectStoreMenuPrice.length) {
+      for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+        ordersAddArray.push(data_selectStoreMenuPrice.value);
       }
-    } else if(0 < input_selectChangeValue.length) {
-    for (const checked_data of input_selectChangeValue) {
-      console.log(checked_data.value);
+    }; 
+    if(0 < input_selectChangeValue.length) {
+      for (const data_selectChangeValue of input_selectChangeValue) {
+        ordersAddArray.push(data_selectChangeValue.value);
     }
   };
+  console.log(ordersAddArray);
 });
 
 
