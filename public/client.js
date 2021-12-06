@@ -118,12 +118,11 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
-ordersUpdateBtn.addEventListener("click", () => {
-  const form = document.forms.orderArea;
-  console.log(form.selectUserName.value);
-  console.log(form.selectMenu.value);
-  
-});
+// const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
+// ordersUpdateBtn.addEventListener("click", () => {
+//   const form = document.forms.orderArea;
+//   console.log(form.selectUserName.value);
+// });
 
+const input_sele
 
