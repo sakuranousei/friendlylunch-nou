@@ -173,8 +173,11 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     console.log(checked_selectStoreMenuPrice.length); //2
-    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { 
+    
+    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { //2
+      
       ordersAddArray.push(checked_selectUserName[0].value);
+      
       for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
         console.log(ary.length); //3
@@ -183,8 +186,10 @@ ordersUpdateBtn.addEventListener("click", () => {
           ordersAddArray.push(ary[f]);
         }
       }
+      
       ordersAddArray.push(selectChangeValue[0].value); 
-      }
+      
+    }
   };
   
 
