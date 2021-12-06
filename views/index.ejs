@@ -53,7 +53,8 @@
     
     
     <!--注文フォーム-->
-    <form action="/orders/update" method="post" id="ordeArea">
+    <!--<form action="/orders/update" method="post" id="ordeArea"> -->
+    <form id="ordeArea">
       
       <!--ユーザー選択-->
       <div id="usersArea" class="container pt-4">
@@ -81,7 +82,7 @@
       
       <!--注文確定・更新-->
       <div class="container pt-5 pb-5">
-        <input id="ordersDataAdd" type="submit" class="btn btn-dark w-auto" value="注文確定or更新">
+        <input onclick="ordersUpdate()" id="ordersDataAdd" type="" class="btn btn-dark w-auto" value="注文確定or更新">
       </div>      
       
     </form>

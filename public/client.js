@@ -86,6 +86,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     input.className = "form-check-input";
     input.type = "checkbox";
     input.value = "";
+    input.name = "selectMenu"
     input.id = "flexCheckDefault";
   const label_menu = document.createElement("label");
     label_menu.className = "form-check-label";
@@ -123,7 +124,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
     
 
-// function orderAreaUpdate () {
-//   const orderArea = document.getElementById("orderArea");
-//   console.log(orderArea.checked);
-// }
+function ordersUpdate () {
+  const selectUser = document.getElementsByName("selectUser");
+  console.log(selectUser);
+}
