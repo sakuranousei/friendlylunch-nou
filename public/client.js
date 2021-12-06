@@ -125,10 +125,15 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     
 
 function ordersUpdate () {
-  const orderArea = document.getElementById("orderArea");
-  const radioNodeList = orderArea.selectUser;
-  console.log(radioNodeList.value);
-  if(orderArea.checked) {
-    console
-  }
+  // const orderArea = document.getElementById("orderArea");
+  // const radioNodeList = orderArea.selectUser;
+  // console.log(radioNodeList.checked);
+  const selectUserName = document.getElementsByName("selectUserName");
+  console.log(selectUserName);
+  // if (selectUserName.checked) {
+  //   console.log(selectUserName.innerText);
+  // } else {
+  //   console.log("no check");
+  // }
+
 }
