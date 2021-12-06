@@ -150,7 +150,7 @@ app.get("/menus/delete/:deleteId", (req, res) => {
 
 
 app.post("/orders/update", (req, res) => {
-  console.log(req.body.checked);
+  console.log(req.body);
   return res.render(`${__dirname}/views/index.ejs`);
 });
   
