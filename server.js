@@ -149,12 +149,6 @@ app.get("/menus/delete/:deleteId", (req, res) => {
 });
 
 
-// app.post("/orders/update", (req, res) => {
-//   console.log(req.body);
-//   return res.render(`${__dirname}/views/index.ejs`);
-// });
-  
-
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
   console.log(`Your app is listening on port ${listener.address().port}`);

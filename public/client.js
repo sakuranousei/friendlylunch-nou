@@ -97,14 +97,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     label_price.className = "form-check-label px-3";
     label_price.for = "flexCheckChecked";
     label_price.innerText = price;
-  
-  const renderedStore = document.getElementsByClassName(`${store}`); 
-  // console.log(store);
-  // console.log(button_store.innerText);
-  // console.log(renderedStore);
-  // console.log(renderedStore[0]);
-  // console.log(renderedStore.length);
-              
+  const renderedStore = document.getElementsByClassName(`${store}`);             
   if (renderedStore.length == 0) {
     parent_menuArea.appendChild(div1_accordionItem);
     div1_accordionItem.append(h2_accordionHeader);
