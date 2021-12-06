@@ -173,22 +173,15 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-      console.log(checked_selectStoreMenuPrice);
-      console.log(data_selectStoreMenuPrice);
-      console.log(Array.from(checked_selectStoreMenuPrice));
-      console.log()
       const ary = data_selectStoreMenuPrice.value.split(',');
-      for (let i = 0; i < ary.length; i++) {
-          for (let data_selectUserName of checked_selectUserName) {
-          ordersAddArray.push(data_selectUserName[0].value);
-          }
+      for (let i = 0; i < ary.length; i++) { 
+          console.log(ary);
+          ordersAddArray.push(checked_selectUserName[0].value);
           ordersAddArray.push(ary[i]);
-          for (let data_selectChangeValue of selectChangeValue) {
-          ordersAddArray.push(data_selectChangeValue.value);
-        }
+          ordersAddArray.push(selectChangeValue[0].value);
+        
       }
-    }
-    
+    } 
   };
   
 
