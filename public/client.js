@@ -150,10 +150,22 @@ ordersUpdateBtn.addEventListener("click", () => {
   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
-  if (0 == input_selectUserName.length || 0 = input_selectStoreMenuPrice.length) {
-    document.getElementById("errormessage").textContent = "エラー：ユーザー名を選択してください。";
+  if (input_selectUserName.length == 0 || input_selectStoreMenuPrice.length == 0) {
+    document.getElementById("errormessage").textContent = "エラー：ユーザー名・お店・メニューを選択してください。";
   };
-  if ()
+  
+  if(1 == input_selectStoreMenuPrice.length) 
+    document.getElementById("errormessage").textContent = "";
+    for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+      const ary = data_selectStoreMenuPrice.value.split(',');
+      for (let i = 0; i < ary.length; i++) {
+        ordersAddArray.push(ary[i]);
+      }
+    }
+
+  
+  
+  
   
   if(0 < input_selectUserName.length) {
     for (const data_selectUserName of input_selectUserName) {
