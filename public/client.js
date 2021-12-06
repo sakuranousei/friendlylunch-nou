@@ -125,6 +125,10 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     
 
 function ordersUpdate () {
-  const selectUser = document.getElementsByName("selectUser");
-  console.log(selectUser);
+  const orderArea = document.getElementById("orderArea");
+  const radioNodeList = orderArea.selectUser;
+  console.log(radioNodeList.value);
+  if(orderArea.checked) {
+    console
+  }
 }
