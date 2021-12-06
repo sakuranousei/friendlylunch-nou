@@ -147,7 +147,7 @@ const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
-  const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]:checked");
+  const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
   
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
@@ -156,13 +156,36 @@ ordersUpdateBtn.addEventListener("click", () => {
 
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
+    for (const data_selectUserName of checked_selectUserName) {
+      ordersAddArray.push(data_selectUserName.value);
+    }
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
         ordersAddArray.push(ary[i]);
       }
     }
-  }
+    for (const data_selectChangeValue of selectChangeValue) {
+      ordersAddArray.push(data_selectChangeValue.value);
+    }
+  };
+
+  if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
+    document.getElementById("errormessage").textContent = "";
+    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+      const ary = data_selectStoreMenuPrice.value.split(',');
+      for (let i = 0; i < ary.length; i++) {
+        ordersAddArray.push(ary[i]);
+          for (const data_selectUserName of checked_selectUserName) {
+          ordersAddArray.push(data_selectUserName.value);
+    }
+      }
+    }
+    for (const data_selectChangeValue of selectChangeValue) {
+      ordersAddArray.push(data_selectChangeValue.value);
+    }
+  };
+  
 
 
   
@@ -174,6 +197,7 @@ ordersUpdateBtn.addEventListener("click", () => {
       ordersAddArray.push(data_selectUserName.value);
     }
   }; 
+  
   if(0 < checked_selectStoreMenuPrice.length) {
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
@@ -182,8 +206,9 @@ ordersUpdateBtn.addEventListener("click", () => {
       }
     }
   }; 
-  if(0 < input_selectChangeValue.length) {
-    for (const data_selectChangeValue of input_selectChangeValue) {
+  
+  if(0 < selectChangeValue.length) {
+    for (const data_selectChangeValue of selectChangeValue) {
       ordersAddArray.push(data_selectChangeValue.value);
     }
   };
