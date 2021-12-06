@@ -123,14 +123,21 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
           div4_formCheck.append(label_price);
     }          
   };
-    
 
-function ordersUpdate () {
-  console.log(document.forms);
-  const selectUserName = document.getElementsByName("selectUserName");
-  for (let i = 0; i < selectUserName.length; i++) {
-    if (selectUserName.checked) {
-      console.log(selectUserName.value);
-    }
-  }
-};
+
+const selectUserName = document.getElementsByName("selectUserName");
+const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
+ordersUpdateBtn.addEventListener("click", () => {
+  
+});
+
+
+  // function ordersUpdate () {
+  //   console.log(document.forms);
+  //   const selectUserName = document.getElementsByName("selectUserName");
+  //   for (let i = 0; i < selectUserName.length; i++) {
+  //     if (selectUserName.checked) {
+  //       console.log(selectUserName.value);
+  //     }
+  //   }
+  // };
