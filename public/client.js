@@ -174,8 +174,10 @@ ordersUpdateBtn.addEventListener("click", () => {
     document.getElementById("errormessage").textContent = "";
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
-      for (let i = 0; i < ary.length; i++) { 
-          console.log(ary);
+      console.log(ary);
+      console.log(ary.length);
+      console.log(checked_selectStoreMenuPrice.length);
+      for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { 
           ordersAddArray.push(checked_selectUserName[0].value);
           ordersAddArray.push(ary[i]);
           ordersAddArray.push(selectChangeValue[0].value);
@@ -186,30 +188,6 @@ ordersUpdateBtn.addEventListener("click", () => {
   
 
 
-  
-  
-  
-  
-//   if(0 < checked_selectUserName.length) {
-//     for (const data_selectUserName of checked_selectUserName) {
-//       ordersAddArray.push(data_selectUserName.value);
-//     }
-//   }; 
-  
-//   if(0 < checked_selectStoreMenuPrice.length) {
-//     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-//       const ary = data_selectStoreMenuPrice.value.split(',');
-//       for (let i = 0; i < ary.length; i++) {
-//         ordersAddArray.push(ary[i]);
-//       }
-//     }
-//   }; 
-  
-//   if(0 < selectChangeValue.length) {
-//     for (const data_selectChangeValue of selectChangeValue) {
-//       ordersAddArray.push(data_selectChangeValue.value);
-//     }
-//   };
   console.log(ordersAddArray);
 });
 
