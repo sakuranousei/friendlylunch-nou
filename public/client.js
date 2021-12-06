@@ -150,29 +150,27 @@ ordersUpdateBtn.addEventListener("click", () => {
   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
-  if (0 == input_selectUserName.length) {
-    document.getElementById("errormessage").textContent = "ユーザー名を選択してください。";
-    
-  }
+  if (0 == input_selectUserName.length || 0 = input_selectStoreMenuPrice.length) {
+    document.getElementById("errormessage").textContent = "エラー：ユーザー名を選択してください。";
+  };
+  if ()
   
-  
-  
-    if(0 < input_selectUserName.length) {
-      for (const data_selectUserName of input_selectUserName) {
-        ordersAddArray.push(data_selectUserName.value);
+  if(0 < input_selectUserName.length) {
+    for (const data_selectUserName of input_selectUserName) {
+      ordersAddArray.push(data_selectUserName.value);
+    }
+  }; 
+  if(0 < input_selectStoreMenuPrice.length) {
+    for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
+      const ary = data_selectStoreMenuPrice.value.split(',');
+      for (let i = 0; i < ary.length; i++) {
+        ordersAddArray.push(ary[i]);
       }
-    }; 
-    if(0 < input_selectStoreMenuPrice.length) {
-      for (const data_selectStoreMenuPrice of input_selectStoreMenuPrice) {
-        const ary = data_selectStoreMenuPrice.value.split(',');
-        for (let i = 0; i < ary.length; i++) {
-          ordersAddArray.push(ary[i]);
-        }
-      }
-    }; 
-    if(0 < input_selectChangeValue.length) {
-      for (const data_selectChangeValue of input_selectChangeValue) {
-        ordersAddArray.push(data_selectChangeValue.value);
+    }
+  }; 
+  if(0 < input_selectChangeValue.length) {
+    for (const data_selectChangeValue of input_selectChangeValue) {
+      ordersAddArray.push(data_selectChangeValue.value);
     }
   };
   console.log(ordersAddArray);
