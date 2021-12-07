@@ -178,13 +178,10 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(checked_selectStoreMenuPrice.length);
     
     
-    // for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-      // if(i = 0) {
-        // console.log(checked_selectUserName[0].value);
-        // console.log(checked_selectStoreMenuPrice[i].value);
-        // console.log(selectChangeValue[0].value);
-        // ordersAddArray.push(checked_selectUserName[0].value);
-        
+    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+        console.log(checked_selectUserName[0].value); //ユーザー名 例：山田 太郎
+        console.log(selectChangeValue[0].value);
+        ordersAddArray.push(checked_selectUserName[0].value);      
         // console.log(checked_selectStoreMenuPrice.length); //2
         // console.log(checked_selectStoreMenuPrice.value); //undefined
         // console.log(checked_selectStoreMenuPrice.length); //2
@@ -194,25 +191,14 @@ ordersUpdateBtn.addEventListener("click", () => {
         // console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
         // const valueLength_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;
      
-        // for (let h = 0; h < valueLength_selectStoreMenuPrice; h++) {
-          // console.log(checked_selectStoreMenuPrice[i].value.split(',')[i])
+        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
           // const valueSplit_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
           // console.log(valueSplit_length_selectStoreMenuPrice);
-          // ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
-        // }
-
-        // ordersAddArray.push(selectChangeValue[0].value);  
-      // } 
-      // else {
-        // ordersAddArray.push(checked_selectUserName[0].value);
-        // for (let b = 0; b < checked_selectStoreMenuPrice[i].value.split(',').length; b++) {
-        //   const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[b];
-        //   console.log(checked_selectStoreMenuPrice[i].value.split(',')[b]);
-        //   ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[b]); 
-        // }
-        // ordersAddArray.push(""); 
-      // }
-    // }
+          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
+        }
+        ordersAddArray.push(selectChangeValue[0].value);  
+    }
   };
   console.log(ordersAddArray);
 });
