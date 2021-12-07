@@ -175,15 +175,22 @@ ordersUpdateBtn.addEventListener("click", () => {
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    console.log(checked_selectStoreMenuPrice.length);
+    // console.log(checked_selectStoreMenuPrice.length);
+    
     
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
       if((i + 1) < checked_selectStoreMenuPrice.length) {
-        console.log(checked_selectUserName[0].value);
-        console.log(checked_selectStoreMenuPrice[i].value);
-        console.log(selectChangeValue[0].value);
+        // console.log(checked_selectUserName[0].value);
+        // console.log(checked_selectStoreMenuPrice[i].value);
+        // console.log(selectChangeValue[0].value);
         ordersAddArray.push(checked_selectUserName[0].value);
-        ordersAddArray.push(checked_selectStoreMenuPrice[i].value);  
+        // ordersAddArray.push(checked_selectStoreMenuPrice[i].value); 
+        for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+          const ary = data_selectStoreMenuPrice.value.split(',');
+          for (let i = 0; i < ary.length; i++) {
+            ordersAddArray.push(ary[i]);
+          }
+        }
         ordersAddArray.push(selectChangeValue[0].value);  
       } else if((i + 1) == checked_selectStoreMenuPrice.length) {
         ordersAddArray.push(checked_selectUserName[0].value);
