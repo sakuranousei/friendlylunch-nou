@@ -183,16 +183,19 @@ ordersUpdateBtn.addEventListener("click", () => {
         // console.log(checked_selectUserName[0].value);
         // console.log(checked_selectStoreMenuPrice[i].value);
         // console.log(selectChangeValue[0].value);
-        ordersAddArray.push(checked_selectUserName[0].value); //NodeList
-        console.log(checked_selectStoreMenuPrice); //2
+        ordersAddArray.push(checked_selectUserName[0].value);
+        console.log(checked_selectStoreMenuPrice.length); //2
+        console.log(checked_selectStoreMenuPrice.value); //undefined
         console.log(checked_selectStoreMenuPrice.length); //2
         console.log(checked_selectStoreMenuPrice[i].value); //さくら弁当,普通,450
-        console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']
-        console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当
-        console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3
-        
-        const split_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',');
-        ordersAddArray.push(split_selectStoreMenuPrice); 
+        console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']★
+        console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当 ★
+        console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
+        for (let i = 0; i < checked_selectStoreMenuPrice[i].value.split(',').length; i++) 
+          console.log()
+          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[i]); 
+        }
+
         // for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
         //   const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
         //   for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
@@ -202,13 +205,9 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersAddArray.push(selectChangeValue[0].value);  
       } else if((i + 1) == checked_selectStoreMenuPrice.length) {
         ordersAddArray.push(checked_selectUserName[0].value);
-        ordersAddArray.push(checked_selectStoreMenuPrice[i].value);
-        // for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-        //   const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
-        //   for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
-        //     ordersAddArray.push(split_selectStoreMenuPrice[i]);
-        //   }
-        // }
+        for (let i = 0; i < checked_selectStoreMenuPrice[i].value.split(',').length; i++) {
+          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[i]); 
+        }
         ordersAddArray.push(""); 
       }
     }
