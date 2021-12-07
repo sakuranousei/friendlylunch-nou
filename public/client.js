@@ -175,16 +175,21 @@ ordersUpdateBtn.addEventListener("click", () => {
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    console.log(checked_selectStoreMenuPrice.length); //2
+    console.log(checked_selectStoreMenuPrice.length);
     
-    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { //2
-      console.log(checked_selectUserName[0].value);
-      console.log(checked_selectStoreMenuPrice[i].value);
-      console.log(selectChangeValue[0].value);
-      ordersAddArray.push(checked_selectUserName[0].value);
-      const ary = checked_selectStoreMenuPrice.value.split(','); 
-      ordersAddArray.push(checked_selectUserName[i].value);  
-      ordersAddArray.push(selectChangeValue[0].value);        
+    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+      if(i < checked_selectStoreMenuPrice.length - 1) {
+        console.log(checked_selectUserName[0].value);
+        console.log(checked_selectStoreMenuPrice[i].value);
+        console.log(selectChangeValue[0].value);
+        ordersAddArray.push(checked_selectUserName[0].value);
+        ordersAddArray.push(checked_selectStoreMenuPrice[i].value);  
+        ordersAddArray.push(selectChangeValue[0].value);  
+      } else if(i = checked_selectStoreMenuPrice.length) {
+        ordersAddArray.push(checked_selectUserName[0].value);
+        ordersAddArray.push(checked_selectStoreMenuPrice[i].value);  
+        ordersAddArray.push(""); 
+      }
     }
   };
   console.log(ordersAddArray);
