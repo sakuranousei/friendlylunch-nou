@@ -119,28 +119,6 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-// const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
-// ordersUpdateBtn.addEventListener("click", () => {
-//   const input_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
-//     if(0 < input_selectUserName.length) {
-//       for (const checked_data of input_selectUserName) {
-//         console.log(checked_data.value);
-//       }
-//     };
-//   const input_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
-//     if(0 < input_selectStoreMenuPrice.length) {
-//       for (const checked_data of input_selectStoreMenuPrice) {
-//         console.log(checked_data.value);
-//       }
-//     };
-//   const input_selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
-//   if(0 < input_selectChangeValue.length) {
-//     for (const checked_data of input_selectChangeValue) {
-//       console.log(checked_data.value);
-//     }
-//   };
-// });
-
 
 //ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
@@ -148,59 +126,57 @@ ordersUpdateBtn.addEventListener("click", () => {
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
-  const ordersAddArray = [];
+  const ordersUpdateArray = [];
   
   //ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
-    document.getElementById("errormessage").textContent = "エラー：ユーザー名・お店・メニューを選択してください。";
+    document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
   };
 
   //ユーザー名：１　 & メニュー：１のとき
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (const data_selectUserName of checked_selectUserName) {
-      ordersAddArray.push(data_selectUserName.value);
+      ordersUpdateArray.push(data_selectUserName.value);
     }
     for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
       for (let i = 0; i < ary.length; i++) {
-        ordersAddArray.push(ary[i]);
+        ordersUpdateArray.push(ary[i]);
       }
     }
     for (const data_selectChangeValue of selectChangeValue) {
-      ordersAddArray.push(data_selectChangeValue.value);
+      ordersUpdateArray.push(data_selectChangeValue.value);
     }
   };
 
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    console.log(checked_selectStoreMenuPrice.length);
-    
-    
+    // console.log(checked_selectStoreMenuPrice.length); //2 メニューを２つ選択したとき
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-        console.log(checked_selectUserName[0].value); //ユーザー名 例：山田 太郎
-        console.log(selectChangeValue[0].value);
-        ordersAddArray.push(checked_selectUserName[0].value);      
-        // console.log(checked_selectStoreMenuPrice.length); //2
+        // console.log(checked_selectUserName[0].value); //ユーザー名の値 例：山田 太郎
+        // console.log(selectChangeValue[0].value); //お釣りの値
+       　　// console.log(checked_selectStoreMenuPrice.length); //2
         // console.log(checked_selectStoreMenuPrice.value); //undefined
         // console.log(checked_selectStoreMenuPrice.length); //2
         // console.log(checked_selectStoreMenuPrice[i].value); //さくら弁当,普通,450
         // console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']★
         // console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当 ★
         // console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
-        // const valueLength_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;
-     
+        // const valueLength_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;      
+        ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
           // const valueSplit_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
           // console.log(valueSplit_length_selectStoreMenuPrice);
-          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
+          ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
-        ordersAddArray.push(selectChangeValue[0].value);  
+        ordersUpdateArray.push(selectChangeValue[0].value);  
     }
   };
   console.log(ordersAddArray);
+  window.location.href = `/orders/update/${deleteId}`;
 });
 
 
