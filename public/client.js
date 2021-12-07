@@ -199,15 +199,16 @@ ordersUpdateBtn.addEventListener("click", () => {
         }
 
         ordersAddArray.push(selectChangeValue[0].value);  
-      } else if(i < checked_selectStoreMenuPrice.length) {
-        ordersAddArray.push(checked_selectUserName[0].value);
-        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
-          const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
-          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]);
-          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
-        }
-        ordersAddArray.push(""); 
-      }
+      } 
+      // else if(i < checked_selectStoreMenuPrice.length) {
+      //   ordersAddArray.push(checked_selectUserName[0].value);
+      //   for (let b = 0; b < checked_selectStoreMenuPrice[i].value.split(',').length; b++) {
+      //     const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[b];
+      //     console.log(checked_selectStoreMenuPrice[i].value.split(',')[b]);
+      //     ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[b]); 
+      //   }
+      //   ordersAddArray.push(""); 
+      // }
     }
   };
   console.log(ordersAddArray);
