@@ -141,6 +141,8 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const array = [];
   array.push(ordersUpdateArray)
   console.log(array);
+  console.log(array[0]);
+  return res.render(`${__dirname}/views/index.ejs`);
 });
 
 // listen for requests :)
