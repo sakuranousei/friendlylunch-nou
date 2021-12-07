@@ -136,12 +136,14 @@ app.get("/menus/delete/:deleteId", (req, res) => {
 //Ordersテーブルの追加・更新
 app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;
-  console.log(ordersUpdateArray);
-  console.log(ordersUpdateArray[0]);
-  const array = [];
-  array.push(ordersUpdateArray)
-  console.log(array);
-  console.log(array[0]);
+  console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
+  console.log(ordersUpdateArray[0]); //山
+  console.log(JSON.stringify(ordersUpdateArray)); //"山田　太郎,さくら弁当,普通,450,"
+  const array = ordersUpdateArray.split(',');
+  console.log(array)
+  // console.log(array);
+  // console.log(array[0]); //山
+  
   return res.render(`${__dirname}/views/index.ejs`);
 });
 
