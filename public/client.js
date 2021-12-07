@@ -142,13 +142,6 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 // });
 
 
-fetch("/orders/update", {})
-  .then(response => text());
-
-function text () {
-  console.log()
-}
-
 //ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
@@ -157,10 +150,12 @@ ordersUpdateBtn.addEventListener("click", () => {
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersAddArray = [];
   
+  //ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名・お店・メニューを選択してください。";
   };
 
+  //ユーザー名：１　 & メニュー：１のとき
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (const data_selectUserName of checked_selectUserName) {
@@ -177,15 +172,17 @@ ordersUpdateBtn.addEventListener("click", () => {
     }
   };
 
+  //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     console.log(checked_selectStoreMenuPrice.length); //2
     
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { //2
+      console.log(checked_selectUserName[0].value);
       
       
-      ordersAddArray.push(checked_selectUserName[0].value);
       
+      ordersAddArray.push(checked_selectUserName[0].value);   
       for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
       const ary = data_selectStoreMenuPrice.value.split(',');
         console.log(ary.length); //3
@@ -200,8 +197,6 @@ ordersUpdateBtn.addEventListener("click", () => {
     }
   };
   
-
-
   console.log(ordersAddArray);
 });
 
