@@ -148,6 +148,8 @@ ordersUpdateBtn.addEventListener("click", () => {
     for (const data_selectChangeValue of selectChangeValue) {
       ordersUpdateArray.push(data_selectChangeValue.value);
     }
+    console.log(ordersUpdateArray);
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
 
   //メニューが２つ以上のとき
@@ -174,9 +176,9 @@ ordersUpdateBtn.addEventListener("click", () => {
         }
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
+    console.log(ordersUpdateArray);
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
-  console.log(ordersAddArray);
-  window.location.href = `/orders/update/${deleteId}`;
 });
 
 

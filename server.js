@@ -133,6 +133,15 @@ app.get("/menus/delete/:deleteId", (req, res) => {
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
+//Ordersテーブルの追加・更新
+app.get("/orders/update/:ordersUpdateArray", (req, res) => {
+  const ordersUpdateArray = req.params.ordersUpdateArray;
+  console.log(ordersUpdateArray);
+  console.log(ordersUpdateArray[0]);
+  const array = [];
+  array.push(ordersUpdateArray)
+  console.log(array);
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
