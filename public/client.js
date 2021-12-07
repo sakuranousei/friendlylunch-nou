@@ -191,9 +191,12 @@ ordersUpdateBtn.addEventListener("click", () => {
         console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']★
         console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当 ★
         console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
-        for (let i = 0; i < checked_selectStoreMenuPrice[i].value.split(',').length; i++) 
-          console.log()
-          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[i]); 
+        const length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;
+        const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[i];
+        
+        for (let i = 0; i < length_selectStoreMenuPrice; i++) {
+          console.log(splitValue_length_selectStoreMenuPrice);
+          // ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[i]); 
         }
 
         // for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
