@@ -184,6 +184,7 @@ ordersUpdateBtn.addEventListener("click", () => {
         // console.log(checked_selectStoreMenuPrice[i].value);
         // console.log(selectChangeValue[0].value);
         ordersAddArray.push(checked_selectUserName[0].value);
+        
         console.log(checked_selectStoreMenuPrice.length); //2
         console.log(checked_selectStoreMenuPrice.value); //undefined
         console.log(checked_selectStoreMenuPrice.length); //2
@@ -191,24 +192,26 @@ ordersUpdateBtn.addEventListener("click", () => {
         console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']★
         console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当 ★
         console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
+        const valueLength_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;
      
-        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
-          const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
-          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]);
-          ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
+        for (let h = 0; h < valueLength_selectStoreMenuPrice; h++) {
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[i])
+          // const valueSplit_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
+          // console.log(valueSplit_length_selectStoreMenuPrice);
+          // ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
 
         ordersAddArray.push(selectChangeValue[0].value);  
       } 
-      // else if(i < checked_selectStoreMenuPrice.length) {
-      //   ordersAddArray.push(checked_selectUserName[0].value);
-      //   for (let b = 0; b < checked_selectStoreMenuPrice[i].value.split(',').length; b++) {
-      //     const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[b];
-      //     console.log(checked_selectStoreMenuPrice[i].value.split(',')[b]);
-      //     ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[b]); 
-      //   }
-      //   ordersAddArray.push(""); 
-      // }
+      else if(i < checked_selectStoreMenuPrice.length) {
+        ordersAddArray.push(checked_selectUserName[0].value);
+        // for (let b = 0; b < checked_selectStoreMenuPrice[i].value.split(',').length; b++) {
+        //   const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[b];
+        //   console.log(checked_selectStoreMenuPrice[i].value.split(',')[b]);
+        //   ordersAddArray.push(checked_selectStoreMenuPrice[i].value.split(',')[b]); 
+        // }
+        // ordersAddArray.push(""); 
+      }
     }
   };
   console.log(ordersAddArray);
