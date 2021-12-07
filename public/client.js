@@ -178,14 +178,14 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(checked_selectStoreMenuPrice.length);
     
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-      if(i < checked_selectStoreMenuPrice.length - 1) {
+      if((i + 1) < checked_selectStoreMenuPrice.length) {
         console.log(checked_selectUserName[0].value);
         console.log(checked_selectStoreMenuPrice[i].value);
         console.log(selectChangeValue[0].value);
         ordersAddArray.push(checked_selectUserName[0].value);
         ordersAddArray.push(checked_selectStoreMenuPrice[i].value);  
         ordersAddArray.push(selectChangeValue[0].value);  
-      } else if(i = checked_selectStoreMenuPrice.length) {
+      } else if((i + 1) == checked_selectStoreMenuPrice.length) {
         ordersAddArray.push(checked_selectUserName[0].value);
         ordersAddArray.push(checked_selectStoreMenuPrice[i].value);  
         ordersAddArray.push(""); 
