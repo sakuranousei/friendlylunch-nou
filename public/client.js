@@ -86,7 +86,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "checkbox";
-    input.value = store + "," + menu + "," + price;
+    input.value = `"${store} , ${menu} , ${price}"`;
     // input.value = [`${store}`, `${menu}`, `${price}`];
     input.name = "selectStoreMenuPrice"
     input.id = "flexCheckDefault";
@@ -184,23 +184,23 @@ ordersUpdateBtn.addEventListener("click", () => {
         // console.log(checked_selectStoreMenuPrice[i].value);
         // console.log(selectChangeValue[0].value);
         ordersAddArray.push(checked_selectUserName[0].value);
-        // ordersAddArray.push(checked_selectStoreMenuPrice[i].value); 
-        for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-          const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
-          for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
-            ordersAddArray.push(split_selectStoreMenuPrice[i]);
-          }
-        }
+        ordersAddArray.push(checked_selectStoreMenuPrice[i].value); 
+        // for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+        //   const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
+        //   for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
+        //     ordersAddArray.push(split_selectStoreMenuPrice[i]);
+        //   }
+        // }
         ordersAddArray.push(selectChangeValue[0].value);  
       } else if((i + 1) == checked_selectStoreMenuPrice.length) {
         ordersAddArray.push(checked_selectUserName[0].value);
-        // ordersAddArray.push(checked_selectStoreMenuPrice[i].value);
-        for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-          const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
-          for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
-            ordersAddArray.push(split_selectStoreMenuPrice[i]);
-          }
-        }
+        ordersAddArray.push(checked_selectStoreMenuPrice[i].value);
+        // for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+        //   const split_selectStoreMenuPrice = data_selectStoreMenuPrice.value.split(',');
+        //   for (let i = 0; i < split_selectStoreMenuPrice.length; i++) {
+        //     ordersAddArray.push(split_selectStoreMenuPrice[i]);
+        //   }
+        // }
         ordersAddArray.push(""); 
       }
     }
