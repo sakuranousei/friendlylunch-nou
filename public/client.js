@@ -199,7 +199,7 @@ ordersUpdateBtn.addEventListener("click", () => {
         }
 
         ordersAddArray.push(selectChangeValue[0].value);  
-      } else if(0 < i < checked_selectStoreMenuPrice.length) {
+      } else if(i < checked_selectStoreMenuPrice.length) {
         ordersAddArray.push(checked_selectUserName[0].value);
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           const splitValue_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
