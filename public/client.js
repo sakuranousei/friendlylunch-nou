@@ -142,6 +142,13 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 // });
 
 
+fetch("/orders/update", {})
+  .then(response => text());
+
+function text () {
+  console.log()
+}
+
 //ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {

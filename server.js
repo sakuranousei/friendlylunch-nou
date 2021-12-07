@@ -81,6 +81,13 @@ app.get("/getMenusData", (request, response) => {
   });
 });
 
+//
+app.get("/orders/update", (request, response) => {
+  // db.all("SELECT * from Menus", (err, rows) => {
+  //   response.send(JSON.stringify(rows));
+  // });
+});
+
 
 //Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
