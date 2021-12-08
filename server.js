@@ -145,37 +145,37 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
-  // console.log(array.length); //10
-//   for (let h = 0; h < array.length/2; h++) {
-//     const obj_h = {};
-    
-//   }
-  const obj = {};
-  for (let i = 0; i < array.length; i++) {
+  console.log(array.length); //10
+  for (let h = 0; h < (array.length / 2); h++) {
+    const obj_h = {};
+    for (let i = 0; i < array.length; i++) {
     if (i==0 || i % 5 == 0) {
       const user = array[i];
-      obj.user = user;
-    };
+      obj_h.user = user;
+    }
     if (i % 5 == 1) {
       const store = array[i];
-      obj.store = store;
-    };
+      obj_h.store = store;
+    }
     if (i % 5 == 2) {
       const menu = array[i];
-      obj.menu = menu;
-    };
+      obj_h.menu = menu;
+    }
     if (i % 5 == 3) {
       const price = array[i];
-      obj.price = price;
-    };
+      obj_h.price = price;
+    }
     if (i % 5 == 4) {
       const change = array[i];
-      obj.change = change;
-    };
-    console.log(obj);
-    // console.log(obj.user);
-    // console.log(obj.menu);
+      obj_h.change = change;
+    }
   }
+  console.log(obj_h);
+  console.log(obj_h.user);
+  console.log(obj_h.menu);
+    
+  }
+  
 
   // const user = array[0]; //5
   // const store = array[1]; //6
