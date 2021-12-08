@@ -150,20 +150,31 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
       const user = array[0]; 
     };
     if (i % 5 == 1) {
-      
-    }
+      const store = array[1];
+    };
+    if (i % 5 == 2) {
+      const menu = array[2];
+    };
+    if (i % 5 == 3) {
+      const price = array[3];
+    };
+    if (i % 5 == 4) {
+      const change = array[4];
+    };
+    console.log(`${user}:${store}:${menu}:${price}:${change});
+    
   }
-  const user = array[0]; //5
-  const store = array[1]; //6
-  const menu = array[2];
-  const price = array[3];
-  const change = array[4];
-  console.log(array.length);//5
-  console.log(user);
-  console.log(store);
-  console.log(menu);
-  console.log(price);
-  console.log(change);
+  // const user = array[0]; //5
+  // const store = array[1]; //6
+  // const menu = array[2];
+  // const price = array[3];
+  // const change = array[4];
+  // console.log(array.length);//5
+  // console.log(user);
+  // console.log(store);
+  // console.log(menu);
+  // console.log(price);
+  // console.log(change);
   return res.render(`${__dirname}/views/index.ejs`);
 });
 
