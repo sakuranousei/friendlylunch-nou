@@ -146,9 +146,9 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山
   for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
+    const today = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
+    obj_h.date = today;
     for (let i = 5*h; i < 5 + 5*h; i++) {
-      const today = new Date(0);
-      obj_h.date = today;
       if (i==0 || i % 5 == 0) {
         const user = array[i];
         obj_h.user = user;
