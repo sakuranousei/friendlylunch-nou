@@ -146,9 +146,9 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array);
   // console.log(array[0]); //山
   console.log(array.length); //10
-  for (let h = 1; h < (array.length / 2); h++) {
+  for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
-    for (let i = 1; i*h < 5; i++) {
+    for (let i = 5*h; i < 5 + 5*h; i++) {
     if (i==0 || i % 5 == 0) {
       const user = array[i];
       obj_h.user = user;
@@ -169,11 +169,10 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
       const change = array[i];
       obj_h.change = change;
     }
-  }
+  console.log("-------------");
   console.log(obj_h);
   console.log(obj_h.user);
   console.log(obj_h.menu);
-    
   }
   
 
