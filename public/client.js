@@ -122,7 +122,8 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 //ordersテーブルに保存するupdate情報
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
-  const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
+  // const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
+  const date = year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");

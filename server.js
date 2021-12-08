@@ -172,6 +172,18 @@ app.get("/menus/delete/:deleteId", (req, res) => {
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
+
+//Ordersテーブルの削除
+app.get("/orders/delete/:deleteId", (req, res) => {
+  const deleteId = req.params.deleteId;
+  console.log(deleteId);
+  const stmt = db.prepare("DELETE FROM Orders WHERE id = (?)");
+  stmt.run(deleteId);
+  stmt.finalize();
+  return res.render(`${__dirname}/views/records.ejs`);
+});
+
+
 //Ordersテーブルの追加・更新
 app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;

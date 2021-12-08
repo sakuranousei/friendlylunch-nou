@@ -47,18 +47,16 @@
           <tbody id="orderFormArea">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
-              <th class="bg-light col-2 text-center">日付</th>
+              <th class="bg-light col-3 text-center">日付</th>
               <th class="bg-light col-2 text-center">ユーザー</th>
               <th class="bg-light col-2 text-center">店名</th>
               <th class="bg-light col-2 text-center">メニュー</th>
-              <th class="bg-light col-2 text-center">価格</th>
+              <th class="bg-light col-1 text-center">価格</th>
               <th class="bg-light col-1 text-center">お釣り</th>
               <th class="bg-light col-1 text-center">×</th>
             </tr>
           </tbody>
         </table>
-        <input onclick="menuRowAdd()" value="行追加" class="btn btn-dark">
-        <input id="menusDataAddEdit" type="submit" value="更新" class="btn btn-dark">
       </form>
     </div>
 
@@ -96,7 +94,6 @@
 
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
-        console.log(user);
         const parent = document.getElementById("orderFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -138,23 +135,23 @@
           input_8.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
-        td_1.append(td_2);
-        td_2.append(td_3);
-        td_3.append(td_4);
-        td_4.append(td_5);
-        td_5.append(td_6);
-        td_6.append(td_7);
-        td_7.append(td_8);
+        tr.append(td_2);
+        tr.append(td_3);
+        tr.append(td_4);
+        tr.append(td_5);
+        tr.append(td_6);
+        tr.append(td_7);
+        tr.append(td_8);
         td_8.append(input_8);
       };
 
       //edit Menus デリートにチェックされたidの取得
       function deleteOrder() {
-        // const activeDeleteMenuBtn = document.activeElement;
-        // const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
-        // console.log(activeDeleteMenuBtn.name);
-        // console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
-        // window.location.href = `/menus/delete/${deleteId}`;
+        const activeDeleteOrderBtn = document.activeElement;
+        const deleteId = activeDeleteOrderBtn.name.replace("deleteOrderBtn_", "");
+        console.log(activeDeleteOrderBtn.name);
+        console.log(activeDeleteOrderBtn.name.replace("deleteOrderBtn_", ""));
+        window.location.href = `/orders/delete/${deleteId}`;
       };
       
       
