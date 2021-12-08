@@ -119,11 +119,10 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-
-//ordersテーブルへのupdate情報の集計
+//ordersテーブルに保存するupdate情報
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
-  const date = document.getElementById("todayDate").innerText & document.getElementById("todayTime").innerText;
+  const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
@@ -152,15 +151,13 @@ ordersUpdateBtn.addEventListener("click", () => {
     }
     console.log(ordersUpdateArray);
     window.location.href = `/orders/update/${ordersUpdateArray}`;
-    // window.location.href = "/orders/update/[{"user":"山田　太郎", "store":"さくら弁当", "menu":"普通", "price":450}];
   };
 
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    ordersUpdateArray.push(date);
-    // console.log(checked_selectStoreMenuPrice.length); //2 メニューを２つ選択したとき
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+        ordersUpdateArray.push(date);
         // console.log(checked_selectUserName[0].value); //ユーザー名の値 例：山田 太郎
         // console.log(selectChangeValue[0].value); //お釣りの値
        　　// console.log(checked_selectStoreMenuPrice.length); //2
@@ -174,15 +171,12 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
-          // const valueSplit_length_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',')[h];
-          // console.log(valueSplit_length_selectStoreMenuPrice);
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
     window.location.href = `/orders/update/${ordersUpdateArray}`;
-    // window.location.href = "/orders/update/{ user:山田　太郎, store:さくら弁当, menu:普通, price:450 }";
   };
 });
 
