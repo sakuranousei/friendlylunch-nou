@@ -102,19 +102,19 @@
           td_1.hidden = true;
           td_1.className = "form-control text-center px-1";
           td_1.name = "orderId";
-          td_1.value = id;
+          td_1.innerText = id;
         const td_2 = document.createElement("td");
           td_2.className = "form-control text-center px-1";
           td_2.name = "orderDate";
-          td_2.value = date;
+          td_2.textContent = date;
         const td_3 = document.createElement("td");
           td_3.className = "form-control text-center px-1";
           td_3.name = "orderUser";
-          td_3.value = user;
+          td_3.innerText = user;
         const td_4 = document.createElement("td");
           td_4.className = "form-control text-center px-1";
           td_4.name = "orderStore";
-          td_4.value = store;
+          td_4.innerText = store;
         const td_5 = document.createElement("td");
           td_5.className = "form-control text-center px-1";
           td_5.name = "orderMenu";
@@ -137,15 +137,14 @@
           input_8.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
-        td_1.append(input);
-        tr.append(td_2);
-        td_2.append(input_2);
-        tr.append(td_3);
-        td_3.append(input_3);
-        tr.append(td_4);
-        td_4.append(input_4);
-        tr.append(td_5);
-        td_5.append(input_5);
+        td_1.append(td_2);
+        td_2.append(td_3);
+        td_3.append(td_4);
+        td_4.append(td_5);
+        td_5.append(td_6);
+        td_6.append(td_7);
+        td_7.append(td_8);
+        td_8.append(input_8);
       };
       
       
