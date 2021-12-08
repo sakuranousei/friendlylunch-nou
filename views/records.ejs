@@ -47,13 +47,13 @@
           <tbody id="orderFormArea">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
-              <th class="bg-light col-3 text-center">日付</th>
-              <th class="bg-light col-2 text-center">名前</th>
-              <th class="bg-light col-2 text-center">店名</th>
-              <th class="bg-light col-2 text-center">メニュー</th>
-              <th class="bg-light col-1 text-center">価格</th>
-              <th class="bg-light col-1 text-center">釣り</th>
-              <th class="bg-light col-1 text-center">×</th>
+              <th class="bg-light col text-center">日</th>
+              <th class="bg-light col text-center">名</th>
+              <th class="bg-light col text-center">店</th>
+              <th class="bg-light col text-center">メ</th>
+              <th class="bg-light col text-center">価</th>
+              <th class="bg-light col text-center">釣</th>
+              <th class="bg-light col text-center">削</th>
             </tr>
           </tbody>
         </table>
@@ -98,31 +98,31 @@
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
           td_1.hidden = true;
-          td_1.className = "text-center px-1";
+          td_1.className = "text-center p-0";
           td_1.name = "orderId";
           td_1.textContent = id;
         const td_2 = document.createElement("td");
-          td_2.className = "text-center px-1";
+          td_2.className = "text-center p-0";
           td_2.name = "orderDate";
           td_2.textContent = date;
         const td_3 = document.createElement("td");
-          td_3.className = "text-center px-1";
+          td_3.className = "text-center p-0";
           td_3.name = "orderUser";
           td_3.textContent = user;
         const td_4 = document.createElement("td");
-          td_4.className = "text-center px-1";
+          td_4.className = "text-center p-0";
           td_4.name = "orderStore";
           td_4.textContent = store;
         const td_5 = document.createElement("td");
-          td_5.className = "text-center px-1";
+          td_5.className = "text-center p-0";
           td_5.name = "orderMenu";
           td_5.textContent = menu;
         const td_6 = document.createElement("td");
-          td_6.className = "text-center px-1";
+          td_6.className = "text-center p-0";
           td_6.name = "orderPrice";
           td_6.textContent = price;
         const td_7 = document.createElement("td");
-          td_7.className = "text-center px-1";
+          td_7.className = "text-center p-0";
           td_7.name = "orderChange";
           td_7.textContent = change;
         const td_8 = document.createElement("td");
