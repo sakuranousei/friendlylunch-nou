@@ -145,12 +145,25 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
-  const user = array[0];
-  const store = array[1];
+  for (let i = 0; i < array.length; i++) {
+    if (i==0 || i % 5 == 0) {
+      const user = array[0]; 
+    };
+    if (i % 5 == 1) {
+      
+    }
+  }
+  const user = array[0]; //5
+  const store = array[1]; //6
   const menu = array[2];
   const price = array[3];
   const change = array[4];
-  console.log(user, store, menu, price, change);
+  console.log(array.length);//5
+  console.log(user);
+  console.log(store);
+  console.log(menu);
+  console.log(price);
+  console.log(change);
   return res.render(`${__dirname}/views/index.ejs`);
 });
 
