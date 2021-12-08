@@ -146,9 +146,9 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山
   for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
-    const date = document.getElementById("todayDate") document.getElementById("todayDate") 
-    // date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
-    // obj_h.date = date;
+    const date = new Date(); //日時取得
+    date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
+    obj_h.date = date;
     for (let i = 5*h; i < 5 + 5*h; i++) {
       if (i==0 || i % 5 == 0) {
         const user = array[i];
