@@ -123,7 +123,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   // const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
-  const date = year/month/day/week_ja[week];
+  const date = year + "." + month + "." + day + ". " + week_ja[week] + "";
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
