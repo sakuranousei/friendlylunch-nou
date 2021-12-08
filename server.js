@@ -161,29 +161,33 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
-  for (let h = 0; h < (array.length/5); h++) {
+  for (let h = 0; h < (array.length/6); h++) {
     const obj_h = {};
-    const date = new Date(); //日時取得
-    date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
-    obj_h.date = date;
-    for (let i = 5*h; i < 5 + 5*h; i++) {
-      if (i==0 || i % 5 == 0) {
+    // const date = new Date(); //日時取得
+    // date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
+    // obj_h.date = date;
+    for (let i = 6*h; i < 6 + 6*h; i++) {
+      if (i==0 || i % 6 == 0) {
+        const date = array[i];
+        obj_h.date = date;
+      }
+      if (i % 6 == 1) {
         const user = array[i];
         obj_h.user = user;
       }
-      if (i % 5 == 1) {
+      if (i % 6 == 2) {
         const store = array[i];
         obj_h.store = store;
       }
-      if (i % 5 == 2) {
+      if (i % 6 == 3) {
         const menu = array[i];
         obj_h.menu = menu;
       }
-      if (i % 5 == 3) {
+      if (i % 6 == 4) {
         const price = array[i];
         obj_h.price = price;
       }
-      if (i % 5 == 4) {
+      if (i % 6 == 5) {
         const change = array[i];
         obj_h.change = change;
       }

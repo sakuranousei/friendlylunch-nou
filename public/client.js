@@ -123,6 +123,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 //ordersテーブルへのupdate情報の集計
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
+  const date = document.getElementById("todayDate").innerText & document.getElementById("todayTime").innerText;
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
@@ -136,6 +137,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   //ユーザー名：１　 & メニュー：１のとき
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
+    ordersUpdateArray.push(date);
     for (const data_selectUserName of checked_selectUserName) {
       ordersUpdateArray.push(data_selectUserName.value);
     }
@@ -156,6 +158,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
+    ordersUpdateArray.push(date);
     // console.log(checked_selectStoreMenuPrice.length); //2 メニューを２つ選択したとき
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
         // console.log(checked_selectUserName[0].value); //ユーザー名の値 例：山田 太郎
