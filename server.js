@@ -75,8 +75,12 @@ db.serialize(() => {
 });
 
 
+app.get("/", (req, res) => {
+  res.render(`${__dirname}/views/login.ejs`);
+});
+
 //http://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
+app.get("/index", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
 
