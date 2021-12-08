@@ -121,6 +121,14 @@ app.get("/getOrdersData", (request, response) => {
 });
 
 
+//サーバーサイドからフロントエンドへOrdersデータを送付。集計されたデータを送付。
+app.get("/getOrdersCaluculationData", (request, response) => {
+  db.all("SELECT * from Orders", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
 //Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {
   const getUserId = req.body.userId;
@@ -187,19 +195,9 @@ app.get("/orders/delete/:deleteId", (req, res) => {
 //Ordersテーブルの追加・更新
 app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;
-  // console.log(JSON.stringify(ordersUpdateArray)); 
-  // console.log(ordersUpdateArray[0]); //山
-  // console.log(JSON.stringify(ordersUpdateArray)); //"山田　太郎,さくら弁当,普通,450,"
   const array = ordersUpdateArray.split(',');
-  // console.log(array); //[ '山田　太郎', 'さくら弁当', '普通', '450', '100' ]
-  // console.log(array[0]); //山田　太郎
-  // console.log(array);
-  // console.log(array[0]); //山
   for (let h = 0; h < (array.length/6); h++) {
     const obj_h = {};
-    // const date = new Date(); //日時取得
-    // date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
-    // obj_h.date = date;
     for (let i = 6*h; i < 6 + 6*h; i++) {
       if (i==0 || i % 6 == 0) {
         const date = array[i];

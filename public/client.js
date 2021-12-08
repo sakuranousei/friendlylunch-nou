@@ -30,6 +30,7 @@ fetch("/getUsersData", {})
 
 
 
+//indexページでmenusデータを呼び出し
 fetch("/getMenusData", {})
   .then(res => res.json())
   .then(response => {
@@ -158,17 +159,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-        ordersUpdateArray.push(date);
-        // console.log(checked_selectUserName[0].value); //ユーザー名の値 例：山田 太郎
-        // console.log(selectChangeValue[0].value); //お釣りの値
-       　　// console.log(checked_selectStoreMenuPrice.length); //2
-        // console.log(checked_selectStoreMenuPrice.value); //undefined
-        // console.log(checked_selectStoreMenuPrice.length); //2
-        // console.log(checked_selectStoreMenuPrice[i].value); //さくら弁当,普通,450
-        // console.log(checked_selectStoreMenuPrice[i].value.split(',')); // ['さくら弁当', '普通', '450']★
-        // console.log(checked_selectStoreMenuPrice[i].value.split(',')[0]); //さくら弁当 ★
-        // console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //3　★
-        // const valueLength_selectStoreMenuPrice = checked_selectStoreMenuPrice[i].value.split(',').length;      
+        ordersUpdateArray.push(date);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
@@ -181,6 +172,15 @@ ordersUpdateBtn.addEventListener("click", () => {
   };
 });
 
+
+//indexページでordersデータを呼び出し。集計されたものを呼び出し。
+fetch("/getOrdersCaluculationData", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
+    });
+  });
 
 
 
