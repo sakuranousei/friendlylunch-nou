@@ -136,7 +136,6 @@ app.get("/menus/delete/:deleteId", (req, res) => {
 //Ordersテーブルの追加・更新
 app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;
-  console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
   // console.log(JSON.stringify(ordersUpdateArray)); 
   // console.log(ordersUpdateArray[0]); //山
   // console.log(JSON.stringify(ordersUpdateArray)); //"山田　太郎,さくら弁当,普通,450,"
@@ -145,12 +144,11 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
-  console.log(array.length); //10
   for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
     for (let i = 5*h; i < 5 + 5*h; i++) {
-      const today = new Date();
-      
+      const today = new Date(0);
+      obj_h.date = today;
       if (i==0 || i % 5 == 0) {
         const user = array[i];
         obj_h.user = user;
@@ -173,12 +171,14 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
       }
     }
   console.log("--------------------");
+  console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
+  console.log(array.length); //10
   console.log(obj_h);
   console.log(obj_h.user);
   console.log(obj_h.menu);
-  const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.user, obj_h.store, obj_h.menu, obj_h.change);
-    stmt.run();
-    stmt.finalize();
+  // const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.change);
+  //   stmt.run();
+  //   stmt.finalize();
   }
   return res.render(`${__dirname}/views/index.ejs`);
 });
