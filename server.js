@@ -29,7 +29,11 @@ db.serialize(() => {
     db.run(
       "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, menu TEXT, price INTEGER)"
     );
-    console.log("New table Menus created!");  
+    console.log("New table Menus created!");
+    db.run(
+      "CREATE TABLE Orders (id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, user TEXT, store TEXT, menu TEXT, price INTEGER, change INTEGER)"
+    );
+    console.log("New table Orders created!"); 
     // insert default table
     db.serialize(() => {
       db.run(
@@ -41,9 +45,17 @@ db.serialize(() => {
         'INSERT INTO Menus (store, menu, price) VALUES ("さくら弁当", "普通", "500"), ("さくら弁当", "おかずのみ", "280")'
       );
     });
+    db.serialize(() => {
+      db.run(
+        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", さくら弁当", "普通", "500"), ("山田　太郎", "さくら弁当", "おかずのみ", "280")'
+      );
+    });
+    
+  
   } else {
     console.log('Database "Users" ready to go!');
     console.log('Database "Menus" ready to go!');
+    console.log('Database "Orders" ready to go!');
     db.each("SELECT * from Users", (err, row) => {
       if (row) {
         console.log(`record: ${row.user}`);
@@ -52,6 +64,11 @@ db.serialize(() => {
     db.each("SELECT * from Menus", (err, row) => {
       if (row) {
         console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
+      }
+    });
+    db.each("SELECT * from Orders", (err, row) => {
+      if (row) {
+        console.log(`record: ${row.id}, ${row.date}, ${row.user}, ${row.store}, ${row.menu}, ${row.price}, ${row.change}`);
       }
     });
   }
@@ -177,7 +194,7 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   console.log(obj_h);
   console.log(obj_h.user);
   console.log(obj_h.menu);
-  const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.price, obj_h.change);
+  const stmt = db.prepare("INSERT OR REPLACE INTO Orders (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.price, obj_h.change);
     stmt.run();
     stmt.finalize();
   }
