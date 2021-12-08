@@ -149,44 +149,37 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
     for (let i = 5*h; i < 5 + 5*h; i++) {
-    if (i==0 || i % 5 == 0) {
-      const user = array[i];
-      obj_h.user = user;
+      const today = new Date();
+      
+      if (i==0 || i % 5 == 0) {
+        const user = array[i];
+        obj_h.user = user;
+      }
+      if (i % 5 == 1) {
+        const store = array[i];
+        obj_h.store = store;
+      }
+      if (i % 5 == 2) {
+        const menu = array[i];
+        obj_h.menu = menu;
+      }
+      if (i % 5 == 3) {
+        const price = array[i];
+        obj_h.price = price;
+      }
+      if (i % 5 == 4) {
+        const change = array[i];
+        obj_h.change = change;
+      }
     }
-    if (i % 5 == 1) {
-      const store = array[i];
-      obj_h.store = store;
-    }
-    if (i % 5 == 2) {
-      const menu = array[i];
-      obj_h.menu = menu;
-    }
-    if (i % 5 == 3) {
-      const price = array[i];
-      obj_h.price = price;
-    }
-    if (i % 5 == 4) {
-      const change = array[i];
-      obj_h.change = change;
-    }
-  console.log("-------------");
+  console.log("--------------------");
   console.log(obj_h);
   console.log(obj_h.user);
   console.log(obj_h.menu);
+  const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.user, obj_h.store, obj_h.menu, obj_h.change);
+    stmt.run();
+    stmt.finalize();
   }
-  
-
-  // const user = array[0]; //5
-  // const store = array[1]; //6
-  // const menu = array[2];
-  // const price = array[3];
-  // const change = array[4];
-  // console.log(array.length);//5
-  // console.log(user);
-  // console.log(store);
-  // console.log(menu);
-  // console.log(price);f
-  // console.log(change);
   return res.render(`${__dirname}/views/index.ejs`);
 });
 
