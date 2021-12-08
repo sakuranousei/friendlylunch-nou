@@ -145,9 +145,11 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
+  const obj = {};
   for (let i = 0; i < array.length; i++) {
     if (i==0 || i % 5 == 0) {
-      const user = array[0]; 
+      const user = array[0];
+      obj.user = user;
     };
     if (i % 5 == 1) {
       const store = array[1];
@@ -161,7 +163,7 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
     if (i % 5 == 4) {
       const change = array[4];
     };
-    console.log(`${user}:${store}:${menu}:${price}:${change});
+    console.log(`${user}:${store}:${menu}:${price}:${change}`);
     
   }
   // const user = array[0]; //5
@@ -173,12 +175,12 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(user);
   // console.log(store);
   // console.log(menu);
-  // console.log(price);
+  // console.log(price);f
   // console.log(change);
   return res.render(`${__dirname}/views/index.ejs`);
 });
 
-// listen for requests :)
+//listen for requests :)
 var listener = app.listen(process.env.PORT, () => {
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
