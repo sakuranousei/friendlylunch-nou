@@ -145,6 +145,7 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山田　太郎
   // console.log(array);
   // console.log(array[0]); //山
+  console.log(array.length);
   const obj = {};
   for (let i = 0; i < array.length; i++) {
     if (i==0 || i % 5 == 0) {
@@ -153,19 +154,24 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
     };
     if (i % 5 == 1) {
       const store = array[1];
+      obj.store = store;
     };
     if (i % 5 == 2) {
       const menu = array[2];
+      obj.menu = menu;
     };
     if (i % 5 == 3) {
       const price = array[3];
+      obj.price = price;
     };
     if (i % 5 == 4) {
       const change = array[4];
+      obj.change = change;
     };
-    console.log(`${user}:${store}:${menu}:${price}:${change}`);
-    
   }
+  console.log(obj);
+  console.log(obj.user);
+  console.log(obj.menu);
   // const user = array[0]; //5
   // const store = array[1]; //6
   // const menu = array[2];
