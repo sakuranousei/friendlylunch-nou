@@ -146,8 +146,9 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   // console.log(array[0]); //山
   for (let h = 0; h < (array.length/5); h++) {
     const obj_h = {};
-    const today = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
-    obj_h.date = today;
+    const date = document.getElementById("todayDate") document.getElementById("todayDate") 
+    // date.setTime(date.getTime() + 1000*60*60*9); //日本時間に変換。UTC協定世界時+9
+    // obj_h.date = date;
     for (let i = 5*h; i < 5 + 5*h; i++) {
       if (i==0 || i % 5 == 0) {
         const user = array[i];
@@ -176,9 +177,9 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   console.log(obj_h);
   console.log(obj_h.user);
   console.log(obj_h.menu);
-  // const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.change);
-  //   stmt.run();
-  //   stmt.finalize();
+  const stmt = db.prepare("INSERT OR REPLACE INTO Ordesr (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.price, obj_h.change);
+    stmt.run();
+    stmt.finalize();
   }
   return res.render(`${__dirname}/views/index.ejs`);
 });
