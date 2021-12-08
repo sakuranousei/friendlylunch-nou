@@ -81,15 +81,23 @@ app.get("/", (req, res) => {
 });
 
 
-// indexページへの遷移
+// インデックスページへの遷移
 app.get("/index", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
+
+
+// 実績ページへの遷移
+app.get("/records", (req, res) => {
+  res.render(`${__dirname}/views/records.ejs`);
+});
+
 
 // 編集ページへの遷移
 app.get("/edit", (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });
+
 
 //フロントエンドへサーバーサイドからUserデータを送付
 app.get("/getUsersData", (request, response) => {
