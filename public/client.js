@@ -177,7 +177,8 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
-    window.location.href = `/orders/update/${ordersUpdateArray}`;
+    // window.location.href = `/orders/update/${ordersUpdateArray}`;
+    window.location.href = "/orders/update/{ user:山田　太郎, store:さくら弁当, menu:普通, price:450 }";
   };
 });
 
