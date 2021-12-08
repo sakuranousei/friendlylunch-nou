@@ -75,9 +75,11 @@ db.serialize(() => {
 });
 
 
-// app.get("/", (req, res) => {
-//   res.render(`${__dirname}/views/login.ejs`);
-// });
+// ログインページへの遷移
+app.get("/", (req, res) => {
+  res.render(`${__dirname}/views/login.ejs`);
+});
+
 
 //http://expressjs.com/en/starter/basic-routing.html
 app.get("/index", (request, response) => {
