@@ -81,11 +81,12 @@ app.get("/", (req, res) => {
 });
 
 
-//http://expressjs.com/en/starter/basic-routing.html
+// indexページへの遷移
 app.get("/index", (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
 
+// 編集ページへの遷移
 app.get("/edit", (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });

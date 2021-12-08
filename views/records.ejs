@@ -14,48 +14,58 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!--bootstrap -->
+    <!-- bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-
     <!-- import the webpage's client-side javascript file -->
-    <script  defer src="/client.js"></script>
+    <!--<script defer src="/client.js"></script> -->
   </head>
   
-  
   <body>
-    
     <header>
       <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid d-flex align-items-center justify-content-center py-2">
-          <a class="navbar-brand text-white" href="">Sorder</a>
+          <a class="navbar-brand text-white" href="/index">Sorder</a>
+          <a class="m-2 text-muted" href="/index">ホーム</a>
+          <a class="m-2 text-muted" href="/records">実績</a>
+          <a class="m-2 text-muted" href="/edit">編集</a>
         </div>
       </nav>
     </header>  
-    
+      
+
+    <!--Ordersの出力・編集 -->
     <div class="container">
-      ログイン
+      <form action="/menus/addEdit" method="post" name="MenusForm">
+        <table class="table table-bordered">
+          <tbody id="menuFormArea">
+            <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col-4 text-center">店名</th>
+              <th class="bg-light col-5 text-center">メニュー</th>
+              <th class="bg-light col-2 text-center">価格</th>
+              <th class="bg-light col-1 text-center">×</th>
+            </tr>
+          </tbody>
+        </table>
+        <input onclick="menuRowAdd()" value="行追加" class="btn btn-dark">
+        <input id="menusDataAddEdit" type="submit" value="更新" class="btn btn-dark">
+      </form>
     </div>
-    
-    <!--ログインbtn-->
+
     <div class="container">
       <a href="/index">
-        <button class="btn btn-dark mb-4">ログイン</button>
+        <button class="btn btn-dark mb-4">ホーム</button>
       </a>
     </div>
-    
-    
-    
-    
-    
+    <br>
+
     <footer class="footer mt-auto py-3 bg-light">
       <div
         class="container d-flex align-items-center justify-content-center text-muted"
@@ -67,8 +77,11 @@
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous">
-    </script> 
+      crossorigin="anonymous"
+    ></script>
+    
+    <script>
+    </script>
     
   </body>
 </html>
