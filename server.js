@@ -108,7 +108,7 @@ app.get("/getUsersData", (request, response) => {
 
 //サーバーサイドからフロントエンドへMenusデータを送付
 app.get("/getMenusData", (request, response) => {
-  db.all("SELECT * from Menus ORDER by store ASC, menu ASC", (err, rows) => {
+  db.all("SELECT * from Menus ORDER by store ASC, price DESC, menu ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
