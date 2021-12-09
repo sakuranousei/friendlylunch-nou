@@ -150,15 +150,13 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
-  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
-  db.all(`"SELECT * from Orders WHERE date = '${thisDay}' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
+  db.all(`"SELECT * from Orders WHERE date like '%${year}%${month}%${day}%' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日のお釣り
 app.get("/getTodaysChanges", (request, response) => {
-  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
   db.all(`"SELECT user, change from Orders WHERE date = ${thisDay} ORDER by user ASC"`, (err, rows) => {
     response.send(JSON.stringify(rows));
   });
