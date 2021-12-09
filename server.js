@@ -108,14 +108,14 @@ app.get("/getUsersData", (request, response) => {
 
 //サーバーサイドからフロントエンドへMenusデータを送付
 app.get("/getMenusData", (request, response) => {
-  db.all("SELECT * from Menus", (err, rows) => {
+  db.all("SELECT * from Menus ORDER by store ASC, menu ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
 app.get("/getOrdersData", (request, response) => {
-  db.all("SELECT * from Orders by date desc", (err, rows) => {
+  db.all("SELECT * from Orders ORDER by date DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
