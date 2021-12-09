@@ -173,15 +173,17 @@ ordersUpdateBtn.addEventListener("click", () => {
 });
 
 
-fetch("/getTodaysStoresTotalAmount", {})
+//Ordersデータの呼び出し 集計用
+fetch("/getTodaysOrders", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
       console.log(row);
+      
     });
   });
 
-fetch("/getTodaysOrders", {})
+fetch("/getTodaysStoresTotalAmount", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {

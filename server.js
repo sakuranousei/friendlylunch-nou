@@ -140,13 +140,6 @@ const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
 const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
-// 本日の店別・合計金額
-app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all(`"SELECT store, sum(price) as '合計' from Orders WHERE DATE_FORMAT(date, '%Y-%m-%d') = DATE_FORMAT(now(), '%Y-%m-%d'); GROUP by store"`, (err, rows) => {
-    response.send(JSON.stringify(rows));
-    // console.log(rows);
-  });
-});
 
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
@@ -155,9 +148,17 @@ app.get("/getTodaysOrders", (request, response) => {
   });
 });
 
+// 本日の店別・合計金額
+app.get("/getTodaysStoresTotalAmount", (request, response) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows) => {
+    response.send(JSON.stringify(rows));
+    // console.log(rows);
+  });
+});
+
 // 本日のお釣り
 app.get("/getTodaysChanges", (request, response) => {
-  db.all("SELECT user, change from Orders WHERE date = '2021-12-10' ORDER by user ASC", (err, rows) => {
+  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
