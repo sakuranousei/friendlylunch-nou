@@ -207,14 +207,12 @@ const appendTodaysOrders = ()=> {
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmount");
-  const p_store = document.createElement("p");
+  const p_store = document.createElement("div");
     p_store.innerText = store;
-  const p_sum = document.createElement("p");
+  const p_sum = document.createElement("span");
     p_sum.innerText = sum;
-
-  div.append(input);
-  div.append(label);
-  
+  parent.appendChild(p_store);
+  p_store.append(p_sum);
 }
 
 
