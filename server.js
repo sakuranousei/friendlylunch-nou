@@ -144,7 +144,8 @@ app.get("/getOrdersData", (request, response) => {
 // 本日の店別・合計金額
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
   db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = datetime('now', 'localtime') GROUP by store", (err, rows) => {
-    response.send(JSON.stringify(rows));
+    // response.send(JSON.stringify(rows));
+    console.log(rows);
   });
 });
 
