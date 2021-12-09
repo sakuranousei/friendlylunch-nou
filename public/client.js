@@ -4,11 +4,11 @@ console.log("hello world");
 //日付
 const today = new Date();
 const year = today.getFullYear();
-const month = today.getMonth()　+ 1;
+const month = ("0" + (today.getMonth()+1)).slice(-2); //２桁で取得する。04等
 const week = today.getDay();
-const day = today.getDate();
-const hour = today.getHours();
-const minute = today.getMinutes();
+const day = ("0" + today.getDate()).slice(-2);　
+const hour = ("0" + today.getHours()).slice(-2);
+const minute = ("0" + today.getMinutes()).slice(-2);
 //年・月・日・曜日を取得
 const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
 //年・月・日・曜日を書き出す
@@ -124,7 +124,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   // const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
-  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
+  const thisDay = year + "-" + month + "-" + day;
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
