@@ -153,7 +153,14 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
-  db.all("SELECT * from Orders WHERE date = '2021.12.9.木' ORDER by store ASC, users ASC, price DESC, menu ASC", (err, rows) => {
+  db.all("SELECT * from Orders WHERE date = '2021.12.9.木' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+// 本日のお釣り
+app.get("/getTodaysChanges", (request, response) => {
+  db.all("SELECT user, change from Orders WHERE date = '2021.12.9.木' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });

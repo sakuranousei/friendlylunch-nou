@@ -198,4 +198,11 @@ fetch("/getTodaysOrders", {})
     });
   });
 
+fetch("/getTodaysChanges", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row);
+    });
+  });
 
