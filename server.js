@@ -127,6 +127,10 @@ app.get("/getOrdersCaluculationData", (request, response) => {
     // response.send(JSON.stringify(rows));
     console.log(rows)
   });
+  db.all("SELECT sum(price), store  from Orders group by store", (err, rows2) => {
+  // response.send(JSON.stringify(rows));
+  console.log(rows2)
+});
 });
 
 
