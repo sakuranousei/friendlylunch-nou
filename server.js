@@ -123,14 +123,14 @@ app.get("/getOrdersData", (request, response) => {
 
 //サーバーサイドからフロントエンドへOrdersデータを送付。「集計」されたデータを送付。
 app.get("/getOrdersCaluculationData", (request, response) => {
-  db.all("SELECT DISTINCT store from Orders", (err, rows) => {
+  db.all("SELECT DISTINCT store from Orders", (err, store) => {
     // response.send(JSON.stringify(rows));
-    console.log(rows)
+    console.log(store)
   });
-  db.all("SELECT sum(price), store  from Orders group by store", (err, rows2) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders group by store", (err, total) => {
   // response.send(JSON.stringify(rows));
-  console.log(rows2)
-});
+  console.log(total)
+  });
 });
 
 
