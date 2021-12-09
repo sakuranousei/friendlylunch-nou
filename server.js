@@ -51,27 +51,25 @@ db.serialize(() => {
         'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", さくら弁当", "普通", "500"), ("山田　太郎", "さくら弁当", "おかずのみ", "280")'
       );
     });
-    
-  
   } else {
     console.log('Database "Users" ready to go!');
     console.log('Database "Menus" ready to go!');
     console.log('Database "Orders" ready to go!');
-    db.each("SELECT * from Users", (err, row) => {
-      if (row) {
-        console.log(`record: ${row.user}`);
-      }
-    });
-    db.each("SELECT * from Menus", (err, row) => {
-      if (row) {
-        console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
-      }
-    });
-    db.each("SELECT * from Orders", (err, row) => {
-      if (row) {
-        console.log(`record: ${row.id}, ${row.date}, ${row.user}, ${row.store}, ${row.menu}, ${row.price}, ${row.change}`);
-      }
-    });
+    // db.each("SELECT * from Users", (err, row) => {
+    //   if (row) {
+    //     console.log(`record: ${row.user}`);
+    //   }
+    // });
+    // db.each("SELECT * from Menus", (err, row) => {
+    //   if (row) {
+    //     console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
+    //   }
+    // });
+    // db.each("SELECT * from Orders", (err, row) => {
+    //   if (row) {
+    //     console.log(`record: ${row.id}, ${row.date}, ${row.user}, ${row.store}, ${row.menu}, ${row.price}, ${row.change}`);
+    //   }
+    // });
   }
 });
 
@@ -132,19 +130,19 @@ app.get("/getOrdersData", (request, response) => {
 //日付
 const today = new Date();
 const year = today.getFullYear();
-const month = ("0" + (today.getMonth()+1)).slice(-2); //２桁で取得する。04等
+const month = ("0" + (today.getMonth() + 1)).slice(-2); //２桁で取得する。04等
 const week = today.getDay();
 const day = ("0" + today.getDate()).slice(-2);　
 const hour = ("0" + today.getHours()).slice(-2);
 const minute = ("0" + today.getMinutes()).slice(-2);
 //年・月・日・曜日を取得
 const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
-const thisDay = year + "-" + month + "-" + day;
+const thisDay = year + "-" + month + "-" + day ;
 console.log(thisDay);
 
 // 本日の店別・合計金額
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all(`"SELECT store, sum(price) as '合計' from Orders WHERE date = '${thisDay}' GROUP by store"`, (err, rows) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = '2021-12-10' GROUP by store", (err, rows) => {
     response.send(JSON.stringify(rows));
     // console.log(rows);
   });
@@ -153,7 +151,7 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
   const thisDay = year + "." + month + "." + day + "." + week_ja[week];
-  db.all(`"SELECT * from Orders WHERE date = date('${thisDay}') ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
+  db.all(`"SELECT * from Orders WHERE date = '${thisDay}' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
