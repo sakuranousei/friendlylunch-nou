@@ -142,7 +142,7 @@ console.log(thisDay);
 
 // 本日の店別・合計金額
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = '2021-12-10' GROUP by store", (err, rows) => {
+  db.all(`"SELECT store, sum(price) as '合計' from Orders WHERE date = ${thisDay} GROUP by store"`, (err, rows) => {
     response.send(JSON.stringify(rows));
     // console.log(rows);
   });
@@ -150,14 +150,14 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
-  db.all(`"SELECT * from Orders WHERE date like '%${year}%${month}%${day}%' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
+  db.all(`"SELECT * from Orders WHERE date like '%${year} %${month}%${day}%' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日のお釣り
 app.get("/getTodaysChanges", (request, response) => {
-  db.all(`"SELECT user, change from Orders WHERE date = ${thisDay} ORDER by user ASC"`, (err, rows) => {
+  db.all("SELECT user, change from Orders WHERE date = '2021-12-10' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
