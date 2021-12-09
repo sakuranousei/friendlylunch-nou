@@ -115,18 +115,18 @@ app.get("/getMenusData", (request, response) => {
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
 app.get("/getOrdersData", (request, response) => {
-  db.all("SELECT * from Orders", (err, rows) => {
+  db.all("SELECT * from Orders by date desc", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 
 //サーバーサイドからフロントエンドへOrdersデータを送付。集計されたデータを送付。
-app.get("/getOrdersCaluculationData", (request, response) => {
-  db.all("SELECT * from Orders", (err, rows) => {
-    response.send(JSON.stringify(rows));
-  });
-});
+// app.get("/getOrdersCaluculationData", (request, response) => {
+//   db.all("SELECT * from Orders", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
 
 
 //Usersテーブルの追加・更新 Upsert処理
