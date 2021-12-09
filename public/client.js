@@ -174,13 +174,28 @@ ordersUpdateBtn.addEventListener("click", () => {
 
 
 //indexページでordersデータを呼び出し。集計されたものを呼び出し。
-fetch("/getOrdersCaluculationData", {})
-  // .then(res => res.json())
-  // .then(response => {
-  //   response.forEach(row => {
-  //     appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
-  //   });
-  // });
+// fetch("/getTodaysStores", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       console.log(row);
+//     });
+//   });
 
+fetch("/getTodaysStoresTotalAmount", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row);
+    });
+  });
+
+fetch("/getTodaysOrders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row);
+    });
+  });
 
 
