@@ -133,10 +133,8 @@ app.get("/getOrdersCaluculationData", (request, response) => {
   // response.send(JSON.stringify(rows));
   console.log(total);
   });
-  db.all("SELECT DISTINCT store from Orders ORDER by store ASC", (err, storeName) => {
-    db.all("`SELECT * from Orders where store = ${storeName}`", (err, userGroup) => {
-    console.log(userGroup);
-    });   
+  db.all("SELECT * from Orders where date = '2021.12.8.水'", (err, row) => {
+    console.log(row);
   });
 
 });
