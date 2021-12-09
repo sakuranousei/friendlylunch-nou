@@ -123,21 +123,42 @@ app.get("/getOrdersData", (request, response) => {
 
 //サーバーサイドからフロントエンドへOrdersデータを送付。「集計」されたデータを送付。
 app.get("/getOrdersCaluculationData", (request, response) => {
-  db.all("SELECT DISTINCT store from Orders ORDER by store ASC", (err, store) => {
+  db.all("SELECT DISTINCT store from Orders ORDER by store ASC where date = '2021.12.8.水'", (err, store) => {
     // response.send(JSON.stringify(rows));
     const storeName = store;
     console.log(store);
-    console.log(store[1].store);
   });
-  db.all("SELECT store, sum(price) as '合計' from Orders group by store", (err, total) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders group by store where date = '2021.12.8.水'", (err, total) => {
   // response.send(JSON.stringify(rows));
   console.log(total);
   });
   db.all("SELECT * from Orders where date = '2021.12.8.水'", (err, row) => {
     console.log(row);
   });
-
 });
+
+// 本日の注文店・重複なし
+app.get("/getTodaysStores", (request, response) => {
+  db.all("SELECT DISTINCT store from Orders ORDER by store ASC where date = '2021.12.8.水'", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+// 本日の注文者とメニュー
+app.get("/getTodaysOrders", (request, response) => {
+  db.all("SELECT * from Orders where date = '2021.12.8.水'", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+// 本日の合計金額
+app.get("/getTodaysTotalAmount", (request, response) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders group by store where date = '2021.12.8.水'", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
 
 
 //Usersテーブルの追加・更新 Upsert処理
