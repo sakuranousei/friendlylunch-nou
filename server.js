@@ -139,11 +139,11 @@ app.get("/getOrdersData", (request, response) => {
   const minute = today.getMinutes();
   //年・月・日・曜日を取得
   const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
+  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
 
 // 本日の店別・合計金額
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
-  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = thisDay GROUP by store", (err, rows) => {
+  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = datetime('now', 'localtime') GROUP by store", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
