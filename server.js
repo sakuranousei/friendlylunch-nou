@@ -75,6 +75,19 @@ db.serialize(() => {
 });
 
 
+//日付
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth()　+ 1;
+const week = today.getDay();
+const day = today.getDate();
+const hour = today.getHours();
+const minute = today.getMinutes();
+//年・月・日・曜日を取得
+const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
+const thisDay = year + "." + month + "." + day + "." + week_ja[week];
+
+
 // ログインページへの遷移
 app.get("/", (req, res) => {
   res.render(`${__dirname}/views/login.ejs`);
@@ -120,22 +133,6 @@ app.get("/getOrdersData", (request, response) => {
   });
 });
 
-
-//サーバーサイドからフロントエンドへOrdersデータを送付。「集計」されたデータを送付。
-// app.get("/getOrdersCaluculationData", (request, response) => {
-//   db.all("SELECT DISTINCT store from Orders where date = '2021.12.9.木' ORDER by store ASC", (err, store) => {
-//     // response.send(JSON.stringify(rows));
-//     const storeName = store;
-//     console.log(store);
-//   });
-//   db.all("SELECT store, sum(price) as '合計' from Orders where date = '2021.12.9.木' group by store", (err, total) => {
-//   // response.send(JSON.stringify(rows));
-//   console.log(total);
-//   });
-//   db.all("SELECT * from Orders where date = '2021.12.9.木'", (err, row) => {
-//     console.log(row);
-//   });
-// });
 
 // 本日の注文店・重複なし
 // app.get("/getTodaysStores", (request, response) => {

@@ -124,7 +124,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   // const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
-  const date = year + "." + month + "." + day + "." + week_ja[week];
+  const today = year + "." + month + "." + day + "." + week_ja[week];
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
@@ -138,7 +138,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   //ユーザー名：１　 & メニュー：１のとき
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
-    ordersUpdateArray.push(date);
+    ordersUpdateArray.push(today);
     for (const data_selectUserName of checked_selectUserName) {
       ordersUpdateArray.push(data_selectUserName.value);
     }
@@ -159,7 +159,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-        ordersUpdateArray.push(date);     
+        ordersUpdateArray.push(today);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
@@ -172,15 +172,6 @@ ordersUpdateBtn.addEventListener("click", () => {
   };
 });
 
-
-//indexページでordersデータを呼び出し。集計されたものを呼び出し。
-// fetch("/getTodaysStores", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       console.log(row);
-//     });
-//   });
 
 fetch("/getTodaysStoresTotalAmount", {})
   .then(res => res.json())
