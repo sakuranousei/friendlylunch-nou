@@ -129,30 +129,31 @@ app.get("/getOrdersData", (request, response) => {
 //   });
 // });
 
-  //日付
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth()　+ 1;
-  const week = today.getDay();
-  const day = today.getDate();
-  const hour = today.getHours();
-  const minute = today.getMinutes();
-  //年・月・日・曜日を取得
-  const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
-  const thisDay = year + "." + month + "." + day + "." + week_ja[week];
+//日付
+const today = new Date();
+const year = today.getFullYear();
+const month = ("0" + (today.getMonth()+1)).slice(-2); //２桁で取得する。04等
+const week = today.getDay();
+const day = ("0" + today.getDate()).slice(-2);　
+const hour = ("0" + today.getHours()).slice(-2);
+const minute = ("0" + today.getMinutes()).slice(-2);
+//年・月・日・曜日を取得
+const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
+const thisDay = year + "-" + month + "-" + day;
+console.log(thisDay);
 
 // 本日の店別・合計金額
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all("SELECT store, sum(price) as '合計' from Orders WHERE date = datetime('now', 'localtime') GROUP by store", (err, rows) => {
-    // response.send(JSON.stringify(rows));
-    console.log(rows);
+  db.all(`"SELECT store, sum(price) as '合計' from Orders WHERE date = '${thisDay}' GROUP by store"`, (err, rows) => {
+    response.send(JSON.stringify(rows));
+    // console.log(rows);
   });
 });
 
 // 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
   const thisDay = year + "." + month + "." + day + "." + week_ja[week];
-  db.all(`"SELECT * from Orders WHERE date = '${thisDay}' ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
+  db.all(`"SELECT * from Orders WHERE date = date('${thisDay}') ORDER by store ASC, user ASC, price DESC"`, (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -261,12 +262,12 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
         obj_h.change = change;
       }
     }
-  console.log("--------------------");
-  console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
-  console.log(array.length); //10
-  console.log(obj_h);
-  console.log(obj_h.user);
-  console.log(obj_h.menu);
+  // console.log("--------------------");
+  // console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
+  // console.log(array.length); //10
+  // console.log(obj_h);
+  // console.log(obj_h.user);
+  // console.log(obj_h.menu);
   const stmt = db.prepare("INSERT OR REPLACE INTO Orders (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.price, obj_h.change);
     stmt.run();
     stmt.finalize();
