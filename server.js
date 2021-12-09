@@ -127,17 +127,17 @@ app.get("/getOrdersData", (request, response) => {
 //   });
 // });
 
-//日付
-const today = new Date();
+//日付 サーバーサイドでは日本時間にならないので日本時間に変換
+const today = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
 const year = today.getFullYear();
 const month = ("0" + (today.getMonth() + 1)).slice(-2); //２桁で取得する。04等
 const week = today.getDay();
 const day = ("0" + today.getDate()).slice(-2);　
-const hour = ("0" + today.getHours()).slice(-2);
+const hour = ("0" + (today.getHours())).slice(-2);
 const minute = ("0" + today.getMinutes()).slice(-2);
 //年・月・日・曜日を取得
 const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
-const thisDay = year + "-" + month + "-" + day ;
+const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 // 本日の店別・合計金額

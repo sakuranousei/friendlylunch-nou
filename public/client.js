@@ -1,7 +1,7 @@
 console.log("hello world");
 
 
-//日付
+//日付　クライアントサイドでは自動的に日本時間になっているため日本時間に変更する必要なし。
 const today = new Date();
 const year = today.getFullYear();
 const month = ("0" + (today.getMonth()+1)).slice(-2); //２桁で取得する。04等
