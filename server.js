@@ -157,7 +157,7 @@ app.get("/getTodaysOrders", (request, response) => {
 
 // 本日のお釣り user change
 app.get("/getTodaysChanges", (request, response) => {
-  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change > 0 or change != null ORDER by user ASC", (err, rows) => {
+  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -258,7 +258,7 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
         obj_h.change = change;
       }
       if (i > 5 && i % 6 == 5) {
-        const change_none = 0;
+        const change_none = '';
         obj_h.change = change_none;
       }
     }
