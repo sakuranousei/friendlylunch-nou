@@ -213,6 +213,8 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   parent.appendChild(tr);
   tr.append(td_store);
   tr.append(td_sum);
+  parent.append(div);
+  div.append.textContent("aaaaa");
 }
 
 
