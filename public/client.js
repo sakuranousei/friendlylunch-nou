@@ -86,7 +86,6 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
     input.className = "form-check-input";
     input.type = "checkbox";
     input.value = store　+ "," + menu + "," + price;
-    // input.value = [`${store}`, `${menu}`, `${price}`];
     input.name = "selectStoreMenuPrice"
     input.id = "flexCheckDefault";
   const label_menu = document.createElement("label");
