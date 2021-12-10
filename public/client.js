@@ -17,7 +17,6 @@ document.getElementById("todayDate").textContent =
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
 
 
-
 // index request the Users from our app's sqlite database
 //indexページでUsersデータを呼び出し
 fetch("/getUsersData", {})
@@ -27,7 +26,6 @@ fetch("/getUsersData", {})
       appendUserRadio(row.id, row.user);
     });
   });
-
 
 
 //indexページでmenusデータを呼び出し

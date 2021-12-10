@@ -12,7 +12,6 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
-
 //init sqlite db
 const dbFile = "./.data/sqlite.db";
 const exists = fs.existsSync(dbFile);
@@ -119,13 +118,6 @@ app.get("/getOrdersData", (request, response) => {
   });
 });
 
-
-// 本日の注文店・重複なし
-// app.get("/getTodaysStores", (request, response) => {
-//   db.all("SELECT DISTINCT store from Orders WHERE date = '2021.12.9.木' ORDER by store ASC", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
 
 //日付 サーバーサイドでは日本時間にならないので日本時間に変換
 const today = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
