@@ -204,16 +204,14 @@ const appendTodaysOrders = ()=> {
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
-  const tr_1 = document.createElement("tr");
-  const tr_2 = document.createElement("tr");
+  const tr = document.createElement("tr");
   const td_store = document.createElement("td");
     td_store.textContent = store;
   const td_sum = document.createElement("td");
     td_sum.textContent = sum;
-  parent.appendChild(tr_1);
-  tr_1.append(td_store);
-  tr_1.append(td_sum);
-  tr_2.append();
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_sum);
 }
 
 
