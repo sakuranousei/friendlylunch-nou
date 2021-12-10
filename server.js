@@ -157,7 +157,7 @@ app.get("/getTodaysOrders", (request, response) => {
 
 // 本日のお釣り user change
 app.get("/getTodaysChanges", (request, response) => {
-  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' ORDER by user ASC", (err, rows) => {
+  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change !=0 ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -253,21 +253,15 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
         const price = array[i];
         obj_h.price = price;
       }
-      if (i = 5) {
+      if (i == 5) {
         const change = array[i];
         obj_h.change = change;
       }
-      if (i > 5 & i % 6 == 5) {
-        const change = array[i];
-        obj_h.change = change;
+      if (i > 5 && i % 6 == 5) {
+        const change_none = 0;
+        obj_h.change = change_none;
       }
     }
-  // console.log("--------------------");
-  // console.log(ordersUpdateArray); //山形　新庄,さくら弁当,普通,450,
-  // console.log(array.length); //10
-  // console.log(obj_h);
-  // console.log(obj_h.user);
-  // console.log(obj_h.menu);
   const stmt = db.prepare("INSERT OR REPLACE INTO Orders (date, user, store, menu, price, change) VALUES (?, ?, ?, ?, ?, ?)", obj_h.date, obj_h.user, obj_h.store, obj_h.menu, obj_h.price, obj_h.change);
     stmt.run();
     stmt.finalize();
