@@ -1,11 +1,27 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const app = express();
 const fs = require("fs");
-app.use(bodyParser.urlencoded({ extended: true }));
+
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+const flash = require('connect-flash');
+const bodyParser = require("body-parser");
+
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+// passport
+app.use(session({ secret: 'keyboard cat' }));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //テンプレートエンジン
 app.set('views', './views');
