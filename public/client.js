@@ -189,6 +189,15 @@ fetch("/getTodaysStoresTotalAmount", {})
     });
   });
 
+fetch("/getTodaysTotalAmounts_Orders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row.store, row.sum);
+      // appendTodaysStoresTotalAmount(row.store, row.sum);
+    });
+  });
+
 fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {

@@ -141,28 +141,30 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
-// 本日の注文者とメニュー
+// 本日の注文者とメニュー id date user store menu price change
 // app.get("/getTodaysOrders", (request, response) => {
 //   db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
 //     response.send(JSON.stringify(rows));
 //   });
 // });
 
-// 本日の店別・合計金額 & 本日の注文者・メニュー
-app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows) => {
+// 本日の店別・合計金額  store sum
+// app.get("/getTodaysStoresTotalAmount", (request, response) => {
+//   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
+
+app.get("/getTodaysTotalAmounts_Orders", (request, response) => {
+  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows_1) => {
+     db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows_2) => {
+      response.send(JSON.stringify(rows_1, rows_2));
+    });
     // response.send(JSON.stringify(rows));
-    // console.log(rows);
-    const rows_1 = rows;
   });
-  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
-    // response.send(JSON.stringify(rows));
-    const rows_2 = rows;
-  });
-  response.send(JSON.stringify(rows_1, ));
 });
 
-// 本日のお釣り
+// 本日のお釣り user change
 app.get("/getTodaysChanges", (request, response) => {
   db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
