@@ -202,23 +202,31 @@ fetch("/getTodaysChanges", {})
 const appendTodaysOrders = (store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr = document.createElement("tr");
+      tr_store.className = `ordered_${store}`;
   const th_store = document.createElement("th");
     th_store.textContent = store;
-    th_store.className = store;
   const td_user = document.createElement("td");
     td_user.textContent = user;
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
     td_price.textContent = price;
-  const renderedStoreName = document.getElementsByClassName(`${store}`);
-  console.log(renderedStoreName);
+  const orderedStore = document.getElementsByClassName(`ordered_${store}`);
+  console.log(orderedStore[0]);
+  if (orderedStore.length == 0) {
+    parent.appendChild(tr);
+    tr.appendChild(th_store);
+    th_store.append(td_user);
+    th_store.append(td_menu);
+    th_store.append(td_price);
+  } else {
+    orderedStore[0].append(td_user);
+    orderedStore[0].append(td_menu);
+    orderedStore[0].append(td_price);
+    
+  }
   
-  parent.appendChild(tr);
-  tr.appendChild(th_store);
-  th_store.append(td_user);
-  th_store.append(td_menu);
-  th_store.append(td_price);
+
   };
 
 
