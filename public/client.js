@@ -194,7 +194,7 @@ fetch("/getTodaysChanges", {})
   .then(response => {
     response.forEach(row => {
       console.log(row);
-      appendTodaysChanges(row);
+      appendTodaysChanges(row.user, row.change);
     });
   });
 
@@ -203,7 +203,7 @@ const appendTodaysOrders = ()=> {
 }
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
-  const parent = document.getElementById("appendTodaysStoresTotalAmount");
+  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
   const tr = document.createElement("tr");
   const td_store = document.createElement("td");
     td_store.textContent = store;
@@ -215,6 +215,14 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
 }
 
 
-const appendTodaysChanges = ()=> {
-  
+const appendTodaysChanges = (user, change)=> {
+  const parent = document.getElementById("appendTodaysChangesArea");
+  const tr = document.createElement("tr");
+  const td_user = document.createElement("td");
+    td_user.textContent = user;
+  const td_change = document.createElement("td");
+    td_change.textContent = change;
+  parent.appendChild(tr);
+  tr.append(td_user);
+  tr.append(td_change);
 }
