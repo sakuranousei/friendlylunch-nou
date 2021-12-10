@@ -258,7 +258,3 @@ const appendTodaysChanges = (user, change)=> {
   tr.append(td_user);
   tr.append(td_change);
 }
-
-
-const eachStoreSum = document.getElementsByClassName("eachStoreSum");
-console.log(eachStoreSum[0]);
