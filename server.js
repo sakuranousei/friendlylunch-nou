@@ -143,7 +143,7 @@ console.log(thisDay);
 
 // 本日の店別・合計金額  store sum
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows) => {
+  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });

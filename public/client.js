@@ -171,6 +171,14 @@ ordersUpdateBtn.addEventListener("click", () => {
 
 
 //Ordersデータの呼び出し 集計用
+fetch("/getTodaysOrders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.store, row.user, row.menu, row.price);
+    });
+  });
 
 fetch("/getTodaysStoresTotalAmount", {})
   .then(res => res.json())
@@ -181,16 +189,6 @@ fetch("/getTodaysStoresTotalAmount", {})
     });
   });
 
-fetch("/getTodaysOrders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      console.log(row.store, row.user, row.menu, row.price);
-      appendTodaysOrders(row.store, row.user, row.menu, row.price);
-    });
-  });
-
-
 fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
@@ -199,6 +197,25 @@ fetch("/getTodaysChanges", {})
       appendTodaysChanges(row.user, row.change);
     });
   });
+
+
+const appendTodaysOrders = (store, user, menu, price)=> {
+  const parent = document.getElementById("appendTodaysOrdersArea");
+  const tr = document.createElement("tr");
+  const td_store = document.createElement("td");
+    td_store.textContent = store;
+  const td_user = document.createElement("td");
+    td_user.textContent = user;
+  const td_menu = document.createElement("td");
+    td_menu.textContent = menu;
+  const td_price = document.createElement("td");
+    td_price.textContent = price;
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_user);
+  tr.append(td_menu);
+  tr.append(td_price);
+  };
 
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
@@ -213,35 +230,6 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_sum);
 }
 
-
-// const appendTodaysStoresTotalAmount = (store, sum)=> {
-//   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
-//   const div = document.createElement("div");
-//     div.className = `appendTodaysOrdersArea_${store}`;
-//   const strong_store = document.createElement("strong");
-//     strong_store.textContent = store;
-//   const strong_sum = document.createElement("strong");
-//     strong_sum.textContent = sum;
-//   // const appendTodaysOrders = appendTodaysOrders;
-//   parent.appendChild(div);
-//   div.append(strong_store);
-//   div.append(strong_sum);
-//   div.append(appendTodaysOrders());
-// }
-
-const appendTodaysOrders = ()=> {
-
-  };
-  
-  // const tr = document.createElement("tr");
-  // const td_store = document.createElement("td");
-  //   td_store.textContent = store;
-  // const td_sum = document.createElement("td");
-  //   td_sum.textContent = sum;
-  
-  // tr.append(td_store);
-  // tr.append(td_sum);
-// }
 
 const appendTodaysChanges = (user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
