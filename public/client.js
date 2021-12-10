@@ -175,7 +175,6 @@ fetch("/getTodaysOrders", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      console.log(row.store, row.user, row.menu, row.price);
       appendTodaysOrders(row.store, row.user, row.menu, row.price);
     });
   });
@@ -184,7 +183,6 @@ fetch("/getTodaysStoresTotalAmount", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      console.log(row.store, row.sum);
       appendTodaysStoresTotalAmount(row.store, row.sum);
     });
   });
@@ -193,7 +191,6 @@ fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      console.log(row);
       appendTodaysChanges(row.user, row.change);
     });
   });
@@ -215,7 +212,6 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   const td_price = document.createElement("td");
     td_price.textContent = price;
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
-  console.log(orderedStore.length);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
     tr_store.append(strong_store);
