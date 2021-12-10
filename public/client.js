@@ -201,10 +201,12 @@ fetch("/getTodaysChanges", {})
 
 const appendTodaysOrders = (store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
-  const tr = document.createElement("tr");
-    tr.className = `ordered_${store}`;
-  const th_store = document.createElement("th");
-    th_store.textContent = store;
+  const tr_store = document.createElement("tr");
+    tr_store.className = `ordered_${store}`;
+  const p_store = document.createElement("span");
+    p_store.textContent = store;
+    p_store.className = "col-0";
+  const tr_order = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
   const td_menu = document.createElement("td");
@@ -212,15 +214,19 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   const td_price = document.createElement("td");
     td_price.textContent = price;
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
-  console.log(orderedStore[0]);
+  console.log(orderedStore.length);
   if (orderedStore.length == 0) {
-    parent.appendChild(tr);
-    tr.append(th_store);
+    parent.appendChild(tr_store);
+    tr_store.append(p_store);
+    parent.appendChild(tr_order);
+    tr_order.append(td_user);
+    tr_order.append(td_menu);
+    tr_order.append(td_price); 
   } else {
-    parent.appendChild(tr);
-    tr.append(td_user);
-    tr.append(td_menu);
-    tr.append(td_price);   
+    parent.appendChild(tr_order);
+    tr_order.append(td_user);
+    tr_order.append(td_menu);
+    tr_order.append(td_price);   
   }
   };
 
