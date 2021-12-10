@@ -203,9 +203,9 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store}`;
-  const p_store = document.createElement("span");
-    p_store.textContent = store;
-    p_store.className = "col-0";
+  const s_store = document.createElement("strong");
+    s_store.innerText = store;
+    s_store.className = "font-weight-bold";
   const tr_order = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
@@ -217,7 +217,7 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   console.log(orderedStore.length);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
-    tr_store.append(p_store);
+    tr_store.append(s_store);
     parent.appendChild(tr_order);
     tr_order.append(td_user);
     tr_order.append(td_menu);
