@@ -199,13 +199,14 @@ fetch("/getTodaysChanges", {})
   });
 
 
+//集計　store,user,menu,price
 const appendTodaysOrders = (store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store}`;
-  const s_store = document.createElement("strong");
-    s_store.innerText = store;
-    s_store.className = "font-weight-bold";
+  const strong_store = document.createElement("strong");
+    strong_store.innerText = store;
+    strong_store.className = "font-weight-bold eachStoreName";
   const tr_order = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
@@ -217,7 +218,7 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   console.log(orderedStore.length);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
-    tr_store.append(s_store);
+    tr_store.append(strong_store);
     parent.appendChild(tr_order);
     tr_order.append(td_user);
     tr_order.append(td_menu);
@@ -230,12 +231,8 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   }
   };
 
-// tr
-//  th_store
-//  td_user, td_menu, td_price
-//  td_user, td_menu, td_price
 
-
+//集計 store sum
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
   const tr = document.createElement("tr");
@@ -243,12 +240,13 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
     td_store.textContent = store;
   const td_sum = document.createElement("td");
     td_sum.textContent = sum;
+    td_sum.className = "eachStoreSum"
   parent.appendChild(tr);
   tr.append(td_store);
   tr.append(td_sum);
 }
 
-
+//集計　お釣り
 const appendTodaysChanges = (user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
   const tr = document.createElement("tr");
@@ -260,3 +258,7 @@ const appendTodaysChanges = (user, change)=> {
   tr.append(td_user);
   tr.append(td_change);
 }
+
+
+const eachStoreSum = document.getElementsByClassName("eachStoreSum");
+console.log(eachStoreSum[0]);
