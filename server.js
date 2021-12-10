@@ -141,13 +141,6 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
-// 本日の注文者とメニュー id date user store menu price change
-app.get("/getTodaysOrders", (request, response) => {
-  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
-    response.send(JSON.stringify(rows));
-  });
-});
-
 // 本日の店別・合計金額  store sum
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store", (err, rows) => {
@@ -155,6 +148,12 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
   });
 });
 
+// 本日の注文者とメニュー id date user store menu price change
+app.get("/getTodaysOrders", (request, response) => {
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
 
 // 本日のお釣り user change
 app.get("/getTodaysChanges", (request, response) => {

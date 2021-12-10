@@ -171,14 +171,6 @@ ordersUpdateBtn.addEventListener("click", () => {
 
 
 //Ordersデータの呼び出し 集計用
-fetch("/getTodaysOrders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      console.log(row);
-      appendTodaysOrders(row);
-    });
-  });
 
 fetch("/getTodaysStoresTotalAmount", {})
   .then(res => res.json())
@@ -186,6 +178,15 @@ fetch("/getTodaysStoresTotalAmount", {})
     response.forEach(row => {
       console.log(row.store, row.sum);
       appendTodaysStoresTotalAmount(row.store, row.sum);
+    });
+  });
+
+fetch("/getTodaysOrders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.store, row.user, row.menu, row.price);
     });
   });
 
@@ -199,9 +200,6 @@ fetch("/getTodaysChanges", {})
     });
   });
 
-const appendTodaysOrders = ()=> {
-  
-}
 
 // const appendTodaysStoresTotalAmount = (store, sum)=> {
 //   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
@@ -217,9 +215,9 @@ const appendTodaysOrders = ()=> {
 
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
-  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+  const parent = document.getElementById(`appendTodaysStoresTotalAmountArea_${store}`);
   const div = document.createElement("div");
-    div.className = ""
+    div.className = "appendTodaysOrdersArea"
   const strong_store = document.createElement("strong");
     strong_store.textContent = store;
   const strong_sum = document.createElement("strong");
@@ -229,6 +227,17 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   div.append(strong_sum);
 }
 
+const appendTodaysOrders = (store, user, menu, price)=> {
+  // const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+  // const tr = document.createElement("tr");
+  // const td_store = document.createElement("td");
+  //   td_store.textContent = store;
+  // const td_sum = document.createElement("td");
+  //   td_sum.textContent = sum;
+  // parent.appendChild(tr);
+  // tr.append(td_store);
+  // tr.append(td_sum);
+}
 
 const appendTodaysChanges = (user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
