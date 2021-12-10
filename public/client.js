@@ -222,10 +222,11 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
     strong_store.textContent = store;
   const strong_sum = document.createElement("strong");
     strong_sum.textContent = sum;
+  const appendTodaysOrders = appendTodaysOrders;
   parent.appendChild(div);
   div.append(strong_store);
   div.append(strong_sum);
-  div.append.appendTodaysOrders();
+  div.append(appendTodaysOrders);
 }
 
 const appendTodaysOrders = ()=> {
@@ -234,19 +235,23 @@ const appendTodaysOrders = ()=> {
   .then(response => {
     response.forEach(row => {
       const store = row.store;
-      console.log(row.store, row.user, row.menu, row.price);
-      appendTodaysOrders(row.store, row.user, row.menu, row.price);
+      const user = row.user;
+      const menu = row.menu;
+      const price = row.price;
+      const parent = document.getElementById(`appendTodaysOrdersArea_${store}`);
+      const p = document.createElement("p")
+      p.textContent = user;
+      parent.append(p);
+
     });
   });
-  const parent = document.getElementById(`appendTodaysOrdersArea_${store}`);
-  const p = document.createElement("p")
-    p.textContent = user;
+  
   // const tr = document.createElement("tr");
   // const td_store = document.createElement("td");
   //   td_store.textContent = store;
   // const td_sum = document.createElement("td");
   //   td_sum.textContent = sum;
-  parent.appendChild(p);
+  
   // tr.append(td_store);
   // tr.append(td_sum);
 }
