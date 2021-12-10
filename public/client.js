@@ -98,7 +98,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   const label_price = document.createElement("label");
     label_price.className = "form-check-label px-3";
     label_price.for = "flexCheckChecked";
-    label_price.innerText = price;
+    label_price.innerText =  `${price}円`;
   const renderedStore = document.getElementsByClassName(`${store}`);             
   if (renderedStore.length == 0) {
     parent_menuArea.appendChild(div1_accordionItem);
