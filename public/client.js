@@ -181,14 +181,14 @@ fetch("/getTodaysStoresTotalAmount", {})
     });
   });
 
-// fetch("/getTodaysOrders", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       console.log(row.store, row.user, row.menu, row.price);
-//       appendTodaysOrders(row.store, row.user, row.menu, row.price);
-//     });
-//   });
+fetch("/getTodaysOrders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      console.log(row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.store, row.user, row.menu, row.price);
+    });
+  });
 
 
 fetch("/getTodaysChanges", {})
@@ -201,50 +201,37 @@ fetch("/getTodaysChanges", {})
   });
 
 
-// const appendTodaysStoresTotalAmount = (store, sum)=> {
-//   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
-//   const tr = document.createElement("tr");
-//   const td_store = document.createElement("td");
-//     td_store.textContent = store;
-//   const td_sum = document.createElement("td");
-//     td_sum.textContent = sum;
-//   parent.appendChild(tr);
-//   tr.append(td_store);
-//   tr.append(td_sum);
-// }
-
-
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
-  const div = document.createElement("div");
-    div.className = `appendTodaysOrdersArea_${store}`;
-  const strong_store = document.createElement("strong");
-    strong_store.textContent = store;
-  const strong_sum = document.createElement("strong");
-    strong_sum.textContent = sum;
-  const appendTodaysOrders = appendTodaysOrders;
-  parent.appendChild(div);
-  div.append(strong_store);
-  div.append(strong_sum);
-  div.append(appendTodaysOrders);
+  const tr = document.createElement("tr");
+  const td_store = document.createElement("td");
+    td_store.textContent = store;
+  const td_sum = document.createElement("td");
+    td_sum.textContent = sum;
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_sum);
 }
 
-const appendTodaysOrders = ()=> {
-  fetch("/getTodaysOrders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      const store = row.store;
-      const user = row.user;
-      const menu = row.menu;
-      const price = row.price;
-      const parent = document.getElementById(`appendTodaysOrdersArea_${store}`);
-      const p = document.createElement("p")
-      p.textContent = user;
-      parent.append(p);
 
-    });
-  });
+// const appendTodaysStoresTotalAmount = (store, sum)=> {
+//   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+//   const div = document.createElement("div");
+//     div.className = `appendTodaysOrdersArea_${store}`;
+//   const strong_store = document.createElement("strong");
+//     strong_store.textContent = store;
+//   const strong_sum = document.createElement("strong");
+//     strong_sum.textContent = sum;
+//   // const appendTodaysOrders = appendTodaysOrders;
+//   parent.appendChild(div);
+//   div.append(strong_store);
+//   div.append(strong_sum);
+//   div.append(appendTodaysOrders());
+// }
+
+const appendTodaysOrders = ()=> {
+
+  };
   
   // const tr = document.createElement("tr");
   // const td_store = document.createElement("td");
@@ -254,7 +241,7 @@ const appendTodaysOrders = ()=> {
   
   // tr.append(td_store);
   // tr.append(td_sum);
-}
+// }
 
 const appendTodaysChanges = (user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
