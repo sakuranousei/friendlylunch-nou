@@ -181,14 +181,14 @@ fetch("/getTodaysStoresTotalAmount", {})
     });
   });
 
-fetch("/getTodaysOrders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      console.log(row.store, row.user, row.menu, row.price);
-      appendTodaysOrders(row.store, row.user, row.menu, row.price);
-    });
-  });
+// fetch("/getTodaysOrders", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       console.log(row.store, row.user, row.menu, row.price);
+//       appendTodaysOrders(row.store, row.user, row.menu, row.price);
+//     });
+//   });
 
 
 fetch("/getTodaysChanges", {})
@@ -215,9 +215,9 @@ fetch("/getTodaysChanges", {})
 
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
-  const parent = document.getElementById(`appendTodaysStoresTotalAmountArea_${store}`);
+  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
   const div = document.createElement("div");
-    div.className = "appendTodaysOrdersArea"
+    div.className = `appendTodaysOrdersArea_${store}`;
   const strong_store = document.createElement("strong");
     strong_store.textContent = store;
   const strong_sum = document.createElement("strong");
@@ -225,16 +225,28 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   parent.appendChild(div);
   div.append(strong_store);
   div.append(strong_sum);
+  div.append.appendTodaysOrders();
 }
 
-const appendTodaysOrders = (store, user, menu, price)=> {
-  // const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+const appendTodaysOrders = ()=> {
+  fetch("/getTodaysOrders", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      const store = row.store;
+      console.log(row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.store, row.user, row.menu, row.price);
+    });
+  });
+  const parent = document.getElementById(`appendTodaysOrdersArea_${store}`);
+  const p = document.createElement("p")
+    p.textContent = user;
   // const tr = document.createElement("tr");
   // const td_store = document.createElement("td");
   //   td_store.textContent = store;
   // const td_sum = document.createElement("td");
   //   td_sum.textContent = sum;
-  // parent.appendChild(tr);
+  parent.appendChild(p);
   // tr.append(td_store);
   // tr.append(td_sum);
 }
