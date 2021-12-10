@@ -253,7 +253,11 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
         const price = array[i];
         obj_h.price = price;
       }
-      if (i % 6 == 5) {
+      if (i = 5) {
+        const change = array[i];
+        obj_h.change = change;
+      }
+      if (i > 5 & i % 6 == 5) {
         const change = array[i];
         obj_h.change = change;
       }
