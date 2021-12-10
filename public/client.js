@@ -128,13 +128,11 @@ ordersUpdateBtn.addEventListener("click", () => {
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
-  const ordersUpdateArray = [];
-  
+  const ordersUpdateArray = [];  
   //ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
   };
-
   //ユーザー名：１　 & メニュー：１のとき
   if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
@@ -154,7 +152,6 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(ordersUpdateArray);
     window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
-
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
     document.getElementById("errormessage").textContent = "";
@@ -207,12 +204,14 @@ const appendTodaysOrders = ()=> {
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmount");
-  const p_store = document.createElement("div");
-    p_store.innerText = store;
-  const p_sum = document.createElement("span");
-    p_sum.innerText = sum;
-  parent.appendChild(p_store);
-  p_store.append(p_sum);
+  const tr = document.createElement("tr");
+  const td_store = document.createElement("td");
+    td_store.textContent = store;
+  const td_sum = document.createElement("td");
+    td_sum.textContent = sum;
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_sum);
 }
 
 
