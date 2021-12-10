@@ -189,14 +189,6 @@ fetch("/getTodaysStoresTotalAmount", {})
     });
   });
 
-fetch("/getTodaysTotalAmounts_Orders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      console.log(row.store, row.sum);
-      // appendTodaysStoresTotalAmount(row.store, row.sum);
-    });
-  });
 
 fetch("/getTodaysChanges", {})
   .then(res => res.json())
@@ -210,6 +202,19 @@ fetch("/getTodaysChanges", {})
 const appendTodaysOrders = ()=> {
   
 }
+
+const appendTodaysStoresTotalAmount = (store, sum)=> {
+  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+  const tr = document.createElement("tr");
+  const td_store = document.createElement("td");
+    td_store.textContent = store;
+  const td_sum = document.createElement("td");
+    td_sum.textContent = sum;
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_sum);
+}
+
 
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
