@@ -172,19 +172,19 @@ app.get('/users/success', (req, res) => {
 // });
 
 // インデックスページへの遷移
-app.get("/index", isAuthenticated, (req, res) => {
+app.get("/index", (req, res) => {
   res.render(`${__dirname}/views/index.ejs`, { login_people: req.user });
 });
 
 
 // 実績ページへの遷移
-app.get("/records", isAuthenticated, (req, res) => {
+app.get("/records", (req, res) => {
   res.render(`${__dirname}/views/records.ejs`, { login_people: req.user });
 });
 
 
 // 編集ページへの遷移
-app.get("/edit", isAuthenticated, (req, res) => {
+app.get("/edit", (req, res) => {
   res.render(`${__dirname}/views/edit.ejs`, { login_people: req.user });
 });
 
