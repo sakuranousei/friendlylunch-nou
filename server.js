@@ -42,10 +42,10 @@ passport.use(
   'users-local',
   new LocalStrategy(
   (username, password, done) => {
-    if (username !== "kikaku"){
+    if (username !== "kikakubu"){
       // Error
       return done(null, false, { message : 'ユーザーネームに誤りがあります' });
-    } else if(password !== "kikaku") {
+    } else if(password !== "kikakubu") {
       // Error
       return done(null, false, { message : 'パスワードに誤りがあります。' });
     } else{
@@ -74,7 +74,7 @@ function isAuthenticated(req, res, next) {
   } else {
     const auth = req.isAuthenticated();
     console.log(auth);
-    const userName = "kikaku";
+    const userName = "kikakubu";
     if(userName == null) {
       res.send('ログインしてください');
     } else {
@@ -172,19 +172,19 @@ app.get('/users/success', (req, res) => {
 // });
 
 // インデックスページへの遷移
-app.get("/index", (req, res) => {
+app.get("/index", isAuthenticated, (req, res) => {
   res.render(`${__dirname}/views/index.ejs`, { login_people: req.user });
 });
 
 
 // 実績ページへの遷移
-app.get("/records", (req, res) => {
+app.get("/records", isAuthenticated, (req, res) => {
   res.render(`${__dirname}/views/records.ejs`, { login_people: req.user });
 });
 
 
 // 編集ページへの遷移
-app.get("/edit", (req, res) => {
+app.get("/edit", isAuthenticated, (req, res) => {
   res.render(`${__dirname}/views/edit.ejs`, { login_people: req.user });
 });
 
