@@ -72,10 +72,15 @@
         </div>
         <br>
         <div>
-            <input class="btn btn-dark" type="submit" value="ログイン"/>
+          <input class="btn btn-dark" type="submit" value="ログイン"/>
         </div>
       </form>
     </div>
+    
+    <% if (message) { %>
+  <p><%= message %></p>
+  <hr>
+  <% }; %>
     
     <br>
     

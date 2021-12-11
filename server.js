@@ -172,20 +172,20 @@ app.get('/users/success', (req, res) => {
 // });
 
 // インデックスページへの遷移
-app.get("/index", isAuthenticated, (request, response) => {
-  response.render(`${__dirname}/views/index.ejs`);
+app.get("/index", isAuthenticated, (req, res) => {
+  res.render(`${__dirname}/views/index.ejs`, { login_people: req.user });
 });
 
 
 // 実績ページへの遷移
 app.get("/records", isAuthenticated, (req, res) => {
-  res.render(`${__dirname}/views/records.ejs`);
+  res.render(`${__dirname}/views/records.ejs`, { login_people: req.user });
 });
 
 
 // 編集ページへの遷移
-app.get("/edit", isAuthenticated, (request, response) => {
-  response.render(`${__dirname}/views/edit.ejs`);
+app.get("/edit", isAuthenticated, (req, res) => {
+  res.render(`${__dirname}/views/edit.ejs`, { login_people: req.user });
 });
 
 
@@ -262,7 +262,7 @@ app.post("/users/addEdit", (req, res) => {
 
 
 //Menusテーブルの追加・更新 Upsert処理
-app.post("/menus/addEdit", isAuthenticated, (req, res) => {
+app.post("/menus/addEdit", (req, res) => {
   const getMenuId = req.body.menuId;
   const getMenuStore = req.body.menuStore;
   const getMenuName = req.body.menuName;
@@ -278,7 +278,7 @@ app.post("/menus/addEdit", isAuthenticated, (req, res) => {
 
 
 //Usersテーブルの削除
-app.get("/users/delete/:deleteId", isAuthenticated, (req, res) => {
+app.get("/users/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Users WHERE id = (?)");
@@ -289,7 +289,7 @@ app.get("/users/delete/:deleteId", isAuthenticated, (req, res) => {
 
 
 //Menusテーブルの削除
-app.get("/menus/delete/:deleteId", isAuthenticated, (req, res) => {
+app.get("/menus/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Menus WHERE id = (?)");
@@ -300,7 +300,7 @@ app.get("/menus/delete/:deleteId", isAuthenticated, (req, res) => {
 
 
 //Ordersテーブルの削除
-app.get("/orders/delete/:deleteId", isAuthenticated, (req, res) => {
+app.get("/orders/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Orders WHERE id = (?)");
@@ -311,7 +311,7 @@ app.get("/orders/delete/:deleteId", isAuthenticated, (req, res) => {
 
 
 //Ordersテーブルの追加・更新
-app.get("/orders/update/:ordersUpdateArray", isAuthenticated, (req, res) => {
+app.get("/orders/update/:ordersUpdateArray", (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;
   const array = ordersUpdateArray.split(',');
   for (let h = 0; h < (array.length/6); h++) {
