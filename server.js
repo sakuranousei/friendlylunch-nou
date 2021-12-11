@@ -6,7 +6,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const flash = require('connect-flash');
 
 // middleware
@@ -22,8 +22,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 //テンプレートエンジン
 app.set('views', './views');
