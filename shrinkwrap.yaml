@@ -1,5 +1,6 @@
 dependencies:
   connect-flash: 0.1.1
+  cookie-parser: 1.4.6
   ejs: 3.1.6
   express: 4.17.1
   express-session: 1.17.2
@@ -220,6 +221,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+  /cookie-parser/1.4.6:
+    dependencies:
+      cookie: 0.4.1
+      cookie-signature: 1.0.6
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==
   /cookie-signature/1.0.6:
     dev: false
     resolution:
@@ -1425,6 +1435,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   connect-flash: ^0.1.1
+  cookie-parser: ^1.4.5
   ejs: ^3.1.6
   express: ^4.17.1
   express-session: ^1.17.2

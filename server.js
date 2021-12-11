@@ -5,13 +5,14 @@ const fs = require("fs");
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
+const flash = require('connect-flash');
 
-app.use(bodyParser.json());
+// middleware
 app.use(express.static("public"));
 
-// passport
+// middleware related to passport
 app.use(session({ secret: 'keyboard cat' }));
 app.use(session({
   secret: 'keyboard cat',
@@ -22,6 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //テンプレートエンジン
 app.set('views', './views');
@@ -33,6 +35,53 @@ const dbFile = "./.data/sqlite.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database(dbFile);
+
+
+// passport
+passport.use(
+  'users-local',
+  new LocalStrategy(
+  (username, password, done) => {
+    if (username !== "kikaku"){
+      // Error
+      return done(null, false, { message : 'ユーザーネームに誤りがあります' });
+    } else if(password !== "kikaku") {
+      // Error
+      return done(null, false, { message : 'パスワードに誤りがあります。' });
+    } else{
+      // Success and return user information.
+      return done(null, { username: username, password: password});
+    }
+  }));
+
+//passport セッション管理 passportがユーザー情報をシリアライズすると呼び出される
+passport.serializeUser((user, done) => {
+  console.log('Serialize ...');
+  done(null, user);
+});
+
+//passportがユーザー情報をデシリアライズすると呼び出される。
+passport.deserializeUser((user, done) => {
+  console.log('Deserialize ...');
+  done(null, user);
+});
+
+//passport ログインしていないと（isAuthenticatedがないと）そのページに遷移できない
+function isAuthenticated(req, res, next) {
+  const auth = req.isAuthenticated();
+  if (auth !== true) {
+    res.send('ログインしてください');
+  } else {
+    const auth = req.isAuthenticated();
+    console.log(auth);
+    const userName = "kikaku";
+    if(userName == null) {
+      res.send('でログインしてください');
+    } else {
+      return next();
+    }};
+  } 
+
 
 
 //if ./.data/sqlite.db does not exist, create it, otherwise print records to console
