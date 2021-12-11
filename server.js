@@ -156,7 +156,7 @@ app.post('/users/authentication',
 //ログイン失敗
 app.get('/users/failure', (req, res) => {
   console.log(req.session);
-  res.render(`${__dirname}/views/login.ejs`, { message: req.flash( 'error' ), login_people: req.user });
+  res.render(`${__dirname}/views/login.ejs`, { message: req.flash( "error" ), login_people: req.user});
 });
 
 //申請側 ログイン成功
@@ -172,39 +172,39 @@ app.get('/users/success', (req, res) => {
 // });
 
 // インデックスページへの遷移
-app.get("/index", (request, response) => {
+app.get("/index", isAuthenticated, (request, response) => {
   response.render(`${__dirname}/views/index.ejs`);
 });
 
 
 // 実績ページへの遷移
-app.get("/records", (req, res) => {
+app.get("/records", isAuthenticated, (req, res) => {
   res.render(`${__dirname}/views/records.ejs`);
 });
 
 
 // 編集ページへの遷移
-app.get("/edit", (request, response) => {
+app.get("/edit", isAuthenticated, (request, response) => {
   response.render(`${__dirname}/views/edit.ejs`);
 });
 
 
 //サーバーサイドからフロントエンドへUserデータを送付
-app.get("/getUsersData", (request, response) => {
+app.get("/getUsersData", isAuthenticated, (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 //サーバーサイドからフロントエンドへMenusデータを送付
-app.get("/getMenusData", (request, response) => {
+app.get("/getMenusData", isAuthenticated, (request, response) => {
   db.all("SELECT * from Menus ORDER by store ASC, price DESC, menu ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
-app.get("/getOrdersData", (request, response) => {
+app.get("/getOrdersData", isAuthenticated, (request, response) => {
   db.all("SELECT * from Orders ORDER by date DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
@@ -226,21 +226,21 @@ console.log(thisDay);
 
 
 // 本日の店別・合計金額  store sum
-app.get("/getTodaysStoresTotalAmount", (request, response) => {
+app.get("/getTodaysStoresTotalAmount", isAuthenticated, (request, response) => {
   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日の注文者とメニュー id date user store menu price change
-app.get("/getTodaysOrders", (request, response) => {
+app.get("/getTodaysOrders", isAuthenticated, (request, response) => {
   db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日のお釣り user change
-app.get("/getTodaysChanges", (request, response) => {
+app.get("/getTodaysChanges", isAuthenticated, (request, response) => {
   db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
@@ -248,7 +248,7 @@ app.get("/getTodaysChanges", (request, response) => {
 
 
 //Usersテーブルの追加・更新 Upsert処理
-app.post("/users/addEdit", (req, res) => {
+app.post("/users/addEdit", isAuthenticated, (req, res) => {
   const getUserId = req.body.userId;
   const getUserName = req.body.userName;
   for(let i = 0; i < getUserId.length; i++) {
@@ -262,7 +262,7 @@ app.post("/users/addEdit", (req, res) => {
 
 
 //Menusテーブルの追加・更新 Upsert処理
-app.post("/menus/addEdit", (req, res) => {
+app.post("/menus/addEdit", isAuthenticated, (req, res) => {
   const getMenuId = req.body.menuId;
   const getMenuStore = req.body.menuStore;
   const getMenuName = req.body.menuName;
@@ -278,7 +278,7 @@ app.post("/menus/addEdit", (req, res) => {
 
 
 //Usersテーブルの削除
-app.get("/users/delete/:deleteId", (req, res) => {
+app.get("/users/delete/:deleteId", isAuthenticated, (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Users WHERE id = (?)");
@@ -289,7 +289,7 @@ app.get("/users/delete/:deleteId", (req, res) => {
 
 
 //Menusテーブルの削除
-app.get("/menus/delete/:deleteId", (req, res) => {
+app.get("/menus/delete/:deleteId", isAuthenticated, (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Menus WHERE id = (?)");
@@ -300,7 +300,7 @@ app.get("/menus/delete/:deleteId", (req, res) => {
 
 
 //Ordersテーブルの削除
-app.get("/orders/delete/:deleteId", (req, res) => {
+app.get("/orders/delete/:deleteId", isAuthenticated, (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
   const stmt = db.prepare("DELETE FROM Orders WHERE id = (?)");
@@ -311,7 +311,7 @@ app.get("/orders/delete/:deleteId", (req, res) => {
 
 
 //Ordersテーブルの追加・更新
-app.get("/orders/update/:ordersUpdateArray", (req, res) => {
+app.get("/orders/update/:ordersUpdateArray", isAuthenticated, (req, res) => {
   const ordersUpdateArray = req.params.ordersUpdateArray;
   const array = ordersUpdateArray.split(',');
   for (let h = 0; h < (array.length/6); h++) {
