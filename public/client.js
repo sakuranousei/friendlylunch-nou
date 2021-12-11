@@ -251,3 +251,16 @@ const appendTodaysChanges = (user, change)=> {
   tr.append(td_user);
   tr.append(td_change);
 }
+
+
+//単純並べ替え機能。非永続化
+//「class="orderChange"」
+function order_change(ui){
+};
+$(function(){
+	order_change();
+	$(".orderChange").sortable({
+		axis: "y", // ドラッグの方向を縦に固定
+		"opacity": 0.5, // ドラッグ中の透明度
+	});
+});
