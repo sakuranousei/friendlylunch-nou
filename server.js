@@ -6,7 +6,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const flash = require('connect-flash');
 
 // middleware
@@ -22,8 +22,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //テンプレートエンジン
 app.set('views', './views');
@@ -190,21 +190,21 @@ app.get("/edit", isAuthenticated, (request, response) => {
 
 
 //サーバーサイドからフロントエンドへUserデータを送付
-app.get("/getUsersData", isAuthenticated, (request, response) => {
+app.get("/getUsersData", (request, response) => {
   db.all("SELECT * from Users", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 //サーバーサイドからフロントエンドへMenusデータを送付
-app.get("/getMenusData", isAuthenticated, (request, response) => {
+app.get("/getMenusData", (request, response) => {
   db.all("SELECT * from Menus ORDER by store ASC, price DESC, menu ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
-app.get("/getOrdersData", isAuthenticated, (request, response) => {
+app.get("/getOrdersData", (request, response) => {
   db.all("SELECT * from Orders ORDER by date DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
@@ -226,21 +226,21 @@ console.log(thisDay);
 
 
 // 本日の店別・合計金額  store sum
-app.get("/getTodaysStoresTotalAmount", isAuthenticated, (request, response) => {
+app.get("/getTodaysStoresTotalAmount", (request, response) => {
   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日の注文者とメニュー id date user store menu price change
-app.get("/getTodaysOrders", isAuthenticated, (request, response) => {
+app.get("/getTodaysOrders", (request, response) => {
   db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
 
 // 本日のお釣り user change
-app.get("/getTodaysChanges", isAuthenticated, (request, response) => {
+app.get("/getTodaysChanges", (request, response) => {
   db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
@@ -248,7 +248,7 @@ app.get("/getTodaysChanges", isAuthenticated, (request, response) => {
 
 
 //Usersテーブルの追加・更新 Upsert処理
-app.post("/users/addEdit", isAuthenticated, (req, res) => {
+app.post("/users/addEdit", (req, res) => {
   const getUserId = req.body.userId;
   const getUserName = req.body.userName;
   for(let i = 0; i < getUserId.length; i++) {
