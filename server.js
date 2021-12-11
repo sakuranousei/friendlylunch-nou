@@ -76,12 +76,11 @@ function isAuthenticated(req, res, next) {
     console.log(auth);
     const userName = "kikaku";
     if(userName == null) {
-      res.send('でログインしてください');
+      res.send('ログインしてください');
     } else {
       return next();
     }};
   } 
-
 
 
 //if ./.data/sqlite.db does not exist, create it, otherwise print records to console
@@ -143,6 +142,34 @@ app.get("/", (req, res) => {
   res.render(`${__dirname}/views/login.ejs`);
 });
 
+//ログイン認証
+app.post('/users/authentication',
+  passport.authenticate('users-local',
+    {
+      failureRedirect : '/users/failure',
+      successRedirect : '/users/success',
+      failureFlash: true
+    }
+  )
+);
+
+//ログイン失敗
+app.get('/users/failure', (req, res) => {
+  console.log(req.session);
+  res.render(`${__dirname}/views/login.ejs`, { message: req.flash( 'error' ), login_people: req.user });
+});
+
+//申請側 ログイン成功
+app.get('/users/success', (req, res) => {
+  console.log(req.session);
+  res.render(`${__dirname}/views/index.ejs`);
+});
+
+//ログアウト
+// app.post('/logout', (req, res) => {
+//   req.session.passport.user = undefined;
+//   res.render(`${__dirname}/views/login.ejs`);
+// });
 
 // インデックスページへの遷移
 app.get("/index", (request, response) => {
