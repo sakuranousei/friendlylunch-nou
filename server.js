@@ -29,6 +29,8 @@ app.use(bodyParser.json());
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+require('dotenv').config();
+
 
 //init sqlite db
 const dbFile = "./.data/sqlite.db";
