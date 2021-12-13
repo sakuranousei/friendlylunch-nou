@@ -325,9 +325,14 @@
       function deleteUser() {
         const activeDeleteUserBtn = document.activeElement;
         const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "");
+        const result = window.confirm("削除しますか？");
         console.log(activeDeleteUserBtn.name);
         console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
-        window.location.href = `/users/delete/${deleteId}`;
+        if (result) {
+          window.location.href = `/users/delete/${deleteId}`;
+        } else {
+          window.location.href = `/users/delete/${deleteId}`;
+        }
       };
       
       //edit Menus デリートにチェックされたidの取得
