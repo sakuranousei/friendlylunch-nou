@@ -47,7 +47,7 @@ passport.use(
     if (username !== process.env.KEY1){
       // Error
       return done(null, false, { message : 'ユーザーネームに誤りがあります' });
-    } else if(password !== process.env.KEY1) {
+    } else if(password !== process.env.KEY2) {
       // Error
       return done(null, false, { message : 'パスワードに誤りがあります。' });
     } else{
