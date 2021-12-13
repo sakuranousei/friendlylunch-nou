@@ -29,8 +29,8 @@ app.use(bodyParser.json());
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
+// dotenv
 require('dotenv').config();
-
 
 //init sqlite db
 const dbFile = "./.data/sqlite.db";
@@ -44,10 +44,10 @@ passport.use(
   'users-local',
   new LocalStrategy(
   (username, password, done) => {
-    if (username !== "kikakubu"){
+    if (username !== process.env.KEY1){
       // Error
       return done(null, false, { message : 'ユーザーネームに誤りがあります' });
-    } else if(password !== "kikakubu") {
+    } else if(password !== process.env.KEY1) {
       // Error
       return done(null, false, { message : 'パスワードに誤りがあります。' });
     } else{
@@ -76,7 +76,7 @@ function isAuthenticated(req, res, next) {
   } else {
     const auth = req.isAuthenticated();
     console.log(auth);
-    const userName = "kikakubu";
+    const userName = process.env.KEY1;
     if(userName == null) {
       res.send('ログインしてください');
     } else {
