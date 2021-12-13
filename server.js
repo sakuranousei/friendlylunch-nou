@@ -207,7 +207,7 @@ app.get("/getMenusData", (request, response) => {
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
 app.get("/getOrdersData", (request, response) => {
-  db.all("SELECT * from Orders ORDER by date DESC", (err, rows) => {
+  db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });

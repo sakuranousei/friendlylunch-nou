@@ -231,9 +231,10 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   const tr = document.createElement("tr");
   const td_store = document.createElement("td");
     td_store.textContent = store;
+    td_store.className = "col-6";
   const td_sum = document.createElement("td");
     td_sum.textContent = sum;
-    td_sum.className = "eachStoreSum"
+    td_sum.className = "eachStoreSum col-6"
   parent.appendChild(tr);
   tr.append(td_store);
   tr.append(td_sum);
@@ -245,8 +246,10 @@ const appendTodaysChanges = (user, change)=> {
   const tr = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
+    td_user.className = "col-6";
   const td_change = document.createElement("td");
     td_change.textContent = change;
+    td_change.className = "col-6";
   parent.appendChild(tr);
   tr.append(td_user);
   tr.append(td_change);
