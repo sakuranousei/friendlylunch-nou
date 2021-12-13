@@ -149,9 +149,12 @@
       function deleteOrder() {
         const activeDeleteOrderBtn = document.activeElement;
         const deleteId = activeDeleteOrderBtn.name.replace("deleteOrderBtn_", "");
+        const result = window.confirm("削除しますか？");
         console.log(activeDeleteOrderBtn.name);
         console.log(activeDeleteOrderBtn.name.replace("deleteOrderBtn_", ""));
-        window.location.href = `/orders/delete/${deleteId}`;
+        if (result) {
+          window.location.href = `/orders/delete/${deleteId}`;
+        }
       };
       
       

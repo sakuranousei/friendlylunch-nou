@@ -330,8 +330,6 @@
         console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
         if (result) {
           window.location.href = `/users/delete/${deleteId}`;
-        } else {
-          window.location.href = `/users/delete/${deleteId}`;
         }
       };
       
@@ -339,9 +337,12 @@
       function deleteMenu() {
         const activeDeleteMenuBtn = document.activeElement;
         const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
+        const result = window.confirm("削除しますか？");
         console.log(activeDeleteMenuBtn.name);
         console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
-        window.location.href = `/menus/delete/${deleteId}`;
+        if (result) {
+          window.location.href = `/menus/delete/${deleteId}`;
+        }
       };
       
     </script>
