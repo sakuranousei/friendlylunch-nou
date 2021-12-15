@@ -166,17 +166,19 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getOrdersIdNumbers(row);
+            console.log(row);
+            // console.log(row * 2);
+             // getOrdersIdNumbers(row);
           });
         });
       
-      const ids = [];
-      function getOrdersIdNumbers(id) {
-        // const idNumber = id.length;
-        // console.log(id);
-        ids.push(id);  
-      };
-      console.log(ids);
+      // const ids = [];
+      // function getOrdersIdNumbers(id) {
+      //   // const idNumber = id.length;
+      //   // console.log(id);
+      //   ids.push(id);  
+      // };
+      // console.log(ids);
       
       
     </script>
