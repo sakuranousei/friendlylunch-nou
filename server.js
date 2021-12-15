@@ -214,9 +214,9 @@ app.get("/getOrdersData", (request, response) => {
 
 app.get("/getOrdersData/:i", (req, res) => {
   console.log(req.params.i);
-  const i = req.params.i
-  db.all("SELECT * from Orders OFFSET LIMIT 20 ORDER by date DESC, id DESC", (err, rows) => {
-    response.send(JSON.stringify(rows));
+  const i = req.params.i;
+  db.all(`SELECT * from Orders OFFSET ${20 * (i - 1)} LIMIT 20 ORDER by date DESC, id DESC`, (err, rows) => {
+    res.send(JSON.stringify(rows));
   });
 });
 
