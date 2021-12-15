@@ -215,9 +215,15 @@ app.get("/getOrdersData", (request, response) => {
 app.get("/getOrdersData/:i", (req, res) => {
   console.log(req.params.i);
   const i = req.params.i;
-  db.all(`SELECT * from Orders OFFSET ${20 * (i - 1)} LIMIT 20 ORDER by date DESC, id DESC`, (err, rows) => {
+  if (i == 1) {
+    db.all("SELECT * from Orders LIMIT 20 ORDER by date DESC, id DESC", (err, rows) => {
     res.send(JSON.stringify(rows));
-  });
+    });
+  } else {
+    db.all(`SELECT * from Orders OFFSET ${20 * (i - 1)} LIMIT 20 ORDER by date DESC, id DESC`, (err, rows) => {
+    res.send(JSON.stringify(rows));
+    });
+  }
 });
 
 //日付 サーバーサイドでは日本時間にならないので日本時間に変換
