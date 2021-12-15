@@ -184,7 +184,23 @@
           a.innerText = i;
           parent.appendChild(a);
         }
-        // const pageBtn = document.getElementsByName("pageBtn");
+        pages.forEach(i => {
+          console.log(i);
+          
+        });
+        
+        const pageBtn = document.getElementById(pageBtn_i);
+        pageBtn.addEventListener('click', () => {
+          fetch("/getOrdersData/i", {})
+            .then(res => res.json())
+            .then(response => {
+              response.forEach(row => {
+                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+              });
+            });
+
+        });
+        
         // console.log(pageBtn.length);
         // const pageBtnN = document.getElementById()
       };
