@@ -248,6 +248,12 @@ app.get("/getTodaysChanges", (request, response) => {
   });
 });
 
+app.get("/getOrdersIdNumbers", (req, res) => {
+  db.all("SELECT user, change from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
+    res.send(JSON.stringify(row));
+  });
+});
+
 
 //Usersテーブルの追加・更新 Upsert処理
 app.post("/users/addEdit", (req, res) => {

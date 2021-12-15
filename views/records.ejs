@@ -93,7 +93,6 @@
         .then(response => {
           response.forEach(row => {
              getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-             getOrdersIdNumber(row.id);
           });
         });
 
@@ -163,8 +162,16 @@
       };
       
       //ページング
+      fetch("/getOrdersIdNumbers", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getOrdersIdNumbers(row);
+          });
+        });
+      
       const ids = [];
-      function getOrdersIdNumber(id) {
+      function getOrdersIdNumbers(id) {
         // const idNumber = id.length;
         // console.log(id);
         ids.push(id);  
