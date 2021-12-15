@@ -93,6 +93,7 @@
         .then(response => {
           response.forEach(row => {
              getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+             getOrdersIdNumber(row.id);
           });
         });
 
@@ -159,6 +160,16 @@
         if (result) {
           window.location.href = `/orders/delete/${deleteId}`;
         }
+      };
+      
+      //ページング
+      function getOrdersIdNumber(id) {
+        // const idNumber = id.length;
+        // console.log(id);
+        const ids = [];
+        ids.push(id);
+        console.log(ids);
+        
       };
       
       
