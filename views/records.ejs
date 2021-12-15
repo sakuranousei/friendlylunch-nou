@@ -168,17 +168,22 @@
           response.forEach(row => {
             console.log(Object.values(row)[0]);
             const ordersIdNumbers = Object.values(row)[0];
-             getOrdersIdNumbers(row);
+            pageNumbers(ordersIdNumbers);
           });
         });
       
       // const ids = [];
-      // function getOrdersIdNumbers(id) {
-      //   // const idNumber = id.length;
-      //   // console.log(id);
-      //   ids.push(id);  
-      // };
-      // console.log(ids);
+      function pageNumbers(ordersIdNumbers) {
+        const pages = Math.ceil(ordersIdNumbers/20);
+        const parent = document.getElementById("orderFormArea");
+        console.log(pages);
+        for (let i = 0; i < pages; i++) {
+          
+        }
+        
+
+      };
+
       
       
     </script>
