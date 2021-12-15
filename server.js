@@ -251,8 +251,7 @@ app.get("/getTodaysChanges", (request, response) => {
 // Ordersのidの行数を取得
 app.get("/getOrdersIdNumbers", (req, res) => {
   db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    console.log(idNunbers);
-    res.send(idNunbers);
+    res.send(JSON.stringify(idNunbers));
   });
 });
 

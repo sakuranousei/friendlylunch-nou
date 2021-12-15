@@ -166,9 +166,9 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-            console.log(row);
-            // console.log(row * 2);
-             // getOrdersIdNumbers(row);
+            console.log(Object.values(row)[0]);
+            const ordersIdNumbers = Object.values(row)[0];
+             getOrdersIdNumbers(row);
           });
         });
       
