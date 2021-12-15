@@ -184,22 +184,26 @@
           a.innerText = i;
           parent.appendChild(a);
         }
-        pages.forEach(i => {
-          console.log(i);
-          
-        });
-        
-        const pageBtn = document.getElementById(pageBtn_i);
-        pageBtn.addEventListener('click', () => {
-          fetch("/getOrdersData/i", {})
-            .then(res => res.json())
-            .then(response => {
-              response.forEach(row => {
-                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+        const array = [];
+        for (let i = 1; i <= pages; i++) {
+          array.push(i);
+        };
+        console.log(array);
+        array.forEach(i => {
+          const pageBtn = document.getElementById(`pageBtn_${i}`);
+          pageBtn.addEventListener('click', () => {
+            fetch("/getOrdersData/i", {})
+              .then(res => res.json())
+              .then(response => {
+                response.forEach(row => {
+                   getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+                });
               });
-            });
+          });
+          
+        })
+        
 
-        });
         
         // console.log(pageBtn.length);
         // const pageBtnN = document.getElementById()
