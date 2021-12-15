@@ -85,7 +85,7 @@
     
     
     <script>
-      //このページでOrdersデータを呼び出し
+      // このページでOrdersデータを呼び出し
       fetch("/getOrdersData", {})
         .then(res => res.json())
         .then(response => {
@@ -94,7 +94,7 @@
           });
         });
       
-      //ページ番号の記述
+      //★ページ番号の記述
       fetch("/getOrdersIdNumbers", {})
         .then(res => res.json())
         .then(response => {
@@ -135,6 +135,7 @@
               });
           });        
         })
+      }
       
       
       //recordsでOrdersの反映      
@@ -203,8 +204,6 @@
       };
       
 
-        
-      
     </script>
     
   </body>
