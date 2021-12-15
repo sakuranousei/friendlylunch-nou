@@ -60,7 +60,7 @@
       </form>
     </div>
     
-    <div class="container text-center" id="paging">
+    <div class="container text-center" id="pageNumbers">
       ページング
     </div>
 
@@ -175,13 +175,12 @@
       // const ids = [];
       function pageNumbers(ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/20);
-        const parent = document.getElementById("orderFormArea");
-        console.log(pages);
-        for (let i = 0; i < pages; i++) {
-          
+        const parent = document.getElementById("pageNumbers");
+        const p = document.createElement("p");
+        for (let i = 0;  i < pages.length; i++) {
+          p.textContent = `$i + 1;
+          parent.appendChild(a);
         }
-        
-
       };
 
       
