@@ -212,16 +212,16 @@ app.get("/getOrdersData", (request, response) => {
   });
 });
 
-app.get("/getOrdersData/:i", (req, res) => {
-  console.log(req.params.i);
-  const i = req.params.i;
+app.get("/getOrdersData/:i", (request, response) => {
+  console.log(request.params.i);
+  const i = request.params.i;
   if (i == 1) {
-    db.all("SELECT * from Orders LIMIT 20 ORDER by date DESC, id DESC", (err, rows) => {
-    res.send(JSON.stringify(rows));
+    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
+    response.send(JSON.stringify(rows));
     });
-  } else {
-    db.all(`SELECT * from Orders OFFSET ${20 * (i - 1)} LIMIT 20 ORDER by date DESC, id DESC`, (err, rows) => {
-    res.send(JSON.stringify(rows));
+  } else if ( i > 1 ) {
+    db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
+    response.send(JSON.stringify(rows));
     });
   }
 });
