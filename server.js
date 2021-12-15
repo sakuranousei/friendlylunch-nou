@@ -212,6 +212,7 @@ app.get("/getOrdersData", (request, response) => {
   });
 });
 
+// ★
 app.get("/getOrdersData/:i", (request, response) => {
   console.log(request.params.i);
   const i = request.params.i;
@@ -219,8 +220,9 @@ app.get("/getOrdersData/:i", (request, response) => {
     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
     response.send(JSON.stringify(rows));
     });
-  } else if ( i > 1 ) {
-    db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
+  } else {
+    // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
+    db.all("SELECT * from Orders ORDER by date DESC, id DESC OFFSET 20 LIMIT 20", (err, rows) => {
     response.send(JSON.stringify(rows));
     });
   }
