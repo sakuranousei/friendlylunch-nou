@@ -126,16 +126,12 @@
       }
       
       function createOrdersRow (i) {
-        const ordersRow = document.getElementsByClassName("ordersRow");
-        console.log(ordersRow.length);
-        // if(ordersRow.length) {
-        //   for (let j = 0; j < ordersRow.length; j++) {
-        //     ordersRow[j].remove();
-        //   }
-        // }
+        const async = async() => {
+          const ordersRow = document.getElementsByClassName("ordersRow");
+          while (ordersRow.length) {
+          ordersRow.item(0).remove();
+        }      
         
-        
-        // console.log(i);
         const pageBtn = document.getElementById(`pageBtn_${i}`);
         pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
