@@ -220,7 +220,7 @@ app.get("/getOrdersData/:i", (request, response) => {
     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
     response.send(JSON.stringify(rows));
     });
-  } else {
+  } else if {
     // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
     db.all("SELECT * from Orders ORDER by date DESC, id DESC OFFSET 20 LIMIT 20", (err, rows) => {
     response.send(JSON.stringify(rows));
