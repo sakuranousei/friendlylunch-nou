@@ -122,10 +122,10 @@
             a.innerText = i;
           parent.appendChild(a);
         }
-        const array = [];
-        for (let i = 1; i <= pages; i++) {
-          array.push(i);
-        };
+        // const array = [];
+        // for (let i = 1; i <= pages; i++) {
+        //   array.push(i);
+        // };
         // console.log(array);
       }
      
@@ -133,7 +133,7 @@
       function deleteRow() {
         const ordersRow = document.getElementsByClassName("ordersRow");
         while (ordersRow.length) {
-        ordersRow.item(0).reset();
+        ordersRow.item(0).remove();
       }
         // window.location.href = "/records";
       };
