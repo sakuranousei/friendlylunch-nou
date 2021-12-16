@@ -128,13 +128,13 @@
       }
      
       
-      function deleteRow(i) {
-         // const ordersRow = document.getElementsByClassName("ordersRow");
-         //  while (ordersRow.length) {
-         //  ordersRow.item(0).remove();
-         //  }
-        const promise = 
-        document.OrdersForm.reset().then(createOrdersRow(i));
+      function deleteRow(i) { 
+          document.OrdersForm.reset();
+          const ordersRow = document.getElementsByClassName("ordersRow");
+          while (ordersRow.length) {
+          ordersRow.item(0).remove();
+          }
+          createOrdersRow(i);
       };
      
         
