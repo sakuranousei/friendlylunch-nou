@@ -136,12 +136,13 @@
       //★ 
       function createOrdersRow (i) {
         let promise = new Promise((resolve, reject) => {
-          // location.reload();
-          // console.log(i);
+          location.reload();
           // deleteRow();
-          resolve(locattion.reload());
+          // OrdersForm.reset();
+          resolve();
         });
-        promise.then((i) => {
+        promise.then(() => {
+          console.log(i);
           const pageBtn = document.getElementById(`pageBtn_${i}`);
             pageBtn.addEventListener('click', () => {
             fetch(`/getOrdersData/${i}`, {})
