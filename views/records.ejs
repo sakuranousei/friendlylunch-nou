@@ -135,8 +135,9 @@
         
       //★
       async function createOrdersRow (i) {
+        // const result = await location.reload();
+        const result = await deleteRow();
         const pageBtn = document.getElementById(`pageBtn_${i}`);
-        const result = await location.reload();
         pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
             .then(res => res.json())
