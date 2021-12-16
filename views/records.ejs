@@ -131,7 +131,7 @@
           while (ordersRow.length) {
           ordersRow.item(0).remove();
         }      
-        
+        async().then()
         const pageBtn = document.getElementById(`pageBtn_${i}`);
         pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
