@@ -137,7 +137,10 @@
         
       //★ 
       function createOrdersRow (i) {
-        window.addEventListener('load', function() {
+        let promise = new Promise((resolve, reject) => {
+          wi
+        })
+
         const pageBtn = document.getElementById(`pageBtn_${i}`);
           pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
@@ -149,7 +152,6 @@
             });
         });  
           
-        })
 
   
       };
