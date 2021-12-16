@@ -126,14 +126,13 @@
       }
       
       function createOrdersRow (i) {
-        const async = async() => {
+        new Promise(resolve => {
           const ordersRow = document.getElementsByClassName("ordersRow");
           while (ordersRow.length) {
           ordersRow.item(0).remove();
-        }      
-        async().then()
-        const pageBtn = document.getElementById(`pageBtn_${i}`);
-        pageBtn.addEventListener('click', () => {
+        }).then(() => {
+          const pageBtn = document.getElementById(`pageBtn_${i}`);
+          pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
             .then(res => res.json())
             .then(response => {
@@ -142,6 +141,8 @@
               });
             });
         });  
+          
+        })
       };
       
       //recordsでOrdersの反映      
