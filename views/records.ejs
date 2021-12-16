@@ -109,13 +109,14 @@
         const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
         for (let i = 1;  i <= pages; i++) {
           const parent = document.getElementById("pageNumbers");
-          const a = document.createElement("input");
+          const a = document.createElement("button");
             // a.type = "button";
-            a.className = "btn";
+            a.className = "btn px-2";
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
             a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.value = i;
+            // a.value = i;
+            a.innerText = i;
           parent.appendChild(a);
         }
         const array = [];
@@ -131,6 +132,7 @@
           while (ordersRow.length) {
           ordersRow.item(0).remove();
           }
+        return Promise.resolve();
       };
      
         
@@ -150,7 +152,6 @@
       
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
-
         const parent = document.getElementById("orderFormArea");
         const tr = document.createElement("tr");
           tr.className = "ordersRow";
