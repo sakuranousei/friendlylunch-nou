@@ -137,8 +137,8 @@
         
       //★ 
       function createOrdersRow (i) {
-          document.location.reload();
-          const pageBtn = document.getElementById(`pageBtn_${i}`);
+        window.addEventListener('load', function() {
+        const pageBtn = document.getElementById(`pageBtn_${i}`);
           pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
             .then(res => res.json())
@@ -148,6 +148,10 @@
               });
             });
         });  
+          
+        })
+
+  
       };
       
       //recordsでOrdersの反映      
