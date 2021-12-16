@@ -213,20 +213,20 @@ app.get("/getOrdersData", (request, response) => {
 });
 
 // ★
-app.get("/getOrdersData/:i", (request, response) => {
-  console.log(request.params.i);
-  const i = request.params.i;
-  if (i == 1) {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
-  } else if (i > 1) {
-    // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
-  }
-});
+// app.get("/getOrdersData/:i", (request, response) => {
+//   console.log(request.params.i);
+//   const i = request.params.i;
+//   if (i == 1) {
+//     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//     });
+//   } else if (i > 1) {
+//     // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
+//     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//     });
+//   }
+// });
 
 //日付 サーバーサイドでは日本時間にならないので日本時間に変換
 const today = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
