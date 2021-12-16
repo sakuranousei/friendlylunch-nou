@@ -114,7 +114,8 @@
             a.className = "btn px-2";
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
-            a.setAttribute("onclick", `createOrdersRow(${i})`);
+            // a.setAttribute("onclick", `createOrdersRow(${i})`);
+            a.setAttribute("onclick", `deleteRow(${i})`);
             // a.value = i;
             a.innerText = i;
           parent.appendChild(a);
@@ -127,17 +128,17 @@
       }
      
       
-      function deleteRow() {
-         const ordersRow = document.getElementsByClassName("ordersRow");
-          while (ordersRow.length) {
-          ordersRow.item(0).remove();
-          }
-        return Promise.resolve();
+      function deleteRow(i) {
+         // const ordersRow = document.getElementsByClassName("ordersRow");
+         //  while (ordersRow.length) {
+         //  ordersRow.item(0).remove();
+         //  }
+        const promise = 
+        document.OrdersForm.reset().then(createOrdersRow(i));
       };
      
         
-      async function createOrdersRow (i) {
-          const result = await deleteRow();
+      function createOrdersRow (i) {
           const pageBtn = document.getElementById(`pageBtn_${i}`);
           pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
