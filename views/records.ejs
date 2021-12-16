@@ -142,8 +142,14 @@
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
         const ordersRow = document.getElementsByClassName("ordersRow");
-        console.log(ordersRow[0]);
-        ordersRow[0].remove();
+        console.log(ordersRow.length);
+        
+        if (!ordersRow[0]) {
+          console.log(ordersRow[0]);
+        } else if(ordersRow[0]) {
+          console.log(ordersRow[0]);
+          // ordersRow[0].remove();
+        }
         const parent = document.getElementById("orderFormArea");
         const tr = document.createElement("tr");
           tr.className = "ordersRow";
