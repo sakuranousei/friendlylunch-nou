@@ -122,19 +122,20 @@
         for (let i = 1; i <= pages; i++) {
           array.push(i);
         };
-        console.log(array);
+        // console.log(array);
       }
       
       function createOrdersRow (i) {
-        const ordersRow = document.getElementsByClassName("ordersRow");        
-        if(ordersRow.length) {
-          for (let j = 0; j < ordersRow.length; j++) {
-            ordersRow[j].remove();
-          }
-        }
+        const ordersRow = document.getElementsByClassName("ordersRow");
+        console.log(ordersRow.length);
+        // if(ordersRow.length) {
+        //   for (let j = 0; j < ordersRow.length; j++) {
+        //     ordersRow[j].remove();
+        //   }
+        // }
         
         
-        console.log(i);
+        // console.log(i);
         const pageBtn = document.getElementById(`pageBtn_${i}`);
         pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
