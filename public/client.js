@@ -212,12 +212,8 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   const input_orderd = document.createElement("input");
     input_orderd.className = "form-check-input";
     input_orderd.type = "checkbox";
-    input_orderd.value = "";
-    input_orderd.name = ""
-    input_orderd.id = "";
   const label_orderd = document.createElement("label");
-    label_orderd.className = "";
-    label_orderd.for = "";
+    label_orderd.className = "form-check-label mx-2";
     label_orderd.innerText = "済み";
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
@@ -234,7 +230,10 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     parent.appendChild(tr_order);
     tr_order.append(td_user);
     tr_order.append(td_menu);
-    tr_order.append(td_price);   
+    tr_order.append(td_price);
+    tr_order.append(td_orderdCheck);
+    td_orderdCheck.append(input_orderd);
+    td_orderdCheck.append(label_orderd);
   }
   };
 
@@ -260,11 +259,22 @@ const appendTodaysChanges = (user, change)=> {
   const tr = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
-    td_user.className = "col-6";
+    td_user.className = "col-5";
   const td_change = document.createElement("td");
     td_change.textContent = change;
-    td_change.className = "col-6";
+    td_change.className = "col-4";
+  const td_orderdCheck = document.createElement("td");
+    td_orderdCheck.className = "col-3";
+  const input_orderd = document.createElement("input");
+    input_orderd.className = "form-check-input";
+    input_orderd.type = "checkbox";
+  const label_orderd = document.createElement("label");
+    label_orderd.className = "form-check-label mx-2";
+    label_orderd.innerText = "済み";
   parent.appendChild(tr);
   tr.append(td_user);
   tr.append(td_change);
+  tr.append(td_orderdCheck);
+  td_orderdCheck.append(input_orderd);
+  td_orderdCheck.append(label_orderd);
 }
