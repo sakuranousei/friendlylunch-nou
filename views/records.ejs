@@ -135,23 +135,10 @@
         
       //★ 
       function createOrdersRow (i) {
-        let promise = new Promise((resolve, reject) => {
-          // location.reload()
-          // location.reload(() => {
-          //   resolve();
-          // })
-          // deleteRow();
-          // deleteRow(() => {
-          //   resolve();
-          // })
-          // OrdersForm.reset();
-          // resolve();
-          resolve(() => {
-            location.reload();
-          })
-        });
-        promise.then(() => {
-          console.log("成功");
+        const a = new Promise((resolve, reject) => {
+          location.reload();
+        })
+        const b = new Promise((resolve, reject) => {
           const pageBtn = document.getElementById(`pageBtn_${i}`);
             pageBtn.addEventListener('click', () => {
             fetch(`/getOrdersData/${i}`, {})
@@ -161,10 +148,43 @@
                    getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
                 });
               });
-          });  
-          
+          });
         })
-
+        Promise.all([a,b]).then(function(value){
+          console.log(value);
+        });
+//         let promise = new Promise((resolve, reject) => {
+//           // location.reload()
+//           // location.reload(() => {
+//           //   resolve();
+//           // })
+//           // deleteRow();
+//           // deleteRow(() => {
+//           //   resolve();
+//           // })
+//           // OrdersForm.reset();
+//           // resolve();
+//           // resolve(() => {
+//           //   location.reload();
+//           // })
+//           resolve();
+//           return location.reload();
+          
+//         });
+//         promise.then(() => {
+//           console.log("成功");
+//           const pageBtn = document.getElementById(`pageBtn_${i}`);
+//             pageBtn.addEventListener('click', () => {
+//             fetch(`/getOrdersData/${i}`, {})
+//               .then(res => res.json())
+//               .then(response => {
+//                 response.forEach(row => {
+//                    getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+//                 });
+//               });
+//           });  
+          
+//         })
       };
       
       //recordsでOrdersの反映      
