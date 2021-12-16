@@ -238,31 +238,16 @@ const appendTodaysOrders = (store, user, menu, price)=> {
   };
 
 
-//集計 store sum
-const appendTodaysStoresTotalAmount = (store, sum)=> {
-  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
-  const tr = document.createElement("tr");
-  const td_store = document.createElement("td");
-    td_store.textContent = store;
-    td_store.className = "col-6";
-  const td_sum = document.createElement("td");
-    td_sum.textContent = sum;
-    td_sum.className = "eachStoreSum col-6"
-  parent.appendChild(tr);
-  tr.append(td_store);
-  tr.append(td_sum);
-}
-
 //集計　お釣り
 const appendTodaysChanges = (user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
   const tr = document.createElement("tr");
   const td_user = document.createElement("td");
     td_user.textContent = user;
-    td_user.className = "col-5";
+    td_user.className = "col-6";
   const td_change = document.createElement("td");
     td_change.textContent = change;
-    td_change.className = "col-4";
+    td_change.className = "col-3";
   const td_orderdCheck = document.createElement("td");
     td_orderdCheck.className = "col-3";
   const input_orderd = document.createElement("input");
@@ -277,4 +262,20 @@ const appendTodaysChanges = (user, change)=> {
   tr.append(td_orderdCheck);
   td_orderdCheck.append(input_orderd);
   td_orderdCheck.append(label_orderd);
+}
+
+
+//集計 store sum
+const appendTodaysStoresTotalAmount = (store, sum)=> {
+  const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
+  const tr = document.createElement("tr");
+  const td_store = document.createElement("td");
+    td_store.textContent = store;
+    td_store.className = "col-6";
+  const td_sum = document.createElement("td");
+    td_sum.textContent = sum;
+    td_sum.className = "eachStoreSum col-6"
+  parent.appendChild(tr);
+  tr.append(td_store);
+  tr.append(td_sum);
 }
