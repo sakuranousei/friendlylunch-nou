@@ -114,7 +114,7 @@
             a.className = "btn";
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
-            a.setAttribute("onclick", `f(${i})`);
+            a.setAttribute("onclick", `createOrdersRow(${i})`);
             a.value = i;
           parent.appendChild(a);
         }
@@ -125,7 +125,15 @@
         console.log(array);
       }
       
-      function f (i) {
+      function createOrdersRow (i) {
+        const ordersRow = document.getElementsByClassName("ordersRow");        
+        if(ordersRow.length) {
+          for (let j = 0; j < ordersRow.length; j++) {
+            ordersRow[j].remove();
+          }
+        }
+        
+        
         console.log(i);
         const pageBtn = document.getElementById(`pageBtn_${i}`);
         pageBtn.addEventListener('click', () => {
@@ -141,15 +149,7 @@
       
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
-        const ordersRow = document.getElementsByClassName("ordersRow");
-        console.log(ordersRow.length);
-        
-        if (!ordersRow[0]) {
-          console.log(ordersRow[0]);
-        } else if(ordersRow[0]) {
-          console.log(ordersRow[0]);
-          // ordersRow[0].remove();
-        }
+
         const parent = document.getElementById("orderFormArea");
         const tr = document.createElement("tr");
           tr.className = "ordersRow";
