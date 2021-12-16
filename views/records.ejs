@@ -116,9 +116,6 @@
             a.id = `pageBtn_${i}`;
             a.setAttribute("onclick", `f(${i})`);
             a.value = i;
-            // a.href = `/getOrdersData/${i}`;
-          console.log(parent);
-          // a.innerText = i;
           parent.appendChild(a);
         }
         const array = [];
@@ -144,8 +141,12 @@
       
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
+        const ordersRow = document.getElementsByClassName("ordersRow");
+        console.log(ordersRow[0]);
+        ordersRow[0].remove();
         const parent = document.getElementById("orderFormArea");
         const tr = document.createElement("tr");
+          tr.className = "ordersRow";
         const td_1 = document.createElement("td");
           td_1.hidden = true;
           td_1.className = "text-center p-0";
