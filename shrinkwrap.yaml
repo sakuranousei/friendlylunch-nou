@@ -6,7 +6,7 @@ dependencies:
   ejs: 3.1.6
   express: 4.17.1
   express-session: 1.17.2
-  passport: 0.5.0
+  passport: 0.5.1
   passport-local: 1.0.0
   sqlite3: 5.0.2
 packages:
@@ -1028,7 +1028,7 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=
-  /passport/0.5.0:
+  /passport/0.5.1:
     dependencies:
       passport-strategy: 1.0.0
       pause: 0.0.1
@@ -1036,7 +1036,7 @@ packages:
     engines:
       node: '>= 0.4.0'
     resolution:
-      integrity: sha512-ln+ue5YaNDS+fes6O5PCzXKSseY5u8MYhX9H5Co4s+HfYI5oqvnHKoOORLYDUPh+8tHvrxugF2GFcUA1Q1Gqfg==
+      integrity: sha512-MSLMqXppCECdQp4tM5kPwOr9SC6tYgDAJ+8boyFIZeGp7fvpxDuFD0Mfx5DEa6b+LsCjdA843HC+ZGavG9vDiA==
   /path-is-absolute/1.0.1:
     dev: false
     engines:
@@ -1511,6 +1511,6 @@ specifiers:
   ejs: ^3.1.6
   express: ^4.17.1
   express-session: ^1.17.2
-  passport: ^0.5.0
+  passport: ^0.5.1
   passport-local: ^1.0.0
   sqlite3: ^5.0.2

@@ -179,15 +179,15 @@ app.get("/index", isAuthenticated, (req, res) => {
 });
 
 
-// 実績ページへの遷移
-app.get("/records", isAuthenticated, (req, res) => {
-  res.render(`${__dirname}/views/records.ejs`, { login_people: req.user });
-});
-
-
 // 編集ページへの遷移
 app.get("/edit", isAuthenticated, (req, res) => {
   res.render(`${__dirname}/views/edit.ejs`, { login_people: req.user });
+});
+
+
+// 実績ページへの遷移
+app.get("/records", isAuthenticated, (req, res) => {
+  res.render(`${__dirname}/views/records.ejs`, { login_people: req.user });
 });
 
 
@@ -263,12 +263,12 @@ app.get("/getTodaysChanges", (request, response) => {
   });
 });
 
-// Ordersのidの行数を取得
-app.get("/getOrdersIdNumbers", (req, res) => {
-  db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    res.send(JSON.stringify(idNunbers));
-  });
-});
+//★ Ordersのidの行数を取得
+// app.get("/getOrdersIdNumbers", (req, res) => {
+//   db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
+//     res.send(JSON.stringify(idNunbers));
+//   });
+// });
 
 
 //Usersテーブルの追加・更新 Upsert処理

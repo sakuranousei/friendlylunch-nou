@@ -208,6 +208,7 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
     td_price.textContent = price;
+  const td_check = document.createElement("td");
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
