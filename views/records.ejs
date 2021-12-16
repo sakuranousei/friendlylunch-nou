@@ -61,6 +61,8 @@
     </div>
     
     <div class="container text-center" id="pageNumbers"></div>
+    
+    <button onclick="deleteRow()">リセット</button>
 
     <div class="container">
       <a href="/index">
@@ -114,8 +116,8 @@
             a.className = "btn px-2";
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
-            // a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.setAttribute("onclick", `deleteRow(${i})`);
+            a.setAttribute("onclick", `createOrdersRow(${i})`);
+            // a.setAttribute("onclick", `deleteRow(${i})`);
             // a.value = i;
             a.innerText = i;
           parent.appendChild(a);
@@ -128,17 +130,17 @@
       }
      
       
-      function deleteRow(i) { 
-          document.OrdersForm.reset();
-          const ordersRow = document.getElementsByClassName("ordersRow");
-          while (ordersRow.length) {
-          ordersRow.item(0).remove();
-          }
-          createOrdersRow(i);
+      function deleteRow() {
+        const ordersRow = document.getElementsByClassName("ordersRow");
+        while (ordersRow.length) {
+        ordersRow.item(0).reset();
+      }
+        // window.location.href = "/records";
       };
      
         
       function createOrdersRow (i) {
+          // window.location.href = "/records";
           const pageBtn = document.getElementById(`pageBtn_${i}`);
           pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
