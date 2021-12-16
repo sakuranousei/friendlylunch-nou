@@ -125,12 +125,12 @@
         // console.log(array);
       }
       
+      // const ordersRow = document.getElementsByClassName("ordersRow");
+      //     while (ordersRow.length) {
+      //     ordersRow.item(0).remove();
+      
+      
       function createOrdersRow (i) {
-        new Promise(resolve => {
-          const ordersRow = document.getElementsByClassName("ordersRow");
-          while (ordersRow.length) {
-          ordersRow.item(0).remove();
-        }).then(() => {
           const pageBtn = document.getElementById(`pageBtn_${i}`);
           pageBtn.addEventListener('click', () => {
           fetch(`/getOrdersData/${i}`, {})
@@ -141,8 +141,6 @@
               });
             });
         });  
-          
-        })
       };
       
       //recordsでOrdersの反映      
