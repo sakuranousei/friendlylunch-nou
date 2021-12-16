@@ -208,7 +208,17 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
     td_price.textContent = price;
-  const td_check = document.createElement("td");
+  const td_orderdCheck = document.createElement("td");
+  const input_orderd = document.createElement("input");
+    input_orderd.className = "form-check-input";
+    input_orderd.type = "checkbox";
+    input_orderd.value = "";
+    input_orderd.name = ""
+    input_orderd.id = "";
+  const label_orderd = document.createElement("label");
+    label_orderd.className = "";
+    label_orderd.for = "";
+    label_orderd.innerText = "済み";
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
@@ -216,7 +226,10 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     parent.appendChild(tr_order);
     tr_order.append(td_user);
     tr_order.append(td_menu);
-    tr_order.append(td_price); 
+    tr_order.append(td_price);
+    tr_order.append(td_orderdCheck);
+    td_orderdCheck.append(input_orderd);
+    td_orderdCheck.append(label_orderd);
   } else {
     parent.appendChild(tr_order);
     tr_order.append(td_user);
