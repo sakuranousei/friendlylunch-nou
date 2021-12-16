@@ -96,7 +96,7 @@
       //     });
       //   });
       
-      //★ページ番号の記述
+      //★Ordersのid数の呼び出し
       fetch("/getOrdersIdNumbers", {})
         .then(res => res.json())
         .then(response => {
@@ -107,6 +107,7 @@
           });
         });
       
+      //ページ番号記載
       function pageNumbers(ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
         for (let i = 1;  i <= pages; i++) {
