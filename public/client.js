@@ -216,6 +216,7 @@ const appendTodaysOrders = (id, store, user, menu, price)=> {
     input_ordered.className = "form-check-input";
     input_ordered.type = "checkbox";
     input_ordered.name = "selectUserMenuCheck";
+    input_ordered.value = id;
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label mx-2";
     label_ordered.innerText = "済";
@@ -263,6 +264,7 @@ const appendTodaysChanges = (id, user, change)=> {
     input_ordered.className = "form-check-input";
     input_ordered.type = "checkbox";
     input_ordered.name = "selectUserChangeCheck";
+    input_ordered.value = id;
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label mx-2";
     label_ordered.innerText = "済";
@@ -299,8 +301,8 @@ ordersCheckBtn.addEventListener("click", () => {
   console.log(thisDay);
   const checked_selectUserMenuCheck = document.querySelectorAll("input[name=selectUserMenuCheck]:checked");
   const checked_selectUserChangeCheck = document.querySelectorAll("input[name=selectUserChangeCheck]:checked");
-  console.log(checked_selectUserMenuCheck);
-  console.log(checked_selectUserChangeCheck);
+  console.log(checked_selectUserMenuCheck[0].value);
+  console.log(checked_selectUserChangeCheck[0].value);
   const ordersUpdateArray = [];  
   // //★ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
   // if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
