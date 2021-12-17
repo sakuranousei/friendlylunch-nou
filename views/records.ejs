@@ -88,13 +88,13 @@
     
     <script>
       // このページでOrdersデータを呼び出し
-      // fetch("/getOrdersData", {})
-      //   .then(res => res.json())
-      //   .then(response => {
-      //     response.forEach(row => {
-      //        getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-      //     });
-      //   });
+      fetch("/getOrdersData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+          });
+        });
       
       //★ ページ番号　　Ordersのid数の呼び出し
       fetch("/getOrdersIdNumbers", {})
