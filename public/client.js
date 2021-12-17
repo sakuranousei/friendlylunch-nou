@@ -188,12 +188,12 @@ fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTodaysChanges(rrow.user, row.change);
+      appendTodaysChanges(row.id, row.user, row.change);
     });
   });
 
 
-//★集計　store,user,menu,price
+//集計　store,user,menu,price
 const appendTodaysOrders = (id, store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
@@ -244,9 +244,12 @@ const appendTodaysOrders = (id, store, user, menu, price)=> {
 
 
 //集計　お釣り
-const appendTodaysChanges = (user, change)=> {
+const appendTodaysChanges = (id, user, change)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
   const tr = document.createElement("tr");
+  const td_id = document.createElement("td");
+    td_id.hidden = true;
+    td_id.textContent = id;
   const td_user = document.createElement("td");
     td_user.textContent = user;
     td_user.className = "col-6";
@@ -262,6 +265,7 @@ const appendTodaysChanges = (user, change)=> {
     label_orderd.className = "form-check-label mx-2";
     label_orderd.innerText = "済み";
   parent.appendChild(tr);
+  tr.append(td_id);
   tr.append(td_user);
   tr.append(td_change);
   tr.append(td_orderdCheck);
