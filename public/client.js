@@ -172,7 +172,7 @@ fetch("/getTodaysOrders", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTodaysOrders(row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price);
     });
   });
 
@@ -188,13 +188,13 @@ fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTodaysChanges(row.user, row.change);
+      appendTodaysChanges(rrow.user, row.change);
     });
   });
 
 
-//集計　store,user,menu,price
-const appendTodaysOrders = (store, user, menu, price)=> {
+//★集計　store,user,menu,price
+const appendTodaysOrders = (id, store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store}`;
@@ -202,6 +202,9 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     strong_store.innerText = store;
     strong_store.className = "font-weight-bold eachStoreName";
   const tr_order = document.createElement("tr");
+  const td_id = document.createElement("td");
+    td_id.hidden = true;
+    td_id.textContent = id;
   const td_user = document.createElement("td");
     td_user.textContent = user;
   const td_menu = document.createElement("td");
@@ -220,6 +223,7 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     parent.appendChild(tr_store);
     tr_store.append(strong_store);
     parent.appendChild(tr_order);
+    tr_order.append(td_id);
     tr_order.append(td_user);
     tr_order.append(td_menu);
     tr_order.append(td_price);
@@ -228,6 +232,7 @@ const appendTodaysOrders = (store, user, menu, price)=> {
     td_orderdCheck.append(label_orderd);
   } else {
     parent.appendChild(tr_order);
+    tr_order.append(td_id);
     tr_order.append(td_user);
     tr_order.append(td_menu);
     tr_order.append(td_price);
