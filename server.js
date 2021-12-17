@@ -97,7 +97,7 @@ db.serialize(() => {
     );
     console.log("New table Menus created!");
     db.run(
-      "CREATE TABLE Orders (id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, user TEXT, store TEXT, menu TEXT, price INTEGER, change INTEGER)"
+      "CREATE TABLE Orders (id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, user TEXT, store TEXT, menu TEXT, price INTEGER, change INTEGER, ordered_check TEXT, changed_check TEXT)"
     );
     console.log("New table Orders created!"); 
     // insert default table
