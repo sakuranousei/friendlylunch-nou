@@ -288,3 +288,53 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_store);
   tr.append(td_sum);
 }
+
+
+//★ordersテーブルにcheck情報を保存
+const ordersCheckBtn = document.getElementById("ordersCheckBtn");
+ordersCheckBtn.addEventListener("click", () => {
+  const thisDay = new Date();
+  console.log(thisDay);
+  const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
+  const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
+  const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
+  const ordersUpdateArray = [];  
+  //★ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
+  if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
+    document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
+  };
+  //ユーザー名：１　 & メニュー：１のとき
+  if(checked_selectStoreMenuPrice.length == 1 && checked_selectUserName.length == 1) {
+    document.getElementById("errormessage").textContent = "";
+    ordersUpdateArray.push(thisDay);
+    for (const data_selectUserName of checked_selectUserName) {
+      ordersUpdateArray.push(data_selectUserName.value);
+    }
+    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
+      const ary = data_selectStoreMenuPrice.value.split(',');
+      for (let i = 0; i < ary.length; i++) {
+        ordersUpdateArray.push(ary[i]);
+      }
+    }
+    for (const data_selectChangeValue of selectChangeValue) {
+      ordersUpdateArray.push(data_selectChangeValue.value);
+    }
+    console.log(ordersUpdateArray);
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
+  };
+  //メニューが２つ以上のとき
+  if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
+    document.getElementById("errormessage").textContent = "";
+    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+        ordersUpdateArray.push(thisDay);     
+        ordersUpdateArray.push(checked_selectUserName[0].value);      
+        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
+          ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
+        }
+        ordersUpdateArray.push(selectChangeValue[0].value);  
+    }
+    console.log(ordersUpdateArray);
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
+  };
+});
