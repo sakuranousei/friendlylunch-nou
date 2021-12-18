@@ -300,6 +300,11 @@ app.post("/menus/addEdit", (req, res) => {
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
+//Ordersテーブルの追加・更新 Upsert処理
+app.post("/orders/update", (req, res) => {
+  console.log(req.body);
+});
+
 
 //Usersテーブルの削除
 app.get("/users/delete/:deleteId", (req, res) => {
