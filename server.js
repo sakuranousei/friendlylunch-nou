@@ -308,18 +308,18 @@ app.post("/orders/update", (req, res) => {
   // console.log(req.body.changed_check);
   const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_check = req.body.changed_check;
-  console.log(ordered_check);
+  // console.log(ordered_check);
   // console.log(ordered_check.length);
   // console.log(req.body.length);
-  // if (ordered_check == undefined) {   
-  //   console.log("未定義");
-  // } else if (ordered_check.length == 1) {
-  //   console.log(ordered_check);
-  // } else {
-  //   for (let i = 0; i < ordered_check.length; i++) {
-  //     console.log(ordered_check[i]);
-  //   }
-  // }
+  if (ordered_check == undefined) {   
+    console.log("未定義");
+  } else if (ordered_check == number) {
+    console.log(ordered_check);
+  } else {
+    for (let i = 0; i < ordered_check.length; i++) {
+      console.log(ordered_check[i]);
+    }
+  }
   // if (changed_check.length == 1) {
   //   console.log(changed_check);
   // } else {
