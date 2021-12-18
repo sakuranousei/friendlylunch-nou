@@ -303,9 +303,26 @@ app.post("/menus/addEdit", (req, res) => {
 
 //★Ordersテーブルの追加・更新 Upsert処理
 app.post("/orders/update", (req, res) => {
-  console.log(req.body);
-  console.log(req.body.ordered_check); //単数選択101,複数選択[ '101', '103', '102' ]
-  console.log(req.body.changed_check);
+  // console.log(req.body);
+  // console.log(req.body.ordered_check); //単数選択101,複数選択[ '101', '103', '102' ]
+  // console.log(req.body.changed_check);
+  const ordered_check = req.body.ordered_check;
+  const changed_check = req.body.changed_check;
+  if (ordered_check.length == 1) {
+    console.log(ordered_check);
+  } else {
+    for (let i = 0; i < ordered_check.length; i++) {
+      console.log(ordered_check[i]);
+    }
+  }
+  if (changed_check.length == 1) {
+    console.log(changed_check);
+  } else {
+    for (let i = 0; i < changed_check.length; i++) {
+      console.log(changed_check[i]);
+    }
+  }
+  
 });
 
 
