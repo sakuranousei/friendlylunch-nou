@@ -218,7 +218,7 @@ const appendTodaysOrders = (id, store, user, menu, price)=> {
     input_ordered.name = "selectUserMenuCheck";
     input_ordered.value = id;
   const label_ordered = document.createElement("label");
-    label_ordered.className = "form-check-label mx-2";
+    label_ordered.className = "form-check-label";
     label_ordered.innerText = "済";
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
@@ -266,7 +266,7 @@ const appendTodaysChanges = (id, user, change)=> {
     input_ordered.name = "selectUserChangeCheck";
     input_ordered.value = id;
   const label_ordered = document.createElement("label");
-    label_ordered.className = "form-check-label mx-2";
+    label_ordered.className = "form-check-label";
     label_ordered.innerText = "済";
   parent.appendChild(tr);
   tr.append(td_id);
