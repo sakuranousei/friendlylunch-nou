@@ -88,6 +88,8 @@
     
     
     <!--本日の注文内容の集計 -->
+    <form action="/orders/update" method="post">
+      
     <div class="container py-4 bg-light">
       <strong class="d-flex align-items-center justify-content-center">本日の当番用</strong>
       <div id="" class="">
@@ -127,11 +129,13 @@
       </div>
       
           <!--注文済み・お釣り返却済みbtn-->
-    <div class="container pt-3 pb-1">
-      <input id="ordersCheckBtn" type="button" class="btn btn-dark w-auto" value="注文済み・返却済み">
-    </div> 
+      <div class="container pt-3 pb-1">
+        <input id="ordersCheckBtn" type="submit" class="btn btn-dark w-auto" value="注文済み・返却済み">
+      </div> 
       
     </div>
+      
+    </form>
     
     <div class="container py-0 text-muted">注文内容を変更する場合は「実績」で削除してから注文し直してください。</div>
     
