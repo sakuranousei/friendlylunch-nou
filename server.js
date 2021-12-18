@@ -310,16 +310,17 @@ app.post("/orders/update", (req, res) => {
   const changed_check = req.body.changed_check;
   // console.log(ordered_check);
   // console.log(ordered_check.length);
-  // console.log(req.body.length);
-  if (ordered_check == undefined) {   
-    console.log("未定義");
-  } else if (ordered_check == number) {
-    console.log(ordered_check);
-  } else {
-    for (let i = 0; i < ordered_check.length; i++) {
-      console.log(ordered_check[i]);
-    }
-  }
+  // console.log(req.body.length); 
+  // console.log(ordered_check == NaN);
+  // if (ordered_check == undefined) {   
+  //   console.log("未定義");
+  // } else if (ordered_check.isNan()) {
+  //   console.log(ordered_check);
+  // } else {
+  //   for (let i = 0; i < ordered_check.length; i++) {
+  //     console.log(ordered_check[i]);
+  //   }
+  // }
   // if (changed_check.length == 1) {
   //   console.log(changed_check);
   // } else {
