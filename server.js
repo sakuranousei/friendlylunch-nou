@@ -212,7 +212,7 @@ app.get("/getOrdersData", (request, response) => {
   });
 });
 
-// ★records.ejsでの20行ごとのデータ送付
+// ★サーバーサイドからフロントエンドへOrdersデータ20行ごとのデータ送付
 app.get("/getOrdersData/:i", (request, response) => {
   console.log(request.params.i);
   const i = request.params.i;
@@ -304,6 +304,8 @@ app.post("/menus/addEdit", (req, res) => {
 //★Ordersテーブルの追加・更新 Upsert処理
 app.post("/orders/update", (req, res) => {
   console.log(req.body);
+  console.log(req.body.ordered_check); //単数選択101,複数選択[ '101', '103', '102' ]
+  console.log(req.body.changed_check);
 });
 
 
