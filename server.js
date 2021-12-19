@@ -300,6 +300,14 @@ app.post("/menus/addEdit", (req, res) => {
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
+//数値かどうか判定する関数
+const isNumber = (n) => {
+  const v = n - 0; //"10" - 0;=> 10, "a" - 0;=> NaN, 数値でなければNaNを返す
+  if ( v || v === 0 ) {
+    return true;
+  }
+  return false;
+};
 
 //★Ordersテーブルの追加・更新 Upsert処理
 app.post("/orders/update", (req, res) => {
@@ -308,19 +316,20 @@ app.post("/orders/update", (req, res) => {
   // console.log(req.body.changed_check);
   const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_check = req.body.changed_check;
+  console.log(isNumber(ordered_check));
   // console.log(ordered_check);
   // console.log(ordered_check.length);
   // console.log(req.body.length); 
   // console.log(ordered_check == NaN);
-  // if (ordered_check == undefined) {   
-  //   console.log("未定義");
-  // } else if (ordered_check.isNan()) {
-  //   console.log(ordered_check);
-  // } else {
-  //   for (let i = 0; i < ordered_check.length; i++) {
-  //     console.log(ordered_check[i]);
-  //   }
-  // }
+  if (isNumber(ordered_check)) {   
+    console.log("未定義");
+  } else if (ordered_check.isNan()) {
+    console.log(ordered_check);
+  } else {
+    for (let i = 0; i < ordered_check.length; i++) {
+      console.log(ordered_check[i]);
+    }
+  }
   // if (changed_check.length == 1) {
   //   console.log(changed_check);
   // } else {
