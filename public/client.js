@@ -201,6 +201,8 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
   const strong_store = document.createElement("strong");
     strong_store.innerText = store;
     strong_store.className = "font-weight-bold eachStoreName";
+  const strong_tellnum = document.createElement("strong");
+    strong_tellnum.name = "tellnumArea";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
     td_id.hidden = true;
@@ -227,6 +229,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
     tr_store.append(strong_store);
+    tr_store.append(strong_tellnum);
     parent.appendChild(tr_order);
     tr_order.append(td_id);
     tr_order.append(td_user);
@@ -299,10 +302,18 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_sum);
 }
 
+//本日の集計　チェックのリセット
 const ordersResetBtn = document.getElementById("ordersResetBtn");
   ordersResetBtn.addEventListener("click", () => {
     window.location.href = `/orders/check/reset`;
   });
+
+//アコーディオンに電話番号記述
+const tellnumArea = document.getElementsByName("tellnumArea");
+tellnumArea.addEventListener("click", () => {
+  
+});
+
 
 
 //★ordersテーブルにcheck情報を保存
