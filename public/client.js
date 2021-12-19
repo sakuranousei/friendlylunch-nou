@@ -50,7 +50,7 @@ const appendUserRadio = (id, user) => {
     input.name = "selectUserName"
     input.value = user;
   const label = document.createElement("label");
-    label.className = "form-check-label";
+    label.className = "form-check-label user";
     label.innerText = user;
     label.name = user;
   parent.appendChild(div);
@@ -211,6 +211,8 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     td_id.textContent = id;
   const td_user = document.createElement("td");
     td_user.textContent = user;
+    td_user.name = user;
+    td_user.className = "selectUser";
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
