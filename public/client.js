@@ -295,15 +295,15 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
 
 
 //★ordersテーブルにcheck情報を保存
-const ordersCheckBtn = document.getElementById("ordersCheckBtn");
-ordersCheckBtn.addEventListener("click", () => {
-  const thisDay = new Date();
-  console.log(thisDay);
-  const ordered_check = document.querySelectorAll("input[name=ordered_check]:checked");
-  const changed_check = document.querySelectorAll("input[name=changed_check]:checked");
-  console.log(ordered_check[0].value);
-  console.log(changed_check[0].value);
-  const ordersUpdateArray = [];  
+// const ordersCheckBtn = document.getElementById("ordersCheckBtn");
+// ordersCheckBtn.addEventListener("click", () => {
+//   const thisDay = new Date();
+//   console.log(thisDay);
+//   const ordered_check = document.querySelectorAll("input[name=ordered_check]:checked");
+//   const changed_check = document.querySelectorAll("input[name=changed_check]:checked");
+//   console.log(ordered_check[0].value);
+//   console.log(changed_check[0].value);
+//   const ordersUpdateArray = [];  
   // //★ユーザー名:0 or メニュー:0のとき どっちか一方が0のとき
   // if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
   //   document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
@@ -342,4 +342,4 @@ ordersCheckBtn.addEventListener("click", () => {
   //   console.log(ordersUpdateArray);
   //   window.location.href = `/orders/update/${ordersUpdateArray}`;
   // };
-});
+// });

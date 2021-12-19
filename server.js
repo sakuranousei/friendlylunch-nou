@@ -321,14 +321,15 @@ app.post("/orders/update", (req, res) => {
   } else if (isNumber(ordered_check)) { //数値だった場合
     const selectId = ordered_check;
     console.log(selectId);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
+    const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
+    // const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
     stmt.run();
     stmt.finalize();
   } else {
     for (let i = 0; i < ordered_check.length; i++) {
       const selectId = ordered_check[i];
       console.log(selectId);
-      const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
+      const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
       stmt.run();
       stmt.finalize();
     }
@@ -338,14 +339,14 @@ app.post("/orders/update", (req, res) => {
   } else if (isNumber(changed_check)) {
     const selectId = changed_check;
     console.log(selectId);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, changed_check) VALUES (?, ?)", selectId, 1);
+    const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
     stmt.run();
     stmt.finalize();
   } else {
     for (let i = 0; i < changed_check.length; i++) {
       const selectId = changed_check[i];
       console.log(selectId);
-      const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, changed_check) VALUES (?, ?)", selectId, 1);
+      const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
       stmt.run();
       stmt.finalize();
     }
