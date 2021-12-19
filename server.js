@@ -313,22 +313,12 @@ const isNumber = (n) => {
 
 
 //★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
-app.post("/orders/update", (req, res) => {
+app.post("/orders/check", (req, res) => {
   const ordered_checkId = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_checkId = req.body.changed_check;
   if (ordered_checkId == undefined) {
     console.log("'ordered_check' is undefined");
-  } else if (isNumber(ordered_checkId)) { //数値だった場合
-    // db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
-    //   for (let i = 0; i < JSON.stringify(rows.length); i++) {
-    //     console.log(i);
-    //     console.log(JSON.stringify(rows[i].id));
-    //     const allTodayId = JSON.stringify(rows[i].id);
-    //     const stmt = db.prepare(`UPDATE Orders set ordered_check = "" where id = ${allTodayId}`);
-    //     stmt.run();
-    //     stmt.finalize();
-    //   }
-    // });    
+  } else if (isNumber(ordered_checkId)) { //数値だった場合  
     const selectId = ordered_checkId;
     console.log(selectId);
     const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
@@ -362,6 +352,22 @@ app.post("/orders/update", (req, res) => {
   }
   return res.render(`${__dirname}/views/index.ejs`);
 });
+
+//チェックのリセット
+app.get("/orders/check/reset", (req, res) => {
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"'", (err, rows) => {
+    for (let i = 0; i < JSON.stringify(rows.length); i++) {
+      console.log(i);
+      console.log(JSON.stringify(rows[i].id));
+      const allTodayId = JSON.stringify(rows[i].id);
+      const stmt = db.prepare(`UPDATE Orders set ordered_check = "", changed_check = "" where id = ${allTodayId}`);
+      stmt.run();
+      stmt.finalize();
+    }
+  });
+  return res.render(`${__dirname}/views/index.ejs`);
+});
+
 
 
 //Usersテーブルの削除

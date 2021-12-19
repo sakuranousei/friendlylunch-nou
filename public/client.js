@@ -300,7 +300,9 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
 }
 
 const ordersResetBtn = document.getElementById("ordersResetBtn");
-ordersResetBtn.addEventListener()
+  ordersResetBtn.addEventListener("click", () => {
+    window.location.href = `/orders/check/reset`;
+  });
 
 
 //★ordersテーブルにcheck情報を保存
