@@ -318,11 +318,11 @@ app.post("/tellnums/addEdit", (req, res) => {
   const getTellNum = req.body.tellNum;
   for(let i = 0; i < getTellId.length; i++) {
     console.log(getTellId[i], getTellStoreName[i], getTellNum[i]);
-    // const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnums) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
-    // stmt.run();
-    // stmt.finalize();
+    const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnums) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
+    stmt.run();
+    stmt.finalize();
   }
-  // return res.render(`${__dirname}/views/edit.ejs`);
+  return res.render(`${__dirname}/views/edit.ejs`);
 });
 
 
