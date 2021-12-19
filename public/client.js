@@ -339,7 +339,7 @@ const appendTellnums = (store, tellnums) => {
   const tellnumArea = document.getElementsByClassName("tellnumArea");
   for (let i = 0; i < eachStoreName.length; i++) {
     if (store === eachStoreName[i].innerText) {
-      tellnumArea[i].innerText = "℡" + tellnums;
+      tellnumArea[i].innerText = "TEL" + tellnums;
     }
   }
 };
