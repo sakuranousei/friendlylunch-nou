@@ -15,6 +15,8 @@ const week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
 document.getElementById("todayDate").textContent =
   year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日";
 document.getElementById("todayTime").textContent = hour + "時" + minute + "分";
+const thisDay = year + "-" + month + "-" + day;
+console.log(thisDay);
 
 
 // index request the Users from our app's sqlite database
@@ -121,8 +123,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
 //ordersテーブルに保存するupdate情報
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
-  // const date = document.getElementById("todayDate").textContent + document.getElementById("todayTime").textContent;
-  const thisDay = year + "-" + month + "-" + day;
+  // const thisDay = year + "-" + month + "-" + day;
   const checked_selectUserName = document.querySelectorAll("input[name=selectUserName]:checked");
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
@@ -337,7 +338,8 @@ const appendTellnums = (store, tellnums) => {
 
 
 //注文したユーザーを明示する
-// const name = 
+const name = document.getElementsByClassName("user");
+const selectUser = document.getElementsByClassName("selectUser");
 
 //★ordersテーブルにcheck情報を保存
 // const ordersCheckBtn = document.getElementById("ordersCheckBtn");
