@@ -314,44 +314,49 @@ const isNumber = (n) => {
 
 //★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/update", (req, res) => {
-  const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
-  const changed_check = req.body.changed_check;
-  if (ordered_check == undefined) {
-    console.log("'ordered_check' is undefined");
-  } else if (isNumber(ordered_check)) { //数値だった場合
-    const selectId = ordered_check;
-    console.log(selectId);
-    // const stmt_reset = db.prepare(`UPDATE Orders set ordered_check = "" where id = ${selectId}`);
-    const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
-    stmt.run();
-    stmt.finalize();
-  } else {
-    for (let i = 0; i < ordered_check.length; i++) {
-      const selectId = ordered_check[i];
-      console.log(selectId);
-      const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
-      stmt.run();
-      stmt.finalize();
-    }
-  }
-  if (changed_check == undefined) {
-    console.log("'changed_check' is undefined");
-  } else if (isNumber(changed_check)) {
-    const selectId = changed_check;
-    console.log(selectId);
-    const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
-    stmt.run();
-    stmt.finalize();
-  } else {
-    for (let i = 0; i < changed_check.length; i++) {
-      const selectId = changed_check[i];
-      console.log(selectId);
-      const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
-      stmt.run();
-      stmt.finalize();
-    }
-  }
-  return res.render(`${__dirname}/views/index.ejs`);
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"'", (err, rows) => {
+    res.send(JSON.stringify(rows.id));
+    // return res.render(`${__dirname}/views/index.ejs`);
+  });
+  
+  // const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
+  // const changed_check = req.body.changed_check;
+  // if (ordered_check == undefined) {
+  //   console.log("'ordered_check' is undefined");
+  // } else if (isNumber(ordered_check)) { //数値だった場合
+  //   const selectId = ordered_check;
+  //   console.log(selectId);
+  //   // const stmt_reset = db.prepare(`UPDATE Orders set ordered_check = "" where id = ${selectId}`);
+  //   const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
+  //   stmt.run();
+  //   stmt.finalize();
+  // } else {
+  //   for (let i = 0; i < ordered_check.length; i++) {
+  //     const selectId = ordered_check[i];
+  //     console.log(selectId);
+  //     const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
+  //     stmt.run();
+  //     stmt.finalize();
+  //   }
+  // }
+  // if (changed_check == undefined) {
+  //   console.log("'changed_check' is undefined");
+  // } else if (isNumber(changed_check)) {
+  //   const selectId = changed_check;
+  //   console.log(selectId);
+  //   const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
+  //   stmt.run();
+  //   stmt.finalize();
+  // } else {
+  //   for (let i = 0; i < changed_check.length; i++) {
+  //     const selectId = changed_check[i];
+  //     console.log(selectId);
+  //     const stmt = db.prepare(`UPDATE Orders set changed_check = 1 where id = ${selectId}`);
+  //     stmt.run();
+  //     stmt.finalize();
+  //   }
+  // }
+  // return res.render(`${__dirname}/views/index.ejs`);
 });
 
 
