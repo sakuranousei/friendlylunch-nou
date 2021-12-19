@@ -176,19 +176,19 @@ fetch("/getTodaysOrders", {})
     });
   });
 
-fetch("/getTodaysStoresTotalAmount", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTodaysStoresTotalAmount(row.store, row.sum);
-    });
-  });
-
 fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
       appendTodaysChanges(row.id, row.user, row.change);
+    });
+  });
+
+fetch("/getTodaysStoresTotalAmount", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      appendTodaysStoresTotalAmount(row.store, row.sum);
     });
   });
 
