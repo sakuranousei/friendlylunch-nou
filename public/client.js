@@ -54,7 +54,7 @@ const appendUserRadio = (id, user) => {
   const label = document.createElement("label");
     label.className = "form-check-label user";
     label.innerText = user;
-    label.name = user;
+    label.name = "userLabel";
   parent.appendChild(div);
   div.append(input);
   div.append(label);
@@ -335,6 +335,21 @@ const appendTellnums = (store, tellnums) => {
     }
   }
 };
+
+
+//★注文したユーザーを明示する
+const user = document.getElementsByClassName("user");
+const selectUser = document.getElementsByClassName("selectUser");
+console.log(user);
+console.log(user.length);
+console.log(selectUser);
+console.log(selectUser.length);
+for (let i = 0; i < user.length; i++) {
+  console.log(user[i].name);
+}
+for (let i = 0; i < selectUser.length; i++) {
+  console.log(selectUser[i]);
+}
 
 
 
