@@ -38,7 +38,7 @@ fetch("/getMenusData", {})
   });
 
 
-//indexページでmenusデータを呼び出し
+//indexページでTellnumsデータを呼び出し
 fetch("/getTellnumsData", {})
   .then(res => res.json())
   .then(response => {
@@ -343,9 +343,11 @@ const appendTellnums = (store, tellnums) => {
   console.log(store, tellnums);
   
   const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
-  console.log(eachStoreName);
   for (let i = 0; i < eachStoreName.length; i++) {
-    console.log(eachStoreName[i]);
+    console.log(eachStoreName[i].textContent);
+//     if (store == eachStoreName[i].textContent) {
+      
+//     }
   }
     
   };
