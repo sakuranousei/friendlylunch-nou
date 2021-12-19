@@ -312,7 +312,7 @@ const isNumber = (n) => {
 };
 
 
-//★Ordersテーブルの追加・更新 Upsert処理
+//★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/update", (req, res) => {
   const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_check = req.body.changed_check;
@@ -322,7 +322,6 @@ app.post("/orders/update", (req, res) => {
     const selectId = ordered_check;
     console.log(selectId);
     const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
-    // const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
     stmt.run();
     stmt.finalize();
   } else {
