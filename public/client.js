@@ -43,7 +43,7 @@ fetch("/getTellnumsData", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTellnumsAccordionHeader(row.tellnums);
+      appendTellnums(row.store, row.tellnums);
     });
   });
 
@@ -68,19 +68,7 @@ const appendUserRadio = (id, user) => {
 }
 
 
-//★indexページ Tellnumsデータ反映 集計場所に電話番号記述
-const appendTellnumsAccordionHeader = (tellnums) => {
-  
-  const tellnumArea = document.getElementsByClassName("tellnumArea");
-  const accordionButton = document.getElementsByClassName("accordion-button");
-  console.log(tellnumArea); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
-  for (let i = 0; i < tellnumArea.length; i++) {
-    console.log(tellnumArea[i]);
-  }
-  console.log(accordionButton);
-  
-    
-  };
+
   
   // const parent = document.getElementById("usersArea");
   // const div = document.createElement("div");
@@ -350,6 +338,17 @@ const ordersResetBtn = document.getElementById("ordersResetBtn");
   });
 
 
+//★indexページ Tellnumsデータ反映 集計場所に電話番号記述
+const appendTellnums = (store, tellnums) => {
+  console.log(store, tellnums);
+  
+  const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
+  console.log(eachStoreName);
+  for (let i = 0; i < eachStoreName.length; i++) {
+    console.log(eachStoreName[i]);
+  }
+    
+  };
 
 
 
