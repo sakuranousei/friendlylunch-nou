@@ -101,6 +101,10 @@ db.serialize(() => {
     );
     console.log("New table Orders created!"); 
     // insert default table
+    db.run(
+      "CREATE TABLE Tellnums (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, tellnums INTEGER)"
+    );
+    console.log("New table Tellnums created!")
     db.serialize(() => {
       db.run(
         'INSERT INTO Users (user) VALUES ("ユーザー１"), ("ユーザー２"), ("ユーザー３")'
@@ -113,13 +117,19 @@ db.serialize(() => {
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", さくら弁当", "普通", "500"), ("山田　太郎", "さくら弁当", "おかずのみ", "280")'
+        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", "さくら弁当", "普通", "500"), ("山田　太郎", "さくら弁当", "おかずのみ", "280")'
+      );
+    });
+    db.serialize(() => {
+      db.run(
+        'INSERT INTO Tellnums (store, tellnums) VALUES ("さくら弁当", "4854318")'
       );
     });
   } else {
     console.log('Database "Users" ready to go!');
     console.log('Database "Menus" ready to go!');
     console.log('Database "Orders" ready to go!');
+    console.log('Database "Tellnums" ready to go!');
     // db.each("SELECT * from Users", (err, row) => {
     //   if (row) {
     //     console.log(`record: ${row.user}`);
