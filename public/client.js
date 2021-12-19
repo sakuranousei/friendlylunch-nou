@@ -299,6 +299,8 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_sum);
 }
 
+const ordersResetBtn = document.getElementById("ordersResetBtn");
+ordersResetBtn.addEventListener()
 
 
 //★ordersテーブルにcheck情報を保存
