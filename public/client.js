@@ -336,6 +336,9 @@ const appendTellnums = (store, tellnums) => {
 };
 
 
+//注文したユーザーを明示する
+// const name = 
+
 //★ordersテーブルにcheck情報を保存
 // const ordersCheckBtn = document.getElementById("ordersCheckBtn");
 // ordersCheckBtn.addEventListener("click", () => {
