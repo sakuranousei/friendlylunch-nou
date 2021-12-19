@@ -72,6 +72,12 @@ const appendUserRadio = (id, user) => {
 const appendTellnumsAccordionHeader = (tellnums) => {
   
   const tellnumArea = document.getElementsByName("tellnumArea");
+  const accordionButton = document.getElementsByClassName("accordion-button");
+  console.log(tellnumArea);
+  tellnumArea.forEach(e =>  {
+    console.log(e.value);
+  });
+  console.log(accordionButton);
   
     
   };
