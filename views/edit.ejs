@@ -400,10 +400,10 @@
           input_3.placeholder = "半角数字のみ、ハイフン×"
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
-          // input_3.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
+          input_3.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
           input_4.className = "form-control btn btn-outline-secondary px-1";
           input_4.type = "button";
-          // input_3.name = `deleteUserBtn_${id}`;
+          input_3.name = `deleteUserBtn_${id}`;
           input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -481,9 +481,18 @@
         }
       };
       
-      //テーブルTellnumsの編集
-      // const menuStore = document.getElementsByName("menuStore");
-      // console.log(menuStore.length);
+      //edit Tellnums デリートにチェックされたidの取得
+      function deleteTellnum() {
+        const activeDeleteMenuBtn = document.activeElement;
+        const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
+        const result = window.confirm("削除しますか？");
+        console.log(activeDeleteMenuBtn.name);
+        console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
+        if (result) {
+          window.location.href = `/menus/delete/${deleteId}`;
+        }
+      };
+
       
     </script>
     
