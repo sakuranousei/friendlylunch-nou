@@ -38,9 +38,38 @@ fetch("/getMenusData", {})
   });
 
 
+//indexページでmenusデータを呼び出し
+fetch("/getTellnumsData", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      appendTellnumsAccordionHeader(row.tellnums);
+    });
+  });
+
+
 //indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
 const appendUserRadio = (id, user) => {
   // console.log(id, user);
+  const parent = document.getElementById("usersArea");
+  const div = document.createElement("div");
+    div.className = "form-check mb-4";
+  const input = document.createElement("input");
+    input.className = "form-check-input";
+    input.type = "radio";
+    input.name = "selectUserName"
+    input.value = user;
+  const label = document.createElement("label");
+    label.className = "form-check-label";
+    label.innerText = user;
+  parent.appendChild(div);
+  div.append(input);
+  div.append(label);
+}
+
+
+//★indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
+const appendTellnumsAccordionHeader = (tellnums) => {
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
     div.className = "form-check mb-4";
@@ -308,11 +337,7 @@ const ordersResetBtn = document.getElementById("ordersResetBtn");
     window.location.href = `/orders/check/reset`;
   });
 
-//アコーディオンに電話番号記述
-const tellnumArea = document.getElementsByName("tellnumArea");
-tellnumArea.addEventListener("click", () => {
-  
-});
+
 
 
 
