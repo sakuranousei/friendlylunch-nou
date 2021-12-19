@@ -323,7 +323,7 @@ app.post("/tellnums/addEdit", (req, res) => {
   //   stmt.run();
   //   stmt.finalize();
   // }
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
 });
 
 

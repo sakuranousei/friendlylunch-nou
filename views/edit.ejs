@@ -445,11 +445,15 @@
       function maxTellnumId() {
         const id = document.getElementsByName("tellId");
         const idAry = [];
-        for (let i = 0; i < id.length; i++) {
-          idAry.push(id[i].value);
-        };
+        if (id.hength == 0) {
+          return 1;
+        } else {
+          for (let i = 0; i < id.length; i++) {
+            idAry.push(id[i].value);
+          };
         console.log(idAry);
         return parseInt(Math.max.apply(null, idAry) + 1);
+        }
       };
       
       
