@@ -68,15 +68,15 @@ const appendUserRadio = (id, user) => {
 }
 
 
-//★indexページ Tellnumsデータ反映 アコーディオンに電話番号記述
+//★indexページ Tellnumsデータ反映 集計場所に電話番号記述
 const appendTellnumsAccordionHeader = (tellnums) => {
   
-  const tellnumArea = document.getElementsByName("tellnumArea");
+  const tellnumArea = document.getElementsByClassName("tellnumArea");
   const accordionButton = document.getElementsByClassName("accordion-button");
-  console.log(tellnumArea);
-  tellnumArea.forEach(e =>  {
-    console.log(e.value);
-  });
+  console.log(tellnumArea); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
+  for (let i = 0; i < tellnumArea.length; i++) {
+    console.log(tellnumArea[i]);
+  }
   console.log(accordionButton);
   
     
@@ -243,7 +243,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     strong_store.innerText = store;
     strong_store.className = "font-weight-bold eachStoreName";
   const strong_tellnum = document.createElement("strong");
-    strong_tellnum.name = "tellnumArea";
+    strong_tellnum.className = "tellnumArea";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
     td_id.hidden = true;
