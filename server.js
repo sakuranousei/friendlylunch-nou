@@ -314,21 +314,31 @@ const isNumber = (n) => {
 app.post("/orders/update", (req, res) => {
   const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_check = req.body.changed_check;
-  console.log(ordered_check);
-//   else if (isNumber(ordered_check)) {   
-//     console.log(ordered_check);
-//   } else {
-//     for (let i = 0; i < ordered_check.length; i++) {
-//       console.log(ordered_check[i]);
-//     }
-//   }
-//   if (isNumber(changed_check)) {   
-//     console.log(changed_check);
-//   } else {
-//     for (let i = 0; i < changed_check.length; i++) {
-//       console.log(changed_check[i]);
-//     }
-//   }
+  if (ordered_check == undefined) {
+    console.log("'ordered_check' is undefined");
+  } else if (isNumber(ordered_check)) {
+    const id = ordered_check;
+    console.log(id);
+        const stmt = db.prepare("INSERT OR REPLACE INTO Menus (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+    stmt.run();
+    stmt.finalize();
+  } else {
+    for (let i = 0; i < ordered_check.length; i++) {
+      const id = ordered_check[i];
+      console.log(id);
+    }
+  }
+  if (changed_check == undefined) {
+    console.log("'changed_check' is undefined");
+  } else if (isNumber(changed_check)) {
+    const id = changed_check;
+    console.log(id);
+  } else {
+    for (let i = 0; i < changed_check.length; i++) {
+      const id = changed_check[i];
+      console.log(id);
+    }
+  }
 });
 
 
