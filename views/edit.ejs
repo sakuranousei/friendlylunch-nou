@@ -115,7 +115,7 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getMenusData(row.id, row.store, row.menu, row.price);
+             getMenusData(row.id, row.store, row.menu, row.price, row.tellnum);
           });
         });
 

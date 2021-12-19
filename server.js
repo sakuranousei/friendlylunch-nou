@@ -93,7 +93,7 @@ db.serialize(() => {
     );
     console.log("New table Users created!"); 
     db.run(
-      "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, menu TEXT, price INTEGER)"
+      "CREATE TABLE Menus (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, menu TEXT, price INTEGER, tellnum INTEGER)"
     );
     console.log("New table Menus created!");
     db.run(
@@ -312,7 +312,7 @@ const isNumber = (n) => {
 };
 
 
-//★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
+//Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/check", (req, res) => {
   const ordered_checkId = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_checkId = req.body.changed_check;
@@ -367,7 +367,6 @@ app.get("/orders/check/reset", (req, res) => {
   });
   return res.render(`${__dirname}/views/index.ejs`);
 });
-
 
 
 //Usersテーブルの削除
