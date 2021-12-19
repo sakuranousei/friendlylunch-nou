@@ -214,6 +214,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     td_user.textContent = user;
     td_user.name = "orderedUser";
     td_user.className = "orderedUser";
+    
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
@@ -338,19 +339,21 @@ const appendTellnums = (store, tellnums) => {
 
 
 //★注文したユーザーを明示する
-const userLabel = document.getElementsByClassName("userLabel");
-const orderedUser = document.getElementsByClassName("orderedUser");
-console.log(userLabel);
-console.log(userLabel.length);
-console.log(orderedUser);
-console.log(orderedUser.length);
-for (let i = 0; i < userLabel.length; i++) {
-  const t = userLabel[i].innerHTML;
-  console.log(t);
-}
-for (let i = 0; i < orderedUser.length; i++) {
-  console.log(orderedUser[i].textContent);
-}
+// window.addEventListener('DOMContentLoaded', () => {
+//   const userLabel = document.getElementsByClassName("userLabel");
+//   const orderedUser = document.getElementsByClassName("orderedUser");
+//   console.log(userLabel);
+//   console.log(userLabel.length);
+//   console.log(orderedUser);
+//   console.log(orderedUser.length);
+//   for (let i = 0; i < userLabel.length; i++) {
+//     const t = userLabel[i].innerHTML;
+//     console.log(t);
+//   };
+//   for (let i = 0; i < orderedUser.length; i++) {
+//     console.log(orderedUser[i].textContent);
+//   };
+// })
 
 
 
