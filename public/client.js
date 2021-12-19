@@ -218,8 +218,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     const userLabel = document.getElementsByClassName("userLabel");
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) {
-        userLabel[i].className = "orderedUser text-secondary";
-        serLabel[i].innerText + "✔️";
+        userLabel[i].className = "orderedUser text-decoration-line-through";
       }
     }
         
