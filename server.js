@@ -135,16 +135,6 @@ db.serialize(() => {
     //     console.log(`record: ${row.user}`);
     //   }
     // });
-    // db.each("SELECT * from Menus", (err, row) => {
-    //   if (row) {
-    //     console.log(`record: ${row.store}, ${row.menu}, ${row.price}`);
-    //   }
-    // });
-    // db.each("SELECT * from Orders", (err, row) => {
-    //   if (row) {
-    //     console.log(`record: ${row.id}, ${row.date}, ${row.user}, ${row.store}, ${row.menu}, ${row.price}, ${row.change}`);
-    //   }
-    // });
   }
 });
 
@@ -306,9 +296,9 @@ app.post("/users/addEdit", (req, res) => {
 
 //Menusテーブルの追加・更新 Upsert処理
 app.post("/menus/addEdit", (req, res) => {
-  const getMenuId = req.body.menuId;
-  const getMenuStore = req.body.menuStore;
-  const getMenuName = req.body.menuName;
+  const getMenuId = req.body.tellId;
+  const getMenuStore = req.body.tellStoreName;
+  const getMenuName = req.body.tellNum;
   const getMenuPrice = req.body.menuPrice;
   for(let i = 0; i < getMenuId.length; i++) {
     console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
@@ -316,6 +306,23 @@ app.post("/menus/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
+  return res.render(`${__dirname}/views/edit.ejs`);
+});
+
+
+//Menusテーブルの追加・更新 Upsert処理
+app.post("/tellnums/addEdit", (req, res) => {
+  console.log(req.body);
+  // const getMenuId = req.body.menuId;
+  // const getMenuStore = req.body.menuStore;
+  // const getMenuName = req.body.menuName;
+  // const getMenuPrice = req.body.menuPrice;
+  // for(let i = 0; i < getMenuId.length; i++) {
+  //   console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+  //   const stmt = db.prepare("INSERT OR REPLACE INTO Menus (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+  //   stmt.run();
+  //   stmt.finalize();
+  // }
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
