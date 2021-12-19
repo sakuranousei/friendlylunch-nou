@@ -242,6 +242,16 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
+//数値かどうか判定する関数。数値であればtrueを返す
+const isNumber = (n) => {
+  const v = n - 0; //"10" - 0;=> 10, "a" - 0;=> NaN, 数値でなければNaNを返す
+  if ( v || v === 0 ) {
+    return true;
+  }
+  return false;
+};
+
+
 // 本日の店別・合計金額  store sum
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
@@ -301,14 +311,6 @@ app.post("/menus/addEdit", (req, res) => {
   return res.render(`${__dirname}/views/edit.ejs`);
 });
 
-//数値かどうか判定する関数。数値であればtrueを返す
-const isNumber = (n) => {
-  const v = n - 0; //"10" - 0;=> 10, "a" - 0;=> NaN, 数値でなければNaNを返す
-  if ( v || v === 0 ) {
-    return true;
-  }
-  return false;
-};
 
 //★Ordersテーブルの追加・更新 Upsert処理
 app.post("/orders/update", (req, res) => {
@@ -316,27 +318,36 @@ app.post("/orders/update", (req, res) => {
   const changed_check = req.body.changed_check;
   if (ordered_check == undefined) {
     console.log("'ordered_check' is undefined");
-  } else if (isNumber(ordered_check)) {
-    const id = ordered_check;
-    console.log(id);
-        const stmt = db.prepare("INSERT OR REPLACE INTO Menus (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
+  } else if (isNumber(ordered_check)) { //数値だった場合
+    const selectId = ordered_check;
+    console.log(selectId);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
     stmt.run();
     stmt.finalize();
   } else {
     for (let i = 0; i < ordered_check.length; i++) {
-      const id = ordered_check[i];
-      console.log(id);
+      const selectId = ordered_check[i];
+      console.log(selectId);
+      const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, ordered_check) VALUES (?, ?)", selectId, 1);
+      stmt.run();
+      stmt.finalize();
     }
   }
   if (changed_check == undefined) {
     console.log("'changed_check' is undefined");
   } else if (isNumber(changed_check)) {
-    const id = changed_check;
-    console.log(id);
+    const selectId = changed_check;
+    console.log(selectId);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, changed_check) VALUES (?, ?)", selectId, 1);
+    stmt.run();
+    stmt.finalize();
   } else {
     for (let i = 0; i < changed_check.length; i++) {
-      const id = changed_check[i];
-      console.log(id);
+      const selectId = changed_check[i];
+      console.log(selectId);
+      const stmt = db.prepare("INSERT OR REPLACE INTO Orders (id, changed_check) VALUES (?, ?)", selectId, 1);
+      stmt.run();
+      stmt.finalize();
     }
   }
 });
