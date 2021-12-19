@@ -238,6 +238,14 @@ app.get("/getOrdersData/:i", (request, response) => {
   }
 });
 
+//サーバーサイドからフロントエンドへTellnumsデータを送付
+app.get("/getTellnumsData", (request, response) => {
+  db.all("SELECT * from Tellnums", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
 //日付 サーバーサイドでは日本時間にならないので日本時間に変換
 const today = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
 const year = today.getFullYear();

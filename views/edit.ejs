@@ -118,6 +118,15 @@
              getMenusData(row.id, row.store, row.menu, row.price, row.tellnum);
           });
         });
+      
+      //このページでTellnumsデータを呼び出し
+      fetch("/getTellnumsData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getTellnumsData(row.id, row.store, row.tellnums);
+          });
+        });
 
       //editページでUsersの反映
       function getUsersData(id, user) {
@@ -348,9 +357,9 @@
       };
       
       //テーブルTellnumsの編集
-      const menuStore = document.getElementsByName("menuStore");
-      // console.log(menuStore[1].value);
-      console.log(menuStore);
+      // const menuStore = document.getElementsByName("menuStore");
+      // console.log(menuStore.length);
+      
     </script>
     
   </body>
