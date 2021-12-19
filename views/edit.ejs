@@ -265,11 +265,11 @@
           input_3.value = tellnums;
         const td_4 = document.createElement("td");
         const input_4 = document.createElement("input");
-          input_3.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
-          input_3.className = "form-control btn btn-outline-secondary";
-          input_3.type = "button";
-          input_3.name = `deleteUserBtn_${id}`;
-          input_3.value =　"×";
+          input_4.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = `deleteUserBtn_${id}`;
+          input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
@@ -368,6 +368,51 @@
         td_4.append(input_4);
         tr.append(td_5);
         td_5.append(input_5);
+      };
+
+      
+      //edit Tellnums「行」追加
+      function tellRowAdd() {
+        const parent = document.getElementById("tellFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.name = "tellTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.type = "number";
+          input_1.name = "tellId";
+          // input_1.value = id;
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control";
+          input_2.type = "text";
+          input_2.name = "tellStoreName";
+          // input_2.value = store;
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "text";
+          input_3.name = "tellNumName";
+          input_3.placeholder = "数字のみ、半角、ハイフン×"
+          // input_3.value = tellnums;
+        const td_4 = document.createElement("td");
+        const input_4 = document.createElement("input");
+          // input_3.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          // input_3.name = `deleteUserBtn_${id}`;
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);       
       };
       
       
