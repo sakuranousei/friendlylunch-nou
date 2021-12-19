@@ -180,7 +180,7 @@ fetch("/getTodaysChanges", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTodaysChanges(row.id, row.user, row.change);
+      appendTodaysChanges(row.id, row.user, row.change, row.changed_check);
     });
   });
 
@@ -193,7 +193,7 @@ fetch("/getTodaysStoresTotalAmount", {})
   });
 
 
-//集計　store,user,menu,price
+//本日の集計　store,user,menu,price
 const appendTodaysOrders = (id, store, user, menu, price)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
@@ -245,8 +245,8 @@ const appendTodaysOrders = (id, store, user, menu, price)=> {
   };
 
 
-//集計　お釣り
-const appendTodaysChanges = (id, user, change)=> {
+//本日の集計　お釣り
+const appendTodaysChanges = (id, user, change, changed_check)=> {
   const parent = document.getElementById("appendTodaysChangesArea");
   const tr = document.createElement("tr");
   const td_id = document.createElement("td");
@@ -278,7 +278,7 @@ const appendTodaysChanges = (id, user, change)=> {
 }
 
 
-//集計 store sum
+//本日の集計 店別金額　store sum
 const appendTodaysStoresTotalAmount = (store, sum)=> {
   const parent = document.getElementById("appendTodaysStoresTotalAmountArea");
   const tr = document.createElement("tr");
@@ -292,6 +292,7 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_store);
   tr.append(td_sum);
 }
+
 
 
 //★ordersテーブルにcheck情報を保存

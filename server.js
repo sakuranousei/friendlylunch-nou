@@ -261,7 +261,7 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 
 // 本日のお釣り user change
 app.get("/getTodaysChanges", (request, response) => {
-  db.all("SELECT id, user, change from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
+  db.all("SELECT id, user, change, changed_check from Orders WHERE date = '"+thisDay+"' and change is not '' ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -351,6 +351,7 @@ app.post("/orders/update", (req, res) => {
       stmt.finalize();
     }
   }
+  return res.render(`${__dirname}/views/index.ejs`);
 });
 
 
