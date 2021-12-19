@@ -342,27 +342,14 @@ fetch("/getTellnumsData", {})
 
 //★indexページ Tellnumsデータ反映 集計場所に電話番号記述
 const appendTellnums = (store, tellnums) => {
-  // console.log(store, tellnums);
-  
   const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
   const tellnumArea = document.getElementsByClassName("tellnumArea");
-  // console.log(eachStoreName.lnegth);
-  // console.log(tellnumArea.length);
-  // for (let i = 0; i < eachStoreName.length; i++) {
-  //   console.log(eachStoreName[i].innerText); //さくら弁当等
-  //   } 
-  //  for (let i = 0; i < tellnumArea.length; i++) {
-  //   console.log(tellnumArea[i].innerText); //tel
-  //   }  
-  
   for (let i = 0; i < eachStoreName.length; i++) {
     if (store === eachStoreName[i].innerText) {
-      console.log(eachStoreName[i].innerText);
-      tellnumArea[i].innerText = "tel" + tellnums;
+      tellnumArea[i].innerText = "Tel:" + tellnums;
     }
   }
-  
-  };
+};
 
 
 
