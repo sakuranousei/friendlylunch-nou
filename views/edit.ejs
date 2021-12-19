@@ -268,7 +268,7 @@
           input_4.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
           input_4.className = "form-control btn btn-outline-secondary";
           input_4.type = "button";
-          input_4.name = `deleteUserBtn_${id}`;
+          input_4.name = `deleteTellnumBtn_${id}`;
           input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -403,7 +403,7 @@
           input_3.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
           input_4.className = "form-control btn btn-outline-secondary px-1";
           input_4.type = "button";
-          input_3.name = `deleteTellnumBtn_${id}`;
+          input_4.name = `deleteTellnumBtn_${id}`;
           input_4.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
@@ -483,13 +483,13 @@
       
       //edit Tellnums デリートにチェックされたidの取得
       function deleteTellnum() {
-        const activeDeleteMenuBtn = document.activeElement;
-        const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
+        const activeDeleteTellnumBtn = document.activeElement;
+        const deleteId = activeDeleteTellnumBtn.name.replace("deleteTellnumBtn_", "");
         const result = window.confirm("削除しますか？");
-        console.log(activeDeleteMenuBtn.name);
-        console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
+        console.log(activeDeleteTellnumBtn.name);
+        console.log(activeDeleteTellnumBtn.name.replace("deleteTellnumBtn_", ""));
         if (result) {
-          window.location.href = `/menus/delete/${deleteId}`;
+          window.location.href = `/tellnums/delete/${deleteId}`;
         }
       };
 
