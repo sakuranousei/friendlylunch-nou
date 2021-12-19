@@ -242,19 +242,9 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
-//数値かどうか判定する関数。数値であればtrueを返す
-const isNumber = (n) => {
-  const v = n - 0; //"10" - 0;=> 10, "a" - 0;=> NaN, 数値でなければNaNを返す
-  if ( v || v === 0 ) {
-    return true;
-  }
-  return false;
-};
-
-
-// 本日の店別・合計金額  store sum
-app.get("/getTodaysStoresTotalAmount", (request, response) => {
-  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
+// 本日の注文者とメニュー id date user store menu price change
+app.get("/getTodaysOrders", (request, response) => {
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -266,9 +256,9 @@ app.get("/getTodaysChanges", (request, response) => {
   });
 });
 
-// 本日の注文者とメニュー id date user store menu price change
-app.get("/getTodaysOrders", (request, response) => {
-  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
+// 本日の店別・合計金額  store sum
+app.get("/getTodaysStoresTotalAmount", (request, response) => {
+  db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -310,6 +300,16 @@ app.post("/menus/addEdit", (req, res) => {
   }
   return res.render(`${__dirname}/views/edit.ejs`);
 });
+
+
+//数値かどうか判定する関数。数値であればtrueを返す
+const isNumber = (n) => {
+  const v = n - 0; //"10" - 0;=> 10, "a" - 0;=> NaN, 数値でなければNaNを返す
+  if ( v || v === 0 ) {
+    return true;
+  }
+  return false;
+};
 
 
 //★Ordersテーブルの追加・更新 Upsert処理

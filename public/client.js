@@ -172,7 +172,7 @@ fetch("/getTodaysOrders", {})
   .then(res => res.json())
   .then(response => {
     response.forEach(row => {
-      appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price);
+      appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
     });
   });
 
@@ -194,7 +194,7 @@ fetch("/getTodaysStoresTotalAmount", {})
 
 
 //本日の集計　store,user,menu,price
-const appendTodaysOrders = (id, store, user, menu, price)=> {
+const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store}`;
@@ -217,6 +217,9 @@ const appendTodaysOrders = (id, store, user, menu, price)=> {
     input_ordered.type = "checkbox";
     input_ordered.name = "ordered_check";
     input_ordered.value = id;
+    if (ordered_check == 1) {
+      input_ordered.checked = true;
+    }
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label";
     label_ordered.innerText = "済";
@@ -265,6 +268,9 @@ const appendTodaysChanges = (id, user, change, changed_check)=> {
     input_ordered.type = "checkbox";
     input_ordered.name = "changed_check";
     input_ordered.value = id;
+    if (changed_check == 1) {
+      input_ordered.checked = true;
+    }
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label";
     label_ordered.innerText = "済";
