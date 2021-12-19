@@ -315,8 +315,13 @@ const isNumber = (n) => {
 //★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/update", (req, res) => {
   db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
-    res.sent(JSON.stringify(rows));
-    res.send(JSON.stringify(rows.length));
+    for (let i = 0; i < JSON.stringify(rows.length); i++) {
+      console.log(i);
+    }
+    res.send(JSON.stringify(rows));
+    // res.send(JSON.stringify(rows[2].id)); //106
+    // res.send(JSON.stringify(rows.length));
+   
   });
     // res.send(JSON.stringify(rows.id));
     // return res.render(`${__dirname}/views/index.ejs`);
@@ -359,7 +364,7 @@ app.post("/orders/update", (req, res) => {
   //     stmt.finalize();
   //   }
   // }
-  // return res.render(`${__dirname}/views/index.ejs`);
+  return res.render(`${__dirname}/views/index.ejs`);
 });
 
 
