@@ -426,14 +426,14 @@ app.get("/orders/delete/:deleteId", (req, res) => {
 });
 
 
-//Ordersテーブルの削除
+//Tellnumsテーブルの削除
 app.get("/tellnums/delete/:deleteId", (req, res) => {
   const deleteId = req.params.deleteId;
   console.log(deleteId);
-  // const stmt = db.prepare("DELETE FROM Tellnums WHERE id = (?)");
-  // stmt.run(deleteId);
-  // stmt.finalize();
-  // return res.render(`${__dirname}/views/records.ejs`);
+  const stmt = db.prepare("DELETE FROM Tellnums WHERE id = (?)");
+  stmt.run(deleteId);
+  stmt.finalize();
+  return res.render(`${__dirname}/views/edit.ejs`);
 });
 
 
