@@ -52,7 +52,7 @@ const appendUserRadio = (id, user) => {
     input.name = "selectUserName"
     input.value = user;
   const label = document.createElement("label");
-    label.className = "form-check-label user";
+    label.className = "form-check-label userLabel";
     label.innerText = user;
     label.name = "userLabel";
   parent.appendChild(div);
@@ -212,8 +212,8 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     td_id.textContent = id;
   const td_user = document.createElement("td");
     td_user.textContent = user;
-    td_user.name = user;
-    td_user.className = "selectUser";
+    td_user.name = "orderedUser";
+    td_user.className = "orderedUser";
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
@@ -338,17 +338,18 @@ const appendTellnums = (store, tellnums) => {
 
 
 //★注文したユーザーを明示する
-const user = document.getElementsByClassName("user");
-const selectUser = document.getElementsByClassName("selectUser");
-console.log(user);
-console.log(user.length);
-console.log(selectUser);
-console.log(selectUser.length);
-for (let i = 0; i < user.length; i++) {
-  console.log(user[i].name);
+const userLabel = document.getElementsByClassName("userLabel");
+const orderedUser = document.getElementsByClassName("orderedUser");
+console.log(userLabel);
+console.log(userLabel.length);
+console.log(orderedUser);
+console.log(orderedUser.length);
+for (let i = 0; i < userLabel.length; i++) {
+  const t = userLabel[i].innerHTML;
+  console.log(t);
 }
-for (let i = 0; i < selectUser.length; i++) {
-  console.log(selectUser[i]);
+for (let i = 0; i < orderedUser.length; i++) {
+  console.log(orderedUser[i].textContent);
 }
 
 
