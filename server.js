@@ -244,7 +244,7 @@ console.log(thisDay);
 
 // 本日の注文者とメニュー id date user store menu price change
 app.get("/getTodaysOrders", (request, response) => {
-  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {    
     response.send(JSON.stringify(rows));
   });
 });
@@ -314,10 +314,13 @@ const isNumber = (n) => {
 
 //★Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/update", (req, res) => {
-  db.all("SELECT * from Orders WHERE date = '"+thisDay+"'", (err, rows) => {
-    res.send(JSON.stringify(rows.id));
-    // return res.render(`${__dirname}/views/index.ejs`);
+  db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {
+    res.sent(JSON.stringify(rows));
+    res.send(JSON.stringify(rows.length));
   });
+    // res.send(JSON.stringify(rows.id));
+    // return res.render(`${__dirname}/views/index.ejs`);
+  
   
   // const ordered_check = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   // const changed_check = req.body.changed_check;
