@@ -38,7 +38,6 @@ fetch("/getMenusData", {})
   });
 
 
-
 //indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
 const appendUserRadio = (id, user) => {
   // console.log(id, user);
@@ -53,29 +52,11 @@ const appendUserRadio = (id, user) => {
   const label = document.createElement("label");
     label.className = "form-check-label";
     label.innerText = user;
+    label.name = user;
   parent.appendChild(div);
   div.append(input);
   div.append(label);
 }
-
-
-
-  
-  // const parent = document.getElementById("usersArea");
-  // const div = document.createElement("div");
-  //   div.className = "form-check mb-4";
-  // const input = document.createElement("input");
-  //   input.className = "form-check-input";
-  //   input.type = "radio";
-  //   input.name = "selectUserName"
-  //   input.value = user;
-  // const label = document.createElement("label");
-  //   label.className = "form-check-label";
-  //   label.innerText = user;
-  // parent.appendChild(div);
-  // div.append(input);
-  // div.append(label);
-// }
 
 
 // indexページ Menusデータ反映 アコーディオン　ヘッダー
@@ -323,6 +304,7 @@ const appendTodaysStoresTotalAmount = (store, sum)=> {
   tr.append(td_sum);
 }
 
+
 //本日の集計　チェックのリセット
 const ordersResetBtn = document.getElementById("ordersResetBtn");
   ordersResetBtn.addEventListener("click", () => {
@@ -340,7 +322,7 @@ fetch("/getTellnumsData", {})
   });
 
 
-//★indexページ Tellnumsデータ反映 集計場所に電話番号記述
+//indexページ Tellnumsデータ反映 集計場所に電話番号記述
 const appendTellnums = (store, tellnums) => {
   const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
   const tellnumArea = document.getElementsByClassName("tellnumArea");
@@ -350,7 +332,6 @@ const appendTellnums = (store, tellnums) => {
     }
   }
 };
-
 
 
 //★ordersテーブルにcheck情報を保存
