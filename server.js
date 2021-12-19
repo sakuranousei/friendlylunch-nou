@@ -321,6 +321,7 @@ app.post("/orders/update", (req, res) => {
   } else if (isNumber(ordered_check)) { //数値だった場合
     const selectId = ordered_check;
     console.log(selectId);
+    // const stmt_reset = db.prepare(`UPDATE Orders set ordered_check = "" where id = ${selectId}`);
     const stmt = db.prepare(`UPDATE Orders set ordered_check = 1 where id = ${selectId}`);
     stmt.run();
     stmt.finalize();
