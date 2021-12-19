@@ -214,15 +214,12 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     td_user.textContent = user;
     td_user.name = "orderedUser";
     td_user.className = "orderedUser";
-    
     const userLabel = document.getElementsByClassName("userLabel");
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) {
-        userLabel[i].className = "orderedUser text-decoration-line-through";
+        userLabel[i].className = "orderedUser text-decoration-line-through text-secondary";
       }
-    }
-        
-     
+    }   
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
@@ -238,7 +235,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     }
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label";
-    label_ordered.innerText = "済";
+    label_ordered.innerText = "";
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
@@ -290,7 +287,7 @@ const appendTodaysChanges = (id, user, change, changed_check)=> {
     }
   const label_ordered = document.createElement("label");
     label_ordered.className = "form-check-label";
-    label_ordered.innerText = "済";
+    label_ordered.innerText = "";
   parent.appendChild(tr);
   tr.append(td_id);
   tr.append(td_user);
@@ -340,7 +337,7 @@ const appendTellnums = (store, tellnums) => {
   const tellnumArea = document.getElementsByClassName("tellnumArea");
   for (let i = 0; i < eachStoreName.length; i++) {
     if (store === eachStoreName[i].innerText) {
-      tellnumArea[i].innerText = "Tel:" + tellnums;
+      tellnumArea[i].innerText = tellnums;
     }
   }
 };
