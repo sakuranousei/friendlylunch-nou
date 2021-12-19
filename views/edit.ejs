@@ -121,7 +121,6 @@
 
       //editページでUsersの反映
       function getUsersData(id, user) {
-        // console.log(id, user);
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -348,6 +347,10 @@
         }
       };
       
+      //テーブルTellnumsの編集
+      const menuStore = document.getElementsByName("menuStore");
+      // console.log(menuStore[1].value);
+      console.log(menuStore);
     </script>
     
   </body>
