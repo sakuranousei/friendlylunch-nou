@@ -215,6 +215,15 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     td_user.name = "orderedUser";
     td_user.className = "orderedUser";
     
+    const userLabel = document.getElementsByClassName("userLabel");
+    for (let i = 0; i < userLabel.length; i++) {
+      if (user == userLabel[i].innerText) {
+        userLabel[i].className = "orderedUser text-secondary";
+        serLabel[i].innerText + "✔️";
+      }
+    }
+        
+     
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
   const td_price = document.createElement("td");
