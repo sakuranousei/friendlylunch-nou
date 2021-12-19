@@ -38,15 +38,6 @@ fetch("/getMenusData", {})
   });
 
 
-//indexページでTellnumsデータを呼び出し
-fetch("/getTellnumsData", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTellnums(row.store, row.tellnums);
-    });
-  });
-
 
 //indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
 const appendUserRadio = (id, user) => {
@@ -232,6 +223,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     strong_store.className = "font-weight-bold eachStoreName";
   const strong_tellnum = document.createElement("strong");
     strong_tellnum.className = "tellnumArea";
+    strong_tellnum.innerText = "tel";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
     td_id.hidden = true;
@@ -338,18 +330,30 @@ const ordersResetBtn = document.getElementById("ordersResetBtn");
   });
 
 
+//indexページでTellnumsデータを呼び出し
+fetch("/getTellnumsData", {})
+  .then(res => res.json())
+  .then(response => {
+    response.forEach(row => {
+      appendTellnums(row.store, row.tellnums);
+    });
+  });
+
+
 //★indexページ Tellnumsデータ反映 集計場所に電話番号記述
 const appendTellnums = (store, tellnums) => {
   console.log(store, tellnums);
   
   const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
+  const tellnumArea = document.getElementsByClassName("tellnumArea");
+  console.log(eachStoreName.lnegth);
+  console.log(tellnumArea.length);
   for (let i = 0; i < eachStoreName.length; i++) {
-    console.log(eachStoreName[i].textContent);
-//     if (store == eachStoreName[i].textContent) {
-      
-//     }
-  }
-    
+    console.log(eachStoreName[i].innerText); //さくら弁当等
+    } 
+   for (let i = 0; i < tellnumArea.length; i++) {
+    console.log(tellnumArea[i].innerText); //tel
+    }  
   };
 
 
