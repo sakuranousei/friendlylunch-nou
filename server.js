@@ -296,9 +296,9 @@ app.post("/users/addEdit", (req, res) => {
 
 //Menusテーブルの追加・更新 Upsert処理
 app.post("/menus/addEdit", (req, res) => {
-  const getMenuId = req.body.tellId;
-  const getMenuStore = req.body.tellStoreName;
-  const getMenuName = req.body.tellNum;
+  const getMenuId = req.body.menuId;
+  const getMenuStore = req.body.menuStore;
+  const getMenuName = req.body.menuName;
   const getMenuPrice = req.body.menuPrice;
   for(let i = 0; i < getMenuId.length; i++) {
     console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
@@ -312,17 +312,16 @@ app.post("/menus/addEdit", (req, res) => {
 
 //Menusテーブルの追加・更新 Upsert処理
 app.post("/tellnums/addEdit", (req, res) => {
-  console.log(req.body);
-  // const getMenuId = req.body.menuId;
-  // const getMenuStore = req.body.menuStore;
-  // const getMenuName = req.body.menuName;
-  // const getMenuPrice = req.body.menuPrice;
-  // for(let i = 0; i < getMenuId.length; i++) {
-  //   console.log(getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
-  //   const stmt = db.prepare("INSERT OR REPLACE INTO Menus (id, store, menu, price) VALUES (?, ?, ?, ?)", getMenuId[i], getMenuStore[i], getMenuName[i], getMenuPrice[i]);
-  //   stmt.run();
-  //   stmt.finalize();
-  // }
+  // console.log(req.body);
+  const getTellId = req.body.tellId;
+  const getTellStoreName = req.body.tellStoreName;
+  const getTellNum = req.body.tellNum;
+  for(let i = 0; i < getTellId.length; i++) {
+    console.log(getTellId[i], getTellStoreName[i], getTellNum[i]);
+    // const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnums) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
+    // stmt.run();
+    // stmt.finalize();
+  }
   // return res.render(`${__dirname}/views/edit.ejs`);
 });
 
