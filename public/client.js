@@ -68,23 +68,29 @@ const appendUserRadio = (id, user) => {
 }
 
 
-//★indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
+//★indexページ Tellnumsデータ反映 アコーディオンに電話番号記述
 const appendTellnumsAccordionHeader = (tellnums) => {
-  const parent = document.getElementById("usersArea");
-  const div = document.createElement("div");
-    div.className = "form-check mb-4";
-  const input = document.createElement("input");
-    input.className = "form-check-input";
-    input.type = "radio";
-    input.name = "selectUserName"
-    input.value = user;
-  const label = document.createElement("label");
-    label.className = "form-check-label";
-    label.innerText = user;
-  parent.appendChild(div);
-  div.append(input);
-  div.append(label);
-}
+  
+  const tellnumArea = document.getElementsByName("tellnumArea");
+  
+    
+  };
+  
+  // const parent = document.getElementById("usersArea");
+  // const div = document.createElement("div");
+  //   div.className = "form-check mb-4";
+  // const input = document.createElement("input");
+  //   input.className = "form-check-input";
+  //   input.type = "radio";
+  //   input.name = "selectUserName"
+  //   input.value = user;
+  // const label = document.createElement("label");
+  //   label.className = "form-check-label";
+  //   label.innerText = user;
+  // parent.appendChild(div);
+  // div.append(input);
+  // div.append(label);
+// }
 
 
 // indexページ Menusデータ反映 アコーディオン　ヘッダー
