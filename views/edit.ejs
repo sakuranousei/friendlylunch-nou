@@ -55,8 +55,8 @@
             </tr>
           </tbody>
         </table>
-          <div style="webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;">
-            <input style="webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;" onclick="userRowAdd()" value="行追加" class="btn btn-dark">
+          <div>
+            <input onclick="userRowAdd()" value="行追加" class="btn btn-dark">
             <input id="usersDataAddEdit" type="submit" value="更新" class="btn btn-dark">
           </div>
 
@@ -121,7 +121,7 @@
       crossorigin="anonymous"
     ></script>
     
-    <script>
+    <script>      
       //enter押しでsubmitしないようにする。
       document.onkeypress = submit_cancel;
       function submit_cancel(){
