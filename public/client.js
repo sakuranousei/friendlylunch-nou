@@ -1,6 +1,15 @@
 console.log("hello world");
 
 
+//enter押しでsubmitしないようにする。
+document.onkeypress = submit_cancel;
+function submit_cancel(){
+    if( window.event.keyCode == 13 ){
+        return false;
+    }
+};
+
+
 //日付　クライアントサイドでは自動的に日本時間になっているため日本時間に変更する必要なし。
 const today = new Date();
 const year = today.getFullYear();

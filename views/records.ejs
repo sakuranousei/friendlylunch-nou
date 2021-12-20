@@ -91,6 +91,14 @@
     
     
     <script>
+      //enter押しでsubmitしないようにする。
+      document.onkeypress = submit_cancel;
+      function submit_cancel(){
+          if( window.event.keyCode == 13 ){
+              return false;
+          }
+      };     
+      
       // このページでOrdersデータを呼び出し
       fetch("/getOrdersData", {})
         .then(res => res.json())
@@ -101,110 +109,58 @@
         });
       
       //★ ページ番号　　Ordersのid数の呼び出し
-      fetch("/getOrdersIdNumbers", {})
-        .then(res => res.json())
-        .then(response => {
-          response.forEach(row => {
-            console.log(Object.values(row)[0]);
-            const ordersIdNumbers = Object.values(row)[0];
-            pageNumbers(ordersIdNumbers);
-          });
-        });
+      // fetch("/getOrdersIdNumbers", {})
+      //   .then(res => res.json())
+      //   .then(response => {
+      //     response.forEach(row => {
+      //       console.log(Object.values(row)[0]);
+      //       const ordersIdNumbers = Object.values(row)[0];
+      //       pageNumbers(ordersIdNumbers);
+      //     });
+      //   });
       
       //★ページ番号　　記載
-      function pageNumbers(ordersIdNumbers) {
-        const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
-        for (let i = 1;  i <= pages; i++) {
-          const parent = document.getElementById("pageNumbers");
-          const a = document.createElement("button");
-            // a.type = "button";
-            a.className = "btn px-2";
-            a.name = "pageBtn"
-            a.id = `pageBtn_${i}`;
-            a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.innerText = i;
-          parent.appendChild(a);
-        }
-      }
+      // function pageNumbers(ordersIdNumbers) {
+      //   const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
+      //   for (let i = 1;  i <= pages; i++) {
+      //     const parent = document.getElementById("pageNumbers");
+      //     const a = document.createElement("button");
+      //       // a.type = "button";
+      //       a.className = "btn px-2";
+      //       a.name = "pageBtn"
+      //       a.id = `pageBtn_${i}`;
+      //       a.setAttribute("onclick", `createOrdersRow(${i})`);
+      //       a.innerText = i;
+      //     parent.appendChild(a);
+      //   }
+      // }
      
       
       //★ 
-      function deleteRow() {
-        const ordersRow = document.getElementsByClassName("ordersRow");
-        while (ordersRow.length) {
-        ordersRow.item(0).remove();
-      }
-      };
+      // function deleteRow() {
+      //   const ordersRow = document.getElementsByClassName("ordersRow");
+      //   while (ordersRow.length) {
+      //   ordersRow.item(0).remove();
+      // }
+      // };
      
         
       //★
-      async function createOrdersRow (i) {
-        // const result = await location.reload();
-        const result = await deleteRow();
-        const pageBtn = document.getElementById(`pageBtn_${i}`);
-        pageBtn.addEventListener('click', () => {
-          fetch(`/getOrdersData/${i}`, {})
-            .then(res => res.json())
-            .then(response => {
-              response.forEach(row => {
-                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-              });
-            });
-        });   
-      }
-      
-      // function createOrdersRow (i) {
-      //   const a = new Promise((resolve, reject) => {
-      //     location.reload();
-      //   })
-      //   const b = new Promise((resolve, reject) => {
-      //     const pageBtn = document.getElementById(`pageBtn_${i}`);
-      //       pageBtn.addEventListener('click', () => {
-      //       fetch(`/getOrdersData/${i}`, {})
-      //         .then(res => res.json())
-      //         .then(response => {
-      //           response.forEach(row => {
-      //              getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-      //           });
+      // async function createOrdersRow (i) {
+      //   // const result = await location.reload();
+      //   const result = await deleteRow();
+      //   const pageBtn = document.getElementById(`pageBtn_${i}`);
+      //   pageBtn.addEventListener('click', () => {
+      //     fetch(`/getOrdersData/${i}`, {})
+      //       .then(res => res.json())
+      //       .then(response => {
+      //         response.forEach(row => {
+      //            getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
       //         });
-      //     });
-      //   })
-      //   Promise.all([a,b]).then(function(value){
-      //     console.log(value);
-      //   });
-//         let promise = new Promise((resolve, reject) => {
-//           // location.reload()
-//           // location.reload(() => {
-//           //   resolve();
-//           // })
-//           // deleteRow();
-//           // deleteRow(() => {
-//           //   resolve();
-//           // })
-//           // OrdersForm.reset();
-//           // resolve();
-//           // resolve(() => {
-//           //   location.reload();
-//           // })
-//           resolve();
-//           return location.reload();
-          
-//         });
-//         promise.then(() => {
-//           console.log("成功");
-//           const pageBtn = document.getElementById(`pageBtn_${i}`);
-//             pageBtn.addEventListener('click', () => {
-//             fetch(`/getOrdersData/${i}`, {})
-//               .then(res => res.json())
-//               .then(response => {
-//                 response.forEach(row => {
-//                    getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-//                 });
-//               });
-//           });  
-          
-//         })
-      // };
+      //       });
+      //   });   
+      // }
+      
       
       //recordsでOrdersの反映      
       function getOrdersData(id, date, user, store, menu, price, change) {
