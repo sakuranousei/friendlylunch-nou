@@ -227,8 +227,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) {
         userLabel[i].className = "orderedUser text-decoration-line-through text-secondary";
-      }
-    }   
+      }}   
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
     td_menu.className = "col-4"
