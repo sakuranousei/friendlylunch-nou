@@ -322,7 +322,7 @@ app.post("/menus/addEdit", (req, res) => {
 });
 
 
-//Menusテーブルの追加・更新 Upsert処理
+//Tellnumsテーブルの追加・更新 Upsert処理
 app.post("/tellnums/addEdit", (req, res) => {
   // console.log(req.body);
   const getTellId = req.body.tellId;
@@ -334,11 +334,12 @@ app.post("/tellnums/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
-//Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
+//チェック　Ordersテーブルのordered_checkとchanged_checkの追加・更新 Update処理
 app.post("/orders/check", (req, res) => {
   const ordered_checkId = req.body.ordered_check; //単数選択101,複数選択[ '101', '103', '102' ]
   const changed_checkId = req.body.changed_check;
@@ -376,7 +377,8 @@ app.post("/orders/check", (req, res) => {
       stmt.finalize();
     }
   }
-  return res.render(`${__dirname}/views/index.ejs`);
+  // return res.render(`${__dirname}/views/index.ejs`);
+  res.redirect("/index");
 });
 
 //チェックのリセット
@@ -391,7 +393,8 @@ app.get("/orders/check/reset", (req, res) => {
       stmt.finalize();
     }
   });
-  return res.render(`${__dirname}/views/index.ejs`);
+  // return res.render(`${__dirname}/views/index.ejs`);
+  res.redirect("/index");
 });
 
 
@@ -402,7 +405,8 @@ app.get("/users/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Users WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
@@ -413,7 +417,8 @@ app.get("/menus/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Menus WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
@@ -424,7 +429,8 @@ app.get("/orders/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Orders WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  return res.render(`${__dirname}/views/records.ejs`);
+  // return res.render(`${__dirname}/views/records.ejs`);
+  res.redirect("/records");
 });
 
 
@@ -435,7 +441,8 @@ app.get("/tellnums/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Tellnums WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
@@ -479,7 +486,8 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  return res.render(`${__dirname}/views/index.ejs`);
+  // return res.render(`${__dirname}/views/index.ejs`);
+  res.redirect("/index");
 });
 
 
