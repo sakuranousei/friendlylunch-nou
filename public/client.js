@@ -224,10 +224,11 @@ ordersUpdateBtn.addEventListener("click", () => {
 const noOrder = () => {
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
-  const checked_selectUserName = document.querySelectorAll("span[name=selectUserName]:checked");
-  ordersUpdateArray.push(thisDay);
-  ordersUpdateArray.push(checked_selectUserName.value);
-  console.log(thisDay);
+  const checked_selectUserName = document.querySelectorAll("span[name=selectUserBadge]:target");
+  console.log(checked_selectUserName[0]);
+  // ordersUpdateArray.push(thisDay);
+  // ordersUpdateArray.push(checked_selectUserName.value);
+  // console.log(thisDay);
   
   
 };
