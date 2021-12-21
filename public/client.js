@@ -90,18 +90,18 @@ const appendUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
-    div.className = "form-check row mx-2 mb-4 d-flex align-items-center";
+    div.className = "form-check mx-2 mb-4 d-flex align-items-center";
   const input = document.createElement("input");
-    input.className = "form-check-input col";
+    input.className = "form-check-input";
     input.type = "radio";
     input.name = "selectUserName"
     input.value = user;
   const label = document.createElement("label");
-    label.className = "form-check-label userLabel mx-4 col";
+    label.className = "form-check-label userLabel mx-4";
     label.innerText = user;
     label.name = "userLabel";
   const noOrderBadge = document.createElement("span");
-    noOrderBadge.className = "badge bg-secondary mx-2 col";
+    noOrderBadge.className = "badge bg-secondary mx-2";
     noOrderBadge.innerText = "注文しない"
   parent.appendChild(div);
   div.append(input);
@@ -278,7 +278,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
   const userLabel = document.getElementsByClassName("userLabel");
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) {
-        userLabel[i].className = "orderedUser text-decoration-line-through text-secondary";
+        userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
     }
   }  
   if (ordered_check == 1) {
