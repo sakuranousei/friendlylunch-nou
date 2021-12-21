@@ -224,8 +224,8 @@ ordersUpdateBtn.addEventListener("click", () => {
 const noOrder = () => {
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
-  const checked_selectUserName = document.querySelectorAll("span[name=selectUserBadge]:target");
-  console.log(checked_selectUserName[0]);
+  const checked_selectUserName = document.querySelectorAll("span[name=selectUserBadge]:visited");
+  console.log(checked_selectUserName);
   // ordersUpdateArray.push(thisDay);
   // ordersUpdateArray.push(checked_selectUserName.value);
   // console.log(thisDay);
