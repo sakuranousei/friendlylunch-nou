@@ -100,10 +100,13 @@ const appendUserRadio = (id, user) => {
     label.className = "form-check-label userLabel";
     label.innerText = user;
     label.name = "userLabel";
-  const noOrderBtn = 
+  const noOrderBadge = document.createElement("span");
+    noOrderBadge.className = "badge bg-secondary mx-4";
+    noOrderBadge.innerText = "注文しない"
   parent.appendChild(div);
   div.append(input);
   div.append(label);
+  div.append(noOrderBadge);
 }
 
 
