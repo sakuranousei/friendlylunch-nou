@@ -100,6 +100,7 @@ const appendUserRadio = (id, user) => {
     label.className = "form-check-label userLabel";
     label.innerText = user;
     label.name = "userLabel";
+  const noOrderBtn = 
   parent.appendChild(div);
   div.append(input);
   div.append(label);
@@ -165,7 +166,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-//ordersテーブルに保存するupdate情報
+//注文決定　ordersテーブルのupdate情報をサーバーに送付
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   // const thisDay = year + "-" + month + "-" + day;
