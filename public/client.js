@@ -103,6 +103,7 @@ const appendUserRadio = (id, user) => {
   const noOrderBadge = document.createElement("span");
     noOrderBadge.className = "badge bg-secondary mx-2";
     noOrderBadge.onclick = noOrder;
+    noOrderBadge.style = "cursor: pointer";
     noOrderBadge.innerText = "注文しない"
   parent.appendChild(div);
   div.append(input);
@@ -170,7 +171,7 @@ const appendMenuAccordionHeader = (id, store, menu, price) => {
   };
 
 
-//注文決定　ordersテーブルのupdate情報をサーバーに送付
+//注文決定btn 　ordersテーブルのupdate情報をサーバーに送付
 const ordersUpdateBtn = document.getElementById("ordersUpdateBtn");
 ordersUpdateBtn.addEventListener("click", () => {
   // const thisDay = year + "-" + month + "-" + day;
@@ -199,7 +200,7 @@ ordersUpdateBtn.addEventListener("click", () => {
       ordersUpdateArray.push(data_selectChangeValue.value);
     }
     console.log(ordersUpdateArray);
-    window.location.href = `/orders/update/${ordersUpdateArray}`;
+    // window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
@@ -214,7 +215,7 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
-    window.location.href = `/orders/update/${ordersUpdateArray}`;
+    // window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
 });
 
