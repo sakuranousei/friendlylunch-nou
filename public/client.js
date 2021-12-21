@@ -219,9 +219,18 @@ ordersUpdateBtn.addEventListener("click", () => {
 });
 
 
+const noOrder = () => {
+  // const ordersUpdateArray = [];
+  // document.getElementById("errormessage").textContent = "";
+  // ordersUpdateArray.push(thisDay);
+  console.log(thisDay);
+  
+  
+};
+
 
 //本日の集計　store,user,menu,price
-const appendTodaysOrders = (id, store, user, menu, price, ordered_check)=> {
+const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store} row`;
