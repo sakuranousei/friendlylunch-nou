@@ -90,7 +90,7 @@ const appendUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
-    div.className = "form-check mb-4";
+    div.className = "form-check mx-2 mb-4";
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "radio";
