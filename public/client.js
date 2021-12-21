@@ -100,17 +100,17 @@ const appendUserRadio = (id, user) => {
     label.className = "form-check-label userLabel mx-4";
     label.innerText = user;
     label.name = "userLabel";
-  const noOrderBadge = document.createElement("input");
-    noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
-    noOrderBadge.type = "button";
-    noOrderBadge.name = "selectUserBadge";
-    noOrderBadge.onclick = noOrder;
-    noOrderBadge.style = "cursor: pointer";
-    noOrderBadge.value = "注文しない"
+  // const noOrderBadge = document.createElement("input");
+  //   noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
+  //   noOrderBadge.type = "button";
+  //   noOrderBadge.name = "selectUserBadge";
+  //   noOrderBadge.onclick = noOrder;
+  //   noOrderBadge.style = "cursor: pointer";
+  //   noOrderBadge.value = "注文しない"
   parent.appendChild(div);
   div.append(input);
   div.append(label);
-  div.append(noOrderBadge);
+  // div.append(noOrderBadge);
 }
 
 
@@ -202,7 +202,7 @@ ordersUpdateBtn.addEventListener("click", () => {
       ordersUpdateArray.push(data_selectChangeValue.value);
     }
     console.log(ordersUpdateArray);
-    // window.location.href = `/orders/update/${ordersUpdateArray}`;
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
   //メニューが２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length == 1) {
@@ -217,23 +217,21 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
-    // window.location.href = `/orders/update/${ordersUpdateArray}`;
+    window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
 });
 
-
-const noOrder = () => {
-  const ordersUpdateArray = [];
-  document.getElementById("errormessage").textContent = "";
-  const checked_selectUserName = document.querySelectorAll("input[name=selectUserBadge]:active");
+//★注文しないバッジのイベント
+// const noOrder = () => {
+  // const ordersUpdateArray = [];
+  // document.getElementById("errormessage").textContent = "";
+  // const checked_selectUserName = document.querySelectorAll("input[name=selectUserBadge]::after");
   // const user = document.getElementsByClassName("selectUserBadge:hover");
-  console.log(checked_selectUserName.value);
+  // console.log(checked_selectUserName.value);
   // ordersUpdateArray.push(thisDay);
   // ordersUpdateArray.push(checked_selectUserName.value);
-  // console.log(thisDay);
-  
-  
-};
+  // console.log(thisDay); 
+// };
 
 
 //本日の集計　store,user,menu,price
@@ -246,7 +244,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     strong_store.className = "font-weight-bold eachStoreName col-8";
   const strong_tellnum = document.createElement("strong");
     strong_tellnum.className = "tellnumArea col-4";
-    strong_tellnum.innerText = "tel";
+    strong_tellnum.innerText = "";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
     td_id.hidden = true;
