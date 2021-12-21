@@ -302,7 +302,8 @@ app.post("/users/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
@@ -318,7 +319,8 @@ app.post("/menus/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  return res.render(`${__dirname}/views/edit.ejs`);
+  // return res.render(`${__dirname}/views/edit.ejs`);
+  res.redirect("/edit");
 });
 
 
