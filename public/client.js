@@ -100,17 +100,17 @@ const appendUserRadio = (id, user) => {
     label.className = "form-check-label userLabel mx-4";
     label.innerText = user;
     label.name = "userLabel";
-  const noOrderBadge = document.createElement("input");
-    noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
-    // noOrderBadge.type = "button";
-    noOrderBadge.name = "selectUserBadge";
-    noOrderBadge.onclick = noOrder(user);
-    noOrderBadge.style = "cursor: pointer";
-    noOrderBadge.value = "注文なし"
+  // const noOrderBadge = document.createElement("input");
+  //   noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
+  //   noOrderBadge.type = "button";
+  //   noOrderBadge.name = "selectUserBadge";
+  //   noOrderBadge.onclick = noOrder, user;
+  //   noOrderBadge.style = "cursor: pointer";
+  //   noOrderBadge.value = "注文なし"
   parent.appendChild(div);
   div.append(input);
   div.append(label);
-  div.append(noOrderBadge);
+  // div.append(noOrderBadge);
 }
 
 
@@ -222,8 +222,8 @@ ordersUpdateBtn.addEventListener("click", () => {
 });
 
 //★注文しないバッジのイベント
-function noOrder(user) {
-  console.log(user);
+// function noOrder(user) {
+//   console.log(user);
   // const ordersUpdateArray = [];
   // document.getElementById("errormessage").textContent = "";
   // const checked_selectUserName = document.querySelectorAll("input[name=selectUserBadge]::after");
@@ -232,7 +232,7 @@ function noOrder(user) {
   // ordersUpdateArray.push(thisDay);
   // ordersUpdateArray.push(checked_selectUserName.value);
   // console.log(thisDay); 
-};
+// };
 
 
 //本日の集計　store,user,menu,price
