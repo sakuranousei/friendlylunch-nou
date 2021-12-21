@@ -100,12 +100,12 @@ const appendUserRadio = (id, user) => {
     label.className = "form-check-label userLabel mx-4";
     label.innerText = user;
     label.name = "userLabel";
-  const noOrderBadge = document.createElement("span");
-    noOrderBadge.className = "badge bg-secondary mx-2 selectUserBadge";
+  const noOrderBadge = document.createElement("input");
+    noOrderBadge.className = "border-0 bg-dark rounded text-white text-center mx-2 selectUserBadge";
     noOrderBadge.name = user;
     noOrderBadge.onclick = noOrder;
     noOrderBadge.style = "cursor: pointer";
-    noOrderBadge.innerText = "注文しない"
+    noOrderBadge.value = "注文しない"
   parent.appendChild(div);
   div.append(input);
   div.append(label);
@@ -225,7 +225,7 @@ const noOrder = () => {
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
   // const checked_selectUserName = document.querySelectorAll("span[name=selectUserBadge]:hover");
-  const user = document.getElementsByClassName("selectUserBadge");
+  const user = document.getElementsByClassName("selectUserBadge:hover");
   console.log(user);
   // ordersUpdateArray.push(thisDay);
   // ordersUpdateArray.push(checked_selectUserName.value);
