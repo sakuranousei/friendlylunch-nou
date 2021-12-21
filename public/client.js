@@ -101,8 +101,9 @@ const appendUserRadio = (id, user) => {
     label.innerText = user;
     label.name = "userLabel";
   const noOrderBadge = document.createElement("input");
-    noOrderBadge.className = "border-0 bg-dark rounded text-white text-center mx-2 selectUserBadge";
-    noOrderBadge.name = user;
+    noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
+    noOrderBadge.type = "button";
+    noOrderBadge.name = "selectUserBadge";
     noOrderBadge.onclick = noOrder;
     noOrderBadge.style = "cursor: pointer";
     noOrderBadge.value = "注文しない"
@@ -224,9 +225,9 @@ ordersUpdateBtn.addEventListener("click", () => {
 const noOrder = () => {
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
-  // const checked_selectUserName = document.querySelectorAll("span[name=selectUserBadge]:hover");
-  const user = document.getElementsByClassName("selectUserBadge:hover");
-  console.log(user);
+  const checked_selectUserName = document.querySelectorAll("input[name=selectUserBadge]:active");
+  // const user = document.getElementsByClassName("selectUserBadge:hover");
+  console.log(checked_selectUserName.value);
   // ordersUpdateArray.push(thisDay);
   // ordersUpdateArray.push(checked_selectUserName.value);
   // console.log(thisDay);
