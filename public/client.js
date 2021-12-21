@@ -102,6 +102,7 @@ const appendUserRadio = (id, user) => {
     label.name = "userLabel";
   const noOrderBadge = document.createElement("span");
     noOrderBadge.className = "badge bg-secondary mx-2";
+    noOrderBadge.onclick = noOrder;
     noOrderBadge.innerText = "注文しない"
   parent.appendChild(div);
   div.append(input);
@@ -216,6 +217,7 @@ ordersUpdateBtn.addEventListener("click", () => {
     window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
 });
+
 
 
 //本日の集計　store,user,menu,price
