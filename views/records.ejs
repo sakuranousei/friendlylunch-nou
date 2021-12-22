@@ -109,57 +109,61 @@
         });
       
       //★ ページ番号　　Ordersのid数の呼び出し
-      // fetch("/getOrdersIdNumbers", {})
-      //   .then(res => res.json())
-      //   .then(response => {
-      //     response.forEach(row => {
-      //       console.log(Object.values(row)[0]);
-      //       const ordersIdNumbers = Object.values(row)[0];
-      //       pageNumbers(ordersIdNumbers);
-      //     });
-      //   });
+      fetch("/getOrdersIdNumbers", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+            console.log(Object.values(row)[0]);
+            const ordersIdNumbers = Object.values(row)[0];
+            pageNumbers(ordersIdNumbers);
+          });
+        });
       
       //★ページ番号　　記載
-      // function pageNumbers(ordersIdNumbers) {
-      //   const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
-      //   for (let i = 1;  i <= pages; i++) {
-      //     const parent = document.getElementById("pageNumbers");
-      //     const a = document.createElement("button");
-      //       // a.type = "button";
-      //       a.className = "btn px-2";
-      //       a.name = "pageBtn"
-      //       a.id = `pageBtn_${i}`;
-      //       a.setAttribute("onclick", `createOrdersRow(${i})`);
-      //       a.innerText = i;
-      //     parent.appendChild(a);
-      //   }
-      // }
+      function pageNumbers(ordersIdNumbers) {
+        const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
+        for (let i = 1;  i <= pages; i++) {
+          const parent = document.getElementById("pageNumbers");
+          const a = document.createElement("button");
+            // a.type = "button";
+            a.className = "btn px-2";
+            a.name = "pageBtn"
+            a.id = `pageBtn_${i}`;
+            // a.setAttribute("onclick", `createOrdersRow(${i})`);
+            a.setAttribute(`onclick = () => this.createOrdersRow(${i})`)
+          
+          noOrderBadge.onclick = () => this.noOrder(user);
+          
+            a.innerText = i;
+          parent.appendChild(a);
+        }
+      }
      
       
       //★ 
-      // function deleteRow() {
-      //   const ordersRow = document.getElementsByClassName("ordersRow");
-      //   while (ordersRow.length) {
-      //   ordersRow.item(0).remove();
-      // }
-      // };
+      function deleteRow() {
+        const ordersRow = document.getElementsByClassName("ordersRow");
+        while (ordersRow.length) {
+        ordersRow.item(0).remove();
+      }
+      };
      
         
       //★
-      // async function createOrdersRow (i) {
-      //   // const result = await location.reload();
-      //   const result = await deleteRow();
-      //   const pageBtn = document.getElementById(`pageBtn_${i}`);
-      //   pageBtn.addEventListener('click', () => {
-      //     fetch(`/getOrdersData/${i}`, {})
-      //       .then(res => res.json())
-      //       .then(response => {
-      //         response.forEach(row => {
-      //            getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-      //         });
-      //       });
-      //   });   
-      // }
+      async function createOrdersRow (i) {
+        // const result = await location.reload();
+        const result = await deleteRow();
+        const pageBtn = document.getElementById(`pageBtn_${i}`);
+        pageBtn.addEventListener('click', () => {
+          fetch(`/getOrdersData/${i}`, {})
+            .then(res => res.json())
+            .then(response => {
+              response.forEach(row => {
+                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+              });
+            });
+        });   
+      }
       
       
       //recordsでOrdersの反映      
