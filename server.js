@@ -232,27 +232,27 @@ app.get("/getMenusData", (request, response) => {
 });
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
-// app.get("/getOrdersData", (request, response) => {
-//   db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
+app.get("/getOrdersData", (request, response) => {
+  db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
 
 // ★サーバーサイドからフロントエンドへOrdersデータ20行ごとのデータ送付
-app.get("/getOrdersData/:i", (request, response) => {
-  console.log(request.params.i);
-  const i = request.params.i;
-  if (i == 1) {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
-  } else if (i > 1) {
-    // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
-  }
-});
+// app.get("/getOrdersData/:i", (request, response) => {
+//   console.log(request.params.i);
+//   const i = request.params.i;
+//   if (i == 1) {
+//     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//     });
+//   } else if (i > 1) {
+//     // db.all(`SELECT * from Orders ORDER by date DESC, id DESC OFFSET ${20 * (i - 1)} LIMIT 20`, (err, rows) => {
+//     db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//     });
+//   }
+// });
 
 //サーバーサイドからフロントエンドへTellnumsデータを送付
 app.get("/getTellnumsData", (request, response) => {
@@ -285,11 +285,11 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 
 
 //★ Ordersのidの行数を取得
-app.get("/getOrdersIdNumbers", (req, res) => {
-  db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    res.send(JSON.stringify(idNunbers));
-  });
-});
+// app.get("/getOrdersIdNumbers", (req, res) => {
+//   db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
+//     res.send(JSON.stringify(idNunbers));
+//   });
+// });
 
 
 //Usersテーブルの追加・更新 Upsert処理

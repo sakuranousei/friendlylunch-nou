@@ -63,10 +63,10 @@
       </form>
     </div>
     
-    <!--ページネーション設置場所 -->
-    <div class="container text-center" id="pageNumbers"></div>
+    <!--★ページネーション設置場所 -->
+<!--     <div class="container text-center" id="pageNumbers"></div> -->
     
-　　　　　　　<button onclick="deleteRow()">リセット</button>
+<!-- 　　　　　　　<button onclick="deleteRow()">リセット</button> -->
 
     <div class="container pt-3">
       <a href="/index">
@@ -100,69 +100,68 @@
       };     
       
       // このページでOrdersデータを呼び出し
-      // fetch("/getOrdersData", {})
-      //   .then(res => res.json())
-      //   .then(response => {
-      //     response.forEach(row => {
-      //        getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-      //     });
-      //   });
-      
-      //★ ページ番号　　Ordersのid数の呼び出し
-      fetch("/getOrdersIdNumbers", {})
+      fetch("/getOrdersData", {})
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-            console.log(Object.values(row)[0]);
-            const ordersIdNumbers = Object.values(row)[0];
-            pageNumbers(ordersIdNumbers);
+             getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
           });
         });
       
+      //★ ページ番号　　Ordersのid数の呼び出し
+      // fetch("/getOrdersIdNumbers", {})
+      //   .then(res => res.json())
+      //   .then(response => {
+      //     response.forEach(row => {
+      //       console.log(Object.values(row)[0]);
+      //       const ordersIdNumbers = Object.values(row)[0];
+      //       pageNumbers(ordersIdNumbers);
+      //     });
+      //   });
+      
       //★ページ番号　　記載
-      function pageNumbers(ordersIdNumbers) {
-        const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
-        for (let i = 1;  i <= pages; i++) {
-          const parent = document.getElementById("pageNumbers");
-          const a = document.createElement("button");
-            // a.type = "button";
-            a.className = "btn px-2";
-            a.name = "pageBtn"
-            a.id = `pageBtn_${i}`;
-            // a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.setAttribute("onclick", () => this.createOrdersRow(i));
-            a.innerText = i;
-          parent.append(a);
-          createOrdersRow(i);
-        }
-      }
+      // function pageNumbers(ordersIdNumbers) {
+      //   const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
+      //   for (let i = 1;  i <= pages; i++) {
+      //     const parent = document.getElementById("pageNumbers");
+      //     const a = document.createElement("button");
+      //       // a.type = "button";
+      //       a.className = "btn px-2";
+      //       a.name = "pageBtn"
+      //       a.id = `pageBtn_${i}`;
+      //       a.setAttribute("onclick", `createOrdersRow(${i})`);
+      //       a.innerText = i;
+      //     parent.append(a);
+      //     this.createOrdersRow(i);
+      //   }
+      // }
      
       
       //★ 
-      function deleteRow() {
-        // console.log("test");
-        const ordersRow = document.getElementsByClassName("ordersRow");
-        while (ordersRow.length) {
-        ordersRow.item(0).remove();
-      }
-      };
+      // function deleteRow() {
+      //   // console.log("test");
+      //   const ordersRow = document.getElementsByClassName("ordersRow");
+      //   while (ordersRow.length) {
+      //   ordersRow.item(0).remove();
+      // }
+      // };
      
         
       //★
-      async function createOrdersRow (i) {
-        // const result = await location.reload();
-        const result = await deleteRow();
-        const pageBtn = document.getElementById(`pageBtn_${i}`);
-        pageBtn.addEventListener('click', () => {
-          fetch(`/getOrdersData/${i}`, {})
-            .then(res => res.json())
-            .then(response => {
-              response.forEach(row => {
-                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-              });
-            });
-        });   
-      }
+      // async function createOrdersRow (i) {
+      //   // const result = await location.reload();
+      //   // const result = await deleteRow();
+      //   const pageBtn = document.getElementById(`pageBtn_${i}`);
+      //   pageBtn.addEventListener('click', () => {
+      //     fetch(`/getOrdersData/${i}`, {})
+      //       .then(res => res.json())
+      //       .then(response => {
+      //         response.forEach(row => {
+      //            getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+      //         });
+      //       });
+      //   });   
+      // }
       
       
       //recordsでOrdersの反映      
