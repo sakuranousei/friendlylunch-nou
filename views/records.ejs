@@ -64,9 +64,9 @@
     </div>
     
     <!--ページネーション設置場所 -->
-    <!--<div class="container text-center" id="pageNumbers"></div> -->
+    <div class="container text-center" id="pageNumbers"></div>
     
-　　　　　　　<!--<button onclick="deleteRow()">リセット</button> -->
+　　　　　　　<button onclick="deleteRow">リセット</button>
 
     <div class="container pt-3">
       <a href="/index">
@@ -100,13 +100,13 @@
       };     
       
       // このページでOrdersデータを呼び出し
-      fetch("/getOrdersData", {})
-        .then(res => res.json())
-        .then(response => {
-          response.forEach(row => {
-             getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-          });
-        });
+      // fetch("/getOrdersData", {})
+      //   .then(res => res.json())
+      //   .then(response => {
+      //     response.forEach(row => {
+      //        getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+      //     });
+      //   });
       
       //★ ページ番号　　Ordersのid数の呼び出し
       fetch("/getOrdersIdNumbers", {})
@@ -130,12 +130,9 @@
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
             // a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.setAttribute(`onclick = () => this.createOrdersRow(${i})`)
-          
-          noOrderBadge.onclick = () => this.noOrder(user);
-          
+            a.setAttribute("onclick", `() => this.createOrdersRow(${i})`);
             a.innerText = i;
-          parent.appendChild(a);
+          parent.append(a);
         }
       }
      
