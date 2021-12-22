@@ -66,7 +66,7 @@
     <!--ページネーション設置場所 -->
     <div class="container text-center" id="pageNumbers"></div>
     
-　　　　　　　<button onclick="deleteRow">リセット</button>
+　　　　　　　<button onclick="deleteRow()">リセット</button>
 
     <div class="container pt-3">
       <a href="/index">
@@ -130,15 +130,17 @@
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
             // a.setAttribute("onclick", `createOrdersRow(${i})`);
-            a.setAttribute("onclick", `() => this.createOrdersRow(${i})`);
+            a.setAttribute("onclick", () => this.createOrdersRow(i));
             a.innerText = i;
           parent.append(a);
+          createOrdersRow(i);
         }
       }
      
       
       //★ 
       function deleteRow() {
+        // console.log("test");
         const ordersRow = document.getElementsByClassName("ordersRow");
         while (ordersRow.length) {
         ordersRow.item(0).remove();
