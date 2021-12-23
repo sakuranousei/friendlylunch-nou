@@ -226,13 +226,9 @@ function noOrder(user) {
   console.log(user);
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
-  // const checked_selectUserName = document.querySelectorAll("input[name=selectUserBadge]::after");
-  // const user = document.getElementsByClassName("selectUserBadge:hover");
-  // console.log(checked_selectUserName.value);
-  ordersUpdateArray.push(thisDay, user, );
-  // ordersUpdateArray.push(checked_selectUserName.value);
+  ordersUpdateArray.push(thisDay, user, '注文なし', '注文なし', '0', '');
   console.log(ordersUpdateArray); 
-  //['2021-12-22', '内藤　晋介', 'あおやま', '中華弁当', '500', '500']
+  window.location.href = `/orders/update/${ordersUpdateArray}`;
 };
 
 
