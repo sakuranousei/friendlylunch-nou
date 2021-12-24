@@ -85,7 +85,7 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
-//indexページ Usersデータ反映 ラジオボタン a helper function that creates a list item for a given user
+//indexページ Usersデータ反映 チェックボックス a helper function that creates a list item for a given user
 const appendUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
@@ -185,7 +185,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
   };
-  //ユーザー：2以上 & メニュー：1以上のとき
+  //ユーザー：1以上 & メニュー：1以上のとき
   if(checked_selectStoreMenuPrice.length >= 1 && checked_selectUserName.length >= 1) {
     document.getElementById("errormessage").textContent = "";
     for (let j = 0; j < checked_selectUserName.length; j++) { //選択されたuserごとにループ、秋田のみ
