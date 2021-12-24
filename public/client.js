@@ -101,7 +101,7 @@ const appendUserRadio = (id, user) => {
     label.innerText = user;
     label.name = "userLabel";
   const noOrderBadge = document.createElement("input");
-    noOrderBadge.className = "selectUserBadge border-0 bg-secondary rounded text-white text-center ";
+    noOrderBadge.className = "selectUserBadge border-0 bg-dark rounded text-white text-center";
     noOrderBadge.style = "width:50px;"
     noOrderBadge.type = "button";
     noOrderBadge.name = "selectUserBadge";
@@ -316,7 +316,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) { //注文したuserに取り消し線など
         userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
-        selectUserBadge[i].style = "width:0px;";
+        selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
     }
   }  
   if (ordered_check == 1) {
