@@ -28,6 +28,7 @@ fetch("/getTodaysOrders", {})
   .then(response => {
     response.forEach(row => {
       appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
+      appendOrderedUserTransform(row.user);
     });
   });
 
@@ -311,24 +312,32 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     td_orderedCheck.append(input_ordered);
     td_orderedCheck.append(label_ordered);
   }
-  const userLabel = document.getElementsByClassName("userLabel");
-  const selectUserBadge = document.getElementsByClassName("selectUserBadge");
-    for (let i = 0; i < userLabel.length; i++) {
-      if (user == userLabel[i].innerText) { //注文したuserに取り消し線など
-        userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
-        // selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
-        // selectUserBadge[i].remove();
-        console.log(selectUserBadge[i]); //<input class="selectUserBadge border-0 bg-dark rounded text-white text-center" type="button" name="selectUserBadge" value="注文なし" style="cursor: pointer;">
-    }
-  }  
   if (ordered_check == 1) {
     input_ordered.checked = true;
   }  
 };
 
 
+//★transform
+const appendOrderedUserTransform = (user) => {
+  const userLabel = document.getElementsByClassName("userLabel");
+  const selectUserBadge = document.getElementsByClassName("selectUserBadge");
+    for (let i = 0; i < userLabel.length; i++) {
+      if (user == userLabel[i].innerText) { //注文したuserに取り消し線など
+        userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
+        // console.log(selectUserBadge[i]); //<input class="selectUserBadge ・・・ value="注文なし" ・・・ >
+        selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
+        selectUserBadge[i].onclick = "";
+        selectUserBadge[i].style = "";
+        // selectUserBadge[i].remove();
+       
+    }
+  }  
+}
+
+
 //本日の集計　お釣り
-const appendTodaysChanges = (id, user, change, changed_check)=> {
+const appendTodaysChanges = (id, user, change, changed_check) => {
   const parent = document.getElementById("appendTodaysChangesArea");
   const tr = document.createElement("tr");
   const td_id = document.createElement("td");
