@@ -13,9 +13,15 @@ fetch("/getUsersData", {})
 
 
 //★indexページでmenusデータを呼び出し
-const fetchGetMenusData = () => {
-  
-}
+async function fetchGetMenusData () {
+  fetch("/getMenusData", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
+      });
+    });
+};
 
 // fetch("/getMenusData", {})
 //   .then(res => res.json())
@@ -26,31 +32,59 @@ const fetchGetMenusData = () => {
 //   });
 
 
-//Ordersデータの呼び出し 当日の集計用
-fetch("/getTodaysOrders", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
-      appendOrderedUserTransform(row.user);
+//★Ordersデータの呼び出し 当日の集計用
+async function fetchGeTodaysOrders () {
+  const result = await 
+  fetch("/getTodaysOrders", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
+        appendOrderedUserTransform(row.user);
+      });
     });
-  });
 
-fetch("/getTodaysChanges", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTodaysChanges(row.id, row.user, row.change, row.changed_check);
+  fetch("/getTodaysChanges", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendTodaysChanges(row.id, row.user, row.change, row.changed_check);
+      });
     });
-  });
 
-fetch("/getTodaysStoresTotalAmount", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTodaysStoresTotalAmount(row.store, row.sum);
+  fetch("/getTodaysStoresTotalAmount", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendTodaysStoresTotalAmount(row.store, row.sum);
+      });
     });
-  });
+};
+
+// fetch("/getTodaysOrders", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
+//       appendOrderedUserTransform(row.user);
+//     });
+//   });
+
+// fetch("/getTodaysChanges", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       appendTodaysChanges(row.id, row.user, row.change, row.changed_check);
+//     });
+//   });
+
+// fetch("/getTodaysStoresTotalAmount", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       appendTodaysStoresTotalAmount(row.store, row.sum);
+//     });
+//   });
 
 
 //indexページでTellnumsデータを呼び出し
@@ -322,7 +356,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
 };
 
 
-//★注文した人の要素を変更（取り消し線を引く、文字色を薄くするなど）
+//注文した人の要素を変更（取り消し線を引く、文字色を薄くするなど）
 const appendOrderedUserTransform = (user) => {
   const selectUserName = document.getElementsByClassName("selectUserName");
   const userLabel = document.getElementsByClassName("userLabel");
@@ -337,7 +371,7 @@ const appendOrderedUserTransform = (user) => {
         selectUserBadge[i].style = "cursor: default";
       }
     }
-}
+};
 
 
 //本日の集計　お釣り
