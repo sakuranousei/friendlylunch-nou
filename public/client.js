@@ -90,7 +90,7 @@ const appendUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
   const div = document.createElement("div");
-    div.className = "form-check mx-2 mb-4 d-flex align-items-center";
+    div.className = "form-check mx-3 mb-4 d-flex align-items-center";
   const input = document.createElement("input");
     input.className = "form-check-input";
     input.type = "checkbox";
@@ -101,7 +101,8 @@ const appendUserRadio = (id, user) => {
     label.innerText = user;
     label.name = "userLabel";
   const noOrderBadge = document.createElement("input");
-    noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center mx-2";
+    noOrderBadge.className = "border-0 bg-secondary rounded text-white text-center ";
+    noOrderBadge.style = "width:50px;"
     noOrderBadge.type = "button";
     noOrderBadge.name = "selectUserBadge";
     noOrderBadge.onclick = () => this.noOrder(user);
