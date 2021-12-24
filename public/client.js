@@ -243,7 +243,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   // };
 });
 
-// ★注文なしバッジのイベント
+// 注文なしバッジのイベント
 function noOrder(user) {
   console.log(user);
   const ordersUpdateArray = [];
