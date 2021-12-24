@@ -93,7 +93,7 @@ const appendUserRadio = (id, user) => {
   const div = document.createElement("div");
     div.className = "form-check mx-3 mb-4 d-flex align-items-center";
   const input = document.createElement("input");
-    input.className = "form-check-input";
+    input.className = "form-check-input selectUserName";
     input.type = "checkbox";
     input.name = "selectUserName"
     input.value = user;
