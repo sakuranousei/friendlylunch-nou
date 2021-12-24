@@ -12,14 +12,18 @@ fetch("/getUsersData", {})
   });
 
 
-//indexページでmenusデータを呼び出し
-fetch("/getMenusData", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
-    });
-  });
+//★indexページでmenusデータを呼び出し
+const fetchGetMenusData = () => {
+  
+}
+
+// fetch("/getMenusData", {})
+//   .then(res => res.json())
+//   .then(response => {
+//     response.forEach(row => {
+//       appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
+//     });
+//   });
 
 
 //Ordersデータの呼び出し 当日の集計用
@@ -318,7 +322,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
 };
 
 
-//★transform
+//★注文した人の要素を変更（取り消し線を引く、文字色を薄くするなど）
 const appendOrderedUserTransform = (user) => {
   const selectUserName = document.getElementsByClassName("selectUserName");
   const userLabel = document.getElementsByClassName("userLabel");
@@ -331,7 +335,6 @@ const appendOrderedUserTransform = (user) => {
         selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
         selectUserBadge[i].onclick = "";
         selectUserBadge[i].style = "cursor: default";
-        // selectUserBadge[i].remove();
       }
     }
 }
