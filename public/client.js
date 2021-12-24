@@ -214,9 +214,9 @@ ordersUpdateBtn.addEventListener("click", () => {
         console.log(checked_selectStoreMenuPrice.length); //選択したメニューの数「２」や「３」
         ordersUpdateArray.push(thisDay);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
-        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
+        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) { //checked_selectStoreMenuPriceを「あおやま」、「中華弁当」、「500」のそれぞれに分割して配列にpush
           console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //「あおやま」、「中華弁当」、「500」 等の「３」
-          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
         console.log(selectChangeValue[0].value); //お釣り「500」など。二つ目以降のメニューにお釣りを入れない処理はサーバーで。
