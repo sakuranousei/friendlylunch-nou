@@ -222,10 +222,10 @@ ordersUpdateBtn.addEventListener("click", () => {
   };
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length > 1) {
     document.getElementById("errormessage").textContent = "";
-    for (let  = 0, f < checked_selectUserName.length; f++) {
+    for (let j = 0; j < checked_selectUserName.length; j++) {
       for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
           ordersUpdateArray.push(thisDay);     
-          ordersUpdateArray.push(checked_selectUserName[0].value);      
+          ordersUpdateArray.push(checked_selectUserName[j].value);      
           for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
             console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
             ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
