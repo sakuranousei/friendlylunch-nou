@@ -99,12 +99,14 @@ function isAuthenticated(req, res, next) {
   const auth = req.isAuthenticated();
   if (auth !== true) {
     res.send('ログインしてください');
+    // res.redirect("/");
   } else {
     const auth = req.isAuthenticated();
     console.log(auth);
     const userName = process.env.KEY1;
     if(userName == null) {
       res.send('ログインしてください');
+      // res.redirect("/edit");
     } else {
       return next();
     }};
