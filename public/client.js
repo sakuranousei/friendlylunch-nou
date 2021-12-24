@@ -181,10 +181,12 @@ ordersUpdateBtn.addEventListener("click", () => {
   const checked_selectStoreMenuPrice = document.querySelectorAll("input[name=selectStoreMenuPrice]:checked");
   const selectChangeValue = document.querySelectorAll("input[name=selectChangeValue]");
   const ordersUpdateArray = [];  
+  
   //ユーザー:0 or メニュー:0のとき どっちか一方が0のとき
   if (checked_selectUserName.length == 0 || checked_selectStoreMenuPrice.length == 0) {
     document.getElementById("errormessage").textContent = "エラー：ユーザー名とメニューを選択してください。";
   };
+  
   //ユーザー：１　 & メニュー：１のとき
   if(checked_selectUserName.length == 1　&&　checked_selectStoreMenuPrice.length == 1) {
     document.getElementById("errormessage").textContent = "";
@@ -204,12 +206,33 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(ordersUpdateArray); //['2021-12-22', '内藤　晋介', 'あおやま', '中華弁当', '500', '500']
     window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
+  
   //ユーザー：１、メニュー：２つ以上のとき
   if(checked_selectUserName.length == 1　&&　checked_selectStoreMenuPrice.length > 1 ) {
     document.getElementById("errormessage").textContent = "";
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
         ordersUpdateArray.push(thisDay);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
+        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
+          console.log(checked_selectStoreMenuPrice[i].value.split(',').length);
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
+          ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
+        }
+        console.log(selectChangeValue[0].value); //お釣り「500」など。二つ目以降のメニューにお釣りを入れない処理はサーバーで。
+        ordersUpdateArray.push(selectChangeValue[0].value);  
+    }
+    console.log(ordersUpdateArray);
+    // window.location.href = `/orders/update/${ordersUpdateArray}`;
+  };
+  
+  //ユーザー：2以上、メニュー：2以上のとき
+  if(checked_selectStoreMenuPrice.length = 1 && checked_selectUserName.length > 1) {
+    document.getElementById("errormessage").textContent = "";
+    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+        ordersUpdateArray.push(thisDay);
+      for(let j = 0; j< checked_selectUserName.length; j++) {
+        ordersUpdateArray.push(checked_selectUserName[j].value);
+      }
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
@@ -218,25 +241,6 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
-    window.location.href = `/orders/update/${ordersUpdateArray}`;
-  };
-  //ユーザー：2以上、メニュー：1のとき
-  if(checked_selectUserName.length > 1 && checked_selectStoreMenuPrice.length = 1) {
-    document.getElementById("errormessage").textContent = "";
-    ordersUpdateArray.push(thisDay);
-    for (const data_selectUserName of checked_selectUserName) {
-      ordersUpdateArray.push(data_selectUserName.value);
-    }
-    for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-      const ary = data_selectStoreMenuPrice.value.split(',');
-      for (let i = 0; i < ary.length; i++) {
-        ordersUpdateArray.push(ary[i]);
-      }
-    }
-    for (const data_selectChangeValue of selectChangeValue) {
-      ordersUpdateArray.push(data_selectChangeValue.value);
-    }
-    console.log(ordersUpdateArray); //['2021-12-22', '内藤　晋介', 'あおやま', '中華弁当', '500', '500']
     // window.location.href = `/orders/update/${ordersUpdateArray}`;
   }
 });
