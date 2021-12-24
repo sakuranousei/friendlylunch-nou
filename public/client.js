@@ -316,7 +316,9 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) { //注文したuserに取り消し線など
         userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
-        selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
+        // selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
+        // selectUserBadge[i].remove();
+        console.log(selectUserBadge[i]); //<input class="selectUserBadge border-0 bg-dark rounded text-white text-center" type="button" name="selectUserBadge" value="注文なし" style="cursor: pointer;">
     }
   }  
   if (ordered_check == 1) {
