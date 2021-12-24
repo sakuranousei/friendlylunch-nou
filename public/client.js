@@ -211,13 +211,14 @@ ordersUpdateBtn.addEventListener("click", () => {
         ordersUpdateArray.push(thisDay);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
-          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h])
+          console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
+        console.log(selectChangeValue[0].value); //[]
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
     console.log(ordersUpdateArray);
-    window.location.href = `/orders/update/${ordersUpdateArray}`;
+    // window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
 });
 

@@ -479,7 +479,7 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
         const change = array[i];
         obj_h.change = change;
       }
-      if (i > 5 && i % 6 == 5) {
+      if (i > 5 && i % 6 == 5) { //2つ目以降のメニューにお釣りを入れない
         const change_none = '';
         obj_h.change = change_none;
       }
