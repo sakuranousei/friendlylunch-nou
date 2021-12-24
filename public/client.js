@@ -93,7 +93,7 @@ const appendUserRadio = (id, user) => {
     div.className = "form-check mx-2 mb-4 d-flex align-items-center";
   const input = document.createElement("input");
     input.className = "form-check-input";
-    input.type = "radio";
+    input.type = "checkbox";
     input.name = "selectUserName"
     input.value = user;
   const label = document.createElement("label");
@@ -221,7 +221,7 @@ ordersUpdateBtn.addEventListener("click", () => {
   };
 });
 
-// ★注文しないバッジのイベント
+// ★注文なしバッジのイベント
 function noOrder(user) {
   console.log(user);
   const ordersUpdateArray = [];
