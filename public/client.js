@@ -220,6 +220,7 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(ordersUpdateArray);
     window.location.href = `/orders/update/${ordersUpdateArray}`;
   };
+  //ユーザー：2以上、メニュー：２つ以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length > 1) {
     document.getElementById("errormessage").textContent = "";
     for (let j = 0; j < checked_selectUserName.length; j++) {
