@@ -320,19 +320,20 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
 
 //★transform
 const appendOrderedUserTransform = (user) => {
+  const selectUserName = document.getElementsByClassName("selectUserName");
   const userLabel = document.getElementsByClassName("userLabel");
   const selectUserBadge = document.getElementsByClassName("selectUserBadge");
     for (let i = 0; i < userLabel.length; i++) {
       if (user == userLabel[i].innerText) { //注文したuserに取り消し線など
+        selectUserName[i].disabled = "disabled";
         userLabel[i].className = "form-check-label userLabel mx-4 orderedUser text-decoration-line-through text-secondary";
         // console.log(selectUserBadge[i]); //<input class="selectUserBadge ・・・ value="注文なし" ・・・ >
         selectUserBadge[i].className = "selectUserBadge border-0 bg-secondary rounded text-white text-center";
         selectUserBadge[i].onclick = "";
-        selectUserBadge[i].style = "";
+        selectUserBadge[i].style = "cursor: default";
         // selectUserBadge[i].remove();
-       
+      }
     }
-  }  
 }
 
 
