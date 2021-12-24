@@ -229,13 +229,15 @@ ordersUpdateBtn.addEventListener("click", () => {
   //ユーザー：2以上、メニュー：2以上のとき
   if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length > 1) {
     document.getElementById("errormessage").textContent = "";
-    for (let i = 0; i < checked_selectUserName.length; i++) {
+    for (let j = 0; j < checked_selectUserName.length; j++) { //選択されたuserごとにループ
         ordersUpdateArray.push(thisDay);
-        ordersUpdateArray.push(checked_selectUserName[i].value);
-        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
+        ordersUpdateArray.push(checked_selectUserName[j].value);
+      for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) { //選択したメニューの数でループ
+        for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) { //checked_selectStoreMenuPriceを「あおやま」、「中華弁当」、「500」のそれぞれに分割して配列にpush
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
+      }
         console.log(selectChangeValue[0].value); //お釣り「500」など。二つ目以降のメニューにお釣りを入れない処理はサーバーで。
         ordersUpdateArray.push(selectChangeValue[0].value);  
     }
