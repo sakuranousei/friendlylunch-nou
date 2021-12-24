@@ -211,10 +211,11 @@ ordersUpdateBtn.addEventListener("click", () => {
   if(checked_selectUserName.length == 1　&&　checked_selectStoreMenuPrice.length > 1 ) {
     document.getElementById("errormessage").textContent = "";
     for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+        console.log(checked_selectStoreMenuPrice.length); //選択したメニューの数「２」や「３」
         ordersUpdateArray.push(thisDay);     
         ordersUpdateArray.push(checked_selectUserName[0].value);      
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
-          console.log(checked_selectStoreMenuPrice[i].value.split(',').length);
+          console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //「あおやま」、「中華弁当」、「500」 等の「３」
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
         }
@@ -226,13 +227,11 @@ ordersUpdateBtn.addEventListener("click", () => {
   };
   
   //ユーザー：2以上、メニュー：2以上のとき
-  if(checked_selectStoreMenuPrice.length = 1 && checked_selectUserName.length > 1) {
+  if(checked_selectStoreMenuPrice.length > 1 && checked_selectUserName.length > 1) {
     document.getElementById("errormessage").textContent = "";
-    for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
+    for (let i = 0; i < checked_selectUserName.length; i++) {
         ordersUpdateArray.push(thisDay);
-      for(let j = 0; j< checked_selectUserName.length; j++) {
-        ordersUpdateArray.push(checked_selectUserName[j].value);
-      }
+        ordersUpdateArray.push(checked_selectUserName[i].value);
         for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) {
           console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 等
           ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
