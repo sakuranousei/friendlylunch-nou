@@ -131,8 +131,8 @@
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
             apageNumbersBtnid = `pageBtn_${i}`;
-            pageNumbersBtn.onclick = createOrdersRow;
-            // pageNumbersBtn.onclick = () => createOrdersRow(i);
+            // pageNumbersBtn.onclick = createOrdersRow;
+            pageNumbersBtn.onclick = () => this.createOrdersRow(i);
             // noOrderBadge.onclick = () => this.noOrder(user);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
@@ -144,18 +144,22 @@
      
         
       //★
-      function createOrdersRow () {
+      function createOrdersRow (i) {
         // const result = await location.reload();
         deleteRow();
         const pageNumbersBtn = document.getElementsByClassName("pageNumbersBtn");
         console.log(pageNumbersBtn.length); //「5」など。ページナンバーの数。
-        const pegeBtn = document.getElementById(pageBtn_:i);
-        console.log(pageBtn);
+        console.log(pageNumbersBtn[0].innerText);
+        pageNumbersBtn.length.forEach(i => {
+          console.log(i);
+        })
+//         const pegeBtn = document.getElementById(pageBtn_:i);
+//         console.log(pageBtn);
         
-        for (let i = 0; i < pageNumbersBtn.length; i++) {
+//         for (let i = 0; i < pageNumbersBtn.length; i++) {
           
           
-        }
+//         }
           
           // if (user == userLabel[i].innerText) {
           // }
