@@ -135,7 +135,7 @@
             // pageNumbersBtn.onclick = () => createOrdersRow(i);
             // noOrderBadge.onclick = () => this.noOrder(user);
             pageNumbersBtn.innerText = i;
-          parent.append(a);
+          parent.append(pageNumbersBtn);
           // createOrdersRow(i);
         }
       }
@@ -147,16 +147,28 @@
       function createOrdersRow () {
         // const result = await location.reload();
         deleteRow();
-        const pageBtn = document.getElementById(`pageBtn_${i}`);
-        pageBtn.addEventListener('click', () => {
-          fetch(`/getOrdersData/${i}`, {})
-            .then(res => res.json())
-            .then(response => {
-              response.forEach(row => {
-                 getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-              });
-            });
-        });   
+        const pageNumbersBtn = document.getElementsByClassName("pageNumbersBtn");
+        console.log(pageNumbersBtn.length); //「5」など。ページナンバーの数。
+        const pegeBtn = document.getElementById(pageBtn_:i);
+        console.log(pageBtn);
+        
+        for (let i = 0; i < pageNumbersBtn.length; i++) {
+          
+          
+        }
+          
+          // if (user == userLabel[i].innerText) {
+          // }
+        
+        // pageBtn.addEventListener('click', () => {
+        //   fetch(`/getOrdersData/${i}`, {})
+        //     .then(res => res.json())
+        //     .then(response => {
+        //       response.forEach(row => {
+        //          getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+        //       });
+        //     });
+        // });   
       }
       
       
