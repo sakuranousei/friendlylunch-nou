@@ -26,14 +26,12 @@ async function fetchGetMenusData () {
 
 
 //Ordersデータの呼び出し 当日の集計用
-async function fetchGeTodaysOrders () {
-  // const result = await fetchGetMenusData();
+async function fetchGetTodaysOrders () {
   fetch("/getTodaysOrders", {})
     .then(res => res.json())
     .then(response => {
       response.forEach(row => {
         appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
-        appendOrderedUserTransform(row.user);
       });
     });
 
@@ -67,19 +65,18 @@ async function fetchGetTellnumsData () {
 };
 
 
-async function fetchGeTodaysOrders () {
-  // const result = await fetchGetMenusData();
+async function fetchOrderedUsers () {
   fetch("/getTodaysOrders", {})
     .then(res => res.json())
     .then(response => {
       response.forEach(row => {
-        appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
         appendOrderedUserTransform(row.user);
       });
     });
+};
 
 
-fetchGetUsersData().then(fetchGetMenusData()).then(fetchGeTodaysOrders()).then(fetchGetTellnumsData());
+fetchGetUsersData().then(fetchGetMenusData()).then(fetchGetTodaysOrders()).then(fetchGetTellnumsData()).then(fetchOrderedUsers());
 
 
 //enter押しでsubmitしないようにする。
