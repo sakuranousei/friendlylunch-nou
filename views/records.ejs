@@ -129,10 +129,11 @@
             a.className = "btn px-2";
             a.name = "pageBtn"
             a.id = `pageBtn_${i}`;
-            a.setAttribute("onclick", `createOrdersRow(${i})`);
+            a.onclick = () => createOrdersRow(i);
+            // noOrderBadge.onclick = () => this.noOrder(user);
             a.innerText = i;
           parent.append(a);
-          this.createOrdersRow(i);
+          createOrdersRow(i);
         }
       }
      
