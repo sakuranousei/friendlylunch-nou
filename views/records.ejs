@@ -130,7 +130,7 @@
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
             apageNumbersBtnid = `pageBtn_${i}`;
-            pageNumbersBtn.onclick = () => this.createOrdersRow(i);
+            pageNumbersBtn.onclick = () => this.createOrdersRow(i); this.pageNumberBtBg(i);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
         }
@@ -161,6 +161,12 @@
         ordersRow.item(0).remove();
         }
       };
+      
+      
+      //★pageNumberBtBgの色づけ
+      function pageNumberBtBg (pageNum) {
+        document.getElementById()
+      }
       
       
       //recordsでOrdersの反映      
