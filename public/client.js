@@ -1,18 +1,19 @@
 console.log("hello world");
 
 
-// index request the Users from our app's sqlite database
 //indexページでUsersデータを呼び出し
-fetch("/getUsersData", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendUserRadio(row.id, row.user);
-    });
-  });
+async function fetchGetUsersData () {
+  fetch("/getUsersData", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendUserRadio(row.id, row.user);
+      });
+    });  
+};
 
 
-//★indexページでmenusデータを呼び出し
+//indexページでmenusデータを呼び出し
 async function fetchGetMenusData () {
   fetch("/getMenusData", {})
     .then(res => res.json())
@@ -23,18 +24,10 @@ async function fetchGetMenusData () {
     });
 };
 
-// fetch("/getMenusData", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       appendMenuAccordionHeader(row.id, row.store, row.menu, row.price);
-//     });
-//   });
 
-
-//★Ordersデータの呼び出し 当日の集計用
+//Ordersデータの呼び出し 当日の集計用
 async function fetchGeTodaysOrders () {
-  const result = await 
+  // const result = await fetchGetMenusData();
   fetch("/getTodaysOrders", {})
     .then(res => res.json())
     .then(response => {
@@ -61,40 +54,32 @@ async function fetchGeTodaysOrders () {
     });
 };
 
-// fetch("/getTodaysOrders", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
-//       appendOrderedUserTransform(row.user);
-//     });
-//   });
-
-// fetch("/getTodaysChanges", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       appendTodaysChanges(row.id, row.user, row.change, row.changed_check);
-//     });
-//   });
-
-// fetch("/getTodaysStoresTotalAmount", {})
-//   .then(res => res.json())
-//   .then(response => {
-//     response.forEach(row => {
-//       appendTodaysStoresTotalAmount(row.store, row.sum);
-//     });
-//   });
-
 
 //indexページでTellnumsデータを呼び出し
-fetch("/getTellnumsData", {})
-  .then(res => res.json())
-  .then(response => {
-    response.forEach(row => {
-      appendTellnums(row.store, row.tellnums);
+async function fetchGetTellnumsData () {
+  fetch("/getTellnumsData", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendTellnums(row.store, row.tellnums);
+      });
     });
-  });
+};
+
+
+async function fetchGeTodaysOrders () {
+  // const result = await fetchGetMenusData();
+  fetch("/getTodaysOrders", {})
+    .then(res => res.json())
+    .then(response => {
+      response.forEach(row => {
+        appendTodaysOrders(row.id, row.store, row.user, row.menu, row.price, row.ordered_check);
+        appendOrderedUserTransform(row.user);
+      });
+    });
+
+
+fetchGetUsersData().then(fetchGetMenusData()).then(fetchGeTodaysOrders()).then(fetchGetTellnumsData());
 
 
 //enter押しでsubmitしないようにする。
