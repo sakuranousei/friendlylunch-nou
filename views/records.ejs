@@ -127,25 +127,20 @@
         for (let i = 1; i <= pages; i++) {
           const parent = document.getElementById("pageNumbers");
           const pageNumbersBtn = document.createElement("button");
-            // a.type = "button";
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
             apageNumbersBtnid = `pageBtn_${i}`;
-            // pageNumbersBtn.onclick = createOrdersRow;
             pageNumbersBtn.onclick = () => this.createOrdersRow(i);
-            // noOrderBadge.onclick = () => this.noOrder(user);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
-          // createOrdersRow(i);
         }
       }
       
       fetchGetOrdersIdNumbers().then(pageNumbersRender());
      
         
-      //★
+      //★pageNumbersBtn.onclick処理
       function createOrdersRow (pageNum) {
-        // const result = await location.reload();
         deleteRow();
         console.log(pageNum);
         fetch(`/getOrdersData/${pageNum}`, {})
@@ -154,35 +149,7 @@
             response.forEach(row => {
                getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
             });
-          });
-
-        // deleteRow();
-        // const pageNumbersBtn = document.getElementsByClassName("pageNumbersBtn");
-        // console.log(pageNumbersBtn.length); //「5」など。ページナンバーの数。
-        // console.log(pageNumbersBtn[0].innerText);
-        // pageNumbersBtn.length.forEach(i => {
-        //   console.log(i);
-        // })
-//         const pegeBtn = document.getElementById(pageBtn_:i);
-//         console.log(pageBtn);
-        
-//         for (let i = 0; i < pageNumbersBtn.length; i++) {
-          
-          
-//         }
-          
-          // if (user == userLabel[i].innerText) {
-          // }
-        
-        // pageBtn.addEventListener('click', () => {
-        //   fetch(`/getOrdersData/${i}`, {})
-        //     .then(res => res.json())
-        //     .then(response => {
-        //       response.forEach(row => {
-        //          getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-        //       });
-        //     });
-        // });   
+          });  
       }
       
       
@@ -194,10 +161,6 @@
         ordersRow.item(0).remove();
         }
       };
-      
-      
-      
-        // .then(deleteRow()).then(createOrdersRow());
       
       
       //recordsでOrdersの反映      
