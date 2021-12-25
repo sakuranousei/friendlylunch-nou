@@ -164,10 +164,15 @@
       };
       
       
-      //★pageNumberBtBgの色づけ
+      //★pageNumberBtBgcの色づけ
       function pageNumberBtnBgc (pageNum) {
-        const pageNumberBtnColored = document.querySelectorAll("button[class = btn px-2 pageNumbersBtn bg-secondary]");
-        console.log(pageNumberBtnColored);
+        //既存Bgcの色消し
+        const pageNumberBtnColored = document.querySelectorAll("button.bg-secondary");
+        console.log(pageNumberBtnColored[0]);//[]
+        for (let i = 0; i < pageNumberBtnColored.length; i++) {
+          pageNumberBtnColored[i].className = "btn px-2 pageNumbersBtn";
+        }
+        //新たに押したpageNumberBtnのBgcに色づけ
         const pageNumbersBtn = document.getElementById(`pageBtn_${pageNum}`);
         console.log(pageNumbersBtn);
         pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
