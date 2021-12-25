@@ -130,8 +130,7 @@
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
             pageNumbersBtn.id = `pageBtn_${i}`;
-            pageNumbersBtn.onclick = () => this.createOrdersRow(i) 
-                                           + this.pageNumberBtnBgc(i);
+            pageNumbersBtn.onclick = () => this.createOrdersRow(i) + this.pageNumberBtnBgc(i);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
         }
@@ -148,15 +147,14 @@
           }); 
       };
       
-      async function pageOneBtnBgc () {
-        
-        pageNumbersBtn = document.getElementById("pageBtn_1");
-        console.log(pageNumbersBtn);
-        // pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
+      async function pageBtn1Bgc () {
+        const pageNumbersBtn1 = document.getElementById("pageBtn_1");
+        console.log(pageNumbersBtn1);
+        pageNumbersBtn1.className = "btn px-2 pageNumbersBtn bg-secondary";
       };
       
       
-      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender()).then(pageOneBtnBgc());
+      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender()).then(pageBtn1Bgc());
      
         
       //★pageNumbersBtn.onclick処理
