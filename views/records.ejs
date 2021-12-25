@@ -108,7 +108,9 @@
       //     });
       //   });
       
-      //★ ページ番号　　Ordersのid数の呼び出し
+      
+      //ページネーション
+      //ページ番号　　Ordersのid数の呼び出し
       async function fetchGetOrdersIdNumbers () {
         fetch("/getOrdersIdNumbers", {})
           .then(res => res.json())
@@ -121,7 +123,7 @@
           });
       }
       
-      //★ページ番号　　記載
+      //ページ番号　　記述
       async function pageNumbersRender (ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
         for (let i = 1; i <= pages; i++) {
@@ -133,6 +135,10 @@
             pageNumbersBtn.onclick = () => this.createOrdersRow(i) + this.pageNumberBtnBgc(i);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
+        }
+        if (ordersIdNumbers) {
+          const pageNumbersBtn1 = document.getElementById("pageBtn_1");
+          pageNumbersBtn1.className = "btn px-2 pageNumbersBtn bg-secondary";
         }
       };
       
@@ -146,18 +152,10 @@
             });
           }); 
       };
-      
-      async function pageBtn1Bgc () {
-        const pageNumbersBtn1 = document.getElementById("pageBtn_1");
-        console.log(pageNumbersBtn1);
-        pageNumbersBtn1.className = "btn px-2 pageNumbersBtn bg-secondary";
-      };
-      
-      
-      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender()).then(pageBtn1Bgc());
-     
         
-      //★pageNumbersBtn.onclick処理
+      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender());
+     
+      //pageNumbersBtn.onclick処理
       function createOrdersRow (pageNum) {
         deleteRow();
         console.log(pageNum);
@@ -170,8 +168,7 @@
           });  
       }
       
-      
-      //★ 
+      //実績の行を削除
       function deleteRow() {
         // console.log("test");
         const ordersRow = document.getElementsByClassName("ordersRow");
@@ -180,8 +177,7 @@
         }
       };
       
-      
-      //★pageNumberBtBgcの色づけ
+      //pageNumberBtnのBgcの色づけ
       function pageNumberBtnBgc (pageNum) {
         //既存Bgcの色消し
         const pageNumberBtnColored = document.querySelectorAll("button.bg-secondary");

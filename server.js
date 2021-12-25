@@ -234,13 +234,13 @@ app.get("/getMenusData", (request, response) => {
 });
 
 //サーバーサイドからフロントエンドへOrdersデータを送付
-app.get("/getOrdersData", (request, response) => {
-  db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
-    response.send(JSON.stringify(rows));
-  });
-});
+// app.get("/getOrdersData", (request, response) => {
+//   db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
+//     response.send(JSON.stringify(rows));
+//   });
+// });
 
-// ★サーバーサイドからフロントエンドへOrdersデータ20行ごとのデータ送付
+//サーバーサイドからフロントエンドへOrdersデータ20行ごとのデータ送付
 app.get("/getOrdersData/:i", (request, response) => {
   console.log(request.params.i);
   const i = request.params.i;
@@ -255,6 +255,15 @@ app.get("/getOrdersData/:i", (request, response) => {
     });
   }
 });
+
+
+//Ordersのidの行数を取得
+app.get("/getOrdersIdNumbers", (req, res) => {
+  db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
+    res.send(JSON.stringify(idNunbers));
+  });
+});
+
 
 //サーバーサイドからフロントエンドへTellnumsデータを送付
 app.get("/getTellnumsData", (request, response) => {
@@ -282,14 +291,6 @@ app.get("/getTodaysChanges", (request, response) => {
 app.get("/getTodaysStoresTotalAmount", (request, response) => {
   db.all("SELECT store, sum(price) as sum from Orders WHERE date = '"+thisDay+"' GROUP by store ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
-  });
-});
-
-
-//★ Ordersのidの行数を取得
-app.get("/getOrdersIdNumbers", (req, res) => {
-  db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    res.send(JSON.stringify(idNunbers));
   });
 });
 
