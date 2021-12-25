@@ -129,8 +129,9 @@
           const pageNumbersBtn = document.createElement("button");
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
-            apageNumbersBtnid = `pageBtn_${i}`;
-            pageNumbersBtn.onclick = () => this.createOrdersRow(i); this.pageNumberBtnBg(i);
+            pageNumbersBtn.id = `pageBtn_${i}`;
+            pageNumbersBtn.onclick = () => this.createOrdersRow(i) 
+                                           // + this.pageNumberBtnBgc(i);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
         }
@@ -164,9 +165,10 @@
       
       
       //★pageNumberBtBgの色づけ
-      function pageNumberBtnBg (i) {
-        const pageBtn = document.getElementById(`pageBtn_${i}`);
-        console.log(pageBtn);
+      function pageNumberBtnBgc (pageNum) {
+        const pageNumbersBtn = document.getElementById(`pageBtn_${pageNum}`);
+        console.log(pageNumbersBtn);
+        pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
       }
       
       
