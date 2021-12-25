@@ -130,7 +130,7 @@
             pageNumbersBtn.className = "btn px-2 pageNumbersBtn";
             pageNumbersBtn.name = "pageNumbersBtn"
             apageNumbersBtnid = `pageBtn_${i}`;
-            pageNumbersBtn.onclick = () => this.createOrdersRow(i); this.pageNumberBtBg(i);
+            pageNumbersBtn.onclick = () => this.createOrdersRow(i); this.pageNumberBtnBg(i);
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
         }
@@ -164,8 +164,8 @@
       
       
       //★pageNumberBtBgの色づけ
-      function pageNumberBtBg (i) {
-        const pageBtn = document.getElementById("pageBtn_i");
+      function pageNumberBtnBg (i) {
+        const pageBtn = document.getElementById(`pageBtn_${i}`);
         console.log(pageBtn);
       }
       
