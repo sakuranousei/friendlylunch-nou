@@ -122,7 +122,7 @@
       }
       
       //★ページ番号　　記載
-      async function pageNumbersRender(ordersIdNumbers) {
+      async function pageNumbersRender (ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
         for (let i = 1; i <= pages; i++) {
           const parent = document.getElementById("pageNumbers");
@@ -135,9 +135,21 @@
             pageNumbersBtn.innerText = i;
           parent.append(pageNumbersBtn);
         }
-      }
+      };
       
-      fetchGetOrdersIdNumbers().then(pageNumbersRender());
+      //1ページ目の実績を記述
+      async function pageOneRender () {
+        fetch(`/getOrdersData/1`, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+               getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+            });
+          });  
+      };
+      
+      
+      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender());
      
         
       //★pageNumbersBtn.onclick処理
@@ -168,13 +180,13 @@
       function pageNumberBtnBgc (pageNum) {
         //既存Bgcの色消し
         const pageNumberBtnColored = document.querySelectorAll("button.bg-secondary");
-        console.log(pageNumberBtnColored[0]);//[]
+        console.log(pageNumberBtnColored[0]); //[]をつけないとNodeList。[]を付けると要素。「<button class・・・・・>4</button>」
         for (let i = 0; i < pageNumberBtnColored.length; i++) {
           pageNumberBtnColored[i].className = "btn px-2 pageNumbersBtn";
         }
         //新たに押したpageNumberBtnのBgcに色づけ
         const pageNumbersBtn = document.getElementById(`pageBtn_${pageNum}`);
-        console.log(pageNumbersBtn);
+        console.log(pageNumbersBtn); //「<button class・・・・・>5</button>」
         pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
       }
       
