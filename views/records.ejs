@@ -145,11 +145,18 @@
             response.forEach(row => {
                getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
             });
-          });  
+          }); 
+      };
+      
+      async function pageOneBtnBgc () {
+        
+        pageNumbersBtn = document.getElementById("pageBtn_1");
+        console.log(pageNumbersBtn);
+        // pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
       };
       
       
-      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender());
+      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender()).then(pageOneBtnBgc());
      
         
       //★pageNumbersBtn.onclick処理
