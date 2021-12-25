@@ -282,9 +282,9 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     tr_store.className = `ordered_${store} row`;
   const strong_store = document.createElement("strong");
     strong_store.innerText = store;
-    strong_store.className = "font-weight-bold eachStoreName col-8";
+    strong_store.className = "font-weight-bold eachStoreName col-9 px-3";
   const strong_tellnum = document.createElement("strong");
-    strong_tellnum.className = "tellnumArea col-4";
+    strong_tellnum.className = "tellnumArea col-3";
     strong_tellnum.innerText = "";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
