@@ -117,7 +117,7 @@ function isAuthenticated(req, res, next) {
 db.serialize(() => {
   if (!exists) {
     db.run(
-      "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT)"
+      "CREATE TABLE Users (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, refNum INTEGER)"
     );
     console.log("New table Users created!"); 
     db.run(
@@ -140,17 +140,17 @@ db.serialize(() => {
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Menus (store, menu, price) VALUES ("さくら弁当", "普通", "500"), ("さくら弁当", "おかずのみ", "280")'
+        'INSERT INTO Menus (store, menu, price) VALUES ("Astore", "普通", "500"), ("Astore", "おかずのみ", "280")'
       );
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", "さくら弁当", "普通", "500"), ("山田　太郎", "さくら弁当", "おかずのみ", "280")'
+        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", "Astore", "普通", "500"), ("山田　太郎", "Astore", "おかずのみ", "350")'
       );
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Tellnums (store, tellnums) VALUES ("さくら弁当", "4854318")'
+        'INSERT INTO Tellnums (store, tellnums) VALUES ("Astore", "444444")'
       );
     });
   } else {
