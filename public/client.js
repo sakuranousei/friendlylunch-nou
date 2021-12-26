@@ -106,7 +106,7 @@ const thisDay = year + "-" + month + "-" + day;
 console.log(thisDay);
 
 
-//indexページ Usersデータ反映 チェックボックス a helper function that creates a list item for a given user
+//indexページ Usersデータ反映 チェックボックス
 const appendUserRadio = (id, user) => {
   // console.log(id, user);
   const parent = document.getElementById("usersArea");
