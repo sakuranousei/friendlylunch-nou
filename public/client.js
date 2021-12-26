@@ -269,7 +269,7 @@ function noOrder(user) {
   console.log(user);
   const ordersUpdateArray = [];
   document.getElementById("errormessage").textContent = "";
-  ordersUpdateArray.push(thisDay, user, '注文なし', '注文なし', '0', '');
+  ordersUpdateArray.push(thisDay, user, '★注文なし', '★注文なし', '0', '');
   console.log(ordersUpdateArray); 
   window.location.href = `/orders/update/${ordersUpdateArray}`;
 };
