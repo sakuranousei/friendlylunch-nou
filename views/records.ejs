@@ -23,8 +23,6 @@
     />
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-    <!-- import the webpage's client-side javascript file -->
-    <!--<script defer src="/client.js"></script> -->
   </head>
   
   <body>
@@ -65,8 +63,6 @@
     
     <!--★ページネーション設置場所 -->
     <div class="container text-center pt-4" id="pageNumbers"></div>
-    
-<!-- 　　　　　　　<button onclick="deleteRow()">リセット</button> -->
 
     <div class="container pt-5 text-center">
       <a href="/index">
@@ -123,6 +119,7 @@
           });
       }
       
+      
       //ページ番号　　記述
       async function pageNumbersRender (ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/30); //切り上げ　1.3→2
@@ -142,7 +139,8 @@
         }
       };
       
-      //1ページ目の実績を記述
+      
+      //records.ejsを呼び出したときの1ページ目の実績を記述
       async function pageOneRender () {
         fetch(`/getOrdersData/1`, {})
           .then(res => res.json())
@@ -155,6 +153,7 @@
         
       fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender());
      
+      
       //pageNumbersBtn.onclick処理
       function createOrdersRow (pageNum) {
         deleteRow();
@@ -176,6 +175,7 @@
         ordersRow.item(0).remove();
         }
       };
+      
       
       //pageNumberBtnのBgcの色づけ
       function pageNumberBtnBgc (pageNum) {
@@ -258,7 +258,6 @@
         }
       };
       
-
     </script>
     
   </body>

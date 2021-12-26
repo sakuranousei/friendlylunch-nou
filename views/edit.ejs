@@ -28,8 +28,6 @@
     />
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-    <!-- import the webpage's client-side javascript file -->
-    <!--<script defer src="/client.js"></script> -->
   </head>
   
   <body>
@@ -143,6 +141,7 @@
           });
         });
       
+      
        //このページでMenusデータを呼び出し
       fetch("/getMenusData", {})
         .then(res => res.json())
@@ -151,6 +150,7 @@
              getMenusData(row.id, row.store, row.menu, row.price, row.tellnum);
           });
         });
+      
       
       //このページでTellnumsデータを呼び出し
       fetch("/getTellnumsData", {})
@@ -161,6 +161,7 @@
           });
         });
 
+      
       //editページでUsersの反映
       function getUsersData(id, user, refNum) {
         const parent = document.getElementById("nameFormArea");
@@ -308,7 +309,6 @@
         tr.append(td_4);
         td_4.append(input_4);
       };
-      
       
       
       //edit Users「行」追加
@@ -517,6 +517,7 @@
         }
       };
       
+      
       //edit Menus デリートにチェックされたidの取得
       function deleteMenu() {
         const activeDeleteMenuBtn = document.activeElement;
@@ -528,6 +529,7 @@
           window.location.href = `/menus/delete/${deleteId}`;
         }
       };
+      
       
       //edit Tellnums デリートにチェックされたidの取得
       function deleteTellnum() {
@@ -562,8 +564,7 @@
           }
         });
       });      
-
-      
+   
     </script>
     
   </body>
