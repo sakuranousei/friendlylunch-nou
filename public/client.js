@@ -65,6 +65,7 @@ async function fetchGetTellnumsData () {
 };
 
 
+//注文済みuserのトランスフォーム
 async function fetchOrderedUsers () {
   fetch("/getTodaysOrders", {})
     .then(res => res.json())
