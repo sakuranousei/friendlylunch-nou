@@ -323,7 +323,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     tr_order.append(td_orderedCheck);
     td_orderedCheck.append(input_ordered);
     td_orderedCheck.append(label_ordered);
-  } else {
+  } else { //td_userが0のとき
     parent.appendChild(tr_order);
     tr_order.append(td_id);
     tr_order.append(td_user);
