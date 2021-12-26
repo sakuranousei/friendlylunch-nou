@@ -322,6 +322,7 @@
           input_2.className = "form-control";
           input_2.type = "text";
           input_2.name = "refNum";
+          input_2.value = maxRefNum();
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
           input_3.className = "form-control";
@@ -448,6 +449,18 @@
       //edit Users idの最大値の取得
       function maxUserId() {
         const id = document.getElementsByName("userId");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+       //edit Users refNumの最大値の取得
+      function maxRefNum() {
+        const id = document.getElementsByName("refNum");
         const idAry = [];
         for (let i = 0; i < id.length; i++) {
           idAry.push(id[i].value);
