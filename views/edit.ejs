@@ -52,7 +52,7 @@
     <div class="container pt-4">
       <form action="/users/addEdit" method="post" name="UsersForm">
         <table class="table table-bordered">
-          <tbody id="nameFormArea">
+          <tbody id="nameFormArea" class="orderChangeItems">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
               <th class="bg-light col-2 text-center">番号</th>
@@ -70,7 +70,7 @@
     <div class="container">
       <form action="/menus/addEdit" method="post" name="MenusForm">
         <table class="table table-bordered">
-          <tbody id="menuFormArea, orderChangeItems">
+          <tbody id="menuFormArea">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
               <th class="bg-light col-4 text-center">店名</th>
@@ -541,7 +541,7 @@
       
       //todoリストをドラッグ&ドロップで並べ替え
       //jQueryとjQueryUIを利用
-      //並べ替えしたい要素に「id="orderChangeItems"」を入れる。
+      //並べ替えしたい要素に「class="orderChangeItems"」を入れる。
       //itemsコレクションの並べ替え機能。並べ替えを永続化
       function order_change(ui){
       };
@@ -558,6 +558,18 @@
               window.location.href = `/item/order/${old_order}/${new_order}`;
             });
           }
+        });
+      });
+      
+      //単純並べ替え機能。非永続化
+      //「class="orderChange"」
+      function order_change(ui){
+      };
+      $(function(){
+        order_change();
+        $(".orderChange").sortable({
+          axis: "y", // ドラッグの方向を縦に固定
+          "opacity": 0.5, // ドラッグ中の透明度
         });
       });
 
