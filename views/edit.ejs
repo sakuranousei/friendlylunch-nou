@@ -52,7 +52,7 @@
     <div class="container pt-4">
       <form action="/users/addEdit" method="post" name="UsersForm">
         <table class="table table-bordered">
-          <tbody id="nameFormArea" class="orderChange">
+          <tbody id="nameFormArea" class="orderChangeItems">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
               <th class="bg-light col-2 text-center">番号</th>
@@ -164,7 +164,7 @@
       function getUsersData(id, user, refNum) {
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
-          // tr.id = refNum;
+          tr.id = refNum; //このidの数値がorderChangeItems関数の「toArray」に渡る
         const td_1 = document.createElement("td");
           td_1.hidden = true;
           td_1.name = "userTd_1";
@@ -558,6 +558,9 @@
               const new_order = updateRows.indexOf(`${old_order}`);
             console.log(new_order); //新しい順番「0」「1」「2」・・・「13」
               // window.location.href = `/item/order/${old_order}/${new_order}`;
+            // changeRefNum();
+            const id = document.getElementsByName("refNum");
+              
             });
           }
         });
@@ -573,17 +576,9 @@
           axis: "y", // ドラッグの方向を縦に固定
           "opacity": 0.5, // ドラッグ中の透明度
         });
+        changeRefNum();
       });
       
-      function refNumChange () {
-        const ref = document.getElementsByName("refNum");
-        // console.log(refNum.length);
-        for (let i = 0; i < ref.length; i++) {
-        console.log(ref[i].value);
-        }
-      };
-      
-      refNumChange();
       
       function changeRefNum() {
         const id = document.getElementsByName("refNum");
