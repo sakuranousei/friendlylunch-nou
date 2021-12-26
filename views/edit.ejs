@@ -164,7 +164,7 @@
       function getUsersData(id, user, refNum) {
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
-          tr.id = refNum;
+          // tr.id = refNum;
         const td_1 = document.createElement("td");
           td_1.hidden = true;
           td_1.name = "userTd_1";
@@ -325,7 +325,7 @@
           input_1.value = maxUserId();
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
-          input_2.className = "form-control";
+          input_2.className = "form-control refNum";
           input_2.type = "text";
           input_2.name = "refNum";
           input_2.value = maxRefNum();
@@ -575,11 +575,25 @@
         });
       });
       
-      const refNum = document.getElementsByName("refNum");
-      console.log(refNum.length);
-      for (let i = 0; i < refNum.length; i++) {
-      console.log(refNum[i]);
-      }
+      function refNumChange () {
+        const ref = document.getElementsByName("refNum");
+        // console.log(refNum.length);
+        for (let i = 0; i < ref.length; i++) {
+        console.log(ref[i].value);
+        }
+      };
+      
+      refNumChange();
+      
+      function changeRefNum() {
+        const id = document.getElementsByName("refNum");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+      };
+
 
       
     </script>
