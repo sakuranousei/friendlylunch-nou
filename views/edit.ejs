@@ -573,7 +573,13 @@
           axis: "y", // ドラッグの方向を縦に固定
           "opacity": 0.5, // ドラッグ中の透明度
         });
-        const 
+        const refNum1 = document.querySelectorAll(".refNum");
+        console.log(refNum1.length);
+        const refNum2 = document.getElementsByClassName("refNum");
+        console.log(refNum2.length);
+        for (let i = 0; i < refNum2.length; i++) {
+          console.log(refNum2[i]);
+        }
       });
 
       
