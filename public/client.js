@@ -311,6 +311,8 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
     label_ordered.className = "form-check-label";
     label_ordered.innerText = "";
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
+  const orderedUser = document.querySelectorAll(".ordered_${store}` > .orderedUser ");
+  con
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
     tr_store.append(strong_store);
