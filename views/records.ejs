@@ -125,7 +125,7 @@
       
       //ページ番号　　記述
       async function pageNumbersRender (ordersIdNumbers) {
-        const pages = Math.ceil(ordersIdNumbers/20); //切り上げ　1.3→2
+        const pages = Math.ceil(ordersIdNumbers/30); //切り上げ　1.3→2
         for (let i = 1; i <= pages; i++) {
           const parent = document.getElementById("pageNumbers");
           const pageNumbersBtn = document.createElement("button");

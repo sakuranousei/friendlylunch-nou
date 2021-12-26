@@ -240,16 +240,16 @@ app.get("/getMenusData", (request, response) => {
 //   });
 // });
 
-//サーバーサイドからフロントエンドへOrdersデータ20行ごとのデータ送付
+//サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
 app.get("/getOrdersData/:i", (request, response) => {
   console.log(request.params.i);
   const i = request.params.i;
   if (i == 1) {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 ", (err, rows) => {
+    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 ", (err, rows) => {
     response.send(JSON.stringify(rows));
     });
   } else if (i > 1) {
-    db.all(`SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET ${20 * (i - 1)}`, (err, rows) => {
+    db.all(`SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 OFFSET ${30 * (i - 1)}`, (err, rows) => {
     // db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
     response.send(JSON.stringify(rows));
     });
