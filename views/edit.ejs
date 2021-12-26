@@ -133,6 +133,7 @@
           }
       };
       
+      
       //このページでUsersデータを呼び出し
       fetch("/getUsersData", {})
         .then(res => res.json())
@@ -176,7 +177,7 @@
           input_1.value = id;
         const td_2 = document.createElement("td");
         const input_2 = document.createElement("input");
-          input_2.className = "form-control refNum p-0 text-center";
+          input_2.className = "form-control refNum px-0 text-center";
           input_2.type = "text";
           input_2.name = "refNum";
           input_2.value = refNum;

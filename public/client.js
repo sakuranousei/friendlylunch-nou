@@ -226,44 +226,8 @@ ordersUpdateBtn.addEventListener("click", () => {
     console.log(ordersUpdateArray);
     window.location.href = `/orders/update/${ordersUpdateArray}`;
   }  
-  //ユーザー：１　 & メニュー：１のとき
-  // if(checked_selectUserName.length == 1　&&　checked_selectStoreMenuPrice.length == 1) {
-  //   document.getElementById("errormessage").textContent = "";
-  //   ordersUpdateArray.push(thisDay);
-  //   for (const data_selectUserName of checked_selectUserName) {
-  //     ordersUpdateArray.push(data_selectUserName.value);
-  //   }
-  //   for (const data_selectStoreMenuPrice of checked_selectStoreMenuPrice) {
-  //     const ary = data_selectStoreMenuPrice.value.split(',');
-  //     for (let i = 0; i < ary.length; i++) {
-  //       ordersUpdateArray.push(ary[i]);
-  //     }
-  //   }
-  //   for (const data_selectChangeValue of selectChangeValue) {
-  //     ordersUpdateArray.push(data_selectChangeValue.value);
-  //   }
-  //   console.log(ordersUpdateArray); //['2021-12-22', '内藤　晋介', 'あおやま', '中華弁当', '500', '500']
-  //   window.location.href = `/orders/update/${ordersUpdateArray}`;
-  // }; 
-  //ユーザー：１ & メニュー：２つ以上のとき
-  // if(checked_selectUserName.length == 1　&&　checked_selectStoreMenuPrice.length > 1 ) {
-  //   document.getElementById("errormessage").textContent = "";
-  //   for (let i = 0; i < checked_selectStoreMenuPrice.length; i++) {
-  //       console.log(checked_selectStoreMenuPrice.length); //選択したメニューの数「２」や「３」
-  //       ordersUpdateArray.push(thisDay);     
-  //       ordersUpdateArray.push(checked_selectUserName[0].value);      
-  //       for (let h = 0; h < checked_selectStoreMenuPrice[i].value.split(',').length; h++) { //checked_selectStoreMenuPriceを「あおやま」、「中華弁当」、「500」のそれぞれに分割して配列にpush
-  //         console.log(checked_selectStoreMenuPrice[i].value.split(',').length); //「あおやま」、「中華弁当」、「500」 等の「３」
-  //         console.log(checked_selectStoreMenuPrice[i].value.split(',')[h]) //「あおやま」、「中華弁当」、「500」 
-  //         ordersUpdateArray.push(checked_selectStoreMenuPrice[i].value.split(',')[h]); 
-  //       }
-  //       console.log(selectChangeValue[0].value); //お釣り「500」など。二つ目以降のメニューにお釣りを入れない処理はサーバーで。
-  //       ordersUpdateArray.push(selectChangeValue[0].value);  
-  //   }
-  //   console.log(ordersUpdateArray);
-  //   window.location.href = `/orders/update/${ordersUpdateArray}`;
-  // };
 });
+
 
 // 注文なしバッジのイベント
 function noOrder(user) {
