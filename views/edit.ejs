@@ -133,7 +133,7 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getUsersData(row.id, row.user);
+             getUsersData(row.id, row.user, row.refNum);
           });
         });
       
@@ -156,7 +156,7 @@
         });
 
       //editページでUsersの反映
-      function getUsersData(id, user) {
+      function getUsersData(id, user, refNum) {
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -173,7 +173,7 @@
           input_2.className = "form-control";
           input_2.type = "text";
           input_2.name = "refNum";
-          input_2.value = "refNum";
+          input_2.value = refNum;
         const td_3 = document.createElement("td");
         const input_3 = document.createElement("input");
           input_3.className = "form-control";

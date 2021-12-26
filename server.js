@@ -221,7 +221,7 @@ app.get("/records", isAuthenticated, (req, res) => {
 
 //サーバーサイドからフロントエンドへUserデータを送付
 app.get("/getUsersData", (request, response) => {
-  db.all("SELECT * from Users", (err, rows) => {
+  db.all("SELECT * from Users ORDER by refNum ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
@@ -299,9 +299,10 @@ app.get("/getTodaysStoresTotalAmount", (request, response) => {
 app.post("/users/addEdit", (req, res) => {
   const getUserId = req.body.userId;
   const getUserName = req.body.userName;
+  const getRefNum = req.body.refNum;
   for(let i = 0; i < getUserId.length; i++) {
     // console.log(getUserId[i], getUserName[i]);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user) VALUES (?, ?)", getUserId[i], getUserName[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user, refNum) VALUES (?, ?, ?)", getUserId[i], getUserName[i], getRefNum[i]);
     stmt.run();
     stmt.finalize();
   }
