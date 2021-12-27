@@ -61,7 +61,7 @@
       </form>
     </div>
     
-    <!--★ページネーション設置場所 -->
+    <!--ページネーション設置場所 -->
     <div class="container text-center pt-4" id="pageNumbers"></div>
 
     <div class="container pt-5 text-center">
@@ -107,7 +107,7 @@
       
       //ページネーション
       //★ページ番号　　Ordersのid数の呼び出し
-      async function fetchGetOrdersIdNumbers (all) {
+      async function fetchGetOrdersIdNumbers (user) {
         fetch(`/getOrdersIdNumbers/${user}`, {})
           // .then(res => res.json())
           // .then(response => {
@@ -151,7 +151,7 @@
           }); 
       };
         
-      fetchGetOrdersIdNumbers().then(pageNumbersRender()).then(pageOneRender());
+      fetchGetOrdersIdNumbers(all).then(pageNumbersRender()).then(pageOneRender());
      
       
       //pageNumbersBtn.onclick処理
