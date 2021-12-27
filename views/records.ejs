@@ -107,16 +107,16 @@
       
       //ページネーション
       //★ページ番号　　Ordersのid数の呼び出し
-      async function fetchGetOrdersIdNumbers (user) {
-        fetch(`/getOrdersIdNumbers/${user}`, {})
-          // .then(res => res.json())
-          // .then(response => {
-          //   response.forEach(row => {
-          //     console.log(Object.values(row)[0]);
-          //     const ordersIdNumbers = Object.values(row)[0];
-          //     pageNumbersRender(ordersIdNumbers);
-          //   });
-          // });
+      async function fetchGetOrdersIdNumbers (userName) {
+        fetch(`/getOrdersIdNumbers/${userName}`, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+              console.log(Object.values(row)[0]);
+              const ordersIdNumbers = Object.values(row)[0];
+              pageNumbersRender(ordersIdNumbers);
+            });
+          });
       }
       
       
@@ -140,9 +140,9 @@
       };
       
       
-      //records.ejsを呼び出したときの1ページ目の実績を記述
-      async function pageOneRender () {
-        fetch(`/getOrdersData/1`, {})
+      //★records.ejsを呼び出したときの1ページ目の実績を記述
+      async function pageOneRender (userName) {
+        fetch(`/getOrdersData/${userName}/1`, {})
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
@@ -153,7 +153,7 @@
       
       
       //render
-      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender());
+      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
      
       
       //pageNumbersBtn.onclick処理
