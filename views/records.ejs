@@ -44,10 +44,10 @@
     <!-- セレクトボックス -->
     <div class="container col-6 pt-5">
       <select class="form-select" aria-label="Default select example">
-        <option selected>all</option>
-        <option value="1">内藤</option>
-        <option value="2">前原</option>
-        <option value="3">Three</option>
+        <option onclick="selectUser("all")" value="all">all</option>
+        <option onclick="selectUser("内藤")" value="内藤">内藤</option>
+        <option onclick="selectUser("前原")" value="前原">前原</option>
+        <option onclick="selectUser("鈴木")" value="鈴木">鈴木</option>
       </select>
     </div>
 
@@ -97,7 +97,8 @@
     ></script>
     
     
-    <script>
+    <script>    
+      
       //enter押しでsubmitしないようにする。
       document.onkeypress = submit_cancel;
       function submit_cancel(){
@@ -155,8 +156,12 @@
       
       
       //★render 画面描写
-      const userName = "内藤";
-      fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
+      function selectUser (user) {
+        const userName = user;
+        fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
+      }
+      
+      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
      
       
       //★pageNumbersBtn.onclick処理
