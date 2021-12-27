@@ -113,7 +113,7 @@
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
-              console.log(Object.values(row)[0]); //id数
+              console.log("id数:" + Object.values(row)[0]); //id数
               const ordersIdNumbers = Object.values(row)[0]; //id数
               pageNumbersRender(userName, ordersIdNumbers);
             });
@@ -282,9 +282,7 @@
       
       //セレクトボックス内のユーザーの描画
       function selectBoxUsersRender (user) {
-        // console.log(user);
         const parent = document.getElementById("usersSelectBox");
-        // console.log(usersSelectBox);
         const option = document.createElement("option");
           option.value = user;
           option.innerText = user;
