@@ -47,7 +47,7 @@
         <option value="all">all</option>
         <option value="内藤">内藤</option>
         <option value="前原">前原</option>
-        <option value="鈴木">鈴木</option>
+        <option value="大久保">大久保</option>
       </select>
     </div>
 
@@ -155,7 +155,11 @@
       };
       
       
-      //★render 画面描写
+      //★render 実績ページに遷移したときの画面描写
+      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
+      
+      
+      //★render セレクトボックスでuserを選択した場合の画面描写
       function selectUser (user) {
         temporaryDeleteRow();
         temporaryDeletePageNum();
@@ -163,8 +167,6 @@
         fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
       }
       
-      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
-     
       
       //★pageNumbersBtn.onclick処理
       function createOrdersRow (userName, pageNum) {
@@ -180,7 +182,7 @@
       }
       
       
-      //実績の行を一時的に画面上の削除（Ordersテーブルから消すわけではない）
+      //実績の行を一時的に画面上から削除（Ordersテーブルから消すわけではない）
       function temporaryDeleteRow () {
         const ordersRow = document.getElementsByClassName("ordersRow");
         while (ordersRow.length) {
@@ -189,14 +191,13 @@
       };
       
       
-      ページ番号を一時的に
+      // ページ番号を一時的に画面上から削除
       function temporaryDeletePageNum () {
         const currentPageNums = document.getElementsByClassName("pageNumbersBtn");
         while (currentPageNums.length) {
         currentPageNums.item(0).remove();
         }
-      };
-      
+      };  
       
       
       //pageNumberBtnのBgcの色づけ
