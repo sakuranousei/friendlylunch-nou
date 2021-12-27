@@ -153,7 +153,8 @@
       
       
       //★render
-      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
+      const userName = "呉屋";
+      fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
      
       
       //pageNumbersBtn.onclick処理
@@ -169,7 +170,7 @@
           });  
       }
       
-      //実績の行を削除
+      //実績の行を一時的に画面上の削除（Ordersテーブルから消すわけではない）
       function deleteRow() {
         // console.log("test");
         const ordersRow = document.getElementsByClassName("ordersRow");

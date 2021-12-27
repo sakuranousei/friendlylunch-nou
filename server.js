@@ -258,11 +258,11 @@ app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
     }
   } else {
     if (pageNum == 1) {
-      db.all(`SELECT * from Orders WHERE user = ${userName} ORDER by date DESC, id DESC LIMIT 30 `, (err, rows) => {
+      db.all(`SELECT * from Orders WHERE user = "${userName}" ORDER by date DESC, id DESC LIMIT 30 `, (err, rows) => {
         response.send(JSON.stringify(rows));
       });
     } else if (pageNum > 1) {
-      db.all(`SELECT * from Orders WHERE user = ${userName} ORDER by date DESC, id DESC LIMIT 30 OFFSET ${30 * (pageNum - 1)}`, (err, rows) => {
+      db.all(`SELECT * from Orders WHERE user = "${userName}" ORDER by date DESC, id DESC LIMIT 30 OFFSET ${30 * (pageNum - 1)}`, (err, rows) => {
         response.send(JSON.stringify(rows));
       });
     }
@@ -275,12 +275,12 @@ app.get("/getOrdersIdNumbers/:userName", (request, response) => {
   console.log(request.params.userName); //「all」
   const userName = request.params.userName;
   if (userName == "all") {
-    db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    response.send(JSON.stringify(idNunbers));
+    db.all("SELECT COUNT (id) from Orders", (err, idNumbers) => {
+    response.send(JSON.stringify(idNumbers));
     }); 
   } else {
-    db.all(`SELECT COUNT (id) from Orders WHERE user = ${userName}`, (err, idNunbers) => {
-    response.send(JSON.stringify(idNunbers));
+    db.all(`SELECT COUNT (id) from Orders WHERE user = "${userName}"`, (err, idNumbers) => {
+    response.send(JSON.stringify(idNumbers));
     }); 
   };
 });
