@@ -157,7 +157,7 @@
       
       
       async function getOrdersDataForSelectBox () {
-        fetch("/getOrdersData/forSelectBox, {})
+        fetch("/getUsersData/forSelectBox", {})
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
@@ -282,7 +282,7 @@
       };
       
       
-      function getOrdersDataForSelectBox (user) {
+      function selectBoxUsersRender (user) {
         console.log(user);
         // const usersSelectBox = document.getElementById("usersSelectBox");
         // console.log(usersSelectBox);
