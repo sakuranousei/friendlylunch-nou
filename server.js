@@ -240,34 +240,39 @@ app.get("/getMenusData", (request, response) => {
 //   });
 // });
 
-//サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
-app.get("/getOrdersData/:i", (request, response) => {
-  console.log(request.params.i);
-  const i = request.params.i;
-  if (i == 1) {
-    db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 ", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
-  } else if (i > 1) {
-    db.all(`SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 OFFSET ${30 * (i - 1)}`, (err, rows) => {
-    // db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 20 OFFSET 20", (err, rows) => {
-    response.send(JSON.stringify(rows));
-    });
+//★サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
+app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
+  console.log(request.params.userName);
+  console.log(request.params.pageNum);
+  const userName = request.params.userName;
+  const pageNum = request.params.pageNum;
+  if (userName == "all") {
+    if (pageNum == 1) {
+      db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 ", (err, rows) => {
+      response.send(JSON.stringify(rows));
+      });
+    } else if (pageNum > 1) {
+      db.all(`SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 OFFSET ${30 * (pageNum - 1)}`, (err, rows) => {
+      response.send(JSON.stringify(rows));
+      });
   }
+    
+  }
+
 });
 
 
 //★Ordersのidの行数を取得
-app.get("/getOrdersIdNumbers/:userName", (req, res) => {
-  console.log(req.params.userName); //「all」
-  const userName = req.params.userName;
+app.get("/getOrdersIdNumbers/:userName", (request, response) => {
+  console.log(request.params.userName); //「all」
+  const userName = request.params.userName;
   if (userName == "all") {
     db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-    res.send(JSON.stringify(idNunbers));
+    response.send(JSON.stringify(idNunbers));
     }); 
   } else {
     db.all(`SELECT COUNT (id) from Orders WHERE user = ${userName}`, (err, idNunbers) => {
-    res.send(JSON.stringify(idNunbers));
+    response.send(JSON.stringify(idNunbers));
     }); 
   };
 });

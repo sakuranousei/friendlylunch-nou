@@ -112,7 +112,7 @@
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
-              console.log(Object.values(row)[0]);
+              console.log(Object.values(row)[0]); //id数
               const ordersIdNumbers = Object.values(row)[0];
               pageNumbersRender(ordersIdNumbers);
             });
