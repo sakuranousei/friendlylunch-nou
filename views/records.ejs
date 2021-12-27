@@ -150,8 +150,10 @@
             });
           }); 
       };
-        
-      fetchGetOrdersIdNumbers(all).then(pageNumbersRender()).then(pageOneRender());
+      
+      
+      //render
+      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender());
      
       
       //pageNumbersBtn.onclick処理

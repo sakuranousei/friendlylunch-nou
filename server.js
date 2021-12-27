@@ -258,11 +258,18 @@ app.get("/getOrdersData/:i", (request, response) => {
 
 
 //★Ordersのidの行数を取得
-app.get("/getOrdersIdNumbers/:user", (req, res) => {
-  console.log(req.params);
-  // db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
-  //   res.send(JSON.stringify(idNunbers));
-  // });
+app.get("/getOrdersIdNumbers/:userName", (req, res) => {
+  console.log(req.params.userName); //「all」
+  const userName = req.params.userName;
+  if (userName == "all") {
+    db.all("SELECT COUNT (id) from Orders", (err, idNunbers) => {
+    res.send(JSON.stringify(idNunbers));
+    }); 
+  } else {
+    db.all(`SELECT COUNT (id) from Orders WHERE user = ${userName}`, (err, idNunbers) => {
+    res.send(JSON.stringify(idNunbers));
+    }); 
+  };
 });
 
 
