@@ -42,7 +42,7 @@
     </div>
     
     <!-- セレクトボックス -->
-    <div class="container col-6 pt-5">
+    <div class="container col-6 pt-4">
       <select onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
         <option value="all">all</option>
         <option value="内藤">内藤</option>
@@ -157,6 +157,8 @@
       
       //★render 画面描写
       function selectUser (user) {
+        temporaryDeleteRow();
+        temporaryDeletePageNum();
         const userName = user;
         fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
       }
@@ -185,6 +187,16 @@
         ordersRow.item(0).remove();
         }
       };
+      
+      
+      ページ番号を一時的に
+      function temporaryDeletePageNum () {
+        const currentPageNums = document.getElementsByClassName("pageNumbersBtn");
+        while (currentPageNums.length) {
+        currentPageNums.item(0).remove();
+        }
+      };
+      
       
       
       //pageNumberBtnのBgcの色づけ
