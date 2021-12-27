@@ -43,11 +43,11 @@
     
     <!-- セレクトボックス -->
     <div class="container col-6 pt-5">
-      <select class="form-select" aria-label="Default select example">
-        <option onclick="selectUser("all")" selected value="all">all</option>
-        <option onclick="selectUser("内藤")" value="内藤">内藤</option>
-        <option onclick="selectUser("前原")" value="前原">前原</option>
-        <option onclick="selectUser("鈴木")" value="鈴木">鈴木</option>
+      <select onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
+        <option value="all">all</option>
+        <option value="内藤">内藤</option>
+        <option value="前原">前原</option>
+        <option value="鈴木">鈴木</option>
       </select>
     </div>
 
