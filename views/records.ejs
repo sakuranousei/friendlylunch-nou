@@ -93,16 +93,7 @@
           if( window.event.keyCode == 13 ){
               return false;
           }
-      };     
-      
-      // このページでOrdersデータを呼び出し
-      // fetch("/getOrdersData", {})
-      //   .then(res => res.json())
-      //   .then(response => {
-      //     response.forEach(row => {
-      //        getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-      //     });
-      //   });
+      };    
       
       
       //ページネーション
@@ -120,7 +111,7 @@
       }
       
       
-      //ページ番号　　記述
+      //★ページ番号　　記述
       async function pageNumbersRender (userName, ordersIdNumbers) {
         const pages = Math.ceil(ordersIdNumbers/30); //切り上げ　1.3→2
         for (let i = 1; i <= pages; i++) {
@@ -152,14 +143,14 @@
       };
       
       
-      //★render
-      const userName = "all";
+      //★render 画面描写
+      const userName = "内藤";
       fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageOneRender(userName));
      
       
-      //pageNumbersBtn.onclick処理
+      //★pageNumbersBtn.onclick処理
       function createOrdersRow (userName, pageNum) {
-        deleteRow();
+        temporaryDeleteRow();
         console.log(pageNum);
         fetch(`/getOrdersData/${userName}/${pageNum}`, {})
           .then(res => res.json())
@@ -170,9 +161,9 @@
           });  
       }
       
+      
       //実績の行を一時的に画面上の削除（Ordersテーブルから消すわけではない）
-      function deleteRow() {
-        // console.log("test");
+      function temporaryDeleteRow () {
         const ordersRow = document.getElementsByClassName("ordersRow");
         while (ordersRow.length) {
         ordersRow.item(0).remove();
