@@ -106,17 +106,17 @@
       
       
       //ページネーション
-      //ページ番号　　Ordersのid数の呼び出し
-      async function fetchGetOrdersIdNumbers () {
-        fetch("/getOrdersIdNumbers", {})
-          .then(res => res.json())
-          .then(response => {
-            response.forEach(row => {
-              console.log(Object.values(row)[0]);
-              const ordersIdNumbers = Object.values(row)[0];
-              pageNumbersRender(ordersIdNumbers);
-            });
-          });
+      //★ページ番号　　Ordersのid数の呼び出し
+      async function fetchGetOrdersIdNumbers (all) {
+        fetch(`/getOrdersIdNumbers/${user}`, {})
+          // .then(res => res.json())
+          // .then(response => {
+          //   response.forEach(row => {
+          //     console.log(Object.values(row)[0]);
+          //     const ordersIdNumbers = Object.values(row)[0];
+          //     pageNumbersRender(ordersIdNumbers);
+          //   });
+          // });
       }
       
       
