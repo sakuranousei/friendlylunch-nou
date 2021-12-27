@@ -150,12 +150,12 @@
           .then(response => {
             response.forEach(row => {
               getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
-              getOrdersDataForSelectBox(row.user);
             });
           }); 
       };
       
       
+      //セレクトボックス内のユーザー情報を取得し記述
       async function getOrdersDataForSelectBox () {
         fetch("/getUsersData/forSelectBox", {})
           .then(res => res.json())
@@ -284,12 +284,25 @@
       
       function selectBoxUsersRender (user) {
         console.log(user);
-        // const usersSelectBox = document.getElementById("usersSelectBox");
-        // console.log(usersSelectBox);
+        const parent = document.getElementById("usersSelectBox");
+        console.log(usersSelectBox);
+        const option = document.createElement("option");
+          option.value = user;
       };
+      
+      
+          <!-- セレクトボックス -->
+    // <div class="container col-6 pt-4">
+    //   <select id="usersSelectBox" onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
+    //     <option value="all">all</option>
+    //     <option value="内藤">内藤</option>
+    //     <option value="前原">前原</option>
+    //     <option value="大久保">大久保</option>
+    //   </select>
+    // </div>
 
       
-      //edit Menus デリートにチェックされたidの取得
+      //デリートにチェックされたidの取得
       function deleteOrder() {
         const activeDeleteOrderBtn = document.activeElement;
         const deleteId = activeDeleteOrderBtn.name.replace("deleteOrderBtn_", "");
