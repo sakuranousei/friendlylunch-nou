@@ -156,6 +156,17 @@
       };
       
       
+      async function getOrdersDataForSelectBox () {
+        fetch("/getOrdersData/forSelectBox, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+              selectBoxUsersRender(row.user);
+            });
+          }); 
+      };
+      
+      
       //★render 実績ページに遷移したときの画面描写
       fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(getOrdersDataForSelectBox()).then(pageOneRender("all"));
       
@@ -272,8 +283,9 @@
       
       
       function getOrdersDataForSelectBox (user) {
-        const usersSelectBox = document.getElementById("usersSelectBox");
-        console.log(usersSelectBox);
+        console.log(user);
+        // const usersSelectBox = document.getElementById("usersSelectBox");
+        // console.log(usersSelectBox);
       };
 
       

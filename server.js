@@ -240,6 +240,7 @@ app.get("/getMenusData", (request, response) => {
 //   });
 // });
 
+
 //★サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
 app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
   console.log(request.params.userName);
@@ -267,6 +268,14 @@ app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
       });
     }
   };
+});
+
+
+//サーバーサイドからフロントエンドへOrdersデータを送付。セレクトボックス用
+app.get("/getOrdersData/forSelectBox", (request, response) => {
+  db.all("SELECT user from Orders ORDER by user ASC,", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
 });
 
 
@@ -407,6 +416,7 @@ app.post("/orders/check", (req, res) => {
   // return res.render(`${__dirname}/views/index.ejs`);
   res.redirect("/index");
 });
+
 
 //チェックのリセット
 app.get("/orders/check/reset", (req, res) => {
