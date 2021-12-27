@@ -233,15 +233,8 @@ app.get("/getMenusData", (request, response) => {
   });
 });
 
-//サーバーサイドからフロントエンドへOrdersデータを送付
-// app.get("/getOrdersData", (request, response) => {
-//   db.all("SELECT * from Orders ORDER by date DESC, id DESC", (err, rows) => {
-//     response.send(JSON.stringify(rows));
-//   });
-// });
 
-
-//★サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
+//サーバーサイドからフロントエンドへOrdersデータ30行ごとのデータ送付
 app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
   console.log(request.params.userName);
   console.log(request.params.pageNum);
@@ -271,7 +264,7 @@ app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
 });
 
 
-//★サーバーサイドからフロントエンドへusersデータを送付。セレクトボックス用
+//サーバーサイドからフロントエンドへusersデータを送付。セレクトボックス用。
 app.get("/getUsersData/forSelectBox", (request, response) => {
   db.all("SELECT user from Users ORDER by refNum ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
@@ -279,7 +272,7 @@ app.get("/getUsersData/forSelectBox", (request, response) => {
 });
 
 
-//★Ordersのidの行数を取得
+//Ordersのidの行数を取得
 app.get("/getOrdersIdNumbers/:userName", (request, response) => {
   console.log(request.params.userName); //「all」
   const userName = request.params.userName;
