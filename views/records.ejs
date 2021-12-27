@@ -43,7 +43,7 @@
     
     <!-- セレクトボックス -->
     <div class="container col-6 pt-4">
-      <select onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
+      <select id="usersSelectBox" onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
         <option value="all">all</option>
         <option value="内藤">内藤</option>
         <option value="前原">前原</option>
@@ -149,14 +149,15 @@
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
-               getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+              getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+              getOrdersDataForSelectBox(row.user);
             });
           }); 
       };
       
       
       //★render 実績ページに遷移したときの画面描写
-      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(pageOneRender("all"));
+      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(getOrdersDataForSelectBox()).then(pageOneRender("all"));
       
       
       //★render セレクトボックスでuserを選択した場合の画面描写
@@ -268,7 +269,14 @@
         tr.append(td_8);
         td_8.append(input_8);
       };
+      
+      
+      function getOrdersDataForSelectBox (user) {
+        const usersSelectBox = document.getElementById("usersSelectBox");
+        console.log(usersSelectBox);
+      };
 
+      
       //edit Menus デリートにチェックされたidの取得
       function deleteOrder() {
         const activeDeleteOrderBtn = document.activeElement;
