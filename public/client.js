@@ -245,12 +245,12 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
     tr_store.className = `ordered_${store}`;
-  const strong_store = document.createElement("th");
-    strong_store.innerText = store;
-    strong_store.className = "font-weight-bold eachStoreName";
+  const th_store = document.createElement("th");
+    th_store.innerText = store;
+    th_store.className = "font-weight-bold eachStoreName";
   const strong_tellnum = document.createElement("th");
     strong_tellnum.className = "tellnumArea";
-    strong_tellnum.colspan = "3";
+    strong_tellnum.colSpan = "3";
     strong_tellnum.innerText = "";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
@@ -278,7 +278,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const orderedStore = document.getElementsByClassName(`ordered_${store}`);
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
-    tr_store.append(strong_store);
+    tr_store.append(th_store);
     tr_store.append(strong_tellnum);
     parent.appendChild(tr_order);
     tr_order.append(td_id);
