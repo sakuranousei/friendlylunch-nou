@@ -130,7 +130,7 @@ db.serialize(() => {
     console.log("New table Orders created!"); 
     // insert default table
     db.run(
-      "CREATE TABLE Tellnums (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, tellnums INTEGER)"
+      "CREATE TABLE Tellnums (id INTEGER PRIMARY KEY AUTOINCREMENT, store TEXT, tellnums INTEGER, tellnumsText TEXT)"
     );
     console.log("New table Tellnums created!")
     db.serialize(() => {
