@@ -150,7 +150,7 @@ db.serialize(() => {
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Tellnums (store, tellnums) VALUES ("Astore", "444444")'
+        'INSERT INTO Tellnums (store, tellnumsText) VALUES ("Astore", "4445555")'
       );
     });
   } else {
@@ -356,10 +356,10 @@ app.post("/tellnums/addEdit", (req, res) => {
   // console.log(req.body);
   const getTellId = req.body.tellId;
   const getTellStoreName = req.body.tellStoreName;
-  const getTellNum = req.body.tellNum;
+  const getTellnumsText = req.body.tellnumsText;
   for(let i = 0; i < getTellId.length; i++) {
-    console.log(getTellId[i], getTellStoreName[i], getTellNum[i]);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnums) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
+    console.log(getTellId[i], getTellStoreName[i], getTellnumsText[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnumsText) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
     stmt.run();
     stmt.finalize();
   }

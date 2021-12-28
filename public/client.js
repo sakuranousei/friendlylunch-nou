@@ -59,7 +59,7 @@ async function fetchGetTellnumsData () {
     .then(res => res.json())
     .then(response => {
       response.forEach(row => {
-        appendTellnums(row.store, row.tellnums);
+        appendTellnums(row.store, row.tellnumsText);
       });
     });
 };
@@ -381,12 +381,12 @@ const ordersResetBtn = document.getElementById("ordersResetBtn");
 
 
 //indexページ Tellnumsデータ反映 集計場所に電話番号記述
-const appendTellnums = (store, tellnums) => {
+const appendTellnums = (store, tellnumsText) => {
   const eachStoreName = document.getElementsByClassName("eachStoreName"); //HTMLCollection。そのままでは要素を扱えない。for文を使う。
   const tellnumArea = document.getElementsByClassName("tellnumArea");
   for (let i = 0; i < eachStoreName.length; i++) {
     if (store === eachStoreName[i].innerText) {
-      tellnumArea[i].innerText = "TEL" + tellnums;
+      tellnumArea[i].innerText = "TEL" + tellnumsText;
     }
   }
 };

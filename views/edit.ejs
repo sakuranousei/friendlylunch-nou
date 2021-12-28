@@ -157,7 +157,7 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getTellnumsData(row.id, row.store, row.tellnums);
+             getTellnumsData(row.id, row.store, row.tellnumsText);
           });
         });
 
@@ -264,7 +264,7 @@
       
       
       //editページでTellnumsの反映
-      function getTellnumsData(id, store, tellnums) {
+      function getTellnumsData(id, store, tellnumsText) {
         const parent = document.getElementById("tellFormArea");
         const tr = document.createElement("tr");
         const td_1 = document.createElement("td");
@@ -289,8 +289,8 @@
         const input_3 = document.createElement("input");
           input_3.className = "form-control px-0";
           input_3.type = "number";
-          input_3.name = "tellNum";
-          input_3.value = tellnums;
+          input_3.name = "tellnumsText";
+          input_3.value = tellnumsText;
         const td_4 = document.createElement("td");
           td_4.className = "px-1";
         const input_4 = document.createElement("input");
