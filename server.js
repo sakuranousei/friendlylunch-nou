@@ -296,7 +296,7 @@ app.get("/getTellnumsData", (request, response) => {
 });
 
 
-// 本日の注文者とメニュー id date user store menu price change
+// 本日の注文者とメニュー
 app.get("/getTodaysOrders", (request, response) => {
   db.all("SELECT * from Orders WHERE date = '"+thisDay+"' ORDER by store ASC, user ASC, price DESC", (err, rows) => {    
     response.send(JSON.stringify(rows));
@@ -324,12 +324,10 @@ app.post("/users/addEdit", (req, res) => {
   const getUserName = req.body.userName;
   const getRefNum = req.body.refNum;
   for(let i = 0; i < getUserId.length; i++) {
-    // console.log(getUserId[i], getUserName[i]);
     const stmt = db.prepare("INSERT OR REPLACE INTO Users (id, user, refNum) VALUES (?, ?, ?)", getUserId[i], getUserName[i], getRefNum[i]);
     stmt.run();
     stmt.finalize();
   }
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
@@ -346,7 +344,6 @@ app.post("/menus/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
@@ -363,7 +360,6 @@ app.post("/tellnums/addEdit", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
@@ -406,7 +402,6 @@ app.post("/orders/check", (req, res) => {
       stmt.finalize();
     }
   }
-  // return res.render(`${__dirname}/views/index.ejs`);
   res.redirect("/index");
 });
 
@@ -423,7 +418,6 @@ app.get("/orders/check/reset", (req, res) => {
       stmt.finalize();
     }
   });
-  // return res.render(`${__dirname}/views/index.ejs`);
   res.redirect("/index");
 });
 
@@ -435,7 +429,6 @@ app.get("/users/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Users WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
@@ -447,7 +440,6 @@ app.get("/menus/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Menus WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
@@ -459,7 +451,6 @@ app.get("/orders/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Orders WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  // return res.render(`${__dirname}/views/records.ejs`);
   res.redirect("/records");
 });
 
@@ -471,7 +462,6 @@ app.get("/tellnums/delete/:deleteId", (req, res) => {
   const stmt = db.prepare("DELETE FROM Tellnums WHERE id = (?)");
   stmt.run(deleteId);
   stmt.finalize();
-  // return res.render(`${__dirname}/views/edit.ejs`);
   res.redirect("/edit");
 });
 
