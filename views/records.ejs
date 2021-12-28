@@ -155,7 +155,7 @@
       
       //セレクトボックス内のユーザー情報を取得し記述
       async function getOrdersDataForSelectBox () {
-        fetch("/getUsersData/forSelectBox", {})
+        fetch("/getOrdersUserData/forSelectBox", {})
           .then(res => res.json())
           .then(response => {
             response.forEach(row => {
