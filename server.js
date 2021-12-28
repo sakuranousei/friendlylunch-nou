@@ -240,7 +240,7 @@ app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
   console.log(request.params.pageNum);
   const userName = request.params.userName;
   const pageNum = request.params.pageNum;
-  if (userName == "all") {
+  if (userName == "All") {
     if (pageNum == 1) {
       db.all("SELECT * from Orders ORDER by date DESC, id DESC LIMIT 30 ", (err, rows) => {
         response.send(JSON.stringify(rows));

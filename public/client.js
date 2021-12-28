@@ -77,7 +77,7 @@ async function fetchOrderedUsers () {
 };
 
 
-fetchGetUsersData().then(fetchGetMenusData()).then(fetchGetTodaysOrders()).then(fetchGetTellnumsData()).then(fetchOrderedUsers());
+fetchGetUsersData().then(fetchGetMenusData()).then(fetchGetTodaysOrders()).then(fetchOrderedUsers()).then(fetchGetTellnumsData());
 
 
 //enter押しでsubmitしないようにする。
@@ -248,10 +248,10 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const th_store = document.createElement("th");
     th_store.innerText = store;
     th_store.className = "font-weight-bold eachStoreName";
-  const strong_tellnum = document.createElement("th");
-    strong_tellnum.className = "tellnumArea";
-    strong_tellnum.colSpan = "3";
-    strong_tellnum.innerText = "";
+  const th_tellnum = document.createElement("th");
+    th_tellnum.className = "tellnumArea";
+    th_tellnum.colSpan = "3";
+    th_tellnum.innerText = "";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
     td_id.hidden = true;
@@ -259,7 +259,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const td_user = document.createElement("td");
     td_user.textContent = user;
     td_user.name = "orderedUser";
-    td_user.className = "orderedUser col-5";
+    td_user.className = "orderedUser px-3 col-5";
   const td_menu = document.createElement("td");
     td_menu.textContent = menu;
     td_menu.className = "col-4"
@@ -279,7 +279,7 @@ const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   if (orderedStore.length == 0) {
     parent.appendChild(tr_store);
     tr_store.append(th_store);
-    tr_store.append(strong_tellnum);
+    tr_store.append(th_tellnum);
     parent.appendChild(tr_order);
     tr_order.append(td_id);
     tr_order.append(td_user);
