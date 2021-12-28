@@ -359,7 +359,7 @@ app.post("/tellnums/addEdit", (req, res) => {
   const getTellnumsText = req.body.tellnumsText;
   for(let i = 0; i < getTellId.length; i++) {
     console.log(getTellId[i], getTellStoreName[i], getTellnumsText[i]);
-    const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnumsText) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellNum[i]);
+    const stmt = db.prepare("INSERT OR REPLACE INTO Tellnums (id, store, tellnumsText) VALUES (?, ?, ?)", getTellId[i], getTellStoreName[i], getTellnumsText[i]);
     stmt.run();
     stmt.finalize();
   }

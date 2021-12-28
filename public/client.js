@@ -386,7 +386,7 @@ const appendTellnums = (store, tellnumsText) => {
   const tellnumArea = document.getElementsByClassName("tellnumArea");
   for (let i = 0; i < eachStoreName.length; i++) {
     if (store === eachStoreName[i].innerText) {
-      tellnumArea[i].innerText = "TEL" + tellnumsText;
+      tellnumArea[i].innerText = tellnumsText;
     }
   }
 };
