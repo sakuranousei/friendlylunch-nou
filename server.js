@@ -266,7 +266,7 @@ app.get("/getOrdersData/:userName/:pageNum", (request, response) => {
 
 //サーバーサイドからフロントエンドへusersデータを送付。セレクトボックス用。
 app.get("/getUsersData/forSelectBox", (request, response) => {
-  db.all("SELECT user from Users ORDER by refNum ASC", (err, rows) => {
+  db.all("SELECT DISTINCT user from Orders ORDER by user ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });
