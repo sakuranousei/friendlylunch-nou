@@ -135,7 +135,7 @@ db.serialize(() => {
     console.log("New table Tellnums created!")
     db.serialize(() => {
       db.run(
-        'INSERT INTO Users (user) VALUES ("ユーザー１"), ("ユーザー２"), ("ユーザー３")'
+        'INSERT INTO Users (user) VALUES ("ユーザー1"), ("ユーザー2"), ("ユーザー3")'
       );
     });
     db.serialize(() => {
@@ -145,12 +145,12 @@ db.serialize(() => {
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Orders (user, store, menu, price) VALUES ("山田　太郎", "Astore", "普通", "500"), ("山田　太郎", "Astore", "おかずのみ", "350")'
+        'INSERT INTO Orders (user, store, menu, price) VALUES ("ユーザー１", "Astore", "普通", "500"), ("ユーザー2", "Astore", "おかずのみ", "350")'
       );
     });
     db.serialize(() => {
       db.run(
-        'INSERT INTO Tellnums (store, tellnumsText) VALUES ("Astore", "4445555")'
+        'INSERT INTO Tellnums (store, tellnumsText) VALUES ("Astore", "4445555"), ("Bstore", "6667777")'
       );
     });
   } else {
@@ -158,11 +158,6 @@ db.serialize(() => {
     console.log('Database "Menus" ready to go!');
     console.log('Database "Orders" ready to go!');
     console.log('Database "Tellnums" ready to go!');
-    // db.each("SELECT * from Users", (err, row) => {
-    //   if (row) {
-    //     console.log(`record: ${row.user}`);
-    //   }
-    // });
   }
 });
 
