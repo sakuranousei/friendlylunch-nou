@@ -244,12 +244,12 @@ function noOrder(user) {
 const appendTodaysOrders = (id, store, user, menu, price, ordered_check) => {
   const parent = document.getElementById("appendTodaysOrdersArea");
   const tr_store = document.createElement("tr");
-    tr_store.className = `ordered_${store} d-flex row`;
+    tr_store.className = `ordered_${store} d-flex`;
   const strong_store = document.createElement("strong");
     strong_store.innerText = store;
-    strong_store.className = "font-weight-bold eachStoreName px-3 col-6";
+    strong_store.className = "font-weight-bold eachStoreName px-3 flex-grow-1";
   const strong_tellnum = document.createElement("strong");
-    strong_tellnum.className = "tellnumArea col-6";
+    strong_tellnum.className = "tellnumArea flex-grow-2";
     strong_tellnum.innerText = "";
   const tr_order = document.createElement("tr");
   const td_id = document.createElement("td");
