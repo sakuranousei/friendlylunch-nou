@@ -45,7 +45,7 @@
     <!-- セレクトボックス -->
     <div class="container col-7 pt-4">
       <select id="usersSelectBox" onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
-        <option value="All">all</option>
+        <option value="All">All</option>
       </select>
     </div>
 
@@ -166,7 +166,7 @@
       
       
       //render 実績ページに遷移したときの画面描写
-      fetchGetOrdersIdNumbers("all").then(pageNumbersRender()).then(getOrdersDataForSelectBox()).then(pageFirstRender("all"));
+      fetchGetOrdersIdNumbers("All").then(pageNumbersRender()).then(getOrdersDataForSelectBox()).then(pageFirstRender("All"));
       
       
       //render セレクトボックスでuserを選択した場合の画面描写

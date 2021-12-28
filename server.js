@@ -276,7 +276,7 @@ app.get("/getUsersData/forSelectBox", (request, response) => {
 app.get("/getOrdersIdNumbers/:userName", (request, response) => {
   console.log(request.params.userName); //「all」
   const userName = request.params.userName;
-  if (userName == "all") {
+  if (userName == "All") {
     db.all("SELECT COUNT (id) from Orders", (err, idNumbers) => {
     response.send(JSON.stringify(idNumbers));
     }); 
@@ -516,7 +516,6 @@ app.get("/orders/update/:ordersUpdateArray", (req, res) => {
     stmt.run();
     stmt.finalize();
   }
-  // return res.render(`${__dirname}/views/index.ejs`);
   res.redirect("/index");
 });
 
