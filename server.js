@@ -135,7 +135,7 @@ db.serialize(() => {
     console.log("New table Tellnums created!")
     db.serialize(() => {
       db.run(
-        'INSERT INTO Users (user) VALUES ("ユーザー1"), ("ユーザー2"), ("ユーザー3")'
+        'INSERT INTO Users (id, user) VALUES ("1", "ユーザー1"), ("2", ユーザー2"), ("3", ユーザー3")'
       );
     });
     db.serialize(() => {
