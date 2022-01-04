@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title><%= process.env.APPTITLE %></title>
+    <meta name="description" content="A cool thing made with Glitch" />
+    <!--<link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-cherry-blossom-flowers-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />   
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">  
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  
+  
+  <body>
+    
+    <!-- ヘッダー -->
+    <header>
+      <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid d-flex align-items-center justify-content-center py-2">
+          <a class="navbar-brand text-white" href="/index"><%= process.env.APPTITLE %></a>
+          <a class="m-2 text-muted" href="/edit">編集</a>
+          <a class="m-2 text-muted" href="/records">実績</a>
+          <a class="m-2 text-muted" href="/logout">Logout</a>
+        </div>
+      </nav>
+    </header>  
+      
+    
+    <!-- タイトル -->
+    <div class="container lead text-secondary d-flex align-items-center justify-content-center pt-5">
+      編集
+    </div>
+    
+    
+　　　　　　　　<!--Usersの入力・編集 -->
+    <div class="container pt-4">
+      <form action="/users/addEdit" method="post" name="UsersForm">
+        <table class="table table-bordered">
+          <tbody id="nameFormArea" class="orderChangeItems">
+            <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col-2 text-center">番号</th>
+              <th class="bg-light col-9 text-center">ユーザー名</th>
+              <th class="bg-light col-1 text-center">削</th>
+            </tr>
+          </tbody>
+        </table>
+          <input type="button" onclick="userRowAdd()" value="行追加" class="btn btn-dark">
+          <input id="usersDataAddEdit" type="submit" value="更新" class="btn btn-dark">
+      </form>   
+    </div>
+
+    
+    <!--Menusへの入力・編集 -->
+    <div class="container">
+      <form action="/menus/addEdit" method="post" name="MenusForm">
+        <table class="table table-bordered">
+          <tbody id="menuFormArea">
+            <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col-4 text-center">店名</th>
+              <th class="bg-light col-5 text-center">メニュー</th>
+              <th class="bg-light col-2 text-center">価格</th>
+              <th class="bg-light col-1 text-center">削</th>
+            </tr>
+          </tbody>
+        </table>
+        <input type="button" onclick="menuRowAdd()" value="行追加" class="btn btn-dark">
+        <input id="menusDataAddEdit" type="submit" value="更新" class="btn btn-dark">
+      </form>
+    </div>
+    
+    
+　　　　　　　　<!--Tellnumsの入力・編集 -->
+    <div class="container pt-4">
+      <form action="/tellnums/addEdit" method="post" name="TellsForm">
+        <table class="table table-bordered">
+          <tbody id="tellFormArea">
+            <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col-4 text-center">店名</th>
+              <th class="bg-light col-7 text-center">電話番号</th>
+              <th class="bg-light col-1 text-center">削</th>
+            </tr>
+          </tbody>
+        </table>
+          <input type="button" onclick="tellRowAdd()" value="行追加" class="btn btn-dark">
+          <input id="tellsDataAddEdit" type="submit" value="更新" class="btn btn-dark">
+      </form>   
+    </div>
+
+    
+    <!-- ホーム遷移 -->
+    <div class="container text-center">
+      <a href="/index">
+        <button class="btn btn-dark mb-4">ホーム</button>
+      </a>
+    </div>
+    <br>
+
+    
+    <!-- フッター -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div
+        class="container d-flex align-items-center justify-content-center text-muted"
+      >
+        Copyright ©<%= process.env.APPTITLE %>
+      </div>
+    </footer>
+
+    
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    
+    
+    <script>      
+      //enter押しでsubmitしないようにする。
+      document.onkeypress = submit_cancel;
+      function submit_cancel(){
+          if( window.event.keyCode == 13 ){
+              return false;
+          }
+      };
+      
+      
+      //このページでUsersデータを呼び出し
+      fetch("/getUsersData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getUsersData(row.id, row.user, row.refNum);
+          });
+        });
+      
+      
+       //このページでMenusデータを呼び出し
+      fetch("/getMenusData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getMenusData(row.id, row.store, row.menu, row.price, row.tellnum);
+          });
+        });
+      
+      
+      //このページでTellnumsデータを呼び出し
+      fetch("/getTellnumsData", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+             getTellnumsData(row.id, row.store, row.tellnumsText);
+          });
+        });
+
+      
+      //editページでUsersの反映
+      function getUsersData(id, user, refNum) {
+        const parent = document.getElementById("nameFormArea");
+        const tr = document.createElement("tr");
+          tr.id = refNum; //このidの数値がorderChangeItems関数の「toArray」に渡る
+        const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.name = "userTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.type = "number";
+          input_1.name = "userId";
+          input_1.value = id;
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control refNum px-0 text-center";
+          input_2.type = "text";
+          input_2.name = "refNum";
+          input_2.value = refNum;
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "text";
+          input_3.name = "userName";
+          input_3.value = user;
+        const td_4 = document.createElement("td");
+        const input_4 = document.createElement("input");
+          // input_4.onclick = deleteUser;　//関数をプロパティとして追加する場合は（）は不要
+          input_4.onclick =() =>  this.deleteUser(id);
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = `deleteUserBtn_${id}`;
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+      };
+      
+      
+      //editでMenusの反映      
+      function getMenusData(id, store, menu, price) {
+        const parent = document.getElementById("menuFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.className = "px-1";
+          td_1.hidden = true;
+          td_1.name = "menuTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center px-0";
+          input_1.name = "menuId";
+          input_1.value = id;
+        const td_2 = document.createElement("td");
+          td_2.className = "px-1";
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control px-0";
+          input_2.type = "text";
+          input_2.name = "menuStore";
+          input_2.value = store;
+        const td_3 = document.createElement("td");
+          td_3.className = "px-1";
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control px-0";
+          input_3.type = "text";
+          input_3.name = "menuName";
+          input_3.value = menu;
+        const td_4 = document.createElement("td");
+          td_4.className = "px-1";
+        const input_4 = document.createElement("input");
+          input_4.className = "form-control px-0";
+          input_4.type = "number";
+          input_4.name = "menuPrice";
+          input_4.value = price;
+        const td_5 = document.createElement("td");
+          td_5.className = "px-1";
+        const input_5 = document.createElement("input");
+          // input_5.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
+          input_5.onclick =() =>  this.deleteMenu(id);
+          input_5.className = "form-control btn-outline-secondary px-0";
+          input_5.type = "button";
+          input_5.name = `deleteMenuBtn_${id}`;
+          input_5.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+        tr.append(td_5);
+        td_5.append(input_5);
+      };
+      
+      
+      //editページでTellnumsの反映
+      function getTellnumsData(id, store, tellnumsText) {
+        const parent = document.getElementById("tellFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.className = "px-1";
+          td_1.hidden = true;
+          td_1.name = "tellTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center px-0";
+          input_1.type = "number";
+          input_1.name = "tellId";
+          input_1.value = id;
+        const td_2 = document.createElement("td");
+          td_2.className = "px-1";
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control px-0";
+          input_2.type = "text";
+          input_2.name = "tellStoreName";
+          input_2.value = store;
+        const td_3 = document.createElement("td");
+          td_3.className = "px-1";
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control px-0";
+          input_3.type = "text";
+          input_3.name = "tellnumsText";
+          input_3.value = tellnumsText;
+        const td_4 = document.createElement("td");
+          td_4.className = "px-1";
+        const input_4 = document.createElement("input");
+          // input_4.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
+          input_4.onclick =() =>  this.deleteTellnum(id);
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = `deleteTellnumBtn_${id}`;
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+      };
+      
+      
+      //edit Users「行」追加
+      function userRowAdd() {
+        const parent = document.getElementById("nameFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.name = "userTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center";
+          input_1.type = "";
+          input_1.name = "userId";
+          input_1.value = maxUserId();
+        const td_2 = document.createElement("td");
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control refNum px-0 text-center";
+          input_2.type = "text";
+          input_2.name = "refNum";
+          input_2.value = maxRefNum();
+        const td_3 = document.createElement("td");
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control";
+          input_3.type = "text";
+          input_3.name = "userName";
+        const td_4 = document.createElement("td");
+        const input_4 = document.createElement("input");
+          // input_4.onclick = deleteUser; //関数をプロパティとして追加する場合は（）は不要
+          input_4.onclick =() =>  this.deleteUser(`${input_1.value}`);
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = `deleteUserBtn_${input_1.value}`;
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+      };
+      
+      
+      //edit Menus「行」追加
+      function menuRowAdd() {
+        const parent = document.getElementById("menuFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.className = "px-1";
+          td_1.hidden = true;
+          td_1.name = "menuTd_1"
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center px-0";
+          input_1.name = "menuId";
+          input_1.value = maxMenuId();
+        const td_2 = document.createElement("td");
+          td_2.className = "px-1";
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control px-0";
+          input_2.type = "text";
+          input_2.name = "menuStore";
+        const td_3 = document.createElement("td");
+          td_3.className = "px-1";
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control px-0";
+          input_3.type = "text";
+          input_3.name = "menuName";
+        const td_4 = document.createElement("td");
+          td_4.className = "px-1";
+        const input_4 = document.createElement("input");
+          input_4.className = "form-control px-0";
+          input_4.type = "number";
+          input_4.name = "menuPrice";
+        const td_5 = document.createElement("td");
+        const input_5 = document.createElement("input");
+          // input_5.onclick = deleteMenu; //関数をプロパティとして追加する場合は（）は不要
+          input_5.onclick =() =>  this.deleteMenu(`${input_1.value}`);
+          input_5.className = "form-control btn-outline-secondary px-0";
+          input_5.type = "button";
+          input_5.name = `deleteMenuBtn_${input_1.value}`;
+          input_5.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);
+        tr.append(td_5);
+        td_5.append(input_5);
+      };
+
+      
+      //edit Tellnums「行」追加
+      function tellRowAdd() {
+        const parent = document.getElementById("tellFormArea");
+        const tr = document.createElement("tr");
+        const td_1 = document.createElement("td");
+          td_1.className = "px-1";
+          td_1.hidden = true;
+          td_1.name = "tellTd_1";
+        const input_1 = document.createElement("input");
+          input_1.readOnly = true;
+          input_1.className = "form-control text-center px-0";
+          input_1.type = "number";
+          input_1.name = "tellId";
+          input_1.value = maxTellnumId();
+        const td_2 = document.createElement("td");
+          td_2.className = "px-1";
+        const input_2 = document.createElement("input");
+          input_2.className = "form-control px-0";
+          input_2.type = "text";
+          input_2.name = "tellStoreName";
+        const td_3 = document.createElement("td");
+          td_3.className = "px-1";
+        const input_3 = document.createElement("input");
+          input_3.className = "form-control px-0";
+          input_3.type = "number";
+          input_3.name = "tellNum";
+          input_3.placeholder = "";
+        const td_4 = document.createElement("td");
+          td_4.className = "px-1";
+        const input_4 = document.createElement("input");
+          // input_4.onclick = deleteTellnum;　//関数をプロパティとして追加する場合は（）は不要
+          input_4.onclick =() =>  this.deleteTellnum(`${input_1.value}`);
+          input_4.className = "form-control btn btn-outline-secondary";
+          input_4.type = "button";
+          input_4.name = `deleteTellnumBtn_${input_1.value}`;
+          input_4.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        td_1.append(input_1);
+        tr.append(td_2);
+        td_2.append(input_2);
+        tr.append(td_3);
+        td_3.append(input_3);
+        tr.append(td_4);
+        td_4.append(input_4);       
+      };
+      
+      
+      //edit Users idの最大値の取得
+      function maxUserId() {
+        const id = document.getElementsByName("userId");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+       //edit Users refNumの最大値の取得
+      function maxRefNum() {
+        const id = document.getElementsByName("refNum");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+      //edit Menus idの最大値の取得
+      function maxMenuId() {
+        const id = document.getElementsByName("menuId");
+        const idAry = [];
+        for (let i = 0; i < id.length; i++) {
+          idAry.push(id[i].value);
+        };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+      };
+      
+      
+      //edit Tellnums idの最大値の取得
+      function maxTellnumId() {
+        const id = document.getElementsByName("tellId");
+        const idAry = [];
+        if (id.length == 0) {
+          return 1;
+        } else {
+          for (let i = 0; i < id.length; i++) {
+            idAry.push(id[i].value);
+          };
+        console.log(idAry);
+        return parseInt(Math.max.apply(null, idAry) + 1);
+        }
+      };
+      
+      
+      //edit Users デリートにチェックされたidの取得とサーバーへの送信
+      function deleteUser(id) {
+        // const activeDeleteUserBtn = document.activeElement;
+        // const deleteId = activeDeleteUserBtn.name.replace("deleteUserBtn_", "");
+        // console.log(activeDeleteUserBtn.name);
+        // console.log(activeDeleteUserBtn.name.replace("deleteUserBtn_", ""));
+        const result = window.confirm("削除しますか？");
+        if (result) {
+          window.location.href = `/users/delete/${id}`;
+        }
+      };
+      
+      
+      //edit Menus デリートにチェックされたidの取得とサーバーへの送信
+      function deleteMenu(id) {
+        // const activeDeleteMenuBtn = document.activeElement; //safariだとdocument.activeElementでフォーカスされた要素が取得されない。<body></boby>全体が取得されてしまう。
+        // const deleteId = activeDeleteMenuBtn.name.replace("deleteMenuBtn_", "");
+        // console.log(activeDeleteMenuBtn);
+        // console.log(activeDeleteMenuBtn.name);
+        // console.log(activeDeleteMenuBtn.name.replace("deleteMenuBtn_", ""));
+        const result = window.confirm("削除しますか？");
+        if (result) {
+          window.location.href = `/menus/delete/${id}`;
+        }
+      };
+      
+      
+      //edit Tellnums デリートにチェックされたidの取得とサーバーへの送信
+      function deleteTellnum(id) {
+        // const activeDeleteTellnumBtn = document.activeElement;
+        // const deleteId = activeDeleteTellnumBtn.name.replace("deleteTellnumBtn_", "");
+        // console.log(activeDeleteTellnumBtn.name);
+        // console.log(activeDeleteTellnumBtn.name.replace("deleteTellnumBtn_", ""));
+        const result = window.confirm("削除しますか？");
+        if (result) {
+          window.location.href = `/tellnums/delete/${id}`;
+        }
+      };
+      
+      
+      //UsersのrefNumをドラッグ&ドロップで並べ替え
+      //jQueryとjQueryUIを利用
+      //並べ替えしたい要素に「class="orderChangeItems"」を入れる。
+      function order_change(ui){
+      };
+      $(function(){
+        order_change();
+        $(".orderChangeItems").sortable({
+          axis: "y", // ドラッグの方向を縦に固定
+          "opacity": 0.5, // ドラッグ中の透明度
+          "update": function(event,ui){ // ドラッグ完了後のコールバック
+            const updateRows = $(this).sortable( 'toArray' );
+            const refNum = document.getElementsByName("refNum");
+              for (let i = 0; i < refNum.length; i++) {
+                console.log(refNum[i].value);
+                refNum[i].value = i + 1;
+              }
+          }
+        });
+      });      
+   
+    </script>
+    
+  </body>
+</html>

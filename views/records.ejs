@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title><%= process.env.APPTITLE %></title>
+    <meta name="description" content="A cool thing made with Glitch" />
+    <!--<link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-cherry-blossom-flowers-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  
+  
+  <body>
+    
+    <!-- ヘッダー -->
+    <header>
+      <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid d-flex align-items-center justify-content-center py-2">
+          <a class="navbar-brand text-white" href="/index"><%= process.env.APPTITLE %></a>
+          <a class="m-2 text-muted" href="/edit">編集</a>
+          <a class="m-2 text-muted" href="/records">実績</a>
+          <a class="m-2 text-muted" href="/logout">Logout</a>
+        </div>
+      </nav>
+    </header>  
+    
+    
+    <!-- タイトル -->
+    <div class="container lead text-secondary d-flex align-items-center justify-content-center pt-5">
+      実績
+    </div>
+    
+    
+    <!-- セレクトボックス -->
+    <div class="container col-7 pt-4">
+      <select id="usersSelectBox" onChange="selectUser(this.value)" class="form-select" aria-label="Default select example">
+        <option value="All">All</option>
+      </select>
+    </div>
+
+
+    <!--Ordersの出力・編集 -->
+    <div class="container pt-5">
+      <form action="/orders/edit" method="post" name="OrdersForm">
+        <table class="table table-bordered">
+          <tbody id="orderFormArea">
+            <tr>
+              <th hidden class="bg-light col-0 text-center">ID</th>
+              <th class="bg-light col text-center">日</th>
+              <th class="bg-light col text-center">名</th>
+              <th class="bg-light col text-center">店</th>
+              <th class="bg-light col text-center">メ</th>
+              <th class="bg-light col text-center">価</th>
+              <th class="bg-light col text-center">釣</th>
+              <th class="bg-light col text-center">削</th>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    
+    
+    <!--ページネーション設置場所 -->
+    <div class="container text-center pt-4" id="pageNumbers"></div>
+
+    
+    <!-- ホーム遷移 -->
+    <div class="container pt-5 text-center">
+      <a href="/index">
+        <button class="btn btn-dark mb-4">ホーム</button>
+      </a>
+    </div>
+    <br>
+    
+    
+    <!-- 実績全削除ページへの遷移 -->
+    <div class="container text-center p-0">
+      <a href="/recordsAllDelete" class="text-muted">全ての注文実績を削除する場合は・・・</a>      
+    </div>
+    <br>
+    <br>
+
+    
+    <!-- フッター -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div
+        class="container d-flex align-items-center justify-content-center text-muted"
+      >
+        Copyright ©<%= process.env.APPTITLE %>
+      </div>
+    </footer>
+    
+
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    
+    
+    <script>    
+      
+      //enter押しでsubmitしないようにする。
+      document.onkeypress = submit_cancel;
+      function submit_cancel(){
+          if( window.event.keyCode == 13 ){
+              return false;
+          }
+      };    
+      
+      
+      //ページネーション
+      //ページ番号　　Ordersのid数の呼び出し
+      async function fetchGetOrdersIdNumbers (userName) {
+        fetch(`/getOrdersIdNumbers/${userName}`, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+              console.log("id数:" + Object.values(row)[0]); //id数
+              const ordersIdNumbers = Object.values(row)[0]; //id数
+              pageNumbersRender(userName, ordersIdNumbers);
+            });
+          });
+      }
+      
+      
+      //ページ番号　　記述
+      async function pageNumbersRender (userName, ordersIdNumbers) {
+        const pages = Math.ceil(ordersIdNumbers/30); //切り上げ　1.3→2
+        for (let i = 1; i <= pages; i++) {
+          const parent = document.getElementById("pageNumbers");
+          const pageNumbersBtn = document.createElement("button");
+            pageNumbersBtn.className = "btn px-3 pageNumbersBtn";
+            pageNumbersBtn.name = "pageNumbersBtn"
+            pageNumbersBtn.id = `pageBtn_${i}`;
+            pageNumbersBtn.onclick = () => this.createOrdersRow(userName, i) + this.pageNumberBtnBgc(i);
+            pageNumbersBtn.innerText = i;
+          parent.append(pageNumbersBtn);
+        }
+        if (ordersIdNumbers) {
+          const pageNumbersBtn1 = document.getElementById("pageBtn_1");
+          pageNumbersBtn1.className = "btn px-2 pageNumbersBtn bg-secondary";
+        }
+      };
+      
+      
+      //records.ejsを呼び出したときの1ページ目の実績を記述
+      async function pageFirstRender (userName) {
+        fetch(`/getOrdersData/${userName}/1`, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+              getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+            });
+          }); 
+      };
+      
+      
+      //セレクトボックス内のユーザー情報を取得し記述
+      async function getOrdersDataForSelectBox () {
+        fetch("/getOrdersUserData/forSelectBox", {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+              selectBoxUsersRender(row.user);
+            });
+          }); 
+      };
+      
+      
+      //render 実績ページに遷移したときの画面描写
+      fetchGetOrdersIdNumbers("All").then(pageNumbersRender()).then(getOrdersDataForSelectBox()).then(pageFirstRender("All"));
+      
+      
+      //render セレクトボックスでuserを選択した場合の画面描写
+      function selectUser (user) {
+        temporaryDeleteRow();
+        temporaryDeletePageNum();
+        const userName = user;
+        fetchGetOrdersIdNumbers(userName).then(pageNumbersRender()).then(pageFirstRender(userName));
+      }
+      
+      
+      //pageNumbersBtn.onclick処理
+      function createOrdersRow (userName, pageNum) {
+        temporaryDeleteRow();
+        console.log(pageNum);
+        fetch(`/getOrdersData/${userName}/${pageNum}`, {})
+          .then(res => res.json())
+          .then(response => {
+            response.forEach(row => {
+               getOrdersData(row.id, row.date, row.user, row.store, row.menu, row.price, row.change);
+            });
+          });  
+      }
+      
+      
+      //実績の行を一時的に画面上から削除（Ordersテーブルから消すわけではない）
+      function temporaryDeleteRow () {
+        const ordersRow = document.getElementsByClassName("ordersRow");
+        while (ordersRow.length) {
+        ordersRow.item(0).remove();
+        }
+      };
+      
+      
+      // ページ番号を一時的に画面上から削除
+      function temporaryDeletePageNum () {
+        const currentPageNums = document.getElementsByClassName("pageNumbersBtn");
+        while (currentPageNums.length) {
+        currentPageNums.item(0).remove();
+        }
+      };  
+      
+      
+      //pageNumberBtnのBgcの色づけ
+      function pageNumberBtnBgc (pageNum) {
+        //既存Bgcの色消し
+        const pageNumberBtnColored = document.querySelectorAll("button.bg-secondary");
+        console.log(pageNumberBtnColored[0]); //[]をつけないとNodeList。[]を付けると要素。「<button class・・・・・>4</button>」
+        for (let i = 0; i < pageNumberBtnColored.length; i++) {
+          pageNumberBtnColored[i].className = "btn px-2 pageNumbersBtn";
+        }
+        //新たに押したpageNumberBtnのBgcに色づけ
+        const pageNumbersBtn = document.getElementById(`pageBtn_${pageNum}`);
+        console.log(pageNumbersBtn); //「<button class・・・・・>5</button>」
+        pageNumbersBtn.className = "btn px-2 pageNumbersBtn bg-secondary";
+      }
+      
+      
+      //recordsでOrdersの反映      
+      function getOrdersData(id, date, user, store, menu, price, change) {
+        const parent = document.getElementById("orderFormArea");
+        const tr = document.createElement("tr");
+          tr.className = "ordersRow";
+        const td_1 = document.createElement("td");
+          td_1.hidden = true;
+          td_1.className = "text-center p-0";
+          td_1.name = "orderId";
+          td_1.textContent = id;
+        const td_2 = document.createElement("td");
+          td_2.className = "text-center p-0";
+          td_2.name = "orderDate";
+          td_2.textContent = date;
+        const td_3 = document.createElement("td");
+          td_3.className = "text-center p-0";
+          td_3.name = "orderUser";
+          td_3.textContent = user;
+        const td_4 = document.createElement("td");
+          td_4.className = "text-center p-0";
+          td_4.name = "orderStore";
+          td_4.textContent = store;
+        const td_5 = document.createElement("td");
+          td_5.className = "text-center p-0";
+          td_5.name = "orderMenu";
+          td_5.textContent = menu;
+        const td_6 = document.createElement("td");
+          td_6.className = "text-center p-0";
+          td_6.name = "orderPrice";
+          td_6.textContent = price;
+        const td_7 = document.createElement("td");
+          td_7.className = "text-center p-0";
+          td_7.name = "orderChange";
+          td_7.textContent = change;
+        const td_8 = document.createElement("td");
+          td_8.className = "px-1";
+        const input_8 = document.createElement("input");
+          input_8.onclick =() =>  this.deleteOrder(id);
+          input_8.className = "form-control btn-outline-secondary px-0";
+          input_8.type = "button";
+          input_8.name = `deleteOrderBtn_${id}`;
+          input_8.value =　"×";
+        parent.appendChild(tr);
+        tr.append(td_1);
+        tr.append(td_2);
+        tr.append(td_3);
+        tr.append(td_4);
+        tr.append(td_5);
+        tr.append(td_6);
+        tr.append(td_7);
+        tr.append(td_8);
+        td_8.append(input_8);
+      };
+      
+      
+      //セレクトボックス内のユーザーの描画
+      function selectBoxUsersRender (user) {
+        const parent = document.getElementById("usersSelectBox");
+        const option = document.createElement("option");
+          option.value = user;
+          option.innerText = user;
+        parent.appendChild(option);
+      };
+
+      
+      //デリートにチェックされたidの取得
+      function deleteOrder(id) {
+        console.log(id);
+        // const activeDeleteOrderBtn = document.activeElement; //safariだとactiveElement（フォーカスされている要素）が取得できなかった。
+        // const deleteId = activeDeleteOrderBtn.name.replace("deleteOrderBtn_", ""); //id
+        // console.log(activeDeleteOrderBtn.name.replace("deleteOrderBtn_", ""));
+        const result = window.confirm("削除しますか？");
+        if (result) {
+          window.location.href = `/orders/delete/${id}`;
+        }         
+      };
+      
+    </script>
+    
+  </body>
+</html>

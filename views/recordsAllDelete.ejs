@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title><%= process.env.APPTITLE %></title>
+    <meta name="description" content="A cool thing made with Glitch" />
+    <!--<link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/60/000000/external-cherry-blossom-flowers-vitaliy-gorbachev-fill-vitaly-gorbachev.png"
+      type="image/x-icon"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  
+  
+  <body>
+    
+    <!-- ヘッダー -->
+    <header>
+      <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid d-flex align-items-center justify-content-center py-2">
+          <a class="navbar-brand text-white" href="/index"><%= process.env.APPTITLE %></a>
+          <a class="m-2 text-muted" href="/edit">編集</a>
+          <a class="m-2 text-muted" href="/records">実績</a>
+          <a class="m-2 text-muted" href="/logout">Logout</a>
+        </div>
+      </nav>
+    </header>
+    <br>
+    <br>
+    
+    
+    <!-- 実績全削除の実施ボタン -->
+    <div class="container pt-5 text-center">
+      <input type="button" onclick="deleteAllOrder()" class="btn btn-danger" value="全ての注文実績を削除する">
+    </div>
+    <br>
+    
+    
+    <!-- ホーム遷移 -->
+    <div class="container pt-5 text-center">
+      <a href="/index">
+        <button class="btn btn-dark mb-4">ホーム</button>
+      </a>
+    </div>
+    <br>
+    <br>
+
+
+    <!-- フッター -->
+    <footer class="footer mt-auto py-3 bg-light">
+      <div
+        class="container d-flex align-items-center justify-content-center text-muted"
+      >
+        Copyright ©<%= process.env.APPTITLE %>
+      </div>
+    </footer>
+    
+
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    
+    
+    <script>      
+      //enter押しでsubmitしないようにする。
+      document.onkeypress = submit_cancel;
+      function submit_cancel(){
+          if( window.event.keyCode == 13 ){
+              return false;
+          }
+      };
+      
+      
+      //実績全削除
+      function deleteAllOrder() {
+        const result = window.confirm("「全て」の注文実績を「削除」しますか？");
+        if (result) {
+          window.location.href = `/orders/allDelete`;
+        }
+      };
+      
+      
+    </script>
+    
+  </body>
+</html>
