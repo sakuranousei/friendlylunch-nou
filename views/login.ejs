@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   
   <head>
+<!--     <title><%= process.env.APPTITLE %></title> -->
     <title><%= process.env.APPTITLE %></title>
     <meta name="description" content="A cool thing made with Glitch" />
     <!--<link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
@@ -50,11 +51,11 @@
             </thead>
             <tbody>
               <tr>
-                <td height="100px">
+                <td hidden height="100px">
                   <label>アカウント：</label>
                 </td>
-                <td>
-                  <input type="text" name="username" style="width:100%;"/>
+                <td hidden>
+                  <input type="text" name="username" style="width:100%;" value=<%= process.env.KEY1 %> />
                 </td>
               </tr>
               <tr>
@@ -114,7 +115,7 @@
     
     
     <script>
-      // アカウント又はパスワードに誤りがある場合
+      // アカウント又はパスワードに誤りがある場合      
       const url = location.href;
       const result = url.indexOf("failure"); //indexOf 値が見つからない場合は-1を返す
       if (result != -1) {

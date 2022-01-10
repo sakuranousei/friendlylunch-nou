@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   
   <head>
     <title><%= process.env.APPTITLE %></title>
@@ -59,8 +59,9 @@
           <tbody id="nameFormArea" class="orderChangeItems">
             <tr>
               <th hidden class="bg-light col-0 text-center">ID</th>
-              <th class="bg-light col-2 text-center">番号</th>
-              <th class="bg-light col-9 text-center">ユーザー名</th>
+              <th class="bg-light col-2 text-center">順番</th>
+              <th class="bg-light col-6 text-center">ユーザー名</th>
+              <th class="bg-light col-3 text-center">当面</th>
               <th class="bg-light col-1 text-center">削</th>
             </tr>
           </tbody>
@@ -71,7 +72,7 @@
     </div>
 
     
-    <!--Menusへの入力・編集 -->
+    <!--Menusの入力・編集 -->
     <div class="container">
       <form action="/menus/addEdit" method="post" name="MenusForm">
         <table class="table table-bordered">
@@ -152,7 +153,7 @@
         .then(res => res.json())
         .then(response => {
           response.forEach(row => {
-             getUsersData(row.id, row.user, row.refNum);
+             getUsersData(row.id, row.user, row.refNum, row.notForTheTimeBeing);
           });
         });
       
@@ -178,7 +179,7 @@
 
       
       //editページでUsersの反映
-      function getUsersData(id, user, refNum) {
+      function getUsersData(id, user, refNum, notForTheTimeBeing) {
         const parent = document.getElementById("nameFormArea");
         const tr = document.createElement("tr");
           tr.id = refNum; //このidの数値がorderChangeItems関数の「toArray」に渡る
@@ -202,15 +203,34 @@
           input_3.className = "form-control";
           input_3.type = "text";
           input_3.name = "userName";
-          input_3.value = user;
+          input_3.value = user;     
         const td_4 = document.createElement("td");
-        const input_4 = document.createElement("input");
+        const select_4 = document.createElement("select");
+          select_4.className = "form-select text-center px-0";
+          if (notForTheTimeBeing == 1) {
+            select_4.className = "form-select text-center px-0 bg-secondary border-secondary text-white";
+          }
+          select_4.name = "notForTheTimeBeing";
+        const option_4_1 = document.createElement("option");
+          if (notForTheTimeBeing == 0) {
+            option_4_1.selected = true;
+          }
+          option_4_1.value = 0;
+          option_4_1.innerText = "必要";
+        const option_4_2 = document.createElement("option");
+          if (notForTheTimeBeing == 1) {
+            option_4_2.selected = true;
+          }
+          option_4_2.value = 1;
+          option_4_2.innerText = "不要";  
+        const td_5 = document.createElement("td");
+        const input_5 = document.createElement("input");
           // input_4.onclick = deleteUser;　//関数をプロパティとして追加する場合は（）は不要
-          input_4.onclick =() =>  this.deleteUser(id);
-          input_4.className = "form-control btn btn-outline-secondary";
-          input_4.type = "button";
-          input_4.name = `deleteUserBtn_${id}`;
-          input_4.value =　"×";
+          input_5.onclick =() =>  this.deleteUser(id);
+          input_5.className = "form-control btn btn-outline-secondary";
+          input_5.type = "button";
+          input_5.name = `deleteUserBtn_${id}`;
+          input_5.value =　"×";
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
@@ -218,8 +238,12 @@
         td_2.append(input_2);
         tr.append(td_3);
         td_3.append(input_3);
-        tr.append(td_4);
-        td_4.append(input_4);
+        tr.append(td_4)
+        td_4.append(select_4);
+        select_4.append(option_4_1);
+        select_4.append(option_4_2);
+        tr.append(td_5);
+        td_5.append(input_5);
       };
       
       
@@ -352,15 +376,27 @@
         const input_3 = document.createElement("input");
           input_3.className = "form-control";
           input_3.type = "text";
-          input_3.name = "userName";
+          input_3.name = "userName";      
         const td_4 = document.createElement("td");
-        const input_4 = document.createElement("input");
+        const select_4 = document.createElement("select");
+          select_4.className = "form-select text-center px-0";         
+          
+          select_4.name = "notForTheTimeBeing";
+        const option_4_1 = document.createElement("option");
+          option_4_1.value = 0;
+          option_4_1.innerText = "必要";
+        const option_4_2 = document.createElement("option");
+          option_4_2.value = 1;
+          option_4_2.innerText = "不要";
+          option_4_2.id = "unnecessary"
+        const td_5 = document.createElement("td");
+        const input_5 = document.createElement("input");
           // input_4.onclick = deleteUser; //関数をプロパティとして追加する場合は（）は不要
-          input_4.onclick =() =>  this.deleteUser(`${input_1.value}`);
-          input_4.className = "form-control btn btn-outline-secondary";
-          input_4.type = "button";
-          input_4.name = `deleteUserBtn_${input_1.value}`;
-          input_4.value =　"×";
+          input_5.onclick =() =>  this.deleteUser(`${input_1.value}`);
+          input_5.className = "form-control btn btn-outline-secondary";
+          input_5.type = "button";
+          input_5.name = `deleteUserBtn_${input_1.value}`;
+          input_5.value =　"×";          
         parent.appendChild(tr);
         tr.append(td_1);
         td_1.append(input_1);
@@ -368,9 +404,13 @@
         td_2.append(input_2);
         tr.append(td_3);
         td_3.append(input_3);
-        tr.append(td_4);
-        td_4.append(input_4);
-      };
+        tr.append(td_4)
+        td_4.append(select_4);
+        select_4.append(option_4_1);
+        select_4.append(option_4_2);
+        tr.append(td_5);
+        td_5.append(input_5);
+      };  
       
       
       //edit Menus「行」追加
@@ -424,7 +464,7 @@
         tr.append(td_5);
         td_5.append(input_5);
       };
-
+      
       
       //edit Tellnums「行」追加
       function tellRowAdd() {

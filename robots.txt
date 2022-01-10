@@ -1,2 +1,5 @@
+#対象となるクローラーのユーザーエージェント：例えばGooglebotなど
 User-agent: *
+
+#サイト全体をブロック
 Disallow: /
