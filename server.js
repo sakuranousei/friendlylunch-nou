@@ -245,7 +245,7 @@ app.get("/getUsersData", isAuthenticated, (request, response) => {
 });
 
 
-//サーバーサイドからフロントエンドへUsersデータ（当面不要のuser)を送付
+//サーバーサイドからフロントエンドへUsersデータ（当面注文不要のuser)を送付
 app.get("/getUnnecessaryUsers", isAuthenticated, (request, response) => {
   db.all("SELECT * from Users WHERE notForTheTimeBeing = '1' ORDER by refNum ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
@@ -253,9 +253,17 @@ app.get("/getUnnecessaryUsers", isAuthenticated, (request, response) => {
 });
 
 
-//サーバーサイドからフロントエンドへMenusデータを送付
+//サーバーサイドからフロントエンドへMenusデータを送付　
 app.get("/getMenusData", isAuthenticated, (request, response) => {
   db.all("SELECT * from Menus ORDER by store ASC, price DESC, menu ASC", (err, rows) => {
+    response.send(JSON.stringify(rows));
+  });
+});
+
+
+//サーバーサイドからフロントエンドへMenusデータを送付  storeカラム重複なし
+app.get("/getMenusDataDintinct", isAuthenticated, (request, response) => {
+  db.all("SELECT DISTINCT store from Menus ORDER by store ASC", (err, rows) => {
     response.send(JSON.stringify(rows));
   });
 });

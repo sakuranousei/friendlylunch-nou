@@ -54,19 +54,20 @@
     <form id="orderArea">
       
       <!--ユーザー選択-->
-      <div id="usersArea" class="container orderChange">
+      <div id="usersArea" class="container orderChange py-3" style="background-color: #f4f3f3">
         <strong>１　名前（複数選択可）</strong>
       </div>
   
       <!--メニュー選択アコーディオン -->
-      <div class="accordion container pt-5" id="menusArea">
+      <div class="accordion container py-3" id="menusArea" style="background-color: #dfdfdf">
         <strong>２　お店＆メニュー（複数選択可）</strong>
       </div>
-      <div class="container text-muted">上にない場合は「編集」で加えてください。</div>
+      <div class="container text-danger text-center pb-3" style="background-color: #dfdfdf">上にない場合は「編集」で加えてください。</div>
       
       <!--お釣り入力フォーム-->
-      <div id="change" class="container pt-5">
+      <div id="change" class="container py-4" style="background-color: #bfd8d5">
         <strong>３　お釣りがある場合（円）</strong>
+        <div class="text-danger">&emsp;&emsp;お釣りは当番が返却します。</div>
         <div class="input-group mb-3">
           <input name="selectChangeValue" type="number" class="form-control" aria-label="Text input with checkbox" placeholder="半角数字のみ、円不要">
         </div>
@@ -76,10 +77,16 @@
     
     
     <!--注文決定btn-->
-    <div class="container pt-4 pb-5 text-center">
-      <input id="ordersUpdateBtn" type="button" class="btn btn-dark w-auto mb-2" value="注文決定">
-      <div class="text-secondary">
-        注文内容を変更する場合は「実績」で「削除」してから注文し直してください。
+    <div class="container py-4 pb-5" style="background-color: #b1bed5">
+     <div>
+       <strong>４　注文決定</strong>
+     </div>
+     <br>
+     <div class="text-center">
+       <input id="ordersUpdateBtn" type="button" class="btn btn-dark w-auto mb-2" value="注文決定">
+     </div>
+     <div class="text-danger text-center">
+       注文内容を変更する場合は「実績」で「削除」してから注文し直してください。
       </div>
       <div id="errormessage" class="text-danger mt-0"></div>
     </div> 
@@ -90,7 +97,7 @@
     <!--本日の注文内容の集計 -->
     <form action="/orders/check" method="post">
       
-    <div class="container py-4 bg-light">
+    <div class="container py-4">
       <strong id="todayDate2" class="d-flex align-items-center justify-content-center"></strong>
       <br>
       <div id="" class="">
@@ -132,12 +139,13 @@
       <div class="container text-center">
         <!--注文済み・お釣り返却済みチェック入れbtn-->
         <div class="py-3">
-          <input id="ordersCheckBtn" type="submit" class="btn btn-dark" style="width:154px;" value="チェック">
+          <input id="ordersCheckBtn" type="submit" class="btn btn-dark" style="width:154px;" value="当番用チェック">
         </div>
         <!--注文済み・お釣り返却済みチェックリセットbtn-->
         <div class="py-3">
-          <input id="ordersResetBtn" type="button" class="btn btn-dark w-auto" value="チェックリセット">
-        </div> 
+          <input id="ordersResetBtn" type="button" class="btn btn-dark" style="width:154px;" value="チェックリセット">
+        </div>
+        <div class="text-danger">この二つを押しても何か重要なデータが消えるようなことはありません。</div>
       </div>
 
     </div>

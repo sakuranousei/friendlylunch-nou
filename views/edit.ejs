@@ -482,10 +482,9 @@
           input_1.value = maxTellnumId();
         const td_2 = document.createElement("td");
           td_2.className = "px-1";
-        const input_2 = document.createElement("input");
-          input_2.className = "form-control px-0";
-          input_2.type = "text";
-          input_2.name = "tellStoreName";
+        const select_2 = document.createElement("select");
+          select_2.className = "form-select"
+          select_2.setAttribute("aria-label", "Default select example");
         const td_3 = document.createElement("td");
           td_3.className = "px-1";
         const input_3 = document.createElement("input");
@@ -506,7 +505,17 @@
         tr.append(td_1);
         td_1.append(input_1);
         tr.append(td_2);
-        td_2.append(input_2);
+        td_2.append(select_2);
+        fetch("/getMenusDataDintinct", {})
+        .then(res => res.json())
+        .then(response => {
+          response.forEach(row => {
+            const storeName = row.store;
+            const option_2 = document.createElement("option");
+            option_2.innerText = storeName;
+            select_2.append(option_2)
+          });
+        });
         tr.append(td_3);
         td_3.append(input_3);
         tr.append(td_4);
