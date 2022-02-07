@@ -491,7 +491,7 @@
         const input_3 = document.createElement("input");
           input_3.className = "form-control px-0";
           input_3.type = "text";
-          input_3.name = "tellNum";
+          input_3.name = "tellnumsText";
           input_3.placeholder = "";
         const td_4 = document.createElement("td");
           td_4.className = "px-1";
@@ -513,6 +513,7 @@
           response.forEach(row => {
             const storeName = row.store;
             const option_2 = document.createElement("option");
+            option_2.value = storeName;
             option_2.innerText = storeName;
             select_2.append(option_2)
           });
